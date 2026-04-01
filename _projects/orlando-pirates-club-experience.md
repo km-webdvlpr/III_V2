@@ -13,8 +13,8 @@ snapshot:
   problem: "Football fan experiences are often shared through static posts instead of immersive, branded presentation."
   focus: "I built a creative single-page web experience that presents Orlando Pirates content in a more engaging format."
   outcome: "The project demonstrates storytelling, visual direction, and front-end delivery in a compact, shareable format."
-demo: "https://km-webdvlpr.github.io/III.IV/projects/orlando-pirates/"
-demoLabel: "View live project"
+demoPath: "/projects/orlando-pirates/"
+demoLabel: "Open live project"
 ---
 
 ## Overview
@@ -39,4 +39,4 @@ This sits in my Creative Space as personal work to demonstrate design expression
 </div>
 
 ## Link
-- Live project: [Orlando Pirates Club Experience](https://km-webdvlpr.github.io/III.IV/projects/orlando-pirates/)
+- Live project: [Orlando Pirates Club Experience]({{ '/projects/orlando-pirates/' | relative_url }})

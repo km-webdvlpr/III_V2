@@ -13,8 +13,8 @@ snapshot:
   problem: "Cultural music insights are often shared as disconnected trends rather than one coherent narrative."
   focus: "I built an interactive personal project to explore South African music culture through a story-led analytics lens."
   outcome: "The output is an immersive narrative that blends analytical structure with creative expression."
-demo: "https://km-webdvlpr.github.io/III.IV/projects/rsa-music-culture-insights/sa_music_final.html"
-demoLabel: "View project walkthrough"
+demoPath: "/projects/rsa-music-culture-insights/sa_music_final.html"
+demoLabel: "Open interactive project"
 ---
 
 ## Overview
@@ -40,4 +40,4 @@ This project was intentionally built as personal/creative work to demonstrate na
 </style>
 
 ## Link
-- Live project: [RSA Music Culture Insights](https://km-webdvlpr.github.io/III.IV/projects/rsa-music-culture-insights/sa_music_final.html)
+- Live project: [RSA Music Culture Insights]({{ '/projects/rsa-music-culture-insights/sa_music_final.html' | relative_url }})

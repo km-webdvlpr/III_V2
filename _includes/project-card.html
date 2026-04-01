@@ -3,6 +3,19 @@
 {% assign variant = include.variant | default: 'featured' %}
 {% assign data_filters = meta.filters | default: empty | join: ' ' %}
 {% assign project_group = meta.group | default: 'misc' %}
+{% assign demo_href = nil %}
+{% if project.demoPath %}
+  {% assign demo_href = project.demoPath | relative_url %}
+{% elsif project.demo %}
+  {% assign demo_href = project.demo %}
+{% endif %}
+{% assign show_demo = false %}
+{% if demo_href %}
+  {% assign show_demo = true %}
+{% endif %}
+{% if project.repo and demo_href == project.repo %}
+  {% assign show_demo = false %}
+{% endif %}
 {% if variant == 'featured' %}
 <article class="project-card project-card--featured reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ project_group }}">
   <div class="project-card__main">
@@ -21,7 +34,7 @@
     {% endif %}
     <div class="project-card__links">
       {% if project.repo %}<a href="{{ project.repo }}" class="card-link" target="_blank" rel="noreferrer">{{ project.repoLabel | default: "GitHub" }}</a>{% endif %}
-      {% if project.demo %}<a href="{{ project.demo }}" class="card-link" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live Project" }}</a>{% endif %}
+      {% if show_demo %}<a href="{{ demo_href }}" class="card-link" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live Project" }}</a>{% endif %}
       <a href="{{ project.url | relative_url }}" class="card-link">Case File</a>
     </div>
   </div>
@@ -44,7 +57,7 @@
   <div class="project-card__links project-card__links--compact">
     <a href="{{ project.url | relative_url }}" class="compact-gh">Case File</a>
     {% if project.repo %}<a href="{{ project.repo }}" class="compact-gh" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
-    {% if project.demo %}<a href="{{ project.demo }}" class="compact-gh" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live" }}</a>{% endif %}
+    {% if show_demo %}<a href="{{ demo_href }}" class="compact-gh" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live" }}</a>{% endif %}
   </div>
 </article>
 {% elsif variant == 'creative' %}
@@ -61,7 +74,7 @@
   {% endif %}
   <div class="project-card__links project-card__links--creative">
     <a href="{{ project.url | relative_url }}" class="creative-link">Project Walkthrough</a>
-    {% if project.demo %}<a href="{{ project.demo }}" class="creative-link" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live Project" }}</a>{% endif %}
+    {% if show_demo %}<a href="{{ demo_href }}" class="creative-link" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live Project" }}</a>{% endif %}
   </div>
 </article>
 {% endif %}

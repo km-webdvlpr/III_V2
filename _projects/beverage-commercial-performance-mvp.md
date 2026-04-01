@@ -15,8 +15,6 @@ snapshot:
   outcome: "Teams got faster reporting, clearer definitions, and earlier signals on promotion performance."
 repo: "https://github.com/kabelo-analytics/beverage-commercial-performance-mvp"
 repoLabel: "Open GitHub project"
-demo: "https://github.com/kabelo-analytics/beverage-commercial-performance-mvp"
-demoLabel: "View project walkthrough"
 ---
 
 ## Overview
@@ -108,5 +106,4 @@ These extracts are included to show the requirements thinking behind the reporti
 - A reporting structure that can be maintained without repeated spreadsheet reconciliation.
 
 ## Links
-- Repository: [beverage-commercial-performance-mvp](https://github.com/kabelo-analytics/beverage-commercial-performance-mvp)
-- Demo: [Project walk-through](https://github.com/kabelo-analytics/beverage-commercial-performance-mvp)
+- Repository and implementation notes: [beverage-commercial-performance-mvp](https://github.com/kabelo-analytics/beverage-commercial-performance-mvp)

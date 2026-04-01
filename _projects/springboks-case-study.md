@@ -13,7 +13,7 @@ snapshot:
   problem: "Performance context across different Springbok eras was difficult to compare in one narrative."
   focus: "I built an interactive decade view combining win-rate arc, era breakdown, and player profile context."
   outcome: "The result provides a clearer, faster way to read team evolution over time."
-demo: "https://km-webdvlpr.github.io/III.IV/projects/springboks/"
+demoPath: "/projects/springboks/"
 demoLabel: "Open live project"
 ---
 
@@ -88,4 +88,4 @@ The project improved readability of long-range team evolution and made decade-sc
 </div>
 
 ### Link
-- Live project: [Springboks](https://km-webdvlpr.github.io/III.IV/projects/springboks/)
+- Live project: [Springboks]({{ '/projects/springboks/' | relative_url }})

@@ -13,7 +13,7 @@ snapshot:
   problem: "Music trend signals were fragmented across genres and periods, making it hard to see evolution clearly."
   focus: "I structured a single interactive report to compare eras, transitions, and ranking patterns."
   outcome: "The report made major shifts in listening behavior easier to explore and communicate."
-demo: "https://km-webdvlpr.github.io/III.IV/projects/rsa-music-evolution/"
+demoPath: "/projects/rsa-music-evolution/"
 demoLabel: "Open live project"
 ---
 
@@ -90,4 +90,4 @@ The project made a complex multi-year trend story easier to read and compare, im
 </div>
 
 ### Link
-- Live project: [RSA Music Evolution](https://km-webdvlpr.github.io/III.IV/projects/rsa-music-evolution/)
+- Live project: [RSA Music Evolution]({{ '/projects/rsa-music-evolution/' | relative_url }})

@@ -15,8 +15,6 @@ snapshot:
   outcome: "The analysis helped focus effort on higher-value customers and reduce low-impact targeting."
 repo: "https://github.com/kabelo-analytics/alcohol-retail-cltv-intelligence"
 repoLabel: "Open GitHub project"
-demo: "https://github.com/kabelo-analytics/alcohol-retail-cltv-intelligence"
-demoLabel: "View project walkthrough"
 ---
 
 ## Overview
@@ -83,5 +81,4 @@ These metrics mattered because the goal was not just to score customers, but to 
 - Revisit the segment thresholds over time as customer behavior changes.
 
 ## Links
-- Repository: [alcohol-retail-cltv-intelligence](https://github.com/kabelo-analytics/alcohol-retail-cltv-intelligence)
-- Demo: [Project walk-through](https://github.com/kabelo-analytics/alcohol-retail-cltv-intelligence)
+- Repository and project notes: [alcohol-retail-cltv-intelligence](https://github.com/kabelo-analytics/alcohol-retail-cltv-intelligence)

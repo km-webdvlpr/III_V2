@@ -13,8 +13,8 @@ snapshot:
   problem: "Telecom market signals were spread across multiple sources and difficult to convert into concise decision-ready insight."
   focus: "I consolidated key market dynamics into a structured analysis with practical implications for strategy and planning."
   outcome: "The result is a clear executive-style market intelligence report with embedded evidence and recommendations."
-demo: "https://km-webdvlpr.github.io/III.IV/projects/telco-rsa-africa-market-insights-2025/"
-demoLabel: "View project walkthrough"
+demoPath: "/projects/telco-rsa-africa-market-insights-2025/Telco_RSA_Africa_Market_Insights_2025.pdf"
+demoLabel: "Open PDF report"
 ---
 
 ## Overview
@@ -44,4 +44,4 @@ Embedded PDF case study:
 </div>
 
 ## Links
-- Embedded case study PDF: [Open PDF directly](https://km-webdvlpr.github.io/III.IV/projects/telco-rsa-africa-market-insights-2025/Telco_RSA_Africa_Market_Insights_2025.pdf)
+- Embedded case study PDF: [Open PDF directly]({{ '/projects/telco-rsa-africa-market-insights-2025/Telco_RSA_Africa_Market_Insights_2025.pdf' | relative_url }})

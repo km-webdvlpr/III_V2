@@ -9,6 +9,19 @@ layout: default
   {% endif %}
 {% endfor %}
 {% assign case_log = meta.log | default: '00' %}
+{% assign demo_href = nil %}
+{% if page.demoPath %}
+  {% assign demo_href = page.demoPath | relative_url %}
+{% elsif page.demo %}
+  {% assign demo_href = page.demo %}
+{% endif %}
+{% assign show_demo = false %}
+{% if demo_href %}
+  {% assign show_demo = true %}
+{% endif %}
+{% if page.repo and demo_href == page.repo %}
+  {% assign show_demo = false %}
+{% endif %}
 <main class="site-main site-main--project">
   <section class="dossier-header">
     <div class="breadcrumb">
@@ -38,7 +51,7 @@ layout: default
     {% endif %}
 
     <div class="dossier-cta">
-      {% if page.demo %}<a href="{{ page.demo }}" class="cta-btn primary" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "View live project" }}</a>{% endif %}
+      {% if show_demo %}<a href="{{ demo_href }}" class="cta-btn primary" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "View live project" }}</a>{% endif %}
       {% if page.repo %}<a href="{{ page.repo }}" class="cta-btn ghost" target="_blank" rel="noreferrer">{{ page.repoLabel | default: "Open GitHub project" }}</a>{% endif %}
       <a href="{{ '/projects/' | relative_url }}" class="cta-btn ghost">Back to Projects</a>
     </div>
@@ -70,7 +83,7 @@ layout: default
         <div class="sidebar-label">// LINKS</div>
         <a class="sidebar-link" href="{{ '/projects/' | relative_url }}">Projects Index</a>
         {% if page.repo %}<a class="sidebar-link" href="{{ page.repo }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
-        {% if page.demo %}<a class="sidebar-link" href="{{ page.demo }}" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "Live project" }}</a>{% endif %}
+        {% if show_demo %}<a class="sidebar-link" href="{{ demo_href }}" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "Live project" }}</a>{% endif %}
       </div>
     </aside>
 
