@@ -24,48 +24,22 @@
     - bontle-operational-intelligence-for-service-teams
     - telco-rsa-africa-market-insights-2025
 
-- slug: jozication-lms-insights
+- slug: digitising-estate-planning-for-emerging-households
   order: 3
   log: "03"
   tier: flagship
   group: featured
   homepage: true
   about: true
-  filters: [analytics, edtech]
+  filters: [product]
   related:
     - bontle-operational-intelligence-for-service-teams
-    - vitality-spotify-rewards-analytics-case-study
-    - digitising-estate-planning-for-emerging-households
-
-- slug: rsa-music-evolution-case-study
-  order: 4
-  log: "04"
-  tier: flagship
-  group: featured
-  homepage: false
-  about: false
-  filters: [analytics, culture]
-  related:
-    - springboks-case-study
-    - rsa-music-culture-insights
-    - orlando-pirates-club-experience
-
-- slug: springboks-case-study
-  order: 5
-  log: "05"
-  tier: flagship
-  group: featured
-  homepage: false
-  about: false
-  filters: [analytics, culture]
-  related:
-    - rsa-music-evolution-case-study
-    - orlando-pirates-club-experience
-    - athlete-viral-marketing-impact-analysis
+    - telco-rsa-africa-market-insights-2025
+    - jozication-lms-insights
 
 - slug: bontle-operational-intelligence-for-service-teams
-  order: 6
-  log: "06"
+  order: 4
+  log: "04"
   tier: flagship
   group: featured
   homepage: true
@@ -76,22 +50,35 @@
     - jozication-lms-insights
     - jhb-infrastructure-intelligence
 
-- slug: digitising-estate-planning-for-emerging-households
-  order: 7
-  log: "07"
-  tier: supporting
-  group: skill-build
+- slug: health-data-bi-powerbi
+  order: 5
+  log: "05"
+  tier: flagship
+  group: featured
+  homepage: false
+  about: false
+  filters: [analytics]
+  related:
+    - beverage-commercial-performance-mvp
+    - vitality-spotify-rewards-analytics-case-study
+    - jhb-infrastructure-intelligence
+
+- slug: jozication-lms-insights
+  order: 6
+  log: "06"
+  tier: flagship
+  group: featured
   homepage: false
   about: true
-  filters: [product]
+  filters: [analytics, edtech]
   related:
     - bontle-operational-intelligence-for-service-teams
-    - telco-rsa-africa-market-insights-2025
-    - jozication-lms-insights
+    - vitality-spotify-rewards-analytics-case-study
+    - digitising-estate-planning-for-emerging-households
 
 - slug: alcohol-retail-cltv-intelligence
-  order: 8
-  log: "08"
+  order: 7
+  log: "07"
   tier: supporting
   group: skill-build
   homepage: false
@@ -103,8 +90,8 @@
     - athlete-viral-marketing-impact-analysis
 
 - slug: beverage-commercial-performance-mvp
-  order: 9
-  log: "09"
+  order: 8
+  log: "08"
   tier: supporting
   group: skill-build
   homepage: false
@@ -116,34 +103,21 @@
     - health-data-bi-powerbi
 
 - slug: telco-rsa-africa-market-insights-2025
-  order: 10
-  log: "10"
+  order: 9
+  log: "09"
   tier: supporting
   group: skill-build
   homepage: false
   about: false
   filters: [analytics]
   related:
-    - beverage-commercial-performance-mvp
     - jhb-infrastructure-intelligence
     - digitising-estate-planning-for-emerging-households
-
-- slug: health-data-bi-powerbi
-  order: 11
-  log: "11"
-  tier: supporting
-  group: skill-build
-  homepage: false
-  about: false
-  filters: [analytics]
-  related:
     - beverage-commercial-performance-mvp
-    - vitality-spotify-rewards-analytics-case-study
-    - jhb-infrastructure-intelligence
 
 - slug: vitality-spotify-rewards-analytics-case-study
-  order: 12
-  log: "12"
+  order: 10
+  log: "10"
   tier: supporting
   group: skill-build
   homepage: false
@@ -153,6 +127,32 @@
     - athlete-viral-marketing-impact-analysis
     - alcohol-retail-cltv-intelligence
     - jozication-lms-insights
+
+- slug: rsa-music-evolution-case-study
+  order: 11
+  log: "11"
+  tier: exploratory
+  group: creative
+  homepage: false
+  about: false
+  filters: [analytics, culture]
+  related:
+    - springboks-case-study
+    - rsa-music-culture-insights
+    - orlando-pirates-club-experience
+
+- slug: springboks-case-study
+  order: 12
+  log: "12"
+  tier: exploratory
+  group: creative
+  homepage: false
+  about: false
+  filters: [analytics, culture]
+  related:
+    - rsa-music-evolution-case-study
+    - orlando-pirates-club-experience
+    - athlete-viral-marketing-impact-analysis
 
 - slug: orlando-pirates-club-experience
   order: 13
