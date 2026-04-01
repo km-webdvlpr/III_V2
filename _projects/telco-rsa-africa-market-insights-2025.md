@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Telco RSA Africa Market Insights 2025"
 date: 2025-12-15
 summary: "Market insights case study on South African and African telecom trends, with strategic signals synthesized into an executive-ready report."

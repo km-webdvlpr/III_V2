@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Digitising Estate Planning for Emerging Households"
 date: 2026-03-01
 summary: "Turned estate planning into a WhatsApp-based product concept, combining discovery, market analysis, revenue thinking, and end-to-end solution design."

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "RSA Music Culture Insights"
 date: 2026-03-19
 summary: "Personal cultural analytics piece exploring South African music patterns through an interactive narrative experience."

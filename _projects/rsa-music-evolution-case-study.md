@@ -1,4 +1,4 @@
-﻿---
+---
 title: "RSA Music Evolution"
 date: 2026-03-20
 summary: "Interactive story of South African listening trends and genre evolution from 2021 to 2026."

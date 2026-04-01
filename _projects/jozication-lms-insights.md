@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Jozication LMS Insights"
 date: 2026-03-22
 summary: "Education analytics case study focused on learner engagement, performance trends, and actionable LMS insights."

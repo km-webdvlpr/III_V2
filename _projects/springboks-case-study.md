@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Springboks"
 date: 2026-03-19
 summary: "Interactive visual analysis of Springbok performance trends from 2016 to 2026."
