@@ -5,6 +5,12 @@ description: Data analysis built around business questions and practical decisio
 status_context: JHB, ZA // AVAILABLE
 body_class: page-home
 ---
+{% assign homepage_count = 0 %}
+{% for entry in site.data.project_registry %}
+  {% if entry.homepage %}
+    {% assign homepage_count = homepage_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
 
 <section class="hero">
   <div class="grid-bg"></div>
@@ -97,17 +103,19 @@ body_class: page-home
   <div class="feed-section-header reveal">
     <span class="feed-section-label">// FEATURED CASE FILES</span>
     <div class="feed-section-line"></div>
-    <span class="feed-section-count">04</span>
+    <span class="feed-section-count">{{ homepage_count }}</span>
   </div>
   <div class="featured-grid">
-    {% for slug in site.home_featured %}
-      {% for project in site.projects %}
-        {% if project.slug == slug %}
-          {% assign meta = site.data.project_meta[project.slug] %}
+    {% for entry in site.data.project_registry %}
+      {% if entry.homepage %}
+        {% for project in site.projects %}
+          {% if project.slug == entry.slug %}
+          {% assign meta = entry %}
           {% include project-card.html project=project meta=meta variant='featured' %}
           {% break %}
+          {% endif %}
+        {% endfor %}
         {% endif %}
-      {% endfor %}
     {% endfor %}
   </div>
 </section>

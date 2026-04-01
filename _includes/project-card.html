@@ -1,9 +1,10 @@
 {% assign project = include.project %}
 {% assign meta = include.meta %}
 {% assign variant = include.variant | default: 'featured' %}
-{% assign data_filters = meta.filters | join: ' ' %}
+{% assign data_filters = meta.filters | default: empty | join: ' ' %}
+{% assign project_group = meta.group | default: 'misc' %}
 {% if variant == 'featured' %}
-<article class="project-card project-card--featured reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ meta.group }}">
+<article class="project-card project-card--featured reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ project_group }}">
   <div class="project-card__main">
     <div class="project-card__meta">
       {% if project.roleFocus %}<span class="project-card__type">{{ project.roleFocus }}</span>{% endif %}
@@ -30,7 +31,7 @@
   </div>
 </article>
 {% elsif variant == 'compact' %}
-<article class="compact-card reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ meta.group }}">
+<article class="compact-card reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ project_group }}">
   <h3 class="compact-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
   {% if project.summary %}<p class="compact-desc">{{ project.summary }}</p>{% endif %}
   {% if project.tags %}
@@ -47,7 +48,7 @@
   </div>
 </article>
 {% elsif variant == 'creative' %}
-<article class="creative-card reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ meta.group }}">
+<article class="creative-card reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ project_group }}">
   <div class="creative-label">PERSONAL PROJECT</div>
   <h3 class="creative-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
   {% if project.summary %}<p class="creative-desc">{{ project.summary }}</p>{% endif %}

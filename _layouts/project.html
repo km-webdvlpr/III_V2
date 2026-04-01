@@ -1,7 +1,13 @@
 ---
 layout: default
 ---
-{% assign meta = site.data.project_meta[page.slug] %}
+{% assign meta = nil %}
+{% for entry in site.data.project_registry %}
+  {% if entry.slug == page.slug %}
+    {% assign meta = entry %}
+    {% break %}
+  {% endif %}
+{% endfor %}
 {% assign case_log = meta.log | default: '00' %}
 <main class="site-main site-main--project">
   <section class="dossier-header">
@@ -43,6 +49,9 @@ layout: default
       <div class="sidebar-label">// DOSSIER</div>
       <a class="sidebar-link" href="#snapshot">Snapshot</a>
       <a class="sidebar-link" href="#content">Case Notes</a>
+      {% if meta and meta.related %}
+      <a class="sidebar-link" href="#related">Related Case Files</a>
+      {% endif %}
       {% if page.projectShows and page.projectShows.size > 0 %}
       <hr class="sidebar-divider">
       <div class="sidebar-label">// WHAT THIS SHOWS</div>
@@ -97,6 +106,42 @@ layout: default
       <div id="content" class="project-content reveal">
         {{ content }}
       </div>
+
+      {% if meta and meta.related %}
+      {% assign related_count = 0 %}
+      <section class="related-casefiles reveal" id="related">
+        <div class="feed-section-header">
+          <span class="feed-section-label">// RELATED CASE FILES</span>
+          <div class="feed-section-line"></div>
+          {% for related_slug in meta.related %}
+            {% for related_project in site.projects %}
+              {% if related_project.slug == related_slug %}
+                {% assign related_count = related_count | plus: 1 %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+          <span class="feed-section-count">{{ related_count }}</span>
+        </div>
+        <div class="compact-grid">
+          {% for related_slug in meta.related %}
+            {% for related_project in site.projects %}
+              {% if related_project.slug == related_slug %}
+                {% assign related_meta = nil %}
+                {% for related_entry in site.data.project_registry %}
+                  {% if related_entry.slug == related_project.slug %}
+                    {% assign related_meta = related_entry %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {% include project-card.html project=related_project meta=related_meta variant='compact' %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
     </article>
   </section>
 </main>

@@ -15,20 +15,6 @@ linkedin_url: https://www.linkedin.com/in/kabelo-m-86672662/
 location_label: JHB, ZA
 location_url: https://maps.app.goo.gl/ves8cXNaDed49xvTA
 
-home_featured:
-  - athlete-viral-marketing-impact-analysis
-  - jhb-infrastructure-intelligence
-  - jozication-lms-insights
-  - bontle-operational-intelligence-for-service-teams
-
-featured_priority:
-  - athlete-viral-marketing-impact-analysis
-  - jhb-infrastructure-intelligence
-  - jozication-lms-insights
-  - rsa-music-evolution-case-study
-  - springboks-case-study
-  - bontle-operational-intelligence-for-service-teams
-
 collections:
   projects:
     output: true

@@ -19,6 +19,7 @@ page_class: page-about
     <a class="sidebar-link" href="#profile">Profile</a>
     <a class="sidebar-link" href="#career">Career log</a>
     <a class="sidebar-link" href="#process">How I work</a>
+    <a class="sidebar-link" href="#case-files">Case files</a>
     <a class="sidebar-link" href="#credentials">Credentials</a>
     <hr class="sidebar-divider">
     <a class="sidebar-link" href="{{ '/projects/' | relative_url }}">View Projects</a>
@@ -57,7 +58,7 @@ page_class: page-about
             <span class="stat-label">Years in business</span>
           </div>
           <div class="stat-cell">
-            <span class="stat-val">14</span>
+            <span class="stat-val">{{ site.projects | size }}</span>
             <span class="stat-label">Portfolio projects</span>
           </div>
           <div class="stat-cell">
@@ -146,6 +147,23 @@ page_class: page-about
           <div class="process-desc">Turn findings into something a team can act on: recommendation, structure, review path, or implementation direction.</div>
           <div class="process-cmd">output --actionable --not_decorative</div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="case-files">
+      <div class="section-tag reveal">// casefiles.map --about</div>
+      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">A few case files that best reflect how I work across analytics, workflow thinking, and decision support.</p>
+      <div class="compact-grid">
+        {% for entry in site.data.project_registry %}
+          {% if entry.about %}
+            {% for project in site.projects %}
+              {% if project.slug == entry.slug %}
+                {% include project-card.html project=project meta=entry variant='compact' %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
       </div>
     </section>
 

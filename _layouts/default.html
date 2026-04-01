@@ -9,7 +9,7 @@
       {% if page.layout == 'project' or page.layout == 'artifact' %}
         {% assign status_context = 'CASE FILE // ACTIVE' %}
       {% elsif page.url == '/projects/' %}
-        {% assign status_context = 'PROJECTS INDEX // 14 ENTRIES' %}
+        {% capture status_context %}PROJECTS INDEX // {{ site.projects | size }} ENTRIES{% endcapture %}
       {% elsif page.url == '/about/' %}
         {% assign status_context = 'ABOUT // KABELO MAKUA' %}
       {% else %}
