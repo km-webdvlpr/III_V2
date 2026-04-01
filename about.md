@@ -166,9 +166,9 @@ page_class: page-about
         <div class="cred-row">
           <div class="cred-left">
             <div class="cred-year">ACADEMIC BASE</div>
-            <div class="cred-title">BCom - Business Management</div>
+            <div class="cred-title">BCom</div>
             <div class="cred-org">UNISA</div>
-            <p>Business foundation in management, strategy, and economics.</p>
+            <p>Economics-led business training with grounding in Investment Management, financial management, and Business Management. That foundation still shapes how I approach commercial analysis, KPI logic, and decision-making today.</p>
           </div>
           <span class="cred-link" style="cursor:default;">FOUNDATION</span>
         </div>
