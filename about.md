@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: Structured analytics delivery with business and product context. Built over time. Still building.
+description: Portfolio-led analytics work with business and product context.
 status_context: ABOUT // KABELO MAKUA
 body_class: page-about
 page_class: page-about
@@ -10,25 +10,26 @@ page_class: page-about
 <section class="page-header">
   <div class="breadcrumb">HOME <span>//</span> ABOUT</div>
   <h1 class="page-title">About <span style="color:var(--green-bright);">{{ site.mark_name }}</span></h1>
-  <p class="page-subtitle">Structured analytics delivery with business and product context. Built over time. Still building.</p>
+  <p class="page-subtitle">This portfolio is built to show how I approach analytical work: define the question, understand the context, structure the metrics, and produce decision-ready output.</p>
 </section>
 
 <section class="about-layout">
   <aside class="sidebar">
     <div class="sidebar-label">// ON THIS PAGE</div>
     <a class="sidebar-link" href="#profile">Profile</a>
-    <a class="sidebar-link" href="#career">Career log</a>
-    <a class="sidebar-link" href="#process">How I work</a>
     <a class="sidebar-link" href="#case-files">Case files</a>
-    <a class="sidebar-link" href="#credentials">Credentials</a>
+    <a class="sidebar-link" href="#process">How I work</a>
+    <a class="sidebar-link" href="#background">Background</a>
+    <a class="sidebar-link" href="#credentials">Education + CV</a>
     <hr class="sidebar-divider">
     <a class="sidebar-link" href="{{ '/projects/' | relative_url }}">View Projects</a>
+    <a class="sidebar-link" href="{{ '/assets/files/Kabelo_Makua_CV_04.pdf' | relative_url }}" target="_blank" rel="noreferrer">View CV</a>
     <a class="sidebar-link" href="mailto:{{ site.contact_email }}">Email me</a>
     <hr class="sidebar-divider">
     <div class="sidebar-meta">
       LOCATION: <span class="hi">{{ site.location_label }}</span><br>
       STATUS: <span class="hi">AVAILABLE</span><br>
-      FOCUS: <span class="hi">EDTECH / FINTECH</span>
+      FOCUS: <span class="hi">ANALYTICS / PRODUCT / DECISION SUPPORT</span>
     </div>
   </aside>
 
@@ -44,13 +45,13 @@ page_class: page-about
         <div class="profile-title">DATA ANALYST &nbsp;//&nbsp; PRODUCT THINKING &nbsp;//&nbsp; {{ site.location_label }}</div>
         <hr class="profile-divider">
         <p class="profile-text">
-          I came into analytics the long way. Bond administration at <strong>Nedbank</strong>. Web development and SME consulting. A startup, <strong>SuccessorX</strong>, where I built and pivoted a WhatsApp-based estate planning product from scratch and learned how hard it is to make a grudge product actually stick.
+          I work primarily as a data analyst, with stronger projects that also show business analysis and product thinking. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
         </p>
         <p class="profile-text">
-          Along the way I finished the <strong>ALX / ExploreAI Data Science programme</strong>, started a postgraduate path in data science, and built a portfolio that reflects how I actually think: <strong>business question first, then the data</strong>.
+          My best work sits where analysis needs to do more than describe performance. It needs to clarify the problem, define the measure, and help a team decide what to do next. That is the thread running through this portfolio across commercial, operational, market, and product-shaped case work.
         </p>
         <p class="profile-text">
-          I am not chasing titles for the sake of it. I am looking for teams where analysis connects to real decisions in products, operations, and commercial work, especially where the data can move something practical.
+          This site is designed to be read through the projects first. The portfolio carries the main argument. The CV provides the formal background.
         </p>
         <div class="profile-stats">
           <div class="stat-cell">
@@ -69,90 +70,9 @@ page_class: page-about
       </div>
     </section>
 
-    <section class="section" id="career">
-      <div class="section-tag reveal">// career.log --full</div>
-      <div class="career-log">
-        <div class="log-entry reveal">
-          <div class="log-timestamp">2025 → NOW</div>
-          <div class="log-role">Product &amp; Insights Analyst</div>
-          <div class="log-org">TEC4TH // Independent Consulting</div>
-          <div class="log-desc">Analytics consulting and portfolio development across EdTech, FinTech, civic data, customer retention, and product-style case studies. Building toward a stronger product and commercial analytics path.</div>
-          <span class="log-tag">#ProductAnalytics</span>
-          <span class="log-tag">#EdTech</span>
-          <span class="log-tag">#FinTech</span>
-        </div>
-        <div class="log-entry reveal">
-          <div class="log-timestamp">2022 → 2025</div>
-          <div class="log-role">Co-Founder / Product Lead</div>
-          <div class="log-org">SuccessorX</div>
-          <div class="log-desc">Built a WhatsApp-based digital estate planning product from concept to market. Led discovery, user research, market sizing, flow design, and product pivoting.</div>
-          <span class="log-tag">#ProductOwnership</span>
-          <span class="log-tag">#InsurTech</span>
-          <span class="log-tag">#WhatsApp</span>
-          <div class="log-insight">// Estate planning is a grudge purchase. People know they need it and still avoid it. That sharpened how I think about engagement, CLTV, and what really makes a product stick.</div>
-        </div>
-        <div class="log-entry reveal">
-          <div class="log-timestamp">2019 → 2022</div>
-          <div class="log-role">SME Consultant</div>
-          <div class="log-org">7Legend Agency</div>
-          <div class="log-desc">Business consulting and digital delivery for SMEs. Web development, strategy support, and client-facing reporting across multiple sectors.</div>
-          <span class="log-tag">#SMEConsulting</span>
-          <span class="log-tag">#WebDevelopment</span>
-          <span class="log-tag">#BusinessAnalysis</span>
-        </div>
-        <div class="log-entry reveal">
-          <div class="log-timestamp">2016 → 2019</div>
-          <div class="log-role">Bond Administration Clerk</div>
-          <div class="log-org">Nedbank</div>
-          <div class="log-desc">Financial services operations in bond administration. First exposure to structured data, process control, and how large institutions move information through systems.</div>
-          <span class="log-tag">#FinancialServices</span>
-          <span class="log-tag">#Operations</span>
-          <span class="log-tag">#DataProcessing</span>
-        </div>
-        <div class="log-entry reveal" style="padding-bottom:0;">
-          <div class="log-timestamp">EDUCATION</div>
-          <div class="log-role">BCom — Business Management</div>
-          <div class="log-org">UNISA</div>
-          <div class="log-desc">Foundation in business strategy, economics, and organisational management.</div>
-          <span class="log-tag">#BCom</span>
-          <span class="log-tag">#UNISA</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="section-tag reveal">// process.sh --how-i-work</div>
-      <div class="process-grid reveal">
-        <div class="process-cell">
-          <div class="process-num">01</div>
-          <div class="process-title">Business Question</div>
-          <div class="process-desc">I start with what the business actually needs to decide, not just what data is available. The question shapes the work.</div>
-          <div class="process-cmd">define_problem --before --choosing_work</div>
-        </div>
-        <div class="process-cell">
-          <div class="process-num">02</div>
-          <div class="process-title">Discovery</div>
-          <div class="process-desc">Review the data, the process, the context, and the stakeholders before forming a view.</div>
-          <div class="process-cmd">scan --data --context --stakeholders</div>
-        </div>
-        <div class="process-cell">
-          <div class="process-num">03</div>
-          <div class="process-title">Metrics &amp; Workflow</div>
-          <div class="process-desc">Set clear measures and map what matters operationally. KPIs should connect to decisions, not decoration.</div>
-          <div class="process-cmd">kpi.define --connect_to_decisions</div>
-        </div>
-        <div class="process-cell">
-          <div class="process-num">04</div>
-          <div class="process-title">Decision Support</div>
-          <div class="process-desc">Turn findings into something a team can act on: recommendation, structure, review path, or implementation direction.</div>
-          <div class="process-cmd">output --actionable --not_decorative</div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="case-files">
       <div class="section-tag reveal">// casefiles.map --about</div>
-      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">A few case files that best reflect how I work across analytics, workflow thinking, and decision support.</p>
+      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">Selected case files that best show how I approach problem framing, workflow thinking, KPI design, and decision support.</p>
       <div class="compact-grid">
         {% for entry in site.data.project_registry %}
           {% if entry.about %}
@@ -167,38 +87,115 @@ page_class: page-about
       </div>
     </section>
 
+    <section class="section" id="process">
+      <div class="section-tag reveal">// process.sh --how-i-work</div>
+      <div class="process-grid reveal">
+        <div class="process-cell">
+          <div class="process-num">01</div>
+          <div class="process-title">Business Question</div>
+          <div class="process-desc">I start with the decision that needs to be made, then work backward to the data and evidence required.</div>
+          <div class="process-cmd">define_problem --before --choosing_work</div>
+        </div>
+        <div class="process-cell">
+          <div class="process-num">02</div>
+          <div class="process-title">Discovery</div>
+          <div class="process-desc">I review the data, the process, the stakeholders, and the operating context before deciding what matters most.</div>
+          <div class="process-cmd">scan --data --context --stakeholders</div>
+        </div>
+        <div class="process-cell">
+          <div class="process-num">03</div>
+          <div class="process-title">Metrics &amp; Workflow</div>
+          <div class="process-desc">I define measures that connect to how the business actually works, not just what is easy to report.</div>
+          <div class="process-cmd">kpi.define --connect_to_decisions</div>
+        </div>
+        <div class="process-cell">
+          <div class="process-num">04</div>
+          <div class="process-title">Decision Support</div>
+          <div class="process-desc">I turn analysis into something a team can use: clearer options, stronger prioritisation, and more confident next steps.</div>
+          <div class="process-cmd">output --actionable --not_decorative</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="background">
+      <div class="section-tag reveal">// background.signals</div>
+      <div class="career-log">
+        <div class="log-entry reveal">
+          <div class="log-timestamp">OPERATIONS</div>
+          <div class="log-role">Process, controls, and structured work</div>
+          <div class="log-org">Financial services foundation</div>
+          <div class="log-desc">Early work in bond administration built discipline around accuracy, documentation, structured workflows, and operational detail.</div>
+          <span class="log-tag">#ProcessControl</span>
+          <span class="log-tag">#Accuracy</span>
+          <span class="log-tag">#Operations</span>
+        </div>
+        <div class="log-entry reveal">
+          <div class="log-timestamp">PRODUCT</div>
+          <div class="log-role">Workflow thinking and business viability</div>
+          <div class="log-org">Startup and venture experience</div>
+          <div class="log-desc">Product and venture work strengthened how I think about user friction, adoption, commercial reality, and the difference between an idea that sounds good and one that people actually use.</div>
+          <span class="log-tag">#ProductThinking</span>
+          <span class="log-tag">#UserFriction</span>
+          <span class="log-tag">#CommercialContext</span>
+          <div class="log-insight">// That experience still shapes how I read performance: numbers matter, but incentives, constraints, and behaviour matter too.</div>
+        </div>
+        <div class="log-entry reveal" style="padding-bottom:0;">
+          <div class="log-timestamp">PORTFOLIO</div>
+          <div class="log-role">Cross-sector analytical case work</div>
+          <div class="log-org">Commercial, civic, product, and market analysis</div>
+          <div class="log-desc">The portfolio is where those threads come together: structured analysis, KPI logic, stakeholder context, and output designed to support a real decision.</div>
+          <span class="log-tag">#Analytics</span>
+          <span class="log-tag">#DecisionSupport</span>
+          <span class="log-tag">#BusinessContext</span>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="credentials">
-      <div class="section-tag reveal">// credentials[]</div>
+      <div class="section-tag reveal">// education + cv</div>
       <div class="cred-block reveal">
         <div class="cred-row">
           <div class="cred-left">
-            <div class="cred-year">2026 — 13 MONTHS</div>
-            <div class="cred-title">Applied Data Science — Certificate</div>
+            <div class="cred-year">2026</div>
+            <div class="cred-title">Applied Data Science - Certificate</div>
             <div class="cred-org">ALX / ExploreAI</div>
+            <p>Professional data science programme focused on practical analytical delivery.</p>
           </div>
           <a href="{{ '/assets/images/84-data-science-certificate-kabelo-makua.png' | relative_url }}" class="cred-link" target="_blank" rel="noreferrer">View Cert</a>
         </div>
         <div class="cred-row">
           <div class="cred-left">
-            <div class="cred-year">2023 — 12 WEEKS</div>
-            <div class="cred-title">Entrepreneurship Development Programme</div>
-            <div class="cred-org">Startup School</div>
+            <div class="cred-year">ACADEMIC BASE</div>
+            <div class="cred-title">BCom - Business Management</div>
+            <div class="cred-org">UNISA</div>
+            <p>Business foundation in management, strategy, and economics.</p>
           </div>
-          <a href="{{ '/assets/images/Kabelo%20Makua.pdf' | relative_url }}" class="cred-link" target="_blank" rel="noreferrer">View Cert</a>
+          <span class="cred-link" style="cursor:default;">FOUNDATION</span>
         </div>
         <div class="cred-row">
           <div class="cred-left">
             <div class="cred-year">IN PROGRESS</div>
             <div class="cred-title">Postgraduate Data Science Path</div>
             <div class="cred-org">Continuing technical development</div>
+            <p>Ongoing technical development in data science and analytical depth.</p>
           </div>
           <span class="cred-link" style="cursor:default;">IN PROGRESS</span>
+        </div>
+        <div class="cred-row">
+          <div class="cred-left">
+            <div class="cred-year">CV</div>
+            <div class="cred-title">Curriculum Vitae</div>
+            <div class="cred-org">Full professional background and role history</div>
+            <p>For formal experience history, role detail, and full chronology.</p>
+          </div>
+          <a href="{{ '/assets/files/Kabelo_Makua_CV_04.pdf' | relative_url }}" class="cred-link" target="_blank" rel="noreferrer">View CV</a>
         </div>
       </div>
     </section>
 
     <div class="about-cta reveal">
       <a href="{{ '/projects/' | relative_url }}" class="btn-solid">View Projects</a>
+      <a href="{{ '/assets/files/Kabelo_Makua_CV_04.pdf' | relative_url }}" class="btn-outline" target="_blank" rel="noreferrer">View CV</a>
       <a href="mailto:{{ site.contact_email }}" class="btn-outline">Get in Touch</a>
     </div>
   </main>

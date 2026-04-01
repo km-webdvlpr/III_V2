@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Analytics Portfolio
-description: Data analysis built around business questions and practical decisions.
+description: Data analysis built around business questions, KPI logic, and practical decisions.
 status_context: JHB, ZA // AVAILABLE
 body_class: page-home
 ---
@@ -31,7 +31,7 @@ body_class: page-home
     <div class="version-tag">v {{ site.mark_name }} &nbsp;//&nbsp; {{ site.location_label }}</div>
 
     <div class="typewriter-box">
-      <p data-typewriter="Data analysis built around business questions and practical decisions.||Linking KPIs to problems, stakeholders, and product direction.||Not a slam dunker. A marathoner. Building steady, useful things."></p>
+      <p data-typewriter="Data analysis built around business questions, KPI logic, and practical decisions.||Connecting metrics, workflow, and stakeholder context to clearer product and commercial direction.||Analytical work that goes beyond reporting: framing the problem, defining the measure, and supporting the decision."></p>
     </div>
 
     <p class="tagline">
