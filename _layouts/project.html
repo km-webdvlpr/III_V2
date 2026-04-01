@@ -1,0 +1,102 @@
+---
+layout: default
+---
+{% assign meta = site.data.project_meta[page.slug] %}
+{% assign case_log = meta.log | default: '00' %}
+<main class="site-main site-main--project">
+  <section class="dossier-header">
+    <div class="breadcrumb">
+      <a href="{{ '/' | relative_url }}">HOME</a><span>//</span>
+      <a href="{{ '/projects/' | relative_url }}">PROJECTS</a><span>//</span>
+      {{ page.title | upcase }}
+    </div>
+
+    <div class="dossier-meta">
+      {% if page.roleFocus %}<span class="dossier-type">{{ page.roleFocus }}</span>{% endif %}
+      {% if page.date %}<span class="dossier-date">{{ page.date | date: "%Y-%m-%d" }}</span>{% endif %}
+      <span class="dossier-id">CASE FILE // LOG-{{ case_log }}</span>
+    </div>
+
+    <h1 class="dossier-title">{{ page.title }}</h1>
+
+    {% if page.summary %}
+    <p class="dossier-lede">{{ page.summary }}</p>
+    {% endif %}
+
+    {% if page.tags %}
+    <div class="dossier-tags">
+      {% for tag in page.tags %}
+      <span class="dtag">#{{ tag | replace: " ", "" }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="dossier-cta">
+      {% if page.demo %}<a href="{{ page.demo }}" class="cta-btn primary" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "View live project" }}</a>{% endif %}
+      {% if page.repo %}<a href="{{ page.repo }}" class="cta-btn ghost" target="_blank" rel="noreferrer">{{ page.repoLabel | default: "Open GitHub project" }}</a>{% endif %}
+      <a href="{{ '/projects/' | relative_url }}" class="cta-btn ghost">Back to Projects</a>
+    </div>
+  </section>
+
+  <section class="case-layout">
+    <aside class="sidebar sidebar--project">
+      <div class="sidebar-label">// DOSSIER</div>
+      <a class="sidebar-link" href="#snapshot">Snapshot</a>
+      <a class="sidebar-link" href="#content">Case Notes</a>
+      {% if page.projectShows and page.projectShows.size > 0 %}
+      <hr class="sidebar-divider">
+      <div class="sidebar-label">// WHAT THIS SHOWS</div>
+      {% for item in page.projectShows %}
+      <div class="sidebar-link sidebar-link--static">{{ item }}</div>
+      {% endfor %}
+      {% endif %}
+      {% if page.tags %}
+      <hr class="sidebar-divider">
+      <div class="sidebar-label">// TOOLKIT</div>
+      {% for tag in page.tags limit: 5 %}
+      <div class="sidebar-link sidebar-link--static">{{ tag }}</div>
+      {% endfor %}
+      {% endif %}
+      <div class="deliverable-list">
+        <div class="sidebar-label">// LINKS</div>
+        <a class="sidebar-link" href="{{ '/projects/' | relative_url }}">Projects Index</a>
+        {% if page.repo %}<a class="sidebar-link" href="{{ page.repo }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
+        {% if page.demo %}<a class="sidebar-link" href="{{ page.demo }}" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "Live project" }}</a>{% endif %}
+      </div>
+    </aside>
+
+    <article class="case-body">
+      {% if page.snapshot %}
+      <div class="snapshot-strip reveal" id="snapshot">
+        <div class="snap-cell">
+          <span class="snap-label">Problem</span>
+          <span class="snap-copy">{{ page.snapshot.problem }}</span>
+        </div>
+        <div class="snap-cell">
+          <span class="snap-label">Focus</span>
+          <span class="snap-copy">{{ page.snapshot.focus }}</span>
+        </div>
+        <div class="snap-cell">
+          <span class="snap-label">Outcome</span>
+          <span class="snap-copy">{{ page.snapshot.outcome }}</span>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="project-shows-block reveal">
+        {% if page.projectShows and page.projectShows.size > 0 %}
+        <div class="block-tag">// analyst.signals</div>
+        <div class="project-shows">
+          {% for item in page.projectShows %}
+          <span class="project-show-chip">{{ item }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <div id="content" class="project-content reveal">
+        {{ content }}
+      </div>
+    </article>
+  </section>
+</main>

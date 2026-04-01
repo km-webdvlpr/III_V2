@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<main class="site-main site-main--project">
+  <section class="dossier-header dossier-header--artifact">
+    <div class="breadcrumb">
+      <a href="{{ '/' | relative_url }}">HOME</a><span>//</span>
+      <a href="{{ '/projects/' | relative_url }}">PROJECTS</a><span>//</span>
+      {% if page.caseStudyHref %}<a href="{{ page.caseStudyHref | relative_url }}">{{ page.projectTitle | upcase }}</a><span>//</span>{% endif %}
+      {{ page.artifactLabel | upcase }}
+    </div>
+
+    <div class="dossier-meta">
+      <span class="dossier-type">SUPPORTING DOCUMENT</span>
+      <span class="dossier-id">CASE FILE // APPENDIX</span>
+    </div>
+
+    <h1 class="dossier-title">{{ page.artifactLabel }}</h1>
+    {% if page.description %}<p class="dossier-lede">{{ page.description }}</p>{% endif %}
+
+    <div class="dossier-cta">
+      {% if page.caseStudyHref %}<a href="{{ page.caseStudyHref | relative_url }}" class="cta-btn primary">Back to Case Study</a>{% endif %}
+      <a href="{{ '/projects/' | relative_url }}" class="cta-btn ghost">Projects Index</a>
+    </div>
+  </section>
+
+  <section class="case-layout">
+    <aside class="sidebar sidebar--project">
+      <div class="sidebar-label">// CONTEXT</div>
+      <div class="sidebar-link sidebar-link--static">{{ page.projectTitle }}</div>
+      <div class="sidebar-link sidebar-link--static">{{ page.artifactLabel }}</div>
+    </aside>
+    <article class="case-body">
+      <div class="project-content artifact-doc reveal">
+        {{ content }}
+      </div>
+    </article>
+  </section>
+</main>

@@ -1,0 +1,59 @@
+title: KM.III.IV
+description: Data analysis built around business questions and practical decisions.
+url: ""
+baseurl: ""
+timezone: Africa/Johannesburg
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+owner_name: Kabelo Makua
+mark_name: III.IV
+contact_email: kabelomakua@tec4th.co.za
+github_url: https://github.com/kabelo-analytics
+linkedin_url: https://www.linkedin.com/in/kabelo-m-86672662/
+location_label: JHB, ZA
+location_url: https://maps.app.goo.gl/ves8cXNaDed49xvTA
+
+home_featured:
+  - athlete-viral-marketing-impact-analysis
+  - jhb-infrastructure-intelligence
+  - jozication-lms-insights
+  - bontle-operational-intelligence-for-service-teams
+
+featured_priority:
+  - athlete-viral-marketing-impact-analysis
+  - jhb-infrastructure-intelligence
+  - jozication-lms-insights
+  - rsa-music-evolution-case-study
+  - springboks-case-study
+  - bontle-operational-intelligence-for-service-teams
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /logo.jpg
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: project
+      status_context: CASE FILE // ACTIVE
+
+exclude:
+  - km_about_concept.html
+  - km_era_comparison.html
+  - km_portfolio_concept.html
+  - km_project_detail_concept.html
+  - km_projects_concept.html
+  - _site
+  - .sass-cache
+  - .jekyll-cache
+  - Gemfile.lock
+  - vendor

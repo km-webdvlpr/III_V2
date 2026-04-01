@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KM.III.IV — Projects</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #3d9970;
+    --green-bright: #52d68a;
+    --green-dim: #1e5c3e;
+    --green-glow: rgba(61,153,112,0.07);
+    --cream: #f5f0e8;
+    --cream-dim: #c8c0ac;
+    --ink: #0d1a12;
+    --ink-mid: #162318;
+    --ink-surface: #1a2d1f;
+    --ink-card: #111d16;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background 0.4s, color 0.4s;
+    padding-bottom: 3rem;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── LIGHT MODE ─── */
+  body.light {
+    --ink: #eeeae0;
+    --ink-mid: #e2ddd0;
+    --ink-surface: #d8d2c4;
+    --ink-card: #e8e3d8;
+    --cream: #142018;
+    --cream-dim: #3a5244;
+    --green: #1a6641;
+    --green-bright: #0f4a2e;
+    --green-dim: #5a9e7a;
+    --green-glow: rgba(26,102,65,0.06);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid var(--green-dim);
+    position: sticky;
+    top: 0;
+    background: var(--ink);
+    z-index: 100;
+    transition: background 0.4s;
+  }
+
+  .nav-logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--green);
+    letter-spacing: 0.18em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--green-bright); }
+
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-bright); }
+  .nav-links a.active { border-bottom: 1px solid var(--green); padding-bottom: 2px; }
+
+  .mode-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.9rem;
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--green-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mode-btn:hover { background: var(--green-dim); color: var(--cream); }
+
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    padding: 3.5rem 3rem 2.5rem;
+    border-bottom: 1px solid var(--green-dim);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(61,153,112,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,153,112,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.6;
+  }
+
+  .breadcrumb {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--green-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .breadcrumb span { color: var(--green); }
+
+  .page-title {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.8rem;
+  }
+
+  .page-desc {
+    font-size: 0.95rem;
+    color: var(--cream-dim);
+    max-width: 580px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── FILTER BAR ─── */
+  .filter-bar {
+    padding: 1rem 3rem;
+    border-bottom: 1px solid var(--green-dim);
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green);
+    letter-spacing: 0.15em;
+    margin-right: 0.4rem;
+  }
+
+  .filter-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.7rem;
+    background: transparent;
+    color: var(--cream-dim);
+    border: 1px solid var(--green-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--green);
+    color: var(--ink);
+    border-color: var(--green);
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  .projects-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 4rem;
+  }
+
+  /* ─── LEFT SIDEBAR: INDEX ─── */
+  .sidebar {
+    border-right: 1px solid var(--green-dim);
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    overflow-y: auto;
+  }
+
+  .sidebar-section {
+    margin-bottom: 2rem;
+  }
+
+  .sidebar-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+    opacity: 0.7;
+  }
+
+  .sidebar-item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--cream-dim);
+    line-height: 2;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .sidebar-item::before { content: '→'; color: var(--green-dim); transition: color 0.2s; }
+  .sidebar-item:hover { color: var(--cream); }
+  .sidebar-item:hover::before { color: var(--green); }
+
+  .sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--green-dim);
+    opacity: 0.3;
+    margin: 1rem 0;
+  }
+
+  .sidebar-count {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-dim);
+    margin-top: 1.5rem;
+    line-height: 1.8;
+  }
+
+  /* ─── RIGHT: PROJECT FEED ─── */
+  .project-feed {
+    padding: 2rem 2.5rem;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .feed-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 1.4rem;
+  }
+  .feed-section-header:first-child { margin-top: 0; }
+
+  .feed-section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green);
+    letter-spacing: 0.22em;
+    white-space: nowrap;
+  }
+
+  .feed-section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--green-dim);
+    opacity: 0.4;
+  }
+
+  .feed-section-count {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green-dim);
+    letter-spacing: 0.12em;
+  }
+
+  /* ─── PROJECT CARD ─── */
+  .project-card {
+    background: var(--ink-card);
+    border: 1px solid var(--green-dim);
+    margin-bottom: 1.5px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--green);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+  }
+
+  .project-card:hover { border-color: var(--green); background: var(--ink-surface); }
+  .project-card:hover::before { transform: scaleY(1); }
+
+  .card-main {
+    padding: 1.4rem 1.6rem 1.4rem 1.8rem;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .card-type {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .card-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .card-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    letter-spacing: 0.08em;
+    transition: background 0.2s;
+  }
+  .project-card:hover .tag { border-color: var(--green); }
+
+  .card-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .card-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green-bright);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .card-link:hover { border-bottom-color: var(--green-bright); }
+  .card-link::before { content: '↗ '; }
+
+  /* ─── CARD RIGHT: LOG NUMBER ─── */
+  .card-index {
+    padding: 1.4rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border-left: 1px solid var(--green-dim);
+    min-width: 60px;
+  }
+
+  .card-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.4rem;
+    color: var(--green-dim);
+    line-height: 1;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .project-card:hover .card-num { color: var(--green); }
+
+  .card-num-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.52rem;
+    color: var(--green-dim);
+    letter-spacing: 0.12em;
+    margin-top: 0.2rem;
+    opacity: 0.6;
+  }
+
+  /* ─── SKILL-BUILD COMPACT CARDS ─── */
+  .compact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    margin-bottom: 1.5px;
+  }
+
+  .compact-card {
+    background: var(--ink-card);
+    border: 1px solid var(--green-dim);
+    padding: 1.1rem 1.3rem;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .compact-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--green);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s ease;
+  }
+  .compact-card:hover { border-color: var(--green); background: var(--ink-surface); }
+  .compact-card:hover::before { transform: scaleY(1); }
+
+  .compact-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+
+  .compact-desc {
+    font-size: 0.75rem;
+    color: var(--cream-dim);
+    line-height: 1.5;
+    margin-bottom: 0.7rem;
+  }
+
+  .compact-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .compact-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--green-dim);
+    color: var(--green-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .compact-gh {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+  .compact-gh::before { content: '↗ '; }
+  .compact-gh:hover { color: var(--green-bright); }
+
+  /* ─── CREATIVE CARDS ─── */
+  .creative-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+  }
+
+  .creative-card {
+    background: var(--ink-card);
+    border: 1px solid var(--green-dim);
+    padding: 1.4rem 1.6rem;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .creative-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--green-dim);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+  }
+  .creative-card:hover { border-color: var(--green); background: var(--ink-surface); }
+  .creative-card:hover::before { transform: scaleY(1); }
+
+  .creative-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green-dim);
+    letter-spacing: 0.18em;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .creative-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .creative-desc {
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .creative-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+  .creative-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--green-dim);
+    color: var(--green-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .creative-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+  .creative-link::before { content: '↗ '; }
+  .creative-link:hover { color: var(--green-bright); }
+
+  /* ─── STATUS BAR ─── */
+  .status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--green-dim);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.28rem 3rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-bright);
+    letter-spacing: 0.1em;
+    z-index: 200;
+  }
+  .pulse {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green-bright);
+    animation: blink 1.8s ease-in-out infinite;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">KM<span>.</span>III.IV</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Projects</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="mode-btn" onclick="document.body.classList.toggle('light')">[ MODE ]</button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">HOME <span>//</span> PROJECTS</div>
+  <h1 class="page-title">Projects</h1>
+  <p class="page-desc">Selected case studies showing how I move from business questions and KPI logic into analysis, workflow thinking, and usable outputs.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">FILTER //</span>
+  <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
+  <button class="filter-btn" onclick="setFilter(this,'analytics')">Analytics</button>
+  <button class="filter-btn" onclick="setFilter(this,'product')">Product</button>
+  <button class="filter-btn" onclick="setFilter(this,'edtech')">EdTech</button>
+  <button class="filter-btn" onclick="setFilter(this,'culture')">Culture</button>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="projects-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">// FEATURED</div>
+      <div class="sidebar-item">Athlete Campaign</div>
+      <div class="sidebar-item">JHB Infrastructure</div>
+      <div class="sidebar-item">Jozication LMS</div>
+      <div class="sidebar-item">RSA Music Evo.</div>
+      <div class="sidebar-item">Springboks</div>
+      <div class="sidebar-item">Bontle Ops</div>
+    </div>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-section">
+      <div class="sidebar-label">// SKILL-BUILD</div>
+      <div class="sidebar-item">Movie Recommender</div>
+      <div class="sidebar-item">Health Data BI</div>
+      <div class="sidebar-item">Sales Follow-Up</div>
+      <div class="sidebar-item">Digital Commerce</div>
+    </div>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-section">
+      <div class="sidebar-label">// CREATIVE</div>
+      <div class="sidebar-item">Orlando Pirates</div>
+      <div class="sidebar-item">RSA Music Culture</div>
+    </div>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-count">
+      TOTAL PROJECTS: 13<br>
+      FEATURED: 06<br>
+      SKILL-BUILD: 05<br>
+      CREATIVE: 02
+    </div>
+  </aside>
+
+  <!-- PROJECT FEED -->
+  <main class="project-feed">
+
+    <!-- FEATURED CASE STUDIES -->
+    <div class="feed-section-header reveal">
+      <span class="feed-section-label">// FEATURED ANALYST CASE STUDIES</span>
+      <div class="feed-section-line"></div>
+      <span class="feed-section-count">06</span>
+    </div>
+
+    <!-- Card 1 -->
+    <div class="project-card reveal">
+      <div class="card-main">
+        <div class="card-meta">
+          <span class="card-type">Campaign Analytics | Product Analytics</span>
+          <span class="card-date">2026-03-28</span>
+        </div>
+        <div class="card-title">Athlete-Led Viral Marketing — Impact Analysis</div>
+        <div class="card-desc">Analytics case study examining whether an athlete-led viral campaign converted reach into gym memberships — across channels, funnel stages, brand lift signals, and offline behaviour.</div>
+        <div class="card-tags">
+          <span class="tag">#CampaignAnalytics</span>
+          <span class="tag">#Python</span>
+          <span class="tag">#PowerBI</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/kabelo-analytics/athlete-viral-marketing-impact-analysis" class="card-link" target="_blank">GitHub</a>
+          <a href="https://kabelo-analytics.github.io/athlete-viral-marketing-impact-analysis/" class="card-link" target="_blank">Live Dashboard</a>
+        </div>
+      </div>
+      <div class="card-index">
+        <div class="card-num">01</div>
+        <div class="card-num-label">LOG</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="project-card reveal">
+      <div class="card-main">
+        <div class="card-meta">
+          <span class="card-type">Infrastructure Analytics | Civic Data</span>
+          <span class="card-date">2026-03-28</span>
+        </div>
+        <div class="card-title">JHB Municipal Infrastructure Intelligence</div>
+        <div class="card-desc">Municipal analytics case study tracking pothole and water leak incidents across Johannesburg wards — built around SLA compliance, hotspot detection, and operational KPI reporting.</div>
+        <div class="card-tags">
+          <span class="tag">#InfrastructureAnalytics</span>
+          <span class="tag">#CivicData</span>
+          <span class="tag">#Python</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/kabelo-analytics/jhb-infrastructure-intelligence" class="card-link" target="_blank">GitHub</a>
+          <a href="https://kabelo-analytics.github.io/jhb-infrastructure-intelligence/" class="card-link" target="_blank">Live Dashboard</a>
+        </div>
+      </div>
+      <div class="card-index">
+        <div class="card-num">02</div>
+        <div class="card-num-label">LOG</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="project-card reveal">
+      <div class="card-main">
+        <div class="card-meta">
+          <span class="card-type">Learning Analytics | Insight Reporting</span>
+          <span class="card-date">2026-03-22</span>
+        </div>
+        <div class="card-title">Jozication LMS Insights</div>
+        <div class="card-desc">Education analytics case study focused on learner engagement, performance trends, and actionable LMS insights for an EdTech platform.</div>
+        <div class="card-tags">
+          <span class="tag">#EducationAnalytics</span>
+          <span class="tag">#LMS</span>
+          <span class="tag">#Insights</span>
+        </div>
+        <div class="card-links">
+          <a href="https://kabelo-analytics.github.io/Jozication-LMS-insights/" class="card-link" target="_blank">Project Walkthrough</a>
+        </div>
+      </div>
+      <div class="card-index">
+        <div class="card-num">03</div>
+        <div class="card-num-label">LOG</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="project-card reveal">
+      <div class="card-main">
+        <div class="card-meta">
+          <span class="card-type">Cultural Analytics | Data Storytelling</span>
+          <span class="card-date">2026-03-20</span>
+        </div>
+        <div class="card-title">RSA Music Evolution</div>
+        <div class="card-desc">Interactive story of South African listening trends and genre evolution from 2021 to 2026 — Amapiano, Afrobeats, and the shifting landscape of local sound.</div>
+        <div class="card-tags">
+          <span class="tag">#MusicAnalytics</span>
+          <span class="tag">#DataStorytelling</span>
+          <span class="tag">#HTML</span>
+        </div>
+        <div class="card-links">
+          <a href="#" class="card-link">Live Project</a>
+        </div>
+      </div>
+      <div class="card-index">
+        <div class="card-num">04</div>
+        <div class="card-num-label">LOG</div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="project-card reveal">
+      <div class="card-main">
+        <div class="card-meta">
+          <span class="card-type">Sports Analytics | Performance Trends</span>
+          <span class="card-date">2026-03-19</span>
+        </div>
+        <div class="card-title">Springboks — Performance Intelligence</div>
+        <div class="card-desc">Interactive visual analysis of Springbok performance trends from 2016 to 2026 — match outcomes, player patterns, and tournament arcs.</div>
+        <div class="card-tags">
+          <span class="tag">#SportsAnalytics</span>
+          <span class="tag">#DataVisualization</span>
+          <span class="tag">#HTML</span>
+        </div>
+        <div class="card-links">
+          <a href="#" class="card-link">Live Project</a>
+        </div>
+      </div>
+      <div class="card-index">
+        <div class="card-num">05</div>
+        <div class="card-num-label">LOG</div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="project-card reveal">
+      <div class="card-main">
+        <div class="card-meta">
+          <span class="card-type">Operational Analysis | Product Analytics</span>
+          <span class="card-date">2026-03-01</span>
+        </div>
+        <div class="card-title">Bontle: Operational Intelligence for Service Teams</div>
+        <div class="card-desc">Designed a state-based workflow for multi-location service teams, with KPI logic and reporting built around day-to-day operations.</div>
+        <div class="card-tags">
+          <span class="tag">#ProductAnalytics</span>
+          <span class="tag">#ProductOwnership</span>
+          <span class="tag">#SystemsDesign</span>
+        </div>
+        <div class="card-links">
+          <a href="https://bontle-web-app.onrender.com/book" class="card-link" target="_blank">Live Workflow</a>
+        </div>
+      </div>
+      <div class="card-index">
+        <div class="card-num">06</div>
+        <div class="card-num-label">LOG</div>
+      </div>
+    </div>
+
+    <!-- SKILL-BUILD -->
+    <div class="feed-section-header reveal" style="margin-top:3rem;">
+      <span class="feed-section-label">// SKILL-BUILDING PROJECTS</span>
+      <div class="feed-section-line"></div>
+      <span class="feed-section-count">05</span>
+    </div>
+
+    <div class="compact-grid">
+      <div class="compact-card reveal">
+        <div class="compact-title">Movie Recommender System</div>
+        <div class="compact-desc">Baseline and bias model recommender built with collaborative filtering techniques.</div>
+        <div class="compact-tags">
+          <span class="compact-tag">#Python</span>
+          <span class="compact-tag">#MachineLearning</span>
+          <span class="compact-tag">#RecommendationSystems</span>
+        </div>
+        <a href="https://github.com/kabelo-analytics/movie-recommender-system" class="compact-gh" target="_blank">GitHub</a>
+      </div>
+      <div class="compact-card reveal">
+        <div class="compact-title">Health Data BI</div>
+        <div class="compact-desc">Exploratory data analysis and visual analytics on cardiovascular health data using Power BI.</div>
+        <div class="compact-tags">
+          <span class="compact-tag">#PowerBI</span>
+          <span class="compact-tag">#EDA</span>
+          <span class="compact-tag">#HealthcareAnalytics</span>
+        </div>
+        <a href="https://github.com/kabelo-analytics/health-data-bi-powerbi" class="compact-gh" target="_blank">GitHub</a>
+      </div>
+      <div class="compact-card reveal">
+        <div class="compact-title">Sales Performance Follow-Up Intelligence</div>
+        <div class="compact-desc">Sales analytics project focused on follow-up performance tracking and automation opportunities.</div>
+        <div class="compact-tags">
+          <span class="compact-tag">#Python</span>
+          <span class="compact-tag">#SalesAnalytics</span>
+          <span class="compact-tag">#Automation</span>
+        </div>
+        <a href="https://github.com/kabelo-analytics/sales-performance-followup-intelligence" class="compact-gh" target="_blank">GitHub</a>
+      </div>
+      <div class="compact-card reveal">
+        <div class="compact-title">Digital Commerce Product Intelligence</div>
+        <div class="compact-desc">E-commerce product analytics exploring performance signals to support product decisions.</div>
+        <div class="compact-tags">
+          <span class="compact-tag">#Python</span>
+          <span class="compact-tag">#ProductAnalytics</span>
+          <span class="compact-tag">#Ecommerce</span>
+        </div>
+        <a href="https://github.com/kabelo-analytics/digital-commerce-product-intelligence" class="compact-gh" target="_blank">GitHub</a>
+      </div>
+      <div class="compact-card reveal">
+        <div class="compact-title">Jozication LMS Insights</div>
+        <div class="compact-desc">Interactive LMS reporting project built around learner engagement and module performance signals.</div>
+        <div class="compact-tags">
+          <span class="compact-tag">#HTML</span>
+          <span class="compact-tag">#LMS</span>
+        </div>
+        <a href="https://github.com/kabelo-analytics/Jozication-LMS-insights" class="compact-gh" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <!-- CREATIVE -->
+    <div class="feed-section-header reveal" style="margin-top:3rem;">
+      <span class="feed-section-label">// CREATIVE SPACE</span>
+      <div class="feed-section-line"></div>
+      <span class="feed-section-count">02</span>
+    </div>
+    <p style="font-size:0.8rem;color:var(--cream-dim);margin-bottom:1.2rem;font-family:'Share Tech Mono',monospace;letter-spacing:0.06em;" class="reveal">Storytelling and design projects outside the core analytics portfolio.</p>
+
+    <div class="creative-grid">
+      <div class="creative-card reveal">
+        <div class="creative-label">PERSONAL PROJECT</div>
+        <div class="creative-title">Orlando Pirates Club Experience</div>
+        <div class="creative-desc">Creative football storytelling page built around Orlando Pirates identity, visuals, and fan-facing experience design.</div>
+        <div class="creative-tags">
+          <span class="creative-tag">#PersonalProject</span>
+          <span class="creative-tag">#CreativeDesign</span>
+          <span class="creative-tag">#FootballCulture</span>
+        </div>
+        <a href="#" class="creative-link">Project Walkthrough</a>
+      </div>
+      <div class="creative-card reveal">
+        <div class="creative-label">PERSONAL PROJECT</div>
+        <div class="creative-title">RSA Music Culture Insights</div>
+        <div class="creative-desc">Personal cultural analytics piece exploring South African music patterns through an interactive narrative experience.</div>
+        <div class="creative-tags">
+          <span class="creative-tag">#PersonalProject</span>
+          <span class="creative-tag">#DataStorytelling</span>
+          <span class="creative-tag">#MusicCulture</span>
+        </div>
+        <a href="#" class="creative-link">Project Walkthrough</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <span><span class="pulse"></span>SYSTEM ONLINE // KM.III.IV</span>
+  <span id="clock">00:00:00 SAST</span>
+  <span>PROJECTS INDEX // 13 ENTRIES</span>
+</div>
+
+<script>
+  function tick() {
+    const t = new Date();
+    document.getElementById('clock').textContent =
+      t.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' SAST';
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Filter (visual only for prototype)
+  function setFilter(btn, type) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KM.III.IV — About</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #3d9970;
+    --green-bright: #52d68a;
+    --green-dim: #1e5c3e;
+    --cream: #f5f0e8;
+    --cream-dim: #c8c0ac;
+    --ink: #0d1a12;
+    --ink-mid: #162318;
+    --ink-surface: #1a2d1f;
+    --ink-card: #111d16;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background 0.4s, color 0.4s;
+    padding-bottom: 4rem;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  body.light {
+    --ink: #eeeae0;
+    --ink-mid: #e2ddd0;
+    --ink-surface: #d8d2c4;
+    --ink-card: #e8e3d8;
+    --cream: #142018;
+    --cream-dim: #3a5244;
+    --green: #1a6641;
+    --green-bright: #0f4a2e;
+    --green-dim: #5a9e7a;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid var(--green-dim);
+    position: sticky;
+    top: 0;
+    background: var(--ink);
+    z-index: 100;
+    transition: background 0.4s;
+  }
+  .nav-logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--green);
+    letter-spacing: 0.18em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--green-bright); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-bright); }
+  .nav-links a.active {
+    color: var(--green-bright);
+    border-bottom: 1px solid var(--green);
+    padding-bottom: 2px;
+  }
+  .mode-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.9rem;
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--green-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mode-btn:hover { background: var(--green-dim); color: var(--cream); }
+
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    padding: 3.5rem 3rem 2.5rem;
+    border-bottom: 1px solid var(--green-dim);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(61,153,112,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,153,112,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.7;
+  }
+  .breadcrumb {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--green-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .breadcrumb span { color: var(--green); }
+  .page-title {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.8rem;
+  }
+  .page-title .accent { color: var(--green-bright); }
+  .page-subtitle {
+    font-size: 0.95rem;
+    color: var(--cream-dim);
+    max-width: 560px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+  }
+
+  /* ─── LAYOUT ─── */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    border-right: 1px solid var(--green-dim);
+    padding: 2.5rem 1.5rem;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .sidebar-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+  }
+  .sidebar-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--cream-dim);
+    line-height: 2.2;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+  .sidebar-link::before { content: '→'; color: var(--green-dim); transition: color 0.2s; flex-shrink: 0; }
+  .sidebar-link:hover { color: var(--cream); }
+  .sidebar-link:hover::before { color: var(--green); }
+  .sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--green-dim);
+    opacity: 0.3;
+    margin: 1rem 0;
+  }
+  .sidebar-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green-dim);
+    line-height: 2;
+    margin-top: auto;
+  }
+  .sidebar-meta .hi { color: var(--green); }
+
+  /* ─── MAIN CONTENT ─── */
+  .about-main {
+    padding: 3rem 3rem 4rem;
+    max-width: 720px;
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  .section {
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green);
+    letter-spacing: 0.22em;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--green-dim);
+    opacity: 0.4;
+    max-width: 200px;
+  }
+
+  /* ─── INIT.PROFILE ─── */
+  .profile-block {
+    background: var(--ink-card);
+    border: 1px solid var(--green-dim);
+    padding: 2rem 2rem 2rem 2rem;
+    position: relative;
+  }
+
+  .profile-prompt {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .profile-prompt .dollar { color: var(--green-bright); }
+
+  .profile-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+
+  .profile-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--green);
+    letter-spacing: 0.12em;
+    margin-bottom: 1.6rem;
+  }
+
+  .profile-text {
+    font-size: 0.93rem;
+    color: var(--cream-dim);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .profile-text strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .profile-text em {
+    color: var(--green-bright);
+    font-style: normal;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85em;
+  }
+
+  .profile-divider {
+    border: none;
+    border-top: 1px solid var(--green-dim);
+    opacity: 0.3;
+    margin: 1.4rem 0;
+  }
+
+  .profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--green-dim);
+    margin-top: 1.6rem;
+  }
+
+  .stat-cell {
+    background: var(--ink-card);
+    padding: 0.9rem 1rem;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green-bright);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem;
+    color: var(--green-dim);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ─── CAREER LOG ─── */
+  .career-log {
+    position: relative;
+    padding-left: 1.4rem;
+  }
+
+  .career-log::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--green-dim), transparent);
+    opacity: 0.6;
+  }
+
+  .log-entry {
+    position: relative;
+    padding: 0 0 2.4rem 1.4rem;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .log-entry.visible { opacity: 1; transform: translateX(0); }
+
+  .log-entry::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--green);
+    background: var(--ink);
+    transform: rotate(45deg);
+    transition: background 0.2s;
+  }
+  .log-entry:hover::before { background: var(--green); }
+
+  .log-timestamp {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green-dim);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.3rem;
+  }
+
+  .log-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .log-org {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+
+  .log-desc {
+    font-size: 0.84rem;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+
+  .log-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem;
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--green-dim);
+    color: var(--green-dim);
+    letter-spacing: 0.08em;
+    margin-top: 0.6rem;
+    margin-right: 0.3rem;
+  }
+
+  .log-insight {
+    margin-top: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    border-left: 2px solid var(--green-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--green);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ─── PROCESS ─── */
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: var(--green-dim);
+  }
+
+  .process-cell {
+    background: var(--ink-card);
+    padding: 1.6rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .process-cell:hover { background: var(--ink-surface); }
+
+  .process-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--green-dim);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+    transition: color 0.2s;
+    opacity: 0.5;
+  }
+  .process-cell:hover .process-num { color: var(--green); opacity: 0.8; }
+
+  .process-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .process-desc {
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    line-height: 1.65;
+  }
+
+  .process-cmd {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-dim);
+    letter-spacing: 0.1em;
+    margin-top: 0.8rem;
+    opacity: 0.7;
+  }
+  .process-cell:hover .process-cmd { color: var(--green); opacity: 1; }
+
+  /* ─── CREDENTIALS ─── */
+  .cred-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+    background: var(--green-dim);
+  }
+
+  .cred-row {
+    background: var(--ink-card);
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.2s;
+  }
+  .cred-row:hover { background: var(--ink-surface); }
+
+  .cred-left {}
+
+  .cred-year {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.2rem;
+  }
+
+  .cred-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .cred-org {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--green);
+    letter-spacing: 0.08em;
+  }
+
+  .cred-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--green-bright);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    border: 1px solid var(--green-dim);
+    padding: 0.3rem 0.7rem;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .cred-link::before { content: '↗ '; }
+  .cred-link:hover { background: var(--green-dim); border-color: var(--green); color: var(--cream); }
+
+  /* ─── CTA ─── */
+  .about-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-solid {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.8rem;
+    background: var(--green);
+    color: var(--ink);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    font-weight: 700;
+  }
+  .btn-solid:hover { background: var(--green-bright); transform: translateY(-2px); }
+
+  .btn-outline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.8rem;
+    background: transparent;
+    color: var(--cream-dim);
+    border: 1px solid var(--green-dim);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--green); color: var(--cream); }
+
+  /* ─── STATUS BAR ─── */
+  .status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--green-dim);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.28rem 3rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-bright);
+    letter-spacing: 0.1em;
+    z-index: 200;
+  }
+  .pulse {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green-bright);
+    animation: blink 1.8s ease-in-out infinite;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">KM<span>.</span>III.IV</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#" class="active">About</a></li>
+  </ul>
+  <button class="mode-btn" onclick="document.body.classList.toggle('light')">[ MODE ]</button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">HOME <span>//</span> ABOUT</div>
+  <h1 class="page-title">About <span class="accent">III.IV</span></h1>
+  <p class="page-subtitle">Structured analytics delivery with business and product context. Built over time. Still building.</p>
+</div>
+
+<!-- LAYOUT -->
+<div class="about-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">// ON THIS PAGE</div>
+    <a class="sidebar-link" href="#profile">Profile</a>
+    <a class="sidebar-link" href="#career">Career log</a>
+    <a class="sidebar-link" href="#process">How I work</a>
+    <a class="sidebar-link" href="#credentials">Credentials</a>
+    <hr class="sidebar-divider"/>
+    <a class="sidebar-link" href="#">View Projects</a>
+    <a class="sidebar-link" href="mailto:kabelomakua@tec4th.co.za">Email me</a>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-meta">
+      LOCATION: <span class="hi">JHB, ZA</span><br>
+      STATUS: <span class="hi">AVAILABLE</span><br>
+      FOCUS: <span class="hi">EdTech / FinTech</span>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="about-main">
+
+    <!-- ── INIT.PROFILE ── -->
+    <section class="section" id="profile">
+      <div class="section-tag reveal">// init.profile</div>
+
+      <div class="profile-block reveal">
+        <div class="profile-prompt">
+          <span class="dollar">$</span>
+          <span>whoami</span>
+        </div>
+
+        <div class="profile-name">Kabelo Makua</div>
+        <div class="profile-title">DATA ANALYST &nbsp;//&nbsp; PRODUCT THINKING &nbsp;//&nbsp; JHB</div>
+
+        <hr class="profile-divider"/>
+
+        <p class="profile-text">
+          I came into analytics the long way. Bond administration at <strong>Nedbank</strong>.
+          Web development and SME consulting. A startup — <strong>SuccessorX</strong> — where I built and pivoted
+          a WhatsApp-based estate planning product from scratch, learned that estate planning is a
+          <em>grudge product</em>, and walked away with a sharper instinct for what makes a product
+          actually stick.
+        </p>
+
+        <p class="profile-text">
+          Along the way I finished the <strong>ALX/ExploreAI Data Science programme</strong>,
+          started a Postgraduate Diploma in Data Science at UKZN, and built a portfolio that
+          reflects how I actually think: <strong>business question first, then the data</strong>.
+        </p>
+
+        <p class="profile-text">
+          I'm not chasing titles. I'm looking for teams where analysis connects to real decisions —
+          in <strong>EdTech</strong> or <strong>FinTech</strong>, where the product matters and
+          the data can move something. Based in <em>Johannesburg</em>. Marathoner mentality.
+          Steady, useful, building.
+        </p>
+
+        <div class="profile-stats">
+          <div class="stat-cell">
+            <span class="stat-val">8+</span>
+            <span class="stat-label">Years in business</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-val">13</span>
+            <span class="stat-label">Portfolio projects</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-val">JHB</span>
+            <span class="stat-label">Based &amp; available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CAREER.LOG ── -->
+    <section class="section" id="career">
+      <div class="section-tag reveal">// career.log --full</div>
+
+      <div class="career-log">
+
+        <div class="log-entry">
+          <div class="log-timestamp">2025 → NOW</div>
+          <div class="log-role">Product &amp; Insights Analyst</div>
+          <div class="log-org">TEC4TH // Independent Consulting</div>
+          <div class="log-desc">Analytics consulting and portfolio development. Case studies across EdTech, FinTech, civic data, and sports analytics. Building toward a senior product analyst role.</div>
+          <span class="log-tag">#ProductAnalytics</span>
+          <span class="log-tag">#EdTech</span>
+          <span class="log-tag">#FinTech</span>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-timestamp">2022 → 2025</div>
+          <div class="log-role">Co-Founder / Product Lead</div>
+          <div class="log-org">SuccessorX</div>
+          <div class="log-desc">Built a WhatsApp-based digital estate planning product from concept to market. Led discovery, user research, product pivoting, and market sizing. Learned the hard economics of a grudge product.</div>
+          <span class="log-tag">#ProductOwnership</span>
+          <span class="log-tag">#InsurTech</span>
+          <span class="log-tag">#WhatsApp</span>
+          <div class="log-insight">
+            // Estate planning is a grudge purchase. People know they need it and still won't do it. That lesson sharpened how I think about product engagement, CLTV, and what makes users return.
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-timestamp">2019 → 2022</div>
+          <div class="log-role">SME Consultant</div>
+          <div class="log-org">7Legend Agency</div>
+          <div class="log-desc">Business consulting and digital delivery for small and medium enterprises. Web development, strategy support, and client-facing reporting across multiple sectors.</div>
+          <span class="log-tag">#SMEConsulting</span>
+          <span class="log-tag">#WebDevelopment</span>
+          <span class="log-tag">#BusinessAnalysis</span>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-timestamp">2016 → 2019</div>
+          <div class="log-role">Bond Administration Clerk</div>
+          <div class="log-org">Nedbank</div>
+          <div class="log-desc">Financial services operations in bond administration. First exposure to structured data, process compliance, and how large institutions move information through systems.</div>
+          <span class="log-tag">#FinancialServices</span>
+          <span class="log-tag">#Operations</span>
+          <span class="log-tag">#DataProcessing</span>
+        </div>
+
+        <div class="log-entry" style="padding-bottom:0;">
+          <div class="log-timestamp">EDUCATION</div>
+          <div class="log-role">BCom — Business Management</div>
+          <div class="log-org">UNISA</div>
+          <div class="log-desc">Foundation in business strategy, economics, and organisational management.</div>
+          <span class="log-tag">#BCom</span>
+          <span class="log-tag">#UNISA</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── PROCESS ── -->
+    <section class="section" id="process">
+      <div class="section-tag reveal">// process.sh --how-i-work</div>
+
+      <div class="process-grid reveal">
+        <div class="process-cell">
+          <div class="process-num">01</div>
+          <div class="process-title">Business Question</div>
+          <div class="process-desc">I start with what the business actually needs to decide — not what data is available. The question shapes everything that follows.</div>
+          <div class="process-cmd">define_problem --before --choosing_work</div>
+        </div>
+        <div class="process-cell">
+          <div class="process-num">02</div>
+          <div class="process-title">Discovery</div>
+          <div class="process-desc">Review the data, the process, the context, and the stakeholders before forming a view. Understanding the terrain before drawing the map.</div>
+          <div class="process-cmd">scan --data --context --stakeholders</div>
+        </div>
+        <div class="process-cell">
+          <div class="process-num">03</div>
+          <div class="process-title">Metrics &amp; Workflow</div>
+          <div class="process-desc">Set clear measures and map what matters operationally. KPIs should connect to decisions, not just dashboards.</div>
+          <div class="process-cmd">kpi.define --connect_to_decisions</div>
+        </div>
+        <div class="process-cell">
+          <div class="process-num">04</div>
+          <div class="process-title">Decision Support</div>
+          <div class="process-desc">Turn findings into something a team can act on. A recommendation, a structure, a clear direction. Analysis that lands.</div>
+          <div class="process-cmd">output --actionable --not_decorative</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CREDENTIALS ── -->
+    <section class="section" id="credentials">
+      <div class="section-tag reveal">// credentials[]</div>
+
+      <div class="cred-block reveal">
+        <div class="cred-row">
+          <div class="cred-left">
+            <div class="cred-year">2025 — 13 MONTHS</div>
+            <div class="cred-title">Applied Data Science — Certificate</div>
+            <div class="cred-org">ALX / ExploreAI</div>
+          </div>
+          <a href="#" class="cred-link">View Cert</a>
+        </div>
+        <div class="cred-row">
+          <div class="cred-left">
+            <div class="cred-year">2023 — 12 WEEKS</div>
+            <div class="cred-title">Entrepreneurship Development Programme</div>
+            <div class="cred-org">Startup School</div>
+          </div>
+          <a href="#" class="cred-link">View Cert</a>
+        </div>
+        <div class="cred-row">
+          <div class="cred-left">
+            <div class="cred-year">IN PROGRESS — 2025</div>
+            <div class="cred-title">Postgraduate Diploma — Data Science</div>
+            <div class="cred-org">UKZN (deferred to June 2025)</div>
+          </div>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--green-dim);letter-spacing:0.1em;flex-shrink:0;">IN PROGRESS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="about-cta reveal">
+      <a href="#" class="btn-solid">[ View Projects ]</a>
+      <a href="mailto:kabelomakua@tec4th.co.za" class="btn-outline">[ Get in Touch ]</a>
+    </div>
+
+  </main>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <span><span class="pulse"></span>SYSTEM ONLINE // KM.III.IV</span>
+  <span id="clock">00:00:00 SAST</span>
+  <span>ABOUT // KABELO MAKUA</span>
+</div>
+
+<script>
+  function tick() {
+    const t = new Date();
+    document.getElementById('clock').textContent =
+      t.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' SAST';
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Scroll reveal — sections
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+  // Career log — staggered slide-in
+  const logObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 150);
+        logObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.log-entry').forEach(r => logObs.observe(r));
+</script>
+</body>
+</html>

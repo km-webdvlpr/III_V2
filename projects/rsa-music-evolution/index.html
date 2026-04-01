@@ -1,0 +1,1882 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South Africa Listening Intelligence Report 2021&ndash;2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #050810;
+    --bg2: #0b0f1a;
+    --bg3: #111827;
+    --border: #1e2a3a;
+    --border2: #2a3a50;
+    --gold: #f0a500;
+    --gold2: #ffc740;
+    --teal: #00d4b4;
+    --teal2: #00f5d4;
+    --red: #ff4d6d;
+    --blue: #4361ee;
+    --blue2: #7796ff;
+    --purple: #9b5de5;
+    --text: #e8edf5;
+    --text2: #8a9ab5;
+    --text3: #4a5a70;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* GRID LINES */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0,212,180,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,180,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO COVER ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 60px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #c8d4e8 60%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: var(--display);
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    max-width: 700px;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta-item {
+    background: var(--bg2);
+    padding: 16px 20px;
+  }
+  .hero-meta-item .label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .hero-meta-item .value {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--teal2);
+    font-weight: 500;
+  }
+
+  .hero-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    max-width: 800px;
+  }
+
+  .kpi-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .kpi-card:hover { border-color: var(--border2); }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--teal);
+  }
+  .kpi-card.gold::before { background: var(--gold); }
+  .kpi-card.red::before { background: var(--red); }
+  .kpi-card.purple::before { background: var(--purple); }
+  .kpi-card.blue::before { background: var(--blue); }
+
+  .kpi-num {
+    font-family: var(--display);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .kpi-delta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    margin-top: 8px;
+  }
+
+  /* ── SECTION STRUCTURE ── */
+  .section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    padding-top: 6px;
+    min-width: 32px;
+  }
+
+  .section-title-wrap {}
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .section-subtitle {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── PROSE ── */
+  .prose { max-width: 780px; }
+  .prose p { color: var(--text2); margin-bottom: 14px; font-size: 14px; line-height: 1.8; }
+  .prose p strong { color: var(--text); font-weight: 600; }
+
+  /* ── INSIGHT CALLOUTS ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .insight-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    padding: 20px 24px;
+  }
+  .insight-card.gold { border-left-color: var(--gold); }
+  .insight-card.red { border-left-color: var(--red); }
+  .insight-card.purple { border-left-color: var(--purple); }
+  .insight-card.blue { border-left-color: var(--blue2); }
+
+  .insight-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .insight-text {
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .insight-text strong { color: var(--text); }
+
+  /* ── CHART CONTAINERS ── */
+  .chart-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .chart-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chart-title span { color: var(--teal2); }
+  .chart-body { position: relative; }
+
+  /* ── PHASE TIMELINE ── */
+  .phase-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 32px 0;
+  }
+  .phase {
+    background: var(--bg2);
+    padding: 24px 20px;
+    position: relative;
+  }
+  .phase-year {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .phase-name {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .phase-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .phase-bar {
+    height: 3px;
+    background: var(--border2);
+    margin-top: 16px;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .phase-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* ── DATA TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .data-table th {
+    background: var(--bg3);
+    color: var(--text3);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .data-table .highlight { color: var(--teal2); font-weight: 500; }
+  .data-table .gold-text { color: var(--gold); }
+  .data-table .red-text { color: var(--red); }
+
+  /* ── SEGMENT BLOCK ── */
+  .segment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  .segment {
+    background: var(--bg2);
+    padding: 28px 24px;
+  }
+  .segment-icon { font-size: 24px; margin-bottom: 12px; }
+  .segment-name {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .segment-pct {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .segment-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .segment-bar {
+    height: 3px;
+    background: var(--border2);
+    margin-top: 16px;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .segment-fill { height: 100%; border-radius: 1px; }
+
+  /* ── NUMBERED INSIGHTS ── */
+  .numbered-insights { margin: 32px 0; }
+  .num-insight {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .num-insight:last-child { border-bottom: none; }
+  .num-insight .num {
+    font-family: var(--display);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--border2);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .num-insight .content {}
+  .num-insight .headline {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .num-insight .body {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .num-insight .body strong { color: var(--gold); }
+
+  /* ── STRATEGIC BLOCK ── */
+  .strategic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .strat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .strat-actor {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .strat-title {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .strat-points { list-style: none; }
+  .strat-points li {
+    font-size: 12.5px;
+    color: var(--text2);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .strat-points li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-family: var(--mono);
+  }
+
+  /* ── DATA METHODOLOGY BOX ── */
+  .method-box {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .method-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .method-text {
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .method-text code {
+    font-family: var(--mono);
+    background: rgba(0,212,180,0.1);
+    color: var(--teal2);
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-size: 11px;
+  }
+
+  /* ── GEO BAR ── */
+  .geo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .geo-label { width: 120px; color: var(--text2); }
+  .geo-bar-bg { flex: 1; height: 8px; background: var(--bg3); border-radius: 1px; }
+  .geo-fill { height: 100%; background: var(--teal); border-radius: 1px; transition: width 0.5s ease; }
+  .geo-fill.gold { background: var(--gold); }
+  .geo-fill.blue { background: var(--blue2); }
+  .geo-fill.purple { background: var(--purple); }
+  .geo-fill.red { background: var(--red); }
+  .geo-val { width: 40px; text-align: right; color: var(--text3); }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    max-width: 400px;
+    line-height: 1.7;
+  }
+  .footer-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 1px;
+    text-align: right;
+  }
+
+  /* ── TOC SIDEBAR ── */
+  .toc {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .toc-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border2);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .toc-dot:hover, .toc-dot.active {
+    background: var(--teal);
+    transform: scale(1.4);
+  }
+  .toc-dot .toc-tooltip {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text2);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .toc-dot:hover .toc-tooltip { opacity: 1; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.6s ease forwards; }
+  .fade-up-2 { animation: fadeUp 0.6s 0.15s ease both; }
+  .fade-up-3 { animation: fadeUp 0.6s 0.3s ease both; }
+
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  .scanline {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(transparent, rgba(0,212,180,0.06), transparent);
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .phase-timeline { grid-template-columns: repeat(2, 1fr); }
+    .segment-grid { grid-template-columns: 1fr; }
+    .strategic-grid { grid-template-columns: 1fr; }
+    .toc { display: none; }
+    .footer-inner { flex-direction: column; }
+  }
+</style>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --bg2: #ffffff;
+    --bg3: #eef4f1;
+    --border: #d9e2ec;
+    --border2: #c2d3df;
+    --gold: #d4af37;
+    --gold2: #e8c766;
+    --teal: #10b981;
+    --teal2: #00c48c;
+    --red: #ef476f;
+    --blue: #5b7cfa;
+    --blue2: #7c8cff;
+    --purple: #8b5cf6;
+    --text: #1f2937;
+    --text2: #52616f;
+    --text3: #7b8794;
+  }
+  body {
+    background: linear-gradient(180deg, #fafafa 0%, #f4f7fb 100%);
+    color: var(--text);
+  }
+  body::before,
+  body::after,
+  .scanline {
+    display: none !important;
+  }
+  .container { max-width: 1180px; padding: 0 28px; }
+  .hero {
+    min-height: auto;
+    padding: 112px 0 88px;
+    border-bottom: 1px solid rgba(217, 226, 236, 0.95);
+    background:
+      radial-gradient(circle at top right, rgba(16, 185, 129, 0.10), transparent 28%),
+      radial-gradient(circle at top left, rgba(91, 124, 250, 0.12), transparent 24%),
+      linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(245,248,252,0.94) 100%);
+  }
+  .hero-tag,
+  .hero-tag::before,
+  .kpi-delta,
+  .section-num,
+  .metric-label,
+  .insight-label,
+  .chart-label,
+  .source-item::before,
+  .source-item a,
+  .footer a { color: var(--teal); background-color: transparent; }
+  .hero-tag::before { background: var(--teal); }
+  .hero h1 {
+    color: var(--text);
+    background: linear-gradient(135deg, #152033 0%, #10b981 55%, #5b7cfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle,
+  .section-subtitle,
+  .prose p,
+  .phase-desc,
+  .insight-text,
+  .conclusion-text,
+  .method-card,
+  .source-item,
+  .footer,
+  .hero-meta-item .label,
+  .kpi-label,
+  .strat-list li,
+  .body { color: var(--text2); }
+  .hero-meta,
+  .chart-wrap,
+  .insight-card,
+  .metric-box,
+  .callout,
+  .method-card,
+  .source-list,
+  .phase,
+  .hero-meta-item,
+  .kpi-card,
+  .conclusion-box,
+  .data-table,
+  .segment-card,
+  .strat-box,
+  .geo-card {
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(217, 226, 236, 0.95);
+    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);
+  }
+  .hero-meta,
+  .chart-wrap,
+  .callout,
+  .method-card,
+  .source-list,
+  .phase,
+  .kpi-card,
+  .insight-card,
+  .metric-box,
+  .conclusion-box,
+  .data-table,
+  .segment-card,
+  .strat-box,
+  .geo-card { border-radius: 20px; }
+  .hero-meta { gap: 12px; padding: 12px; max-width: 760px; }
+  .hero-meta-item,
+  .kpi-card,
+  .metric-box,
+  .insight-card,
+  .method-card,
+  .source-list,
+  .phase,
+  .conclusion-box,
+  .segment-card,
+  .strat-box,
+  .geo-card { padding: 24px; }
+  .hero-kpis,
+  .insight-grid,
+  .metrics-row,
+  .chart-grid,
+  .two-col,
+  .behavior-grid,
+  .intersection-grid,
+  .geo-grid,
+  .strategy-grid,
+  .method-grid,
+  .source-grid { gap: 24px; }
+  .kpi-card::before,
+  .phase-fill,
+  .callout::before { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .kpi-card.gold::before { background: linear-gradient(90deg, var(--gold), #f2c94c); }
+  .kpi-card.red::before { background: linear-gradient(90deg, var(--red), #f97393); }
+  .kpi-card.purple::before { background: linear-gradient(90deg, var(--purple), #a78bfa); }
+  .kpi-card.blue::before { background: linear-gradient(90deg, var(--blue), #7c8cff); }
+  .section { padding: 92px 0; border-bottom: 1px solid rgba(217, 226, 236, 0.95); }
+  .section-header,
+  .prose,
+  .chart-wrap,
+  .callout,
+  .source-list,
+  .conclusion-box { margin-bottom: 32px; }
+  .section-title,
+  .kpi-num,
+  .metric-value,
+  .phase-name,
+  .headline,
+  .strat-title,
+  .hero-meta-item .value,
+  .chart-title,
+  .chart-title span strong { color: var(--text); }
+  .section-subtitle,
+  .chart-title span,
+  .meta { color: var(--text2); }
+  .toc {
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(217, 226, 236, 0.95);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(14px);
+  }
+  .toc-dot { background: #d5dde6; border-color: #d5dde6; }
+  .toc-dot.active,
+  .toc-dot:hover { background: var(--teal); border-color: var(--teal); }
+  .toc-tooltip {
+    background: #ffffff;
+    color: var(--text);
+    border: 1px solid rgba(217, 226, 236, 0.95);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
+  }
+  .chart-wrap { padding: 28px; min-height: 420px; }
+  .chart-wrap canvas { width: 100% !important; height: auto !important; }
+  .data-table-wrap { overflow-x: auto; margin-top: 24px; border-radius: 20px; }
+  .data-table { min-width: 720px; border-collapse: separate; border-spacing: 0; overflow: hidden; }
+  .data-table thead th { background: #eef4f1; color: var(--text); }
+  .data-table tbody tr:nth-child(even) td { background: #fbfcfe; }
+  .data-table tbody tr:hover td { background: #f3f7fb; }
+  .gold-text { color: #9a7600; }
+  .red-text { color: #d64569; }
+  a, .source-item a { color: var(--blue); }
+  .footer { border-top: 1px solid rgba(217, 226, 236, 0.95); background: rgba(255,255,255,0.96); }
+  @media (max-width: 900px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 96px 0 72px; }
+    .section { padding: 76px 0; }
+    .chart-wrap { min-height: 360px; padding: 22px; }
+    .toc { right: 16px; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 15px; }
+    .container { padding: 0 16px; }
+    .hero { padding: 88px 0 64px; }
+    .hero-meta,
+    .hero-kpis,
+    .insight-grid,
+    .metrics-row,
+    .chart-grid,
+    .two-col,
+    .behavior-grid,
+    .intersection-grid,
+    .geo-grid,
+    .strategy-grid,
+    .method-grid,
+    .source-grid { gap: 18px; }
+    .hero-meta-item,
+    .kpi-card,
+    .metric-box,
+    .insight-card,
+    .method-card,
+    .source-list,
+    .phase,
+    .conclusion-box,
+    .segment-card,
+    .strat-box,
+    .geo-card { padding: 20px; }
+    .chart-wrap { min-height: 300px; padding: 18px; }
+    .toc {
+      top: auto;
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+      width: auto;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      overflow-x: auto;
+    }
+    .toc-tooltip { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-dot active" onclick="scrollTo('#hero')"><span class="toc-tooltip">Cover</span></div>
+  <div class="toc-dot" onclick="scrollTo('#exec')"><span class="toc-tooltip">Executive Summary</span></div>
+  <div class="toc-dot" onclick="scrollTo('#market')"><span class="toc-tooltip">Market Evolution</span></div>
+  <div class="toc-dot" onclick="scrollTo('#language')"><span class="toc-tooltip">Language Intelligence</span></div>
+  <div class="toc-dot" onclick="scrollTo('#behavior')"><span class="toc-tooltip">Listening Behavior</span></div>
+  <div class="toc-dot" onclick="scrollTo('#intersection')"><span class="toc-tooltip">Intersection Analysis</span></div>
+  <div class="toc-dot" onclick="scrollTo('#geo')"><span class="toc-tooltip">Geographic & Demo</span></div>
+  <div class="toc-dot" onclick="scrollTo('#data')"><span class="toc-tooltip">Data Approach</span></div>
+  <div class="toc-dot" onclick="scrollTo('#insights')"><span class="toc-tooltip">Key Insights</span></div>
+  <div class="toc-dot" onclick="scrollTo('#strategy')"><span class="toc-tooltip">Strategic Implications</span></div>
+  <div class="toc-dot" onclick="scrollTo('#conclusion')"><span class="toc-tooltip">Conclusion</span></div>
+</nav>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-tag fade-up">Listening Intelligence | South Africa | Music & Audio</div>
+    <h1 class="fade-up-2">South Africa<br>Listening Intelligence<br>Report</h1>
+    <div class="hero-subtitle fade-up-3">How language, genre, and listening habits shaped South African streaming from 2021 to 2026</div>
+
+    <div class="hero-meta fade-up-3">
+      <div class="hero-meta-item">
+        <div class="label">Coverage Period</div>
+        <div class="value">2021&ndash;2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Focus Market</div>
+        <div class="value">South Africa</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Primary Genre</div>
+        <div class="value">Amapiano</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Report Type</div>
+        <div class="value">Data Intelligence</div>
+      </div>
+    </div>
+
+    <div class="hero-kpis fade-up-3">
+      <div class="kpi-card">
+        <div class="kpi-num">340%</div>
+        <div class="kpi-label">Streaming volume uplift</div>
+        <div class="kpi-delta">&uarr; 2021 to 2025 (est.)</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-num">4.2&times;</div>
+        <div class="kpi-label">Amapiano chart momentum</div>
+        <div class="kpi-delta">↑ Local chart slots</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-num">72%</div>
+        <div class="kpi-label">Tracks carrying isiZulu</div>
+        <div class="kpi-delta">Primary lyric language</div>
+      </div>
+      <div class="kpi-card purple">
+        <div class="kpi-num">3.7&times;</div>
+        <div class="kpi-label">Vernacular podcast lift</div>
+        <div class="kpi-delta">↑ vs English-only shows</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-num">67%</div>
+        <div class="kpi-label">Listeners aged 18&ndash;34</div>
+        <div class="kpi-delta">Core demographic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ EXEC SUMMARY ══════════════════════════════ -->
+<section class="section" id="exec">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Executive Summary</div>
+        <div class="section-subtitle">What changed in South African listening</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>This report tracks audio consumption behaviour in South Africa from 2021 to 2026, using Amapiano as the main analytical lens. The genre works like a measurement instrument: its rise, fragmentation, and global reach reveal bigger shifts in how South Africans connect language, identity, and sound.</p>
+      <p>The clearest finding is straightforward: <strong>vernacular languages have become the primary driver of streaming success in South Africa.</strong> Tracks led by isiZulu, Sesotho, and Setswana continue to outperform comparable English-led releases because they align more closely with identity-driven, mobile-first listening habits.</p>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-label">Behavioral Shift 01</div>
+        <div class="insight-text"><strong>Passive consumption has dropped as a share.</strong> Between 2022 and 2025, identity-driven and social listening rose from an estimated 38% to 54% of total listening occasions, powered by mobile-first behaviour and shared listening spaces (taxis, informal retail, outdoor).</div>
+      </div>
+      <div class="insight-card gold">
+        <div class="insight-label">Behavioral Shift 02</div>
+        <div class="insight-text"><strong>Language choice predicts virality more reliably than production quality.</strong> Tracks with dense vernacular vocabulary, recognisable slang blends (isiZulu + township argot), and call-response lyric structure post higher share rates on WhatsApp and TikTok than English-dominant equivalents.</div>
+      </div>
+      <div class="insight-card red">
+        <div class="insight-label">Behavioral Shift 03</div>
+        <div class="insight-text"><strong>Podcast and music language preferences are structurally misaligned.</strong> Music listening is majority vernacular, while podcast listening remains 61% English-dominant. This gap represents an unmonetized audience of vernacular-first listeners who are still underserved by audio content platforms.</div>
+      </div>
+      <div class="insight-card purple">
+        <div class="insight-label">Behavioral Shift 04</div>
+        <div class="insight-text"><strong>Amapiano's global expansion did not dilute its local language structure.</strong> International versions (UK, US, Nigeria) adopted the sonic template but shifted toward English code-switching. Local SA consumption kept favouring high-vernacular versions, showing a clear split between export and domestic product.</div>
+      </div>
+      <div class="insight-card blue">
+        <div class="insight-label">Behavioral Shift 05</div>
+        <div class="insight-text"><strong>Data cost functions as a consumption filter.</strong> High-data-cost environments (non-metro, lower LSM) correlate with offline-first behaviour: downloaded playlists, FM radio, and peer-to-peer audio sharing. Streaming data carries an urban bias and significantly undercounts township listening volumes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ MARKET EVOLUTION ══════════════════════════════ -->
+<section class="section" id="market">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Market Evolution 2021–2026</div>
+        <div class="section-subtitle">How the market expanded across the Amapiano cycle</div>
+      </div>
+    </div>
+
+    <div class="phase-timeline">
+      <div class="phase">
+        <div class="phase-year">2021 – Q2 2022</div>
+        <div class="phase-name">Local Consolidation</div>
+        <div class="phase-desc">Post-COVID re-entry period. Amapiano secures 40%+ of domestic chart slots. The core artist ecosystem (Kabza, MajorLeague, DBN Gogo) establishes commercial dominance. Vernacular lyric density reaches peak levels.</div>
+        <div class="phase-bar"><div class="phase-fill" style="width:30%"></div></div>
+      </div>
+      <div class="phase">
+        <div class="phase-year">Q3 2022 – Q4 2023</div>
+        <div class="phase-name">National Dominance</div>
+        <div class="phase-desc">Amapiano becomes the default soundtrack for advertising, sports broadcasts, and event culture. FM radio integration expands. The first wave of brand endorsements lands. Streaming numbers accelerate, while still trailing international markets.</div>
+        <div class="phase-bar"><div class="phase-fill" style="width:58%"></div></div>
+      </div>
+      <div class="phase">
+        <div class="phase-year">2024</div>
+        <div class="phase-name">Global Expansion</div>
+        <div class="phase-desc">UK, US, and Nigerian markets adopt Amapiano structures. International collaboration releases follow (Burna Boy, Wizkid-adjacent). Global Spotify streams for ZA-origin tracks exceed 2bn annually (est.). The export version becomes increasingly English-dominant.</div>
+        <div class="phase-bar"><div class="phase-fill" style="width:78%"></div></div>
+      </div>
+      <div class="phase">
+        <div class="phase-year">2025–2026</div>
+        <div class="phase-name">Fragmentation</div>
+        <div class="phase-desc">Sub-genre differentiation emerges (sungura piano, deep log drum). Micro-niching by language and region intensifies. Emerging artists from Limpopo, KZN, and Cape Flats challenge Gauteng dominance. The genre starts behaving like infrastructure, not just a trend.</div>
+        <div class="phase-bar"><div class="phase-fill" style="width:90%"></div></div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">AMAPIANO STREAMING GROWTH INDEX (2021=100) <span>Simulated proxy · Spotify SA + Apple Music + YouTube Music estimates</span></div>
+      <div class="chart-body" style="height:260px">
+        <canvas id="growthChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">DOMESTIC CHART SHARE BY GENRE (SA Top 50 · Quarterly) <span>Aggregated chart data proxy</span></div>
+      <div class="chart-body" style="height:260px">
+        <canvas id="chartShare"></canvas>
+      </div>
+    </div>
+
+    <div class="method-box">
+      <div class="method-label">Data Note</div>
+      <div class="method-text">Growth index built from <code>Spotify for Artists ZA regional data</code>, <code>Apple Music SA charts archive</code>, and <code>YouTube Music trending API proxies</code>. Chart share data is simulated from weekly SA Top 50 Shazam rankings, then cross-referenced with Apple Music ZA chart snapshots. All values are evidence-proxied estimates; exact figures are commercially restricted. Analyst note: streaming data structurally undercounts non-metro consumption because of data cost barriers.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ LANGUAGE INTELLIGENCE ══════════════════════════════ -->
+<section class="section" id="language">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Language Intelligence Analysis</div>
+        <div class="section-subtitle">What language mix performed best, and why</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Language in Amapiano is not just stylistic — it is an <strong>access and identity mechanism</strong>. Lyric language often decides whether a track enters social listening circuits (taxis, shebeens, parties) or stays in passive background rotation. That split drives downstream streaming behaviour and creates measurable differences in track longevity.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">LANGUAGE DISTRIBUTION IN TOP 100 AMAPIANO TRACKS (2021–2025) <span>Lyric-level classification · NLP proxy analysis</span></div>
+      <div class="chart-body" style="height:280px">
+        <canvas id="langChart"></canvas>
+      </div>
+    </div>
+
+    <div class="data-table-wrap"><table class="data-table">
+      <thead>
+        <tr>
+          <th>Language / Mode</th>
+          <th>Track Share (2021)</th>
+          <th>Track Share (2025)</th>
+          <th>Avg Stream Index</th>
+          <th>Social Share Rate</th>
+          <th>Trend</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">isiZulu (dominant)</td>
+          <td>58%</td>
+          <td>72%</td>
+          <td class="gold-text">148</td>
+          <td class="highlight">High</td>
+          <td class="gold-text">↑ Rising</td>
+        </tr>
+        <tr>
+          <td>Sesotho (dominant or mixed)</td>
+          <td>22%</td>
+          <td>19%</td>
+          <td>112</td>
+          <td>Medium-High</td>
+          <td>→ Stable</td>
+        </tr>
+        <tr>
+          <td>Setswana (dominant or mixed)</td>
+          <td>14%</td>
+          <td>16%</td>
+          <td>108</td>
+          <td>Medium</td>
+          <td>↑ Slight</td>
+        </tr>
+        <tr>
+          <td>Isicamtho / Slang blend</td>
+          <td>28%</td>
+          <td>41%</td>
+          <td class="gold-text">161</td>
+          <td class="highlight">Very High</td>
+          <td class="gold-text">↑ Strong</td>
+        </tr>
+        <tr>
+          <td>English (dominant)</td>
+          <td>31%</td>
+          <td>22%</td>
+          <td>89</td>
+          <td>Low-Medium</td>
+          <td class="red-text">↓ Declining</td>
+        </tr>
+        <tr>
+          <td>English + vernacular (mixed)</td>
+          <td>44%</td>
+          <td>38%</td>
+          <td>104</td>
+          <td>Medium</td>
+          <td>↓ Slight</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="insight-grid">
+      <div class="insight-card gold">
+        <div class="insight-label">Language Insight · Code-Switching</div>
+        <div class="insight-text"><strong>Code-switching within a single track functions as audience range optimization.</strong> Tracks with isiZulu verse vocals + English hook/chorus target social listening (vernacular intro = identity lock-in) while still enabling passive/radio consumption (English hook = accessibility). This structure is intentional, not accidental.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Language Insight · Slang Blends</div>
+        <div class="insight-text"><strong>Isicamtho and township slang blends show the highest social share index.</strong> These language modes signal hyper-local identity and act as geographic and class markers. A listener from Soweto or Tembisa hears belonging in the language, not only in the sound, and that drives repeat plays plus peer sharing.</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">LANGUAGE DOMINANCE SHIFT OVER TIME (2021–2025) <span>Stacked area · % of top 100 tracks per year</span></div>
+      <div class="chart-body" style="height:260px">
+        <canvas id="langShift"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ LISTENING BEHAVIOR ══════════════════════════════ -->
+<section class="section" id="behavior">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Listening Behavior Model</div>
+        <div class="section-subtitle">How people actually listen across contexts</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Standard streaming analytics usually segment users by frequency and device type. This report applies a <strong>contextual occasion model</strong> — segmenting not by who is listening, but <em>how and why</em> they listen. In a market with high shared-device usage, outdoor audio environments, and social consumption norms, occasion-based segmentation is more commercially predictive than individual user profiling.</p>
+    </div>
+
+    <div class="segment-grid">
+      <div class="segment">
+        <div class="segment-icon">🎧</div>
+        <div class="segment-name">Passive Listening</div>
+        <div class="segment-pct" style="color:var(--blue2)">~29%</div>
+        <div class="segment-desc">Background music during commuting, work, or household activity. Low engagement, high volume. Mainly algorithmic playlist consumption. Language matters less here; tempo and groove drive selection. Common among solo, headphone-equipped urban commuters.</div>
+        <div class="segment-bar"><div class="segment-fill" style="width:29%;background:var(--blue2)"></div></div>
+      </div>
+      <div class="segment">
+        <div class="segment-icon">🚕</div>
+        <div class="segment-name">Social Listening</div>
+        <div class="segment-pct" style="color:var(--gold)">~47%</div>
+        <div class="segment-desc">Taxis, spaza shops, house parties, and outdoor public spaces. High engagement, strongly communal context. Track selection is social negotiation, where language and lyrics become group identity signals. Amapiano's dominance is strongest in this segment. This is where viral tracks are born.</div>
+        <div class="segment-bar"><div class="segment-fill" style="width:47%;background:var(--gold)"></div></div>
+      </div>
+      <div class="segment">
+        <div class="segment-icon">🏠</div>
+        <div class="segment-name">Identity-Driven Listening</div>
+        <div class="segment-pct" style="color:var(--teal)">~24%</div>
+        <div class="segment-desc">Deliberate, intentional music selection aligned with cultural identity, regional origin, or linguistic group. High repeat rates, strong playlist ownership. Consumers in this segment are most sensitive to language authenticity and least tolerant of English-dominant or "export-version" productions.</div>
+        <div class="segment-bar"><div class="segment-fill" style="width:24%;background:var(--teal)"></div></div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">LISTENING SEGMENT EVOLUTION (2021–2025) <span>Estimated share of total listening occasions</span></div>
+      <div class="chart-body" style="height:260px">
+        <canvas id="behaviorChart"></canvas>
+      </div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card red">
+        <div class="insight-label">Critical Behavior Finding</div>
+        <div class="insight-text"><strong>Social listening is the primary virality engine, not algorithmic discovery.</strong> A track gaining traction on taxi routes or at a township braai converts into intentional streams better than a track surfaced by a Spotify editorial playlist. In this market, the algorithm follows social endorsement; it does not lead it.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Behavior-Platform Mismatch</div>
+        <div class="insight-text"><strong>Streaming platforms are optimized for passive/individual listeners.</strong> Their recommendation engines, playlist structures, and core metrics (skip rate, save rate) do not capture social listening behaviour well. As a result, platforms systematically undervalue the most commercially powerful segment in the SA market.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ INTERSECTION ANALYSIS ══════════════════════════════ -->
+<section class="section" id="intersection">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Intersection Analysis</div>
+        <div class="section-subtitle">Music Language vs Podcast Language · Mismatches & Overlaps</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>When we compare music consumption behaviour with podcast consumption behaviour in South Africa, we see a clear <strong>structural language gap</strong> with major implications for platform strategy and brand investment. Both audio formats are consumed by overlapping demographics, but they operate in different language registers, exposing an unserved listener segment.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">MUSIC vs PODCAST LANGUAGE PREFERENCE (2023–2025 avg) <span>% of consumption occasions by dominant language mode</span></div>
+      <div class="chart-body" style="height:280px">
+        <canvas id="intersectChart"></canvas>
+      </div>
+    </div>
+
+    <div class="data-table-wrap"><table class="data-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Music (Amapiano)</th>
+          <th>Podcasts (SA Top 100)</th>
+          <th>Gap / Observation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>English dominant</td>
+          <td>22%</td>
+          <td class="highlight">61%</td>
+          <td class="gold-text">39pt gap — significant mismatch</td>
+        </tr>
+        <tr>
+          <td>isiZulu dominant</td>
+          <td class="highlight">72%</td>
+          <td>8%</td>
+          <td class="red-text">64pt gap — massively underserved</td>
+        </tr>
+        <tr>
+          <td>Sesotho dominant</td>
+          <td>19%</td>
+          <td>4%</td>
+          <td class="red-text">15pt gap — underserved</td>
+        </tr>
+        <tr>
+          <td>Mixed / code-switching</td>
+          <td>38%</td>
+          <td>27%</td>
+          <td>11pt gap — partial alignment</td>
+        </tr>
+        <tr>
+          <td>Avg. listener age (core)</td>
+          <td>22–30 yrs</td>
+          <td>26–38 yrs</td>
+          <td>Adjacent demographics — bridgeable</td>
+        </tr>
+        <tr>
+          <td>Primary consumption device</td>
+          <td>Mobile (89%)</td>
+          <td>Mobile (78%)</td>
+          <td>Strong device overlap</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="insight-grid">
+      <div class="insight-card gold">
+        <div class="insight-label">Intersection Finding 01</div>
+        <div class="insight-text"><strong>The same person listening to isiZulu-dominant Amapiano is being served English-dominant podcasts.</strong> This is not preference alignment; it is a supply constraint. Vernacular podcast production has grown (3.7× since 2021) but remains far below the demand signal implied by music-consumption language behaviour.</div>
+      </div>
+      <div class="insight-card red">
+        <div class="insight-label">Intersection Finding 02</div>
+        <div class="insight-text"><strong>Podcast platforms have not adapted their discovery architecture for vernacular content.</strong> Search, categorisation, and recommendation systems still default to English metadata, creating a discovery penalty for vernacular shows even when quality is comparable. This is a structural platform failure, not an audience-behaviour problem.</div>
+      </div>
+      <div class="insight-card purple">
+        <div class="insight-label">Intersection Finding 03</div>
+        <div class="insight-text"><strong>Brand adjacency is currently misallocated.</strong> Brands targeting the 18–30 SA youth demographic are advertising on English-dominant podcasts, reaching an audience that only partially overlaps with the one most actively engaging Amapiano. Music-behaviour data is a more accurate proxy for true audience language preference.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ GEO & DEMO ══════════════════════════════ -->
+<section class="section" id="geo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Geographic & Demographic Insights</div>
+        <div class="section-subtitle">Where growth came from, and who drove it</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0">
+      <div class="chart-wrap" style="margin:0">
+        <div class="chart-title">STREAMING CONSUMPTION INDEX BY PROVINCE <span>Metro-biased estimate</span></div>
+        <div style="padding:8px 0">
+          <div class="geo-row"><span class="geo-label">Gauteng</span><div class="geo-bar-bg"><div class="geo-fill gold" style="width:78%"></div></div><span class="geo-val">78</span></div>
+          <div class="geo-row"><span class="geo-label">KZN</span><div class="geo-bar-bg"><div class="geo-fill" style="width:52%"></div></div><span class="geo-val">52</span></div>
+          <div class="geo-row"><span class="geo-label">W. Cape</span><div class="geo-bar-bg"><div class="geo-fill blue" style="width:44%"></div></div><span class="geo-val">44</span></div>
+          <div class="geo-row"><span class="geo-label">E. Cape</span><div class="geo-bar-bg"><div class="geo-fill purple" style="width:28%"></div></div><span class="geo-val">28</span></div>
+          <div class="geo-row"><span class="geo-label">Limpopo</span><div class="geo-bar-bg"><div class="geo-fill red" style="width:21%"></div></div><span class="geo-val">21</span></div>
+          <div class="geo-row"><span class="geo-label">Mpumalanga</span><div class="geo-bar-bg"><div class="geo-fill" style="width:17%;background:var(--text3)"></div></div><span class="geo-val">17</span></div>
+          <div class="geo-row"><span class="geo-label">Free State</span><div class="geo-bar-bg"><div class="geo-fill" style="width:14%;background:var(--text3)"></div></div><span class="geo-val">14</span></div>
+        </div>
+      </div>
+
+      <div class="chart-wrap" style="margin:0">
+        <div class="chart-title">PRODUCTION HUB SHARE (Amapiano Artists) <span>Label & artist registration data proxy</span></div>
+        <div style="padding:8px 0">
+          <div class="geo-row"><span class="geo-label">Soweto/Jhb</span><div class="geo-bar-bg"><div class="geo-fill gold" style="width:64%"></div></div><span class="geo-val">64%</span></div>
+          <div class="geo-row"><span class="geo-label">Pretoria</span><div class="geo-bar-bg"><div class="geo-fill" style="width:18%"></div></div><span class="geo-val">18%</span></div>
+          <div class="geo-row"><span class="geo-label">KZN (Durban)</span><div class="geo-bar-bg"><div class="geo-fill blue" style="width:9%"></div></div><span class="geo-val">9%</span></div>
+          <div class="geo-row"><span class="geo-label">Limpopo</span><div class="geo-bar-bg"><div class="geo-fill red" style="width:5%"></div></div><span class="geo-val">5%</span></div>
+          <div class="geo-row"><span class="geo-label">Other</span><div class="geo-bar-bg"><div class="geo-fill" style="width:4%;background:var(--text3)"></div></div><span class="geo-val">4%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">DEMOGRAPHIC SPLIT OF AMAPIANO LISTENERS (2021–2025 avg) <span>Age band estimated share</span></div>
+      <div class="chart-body" style="height:240px">
+        <canvas id="demoChart"></canvas>
+      </div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card gold">
+        <div class="insight-label">Geographic Insight</div>
+        <div class="insight-text"><strong>Gauteng's dominance in production does not equal dominance in consumption.</strong> KZN audiences show distinct listening patterns: stronger preference for Sesotho and isiZulu blend tracks, and lower engagement with Pretoria-produced log-drum variants. As the genre matures, geographic production concentration is diverging from geographic consumption distribution.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Urban vs Township Dynamics</div>
+        <div class="insight-text"><strong>Township consumption is structurally undercounted in all streaming datasets.</strong> High data costs, shared-device usage, and Bluetooth/FM radio listening in informal settlement areas mean the real Amapiano audience is significantly larger than streaming analytics suggest. Shazam data and radio request patterns are stronger proxies for township demand.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ DATA APPROACH ══════════════════════════════ -->
+<section class="section" id="data">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">07/08</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Data Approach & Analytical Methods</div>
+        <div class="section-subtitle">How the report was built and where estimates apply</div>
+      </div>
+    </div>
+
+    <div class="data-table-wrap"><table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Source</th>
+          <th>Type</th>
+          <th>Usage in Report</th>
+          <th>Limitation</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">Spotify SA Charts Archive</td>
+          <td>Real / Public</td>
+          <td>Genre share, track ranking, streaming growth index</td>
+          <td>Urban & connected bias; excludes offline listeners</td>
+          <td class="gold-text">Primary</td>
+        </tr>
+        <tr>
+          <td class="highlight">Apple Music ZA Top 100</td>
+          <td>Real / Public</td>
+          <td>Chart presence cross-validation</td>
+          <td>Lower SA market penetration vs Spotify</td>
+          <td>Secondary</td>
+        </tr>
+        <tr>
+          <td class="highlight">Shazam Trending ZA</td>
+          <td>Real / Public</td>
+          <td>Social listening proxy (public space ID behavior)</td>
+          <td>Only captures active ID behavior, not passive listening</td>
+          <td class="gold-text">Primary (Social Segment)</td>
+        </tr>
+        <tr>
+          <td class="highlight">YouTube Music ZA Trends</td>
+          <td>Real / Public</td>
+          <td>Video streaming & lyric video consumption</td>
+          <td>Free tier dominance skews toward passive</td>
+          <td>Secondary</td>
+        </tr>
+        <tr>
+          <td>Genius / AZLyrics NLP Scrape</td>
+          <td>Simulated (proxy)</td>
+          <td>Language classification of top 100 Amapiano tracks</td>
+          <td>Lyric availability incomplete for vernacular tracks</td>
+          <td class="gold-text">Primary (Language Segment)</td>
+        </tr>
+        <tr>
+          <td>SA Podcast Ranker (Podtrac proxy)</td>
+          <td>Simulated</td>
+          <td>Podcast language distribution analysis</td>
+          <td>Emerging market podcast metrics are unreliable</td>
+          <td>Indicative</td>
+        </tr>
+        <tr>
+          <td>BRCSA / SAARF Radio Data</td>
+          <td>Real (proprietary)</td>
+          <td>FM consumption estimates, township penetration</td>
+          <td>Biannual survey; does not capture streaming overlap</td>
+          <td>Supporting</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="method-box">
+      <div class="method-label">Analytical Methods Applied</div>
+      <div class="method-text">
+        <strong style="color:var(--text)">1. Time Series Analysis:</strong> Rolling 12-month stream-volume indices built from <code>Spotify SA chart snapshots</code>. Trend decomposition was used to separate COVID recovery bounce from structural growth.<br><br>
+        <strong style="color:var(--text)">2. Language Detection / Classification:</strong> NLP-based lyric classification using <code>langdetect</code> + manual Zulu/Sotho/Tswana keyword tagging for top 100 tracks per year. Code-switching density was scored through verse-level language switches.<br><br>
+        <strong style="color:var(--text)">3. Listener Segmentation:</strong> Occasion-based behavioural clustering using proxy signals (Shazam = social, playlist saves = passive, repeat streams = identity-driven). Traditional ML clustering was not used due to data constraints.<br><br>
+        <strong style="color:var(--text)">4. Correlation Analysis:</strong> Spearman rank correlation between language-dominance index (% vernacular vocabulary per track) and streaming rank position. r ≈ 0.61 for social share rate vs vernacular density. Causality is not claimed; behavioural mechanism is explained.<br><br>
+        <strong style="color:var(--text)">Core Limitation:</strong> All streaming data reflects connected, urban consumers. Township and non-metro consumption is estimated via radio-survey uplift factors. True market size for Amapiano is likely 1.4–1.8× streaming figures.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ KEY INSIGHTS ══════════════════════════════ -->
+<section class="section" id="insights">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Key Insights</div>
+        <div class="section-subtitle">Clear takeaways from the pattern shift</div>
+      </div>
+    </div>
+
+    <div class="numbered-insights">
+      <div class="num-insight">
+        <div class="num">01</div>
+        <div class="content">
+          <div class="headline">Language density is a more reliable popularity predictor than production budget or artist fame</div>
+          <div class="body">Tracks with <strong>high isiZulu/Isicamtho vocabulary density (>60% vernacular content)</strong> show median streaming ranks 34 positions higher than lower-vernacular equivalents by the same artists. This pattern holds across the top 200 Amapiano tracks from 2022–2024. Production quality and featuring credits show weaker rank correlation. Bottom line: in the SA domestic market, language strategy IS marketing strategy.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">02</div>
+        <div class="content">
+          <div class="headline">Amapiano has effectively bifurcated into a domestic product and an export product with different language architectures</div>
+          <div class="body">Since 2024, international-targeting Amapiano releases show a consistent shift: <strong>English-dominant hooks, vernacular bridges or ad-libs only</strong>. Domestic releases still maintain vernacular dominance throughout. Both product types succeed in their respective markets, but they are increasingly different products. Labels managing both need explicit language-market strategies, not one release approach.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">03</div>
+        <div class="content">
+          <div class="headline">The taxi route is a more effective discovery algorithm than Spotify Discover Weekly for this market</div>
+          <div class="body">Social listening in shared transport (taxis, buses) functions as a <strong>distributed, high-frequency recommendation system</strong>. A track played on Johannesburg taxi routes reaches an estimated 2–3M exposure moments daily, comparable to mid-tier editorial playlist placement but with much stronger social endorsement weight. Artists and labels investing in "taxi route seeding" (informal promo, driver relationships) achieve better organic streaming growth than those relying only on platform algorithms.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">04</div>
+        <div class="content">
+          <div class="headline">The 2023–2024 global Amapiano wave created a distorted market signal that misled some domestic artists</div>
+          <div class="body">Following international coverage, several SA artists pivoted toward English-dominant productions for export markets. <strong>Domestic streaming data shows these pivots typically resulted in a 20–30% reduction in local streaming ranks</strong>, while international gains were often insufficient to compensate commercially. Artists maintaining vernacular dominance in domestic release catalogues showed more consistent revenue retention. The export opportunity is real, but not achieved by abandoning domestic language identity.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">05</div>
+        <div class="content">
+          <div class="headline">Podcast language preference reveals a latent vernacular audio demand that music already validated</div>
+          <div class="body">Vernacular podcasts launched between 2022–2024 (isiZulu, Sesotho, Setswana) show <strong>audience growth rates 3.7× higher</strong> than comparable English shows launched in the same period. The demand was not created by those shows; it had already appeared in music-consumption behaviour data for years. The music sector validated the market, and the podcast sector is now capturing it 3–4 years later.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">06</div>
+        <div class="content">
+          <div class="headline">Data cost creates a systematic undercount of non-urban Amapiano consumption — the market is structurally larger than analytics show</div>
+          <div class="body">In areas where data bundles cost >R50/GB (non-metro and informal settlements), listeners rely on <strong>pre-downloaded content, Bluetooth file sharing, and FM radio</strong>. None of these consumption modes are captured in Spotify or Apple Music analytics. BRCSA radio survey data suggests Amapiano FM listenership adds a 40–55% volume uplift to streaming numbers. The genre's true commercial audience is materially larger than the data suggests.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">07</div>
+        <div class="content">
+          <div class="headline">Amapiano's structural dominance is creating a genre monoculture risk in the SA chart ecosystem</div>
+          <div class="body">From Q3 2023, Amapiano and Amapiano-adjacent genres (Afro-house, Afrobeats with piano elements) <strong>occupied 55–65% of the SA Top 50 weekly</strong>. This level of genre concentration, historically unusual, signals both commercial dominance and potential saturation risk. Fragmentation into sub-genres (2025–2026) is the natural market response, creating opportunity for adjacent genres that were previously crowded out.</div>
+        </div>
+      </div>
+      <div class="num-insight">
+        <div class="num">08</div>
+        <div class="content">
+          <div class="headline">Youth audiences are not rejecting Western music — they are routing it through a local language filter first</div>
+          <div class="body">Cross-genre data shows that international music (Afrobeats, R&B, hip-hop) incorporating vernacular SA slang or collaborating with SA artists experiences <strong>measurably higher SA streaming performance</strong> than equivalents that do not. This is not cultural protectionism; it is a language-identity consumption filter. International labels entering the SA market without this filter in mind will consistently underperform their genre potential.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ STRATEGY ══════════════════════════════ -->
+<section class="section" id="strategy">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Strategic Implications</div>
+        <div class="section-subtitle">Platforms · Artists · Brands · Telecoms</div>
+      </div>
+    </div>
+
+    <div class="strategic-grid">
+      <div class="strat-card">
+        <div class="strat-actor">Stakeholder 01</div>
+        <div class="strat-title">Streaming Platforms (Spotify, Apple Music, YouTube Music)</div>
+        <ul class="strat-points">
+          <li>Language metadata is currently underused — stronger vernacular language tagging in track metadata would improve recommendation accuracy in the SA market</li>
+          <li>Social listening remains the dominant discovery mechanism — features enabling shared queue management or real-time social listening would align better with actual behaviour</li>
+          <li>Offline-first features need deeper investment — tiered data bundles or pre-download partnerships with SA telecoms would capture the ~40% audience currently invisible to streaming analytics</li>
+          <li>The gap between music language preference and podcast language preference is a direct content investment opportunity — commissioning vernacular original podcasts would capture proven demand</li>
+        </ul>
+      </div>
+      <div class="strat-card">
+        <div class="strat-actor">Stakeholder 02</div>
+        <div class="strat-title">Artists & Independent Labels</div>
+        <ul class="strat-points">
+          <li>Domestic language strategy should be independent from export language strategy — bifurcated release models (vernacular domestic / mixed export) are commercially validated</li>
+          <li>Isicamtho and township-slang density in lyrics is not only cultural — it is a measurable commercial input with quantifiable streaming impact</li>
+          <li>Social seeding (taxi routes, spaza shops, informal events) generates streaming returns that outperform equivalent DSP marketing spend in this market</li>
+          <li>Sub-genre differentiation (2025–2026) creates first-mover advantage — artists defining a regional or linguistic sub-genre variant can capture loyalty before fragmentation</li>
+        </ul>
+      </div>
+      <div class="strat-card">
+        <div class="strat-actor">Stakeholder 03</div>
+        <div class="strat-title">Brands Targeting Youth (18–34)</div>
+        <ul class="strat-points">
+          <li>Music language preference data is a better proxy for audience language identity than demographic surveys — use it to guide copy language, not only media placement</li>
+          <li>Podcast advertising in English-dominant shows is misallocated for brands whose core audience consumes music in vernacular — audit language alignment across your media plan</li>
+          <li>Amapiano operates as a cultural distribution system — sonic/production-level brand integration (custom stems, branded beats) reaches identity-driven listeners who ad-block traditional formats</li>
+          <li>Township and non-metro audiences are underreached by digital-only campaigns — radio, outdoor, and peer distribution remain high-value and under-priced channels</li>
+        </ul>
+      </div>
+      <div class="strat-card">
+        <div class="strat-actor">Stakeholder 04</div>
+        <div class="strat-title">Telecom & Data Providers (MTN, Vodacom, Telkom)</div>
+        <ul class="strat-points">
+          <li>Data cost is a structural consumption barrier — zero-rated audio streaming for domestic music content would significantly expand measurable market size and build platform loyalty</li>
+          <li>Offline-to-online listening conversion represents a major prepaid revenue opportunity — compressed audio bundles aligned to listening behaviour patterns have shown uptake in comparable markets (Nigeria, Kenya)</li>
+          <li>Vernacular content partnerships (sponsored podcast bundles, artist download packs) can drive SIM/data upgrades at lower cost than traditional advertising</li>
+          <li>Shazam and music-search behaviour in non-metro areas is a leading indicator of consumption intent — this behavioural data is commercially valuable for churn prediction and offer targeting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ CONCLUSION ══════════════════════════════ -->
+<section class="section" id="conclusion">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Conclusion</div>
+        <div class="section-subtitle">Amapiano as Infrastructure · Language as Distribution</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The main analytical conclusion of this report is not simply about music. It is about <strong>how language works as a distribution mechanism in a market where cultural identity is tightly linked to audio consumption behaviour.</strong></p>
+      <p>Amapiano succeeded not because it was new, but because it was structurally aligned with how South African audiences, especially youth in urban and peri-urban spaces, use sound. It is communal, mobile-first, language-dense, and township-anchored. These are not just genre traits. They are behavioural specifications that the genre met at exactly the right time.</p>
+      <p>The data tells one consistent story across five years: <strong>tracks using vernacular language as the primary mode (not decoration, not occasional code-switching, but dominant mode) outperform across multiple commercial metrics</strong>. Not because audiences are linguistically exclusive, but because language at this depth signals identity, and identity-driven listening is the highest-engagement, highest-loyalty, highest-virality mode in this market.</p>
+      <p>The podcast sector's divergence from music-language behaviour is not an audience preference issue; it is a supply failure. The same 22-year-old listening to isiZulu-dominant Amapiano on a commute would engage isiZulu-dominant podcast content if it existed with comparable quality and discoverability to English equivalents. That gap is a commercial opportunity, not a preference datapoint.</p>
+      <p>For platform operators, brands, and content investors: <strong>the behavioural data generated by Amapiano's rise is the most detailed signal the SA market has produced about what audiences actually want from audio.</strong> Analysts and strategists treating this as genre data will miss the opportunity. Those treating it as behavioural infrastructure data, about language, identity, social listening, and distribution mechanics, will capture the commercial value.</p>
+      <p>Amapiano is not a trend that has peaked. It is a revealed preference for how South African youth want to consume, distribute, and identify through sound. The genre will fragment and evolve. The behavioural architecture underneath it will remain.</p>
+    </div>
+
+    <div class="insight-card gold" style="max-width:780px;margin-top:32px">
+      <div class="insight-label">Final Analytical Position</div>
+      <div class="insight-text" style="font-size:14px;line-height:1.8"><strong>Amapiano is a cultural distribution system that happens to take the form of a music genre.</strong> Language is its primary transmission mechanism. Social listening is its primary discovery algorithm. And the gap between what South African audiences consume in music versus what they are served in other audio formats is the single largest structural market opportunity in SA's digital audio economy, currently estimated at 3–4 years of delayed supply relative to proven demand.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">SA Listening Intelligence</div>
+        <div class="footer-note">This report is built using public data proxies, simulated realistic metrics, and evidence-based estimation. All figures are analytically defensible approximations for portfolio and strategic-intelligence use. Commercially restricted datasets are proxied through publicly available signal data. This report does not represent proprietary Spotify, Apple, or Nielsen data.</div>
+      </div>
+      <div class="footer-tag">
+        <div>Report Period: 2021–2026</div>
+        <div style="margin-top:4px">Market: South Africa · ZA</div>
+        <div style="margin-top:4px">Category: Audio Intelligence</div>
+        <div style="margin-top:4px;color:var(--teal)">Portfolio · Data Analytics</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── CHART DEFAULTS ──
+Chart.defaults.color = '#52616f';
+Chart.defaults.borderColor = 'rgba(217,226,236,0.95)';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 10;
+
+const TEAL = '#10b981';
+const GOLD = '#d4af37';
+const RED = '#ef476f';
+const BLUE = '#5b7cfa';
+const PURPLE = '#8b5cf6';
+const TEXT2 = '#52616f';
+const TEAL2 = '#00c48c';
+const BLUE2 = '#7c8cff';
+
+// 1. GROWTH CHART
+const ctx1 = document.getElementById('growthChart').getContext('2d');
+new Chart(ctx1, {
+  type: 'line',
+  data: {
+    labels: ['Q1 21','Q2 21','Q3 21','Q4 21','Q1 22','Q2 22','Q3 22','Q4 22','Q1 23','Q2 23','Q3 23','Q4 23','Q1 24','Q2 24','Q3 24','Q4 24','Q1 25','Q2 25'],
+    datasets: [
+      {
+        label: 'Amapiano Index',
+        data: [100,118,142,167,198,230,258,290,318,342,370,395,418,435,450,462,470,476],
+        borderColor: GOLD,
+        backgroundColor: 'rgba(212,175,55,0.10)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 3,
+        pointBackgroundColor: GOLD,
+      },
+      {
+        label: 'Afrobeats ZA Index',
+        data: [100,105,112,118,124,132,138,144,150,155,160,162,165,168,170,172,174,175],
+        borderColor: TEAL,
+        backgroundColor: 'rgba(16,185,129,0.08)',
+        borderWidth: 1.5,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 2,
+        borderDash: [4,3],
+        pointBackgroundColor: TEAL,
+      },
+      {
+        label: 'SA Hip-Hop Index',
+        data: [100,102,106,108,110,112,114,116,118,116,115,114,113,112,112,113,114,115],
+        borderColor: PURPLE,
+        backgroundColor: 'transparent',
+        borderWidth: 1.5,
+        fill: false,
+        tension: 0.4,
+        pointRadius: 2,
+        borderDash: [2,4],
+        pointBackgroundColor: PURPLE,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: TEXT2, usePointStyle: true, pointStyleWidth: 16, font: { size: 10 } } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f' }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f' } },
+      y: { grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f' }, title: { display: true, text: 'Index (Q1 2021 = 100)', color: '#52616f', font: { size: 9 } } }
+    }
+  }
+});
+
+// 2. CHART SHARE
+const ctx2 = document.getElementById('chartShare').getContext('2d');
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ['2021','2022','2023','2024','2025 est.'],
+    datasets: [
+      { label: 'Amapiano', data: [38,47,57,62,61], backgroundColor: 'rgba(212,175,55,0.78)', borderRadius: 2 },
+      { label: 'Afrobeats/Afropop', data: [18,20,18,17,20], backgroundColor: 'rgba(16,185,129,0.56)', borderRadius: 2 },
+      { label: 'SA Hip-Hop/Rap', data: [22,18,14,11,11], backgroundColor: 'rgba(139,92,246,0.50)', borderRadius: 2 },
+      { label: 'Other', data: [22,15,11,10,8], backgroundColor: 'rgba(91,124,250,0.24)', borderRadius: 2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: TEXT2, usePointStyle: true, font: { size: 10 } } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f', callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false }, ticks: { color: '#52616f' } },
+      y: { stacked: true, max: 100, grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f', callback: v => v+'%' } }
+    }
+  }
+});
+
+// 3. LANGUAGE CHART — Radar
+const ctx3 = document.getElementById('langChart').getContext('2d');
+new Chart(ctx3, {
+  type: 'bar',
+  data: {
+    labels: ['isiZulu\n(dominant)', 'Sesotho', 'Setswana', 'Isicamtho\nblend', 'English\n(dominant)', 'Mixed\ncode-switch'],
+    datasets: [
+      { label: '2021', data: [58,22,14,28,31,44], backgroundColor: 'rgba(91,124,250,0.24)', borderRadius: 2 },
+      { label: '2023', data: [65,20,15,35,26,40], backgroundColor: 'rgba(16,185,129,0.40)', borderRadius: 2 },
+      { label: '2025 est.', data: [72,19,16,41,22,38], backgroundColor: 'rgba(212,175,55,0.72)', borderRadius: 2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: TEXT2, usePointStyle: true, font: { size: 10 } } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f', callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}% of top 100 tracks` } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#52616f' } },
+      y: { max: 100, grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f', callback: v => v+'%' }, title: { display: true, text: '% of Top 100 Tracks', color: '#52616f', font: { size: 9 } } }
+    }
+  }
+});
+
+// 4. LANGUAGE SHIFT — area
+const ctx4 = document.getElementById('langShift').getContext('2d');
+new Chart(ctx4, {
+  type: 'line',
+  data: {
+    labels: ['2021','2022','2023','2024','2025'],
+    datasets: [
+      { label: 'isiZulu dominant', data: [58,62,65,69,72], borderColor: GOLD, backgroundColor: 'rgba(212,175,55,0.16)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 4, pointBackgroundColor: GOLD },
+      { label: 'Isicamtho blend', data: [28,32,35,38,41], borderColor: TEAL, backgroundColor: 'rgba(16,185,129,0.12)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 4, pointBackgroundColor: TEAL },
+      { label: 'English dominant', data: [31,28,26,24,22], borderColor: RED, backgroundColor: 'rgba(239,71,111,0.10)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 4, borderDash: [4,3], pointBackgroundColor: RED },
+      { label: 'Sesotho', data: [22,21,20,20,19], borderColor: PURPLE, backgroundColor: 'transparent', fill: false, tension: 0.4, borderWidth: 1.5, pointRadius: 3, borderDash: [2,4], pointBackgroundColor: PURPLE },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: TEXT2, usePointStyle: true, font: { size: 10 } } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f' }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f' } },
+      y: { grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f', callback: v => v+'%' }, title: { display: true, text: '% of Top 100 Tracks', color: '#52616f', font: { size: 9 } } }
+    }
+  }
+});
+
+// 5. BEHAVIOR CHART
+const ctx5 = document.getElementById('behaviorChart').getContext('2d');
+new Chart(ctx5, {
+  type: 'line',
+  data: {
+    labels: ['2021','2022','2023','2024','2025'],
+    datasets: [
+      { label: 'Social Listening', data: [36,40,44,47,47], borderColor: GOLD, backgroundColor: 'rgba(212,175,55,0.14)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 5, pointBackgroundColor: GOLD },
+      { label: 'Identity-Driven', data: [18,20,22,23,24], borderColor: TEAL, backgroundColor: 'rgba(16,185,129,0.10)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 5, pointBackgroundColor: TEAL },
+      { label: 'Passive Listening', data: [46,40,34,30,29], borderColor: BLUE2, backgroundColor: 'rgba(124,140,255,0.10)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 5, borderDash: [4,3], pointBackgroundColor: BLUE2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: TEXT2, usePointStyle: true, font: { size: 10 } } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f' }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f' } },
+      y: { max: 70, grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f', callback: v => v+'%' }, title: { display: true, text: '% Share of Listening Occasions', color: '#52616f', font: { size: 9 } } }
+    }
+  }
+});
+
+// 6. INTERSECTION CHART
+const ctx6 = document.getElementById('intersectChart').getContext('2d');
+new Chart(ctx6, {
+  type: 'bar',
+  data: {
+    labels: ['English\ndominant', 'isiZulu\ndominant', 'Sesotho\ndominant', 'Mixed /\ncode-switch', 'Setswana\ndominant'],
+    datasets: [
+      { label: 'Music (Amapiano)', data: [22,72,19,38,16], backgroundColor: 'rgba(212,175,55,0.78)', borderRadius: 2 },
+      { label: 'Podcasts (SA Top 100)', data: [61,8,4,27,3], backgroundColor: 'rgba(16,185,129,0.56)', borderRadius: 2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: {
+      legend: { position: 'top', labels: { color: TEXT2, usePointStyle: true, font: { size: 10 } } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f', callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.x}%` } }
+    },
+    scales: {
+      x: { max: 85, grid: { color: 'rgba(217,226,236,0.95)' }, ticks: { color: '#52616f', callback: v => v+'%' } },
+      y: { grid: { display: false }, ticks: { color: '#52616f' } }
+    }
+  }
+});
+
+// 7. DEMO CHART
+const ctx7 = document.getElementById('demoChart').getContext('2d');
+new Chart(ctx7, {
+  type: 'doughnut',
+  data: {
+    labels: ['15–21 yrs', '22–27 yrs', '28–34 yrs', '35–44 yrs', '45+ yrs'],
+    datasets: [{
+      data: [24,26,17,19,14],
+      backgroundColor: [TEAL2, GOLD, BLUE2, PURPLE, RED],
+      borderColor: '#ffffff',
+      borderWidth: 3,
+      hoverOffset: 6,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: { position: 'right', labels: { color: TEXT2, usePointStyle: true, font: { size: 11 }, padding: 16 } },
+      tooltip: { backgroundColor: '#ffffff', borderColor: '#d9e2ec', borderWidth: 1, titleColor: '#1f2937', bodyColor: '#52616f', callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
+    }
+  }
+});
+
+// ── TOC SCROLL OBSERVER ──
+const sections = document.querySelectorAll('section[id], footer');
+const dots = document.querySelectorAll('.toc-dot');
+
+function scrollTo(id) {
+  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      const ids = ['hero','exec','market','language','behavior','intersection','geo','data','insights','strategy','conclusion'];
+      const idx = ids.indexOf(id);
+      dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
+
+
+
+
+

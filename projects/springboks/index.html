@@ -1,0 +1,547 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Springbok Era 2016-2026 | Growth Story</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g: #00A651; --g2: #34c779; --g3: rgba(0,166,81,.12);
+  --gold: #d4af37; --gold2: #f2df8f; --gold3: rgba(212,175,55,.14);
+  --navy: #16324f; --navy2: #335b84; --navy3: rgba(22,50,79,.12);
+  --bg: #f8f9fa; --bg2: #ffffff; --bg3: #f1f5f4; --bg4: #e7efeb;
+  --border: rgba(22,50,79,.12); --border2: rgba(212,175,55,.32);
+  --text: #1f2937; --text2: #52616f; --text3: #7a8896;
+  --win: #00A651; --loss: #dc2626; --draw: #d4af37;
+  --era1: #dc2626; --era2: #d4af37; --era3: #00A651; --era4: #16324f;
+  --shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(circle at top left, rgba(0,166,81,.10), transparent 26%),
+    radial-gradient(circle at top right, rgba(22,50,79,.10), transparent 28%),
+    linear-gradient(180deg,#fbfcfc 0%,var(--bg) 38%,#f3f6f7 100%);
+  color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;
+}
+header{padding:4rem 2.25rem 2.75rem;border-bottom:1px solid var(--border);background:linear-gradient(155deg,var(--g3) 0%,rgba(255,255,255,.95) 55%,var(--navy3) 100%);position:relative;overflow:hidden;}
+.hinner{max-width:1320px;margin:0 auto;display:flex;gap:2.5rem;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:.8rem;font-weight:700;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,7vw,5.6rem);line-height:.88;font-weight:700;letter-spacing:.02em;color:var(--text);}
+h1 em{color:var(--navy);font-style:normal;display:block;}
+.hdesc{font-size:15px;color:var(--text2);line-height:1.9;max-width:460px;}
+.hdesc strong{color:var(--text);}
+.deco{position:absolute;right:0;top:0;height:100%;width:280px;opacity:.06;pointer-events:none;}
+.nav{display:flex;gap:10px;padding:1rem 2rem 1.15rem;background:rgba(255,255,255,.88);border-bottom:1px solid var(--border);max-width:100%;overflow-x:auto;position:sticky;top:0;backdrop-filter:blur(14px);z-index:20;}
+.nav a{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:all .2s;}
+.nav a:hover,.nav a.active{color:#fff;border-color:var(--g);background:var(--g);}
+main{max-width:1320px;margin:0 auto;padding:2.5rem 2rem 3rem;}
+section{margin-bottom:4.5rem;scroll-margin-top:5rem;}
+.sec-head{margin-bottom:1.75rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:2.35rem;letter-spacing:.03em;color:var(--navy);font-weight:700;}
+.sec-sub{font-size:14px;color:var(--text2);margin-top:.35rem;line-height:1.8;max-width:900px;}
+.cbox{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:1.75rem;box-shadow:var(--shadow);}
+.cbox + .cbox{margin-top:1.25rem;}
+.ctitle{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem;}
+.csub{font-size:13px;color:var(--text2);margin-bottom:1.15rem;line-height:1.7;}
+.cwrap{position:relative;width:100%;overflow-x:auto;}
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:2.25rem;}
+.era-card{border-radius:18px;padding:1.3rem 1.4rem;border:1px solid var(--border);position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.era-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ec,transparent);}
+.era-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:.35rem;}
+.era-name{font-family:'Barlow Condensed',sans-serif;font-size:1.55rem;font-weight:700;color:var(--text);line-height:1.05;margin-bottom:.7rem;}
+.era-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:.7rem;}
+.estat{text-align:center;background:var(--bg3);border-radius:10px;padding:7px 9px;min-width:58px;border:1px solid rgba(22,50,79,.08);}
+.estat-n{font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:700;line-height:1;}
+.estat-l{font-size:9px;color:var(--text3);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;margin-top:1px;}
+.era-note{font-size:12px;color:var(--text2);line-height:1.75;}
+.era-card.dark{background:var(--bg3);}
+.era-card.danger{background:rgba(220,38,38,.045);}
+.era-card.rebuild{background:rgba(212,175,55,.07);}
+.era-card.peak{background:rgba(0,166,81,.055);}
+.era-card.dynasty{background:rgba(22,50,79,.055);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .2s, transform .2s ease;box-shadow:var(--shadow);}
+.pcard:hover{border-color:rgba(0,166,81,.28);transform:translateY(-2px);}
+.phead{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;border-bottom:1px solid var(--border);}
+.av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;flex-shrink:0;}
+.pname{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--text);line-height:1.1;}
+.ppos{font-size:11px;color:var(--text3);margin-top:2px;}
+.pcaps-wrap{margin-left:auto;text-align:right;}
+.pcaps-n{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;line-height:1;color:var(--text);}
+.pcaps-l{font-size:9px;color:var(--text3);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;}
+.cap-timeline{padding:13px 16px;border-bottom:1px solid var(--border);}
+.ctl-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.ctl-bars{display:flex;align-items:flex-end;gap:4px;height:42px;}
+.ctl-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.ctl-bar{width:100%;border-radius:2px 2px 0 0;min-height:2px;}
+.ctl-yr{font-size:8px;color:var(--text3);font-family:'Barlow Condensed',sans-serif;}
+.ctl-n{font-size:8px;color:var(--text2);}
+.moments{padding:13px 16px;border-bottom:1px solid var(--border);}
+.mom-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.mom-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.mtag{font-size:10px;padding:3px 7px;border-radius:999px;font-family:'Barlow Condensed',sans-serif;line-height:1.3;}
+.mtag.debut{background:rgba(22,50,79,.08);border:1px solid rgba(22,50,79,.15);color:var(--navy);}
+.mtag.peak{background:rgba(0,166,81,.1);border:1px solid rgba(0,166,81,.18);color:#047857;}
+.mtag.trophy{background:var(--gold3);border:1px solid var(--border2);color:#8a6b00;}
+.mtag.injury{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.14);color:#b91c1c;}
+.mtag.new{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);color:#2563eb;}
+.pnote{padding:10px 16px 14px;font-size:12px;color:var(--text2);line-height:1.75;}
+.debut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.debut-yr{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);}
+.dy-head{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}
+.dy-year{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--navy);}
+.dy-count{font-size:11px;color:var(--text3);}
+.dy-names{display:flex;flex-wrap:wrap;gap:4px;}
+.dname{font-size:11px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:999px;color:var(--text2);font-family:'Barlow Condensed',sans-serif;}
+.dname.star{border-color:rgba(0,166,81,.24);color:var(--g);}
+.wr-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px;margin-bottom:1.8rem;}
+.wr-cell{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:13px 10px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.wr-cell::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--wc,var(--border));}
+.wr-year{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:3px;}
+.wr-pct{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:700;line-height:1;}
+.wr-sub{font-size:10px;color:var(--text2);margin-top:2px;}
+.wr-cell.covid{opacity:.45;}
+.note{margin-top:1.25rem;padding:1rem 1.1rem;background:var(--bg3);border-left:4px solid var(--g);border-radius:0 12px 12px 0;font-size:12px;color:var(--text2);line-height:1.8;}
+.note strong{color:var(--text);}
+.stag{display:inline-block;background:var(--bg4);border:1px solid var(--border);border-radius:999px;font-size:9px;padding:2px 6px;color:var(--text3);font-family:'Barlow Condensed',sans-serif;margin-left:2px;}
+footer{border-top:1px solid var(--border);padding:2rem;}
+.fi{max-width:1300px;margin:0 auto;}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;font-size:12px;color:var(--text2);line-height:1.9;}
+.src-grid strong{color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:12px;text-transform:uppercase;display:block;margin-bottom:.3rem;}
+.disc{margin-top:1.2rem;padding:1rem 1.1rem;background:var(--bg3);border-left:4px solid var(--navy);border-radius:0 12px 12px 0;font-size:12px;color:var(--text2);line-height:1.8;}
+@media(max-width:900px){header{padding:3rem 1.3rem 2.2rem;}.hinner{align-items:flex-start;}.nav{padding:.85rem 1rem 1rem;}main{padding:1.75rem 1rem 2.2rem;}footer{padding:1.5rem 1rem 2rem;}.timeline{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){h1{font-size:2.9rem;}.hdesc,.sec-sub,.csub,.note,.disc{font-size:13px;}.pgrid,.timeline,.debut-grid{grid-template-columns:1fr;}.cbox{padding:1.2rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="deco" viewBox="0 0 280 300" fill="none">
+    <circle cx="140" cy="150" r="130" stroke="white" stroke-width=".5"/>
+    <circle cx="140" cy="150" r="90" stroke="white" stroke-width=".5"/>
+    <circle cx="140" cy="150" r="50" stroke="white" stroke-width=".5"/>
+    <line x1="0" y1="150" x2="280" y2="150" stroke="white" stroke-width=".5"/>
+    <line x1="140" y1="0" x2="140" y2="300" stroke="white" stroke-width=".5"/>
+    <line x1="15" y1="25" x2="265" y2="275" stroke="white" stroke-width=".5"/>
+    <line x1="15" y1="275" x2="265" y2="25" stroke="white" stroke-width=".5"/>
+  </svg>
+  <div class="hinner">
+    <div>
+      <div class="eyebrow">Springbok Growth Story | Not a GOAT ranking | 2016-2026</div>
+      <h1>Springbok<em>10-Year Arc</em></h1>
+    </div>
+    <div class="hdesc">
+      I built this data storytelling project to visualise the Springboks' decade-long growth, from the difficult 2016 period through the Erasmus rebuild, back-to-back World Cups, and the 2025 high point. Verified data is used where available, and estimates are clearly flagged.
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <a href="#arc" class="active">Win Rate Arc</a>
+  <a href="#eras">Era Breakdown</a>
+  <a href="#players">Player Profiles</a>
+  <a href="#debuts">Debut Tracker</a>
+  <a href="#tries">Try Scorers</a>
+</nav>
+
+<main>
+
+  <section id="arc">
+    <div class="sec-head">
+      <div class="sec-title">Win Rate Arc 2016-2025</div>
+      <div class="sec-sub">A single view of the decade's performance curve. 2020 records no Tests because of COVID. Source: SA Rugby, Grokipedia, sarugbystats.co.za <span class="stag">SAR</span></div>
+    </div>
+    <div class="wr-strip" id="wrStrip"></div>
+    <div class="cbox">
+      <div class="ctitle">Win % per year + tries scored trend</div>
+      <div class="csub">Win rate sits on the left axis and tries scored per year on the right. The 2025 try total is the third highest since 1992. <span class="stag">SAR</span></div>
+      <div class="cwrap" style="height:280px;"><canvas id="arcChart"></canvas></div>
+    </div>
+  </section>
+
+  <section id="eras">
+    <div class="sec-head">
+      <div class="sec-title">Era Breakdown</div>
+      <div class="sec-sub">Four phases explain the decade more clearly than a flat season-by-season reading.</div>
+    </div>
+    <div class="timeline">
+      <div class="era-card danger" style="--ec:var(--era1)">
+        <div class="era-label">Phase 1 | Coetzee era</div>
+        <div class="era-name">Dark Years</div>
+        <div class="era-stats">
+          <div class="estat"><div class="estat-n" style="color:var(--era1)">~42%</div><div class="estat-l">Win rate</div></div>
+          <div class="estat"><div class="estat-n">24</div><div class="estat-l">Tests</div></div>
+        </div>
+        <div class="era-note">The 57-0 loss to New Zealand in 2017 marked the lowest point of the period. Allister Coetzee left after 24 Tests and 10 wins. <span class="stag">SAR</span></div>
+      </div>
+      <div class="era-card rebuild" style="--ec:var(--era2)">
+        <div class="era-label">Phase 2 | Erasmus arrives</div>
+        <div class="era-name">The Rebuild</div>
+        <div class="era-stats">
+          <div class="estat"><div class="estat-n" style="color:var(--era2)">50%</div><div class="estat-l">Win rate '18</div></div>
+          <div class="estat"><div class="estat-n">RWC</div><div class="estat-l">Won 2019</div></div>
+        </div>
+        <div class="era-note">Erasmus took over in mid-2018, finished year one with seven wins from 14 Tests, and then led the side to the 2019 World Cup title against England. <span class="stag">SAR/WIKI</span></div>
+      </div>
+      <div class="era-card peak" style="--ec:var(--era3)">
+        <div class="era-label">Phase 3 | Post-COVID peak</div>
+        <div class="era-name">Lions + RWC 2023</div>
+        <div class="era-stats">
+          <div class="estat"><div class="estat-n" style="color:var(--era3)">72%</div><div class="estat-l">Win rate '23</div></div>
+          <div class="estat"><div class="estat-n">2x</div><div class="estat-l">World Cups</div></div>
+        </div>
+        <div class="era-note">South Africa won the 2021 Lions series, retained elite-level consistency, and secured a second straight World Cup in 2023. <span class="stag">WIKI</span></div>
+      </div>
+      <div class="era-card dynasty" style="--ec:var(--era4)">
+        <div class="era-label">Phase 4 | 2024-2025</div>
+        <div class="era-name">Dynasty Peak</div>
+        <div class="era-stats">
+          <div class="estat"><div class="estat-n" style="color:var(--era4)">89%</div><div class="estat-l">Avg '24-'25</div></div>
+          <div class="estat"><div class="estat-n">43-10</div><div class="estat-l">vs NZ 2025</div></div>
+        </div>
+        <div class="era-note">The side posted 84.6% in 2024 and 94% in 2025, delivered its biggest win over New Zealand, and rotated 50 players in 2025 alone. <span class="stag">SAR/Planet Rugby</span></div>
+      </div>
+    </div>
+    <div class="cbox">
+      <div class="ctitle">Points for vs points against per year</div>
+      <div class="csub">The 2025 scoring surge, with 764 points across 16 Tests, shows how the attack expanded beyond win rate alone. <span class="stag">SAR</span></div>
+      <div class="cwrap" style="height:260px;"><canvas id="ptsChart"></canvas></div>
+    </div>
+  </section>
+
+  <section id="players">
+    <div class="sec-head">
+      <div class="sec-title">Player Profiles | 10-Year Arc</div>
+      <div class="sec-sub">Caps per year, key moments, and role in the decade. Each player is read within position context rather than ranked against the whole squad.</div>
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+  </section>
+
+  <section id="debuts">
+    <div class="sec-head">
+      <div class="sec-title">Debut Tracker 2016-2025</div>
+      <div class="sec-sub">A view of when the next generation arrived. Gold marks players who became regular starters, while grey marks players who were tried but not retained. <span class="stag">SAR/WIKI</span></div>
+    </div>
+    <div class="debut-grid" id="debutGrid"></div>
+    <div class="note" style="margin-top:1rem;">
+      <strong>2025 cohort note:</strong> Erasmus used 50 players in 2025, matching the highest figure since 1997. Five new caps arrived in the July series alone, and Ethan Hooker was nominated for World Rugby Breakthrough Player of the Year. <span class="stag">SAR/Planet Rugby</span>
+    </div>
+  </section>
+
+  <section id="tries">
+    <div class="sec-head">
+      <div class="sec-title">Top Try Scorers | Era Contribution</div>
+      <div class="sec-sub">Career tries accumulated inside the 2016-2025 window. Tries scored before 2016 or after 2025 are excluded from the era portion. <span class="stag">WIKI/ESPN EST</span></div>
+    </div>
+    <div class="cbox">
+      <div class="ctitle">Era tries + career total for context</div>
+      <div class="csub">Grey shows career tries scored outside the era window. Green shows tries scored in the 2016-2025 period. <span class="stag">WIKI/ESPN - era portion estimated</span></div>
+      <div class="cwrap" style="height:380px;"><canvas id="tryChart"></canvas></div>
+    </div>
+    <div class="note">
+      <strong>Reading this chart:</strong> Mapimpi debuted in 2018, so almost all his tries fall inside this era. Habana played his last Test in 2016, so only a very small portion of his 67 career tries belongs to this window. The chart is designed to show who scored in this era, not who leads on career totals.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fi">
+    <div class="src-grid">
+      <div><strong>Verified sources</strong><span class="stag">SAR</span> sarugby.co.za / sarugbystats.co.za<br><span class="stag">WR</span> world.rugby official records<br><span class="stag">WIKI</span> Wikipedia (cross-checked to primary)<br><span class="stag">ESPN</span> espn.com/rugby statsguru</div>
+      <div><strong>Estimated <span class="stag">EST</span></strong>Year-by-year cap distributions are estimated from career totals plus known debut years. Era try splits are estimated from career totals, debut years, and known tournament data. Win-rate-when-starting is derived from public squad and result data rather than an official published source.</div>
+      <div><strong>What this is not</strong>This is not a GOAT ranking. There are no composite scores or weighted rankings, and players in different positions are not compared directly. The goal is to show individual growth arcs inside the wider team story.</div>
+    </div>
+    <div class="disc">Several figures, especially year-by-year cap splits and era try portions, are estimates derived from career totals and debut-year data. They are directionally reliable but not officially published by SA Rugby, and each estimate is flagged for that reason.</div>
+  </div>
+</footer>
+
+<script>
+const years = [2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const winPct = [50, 42, 50, 92, null, 62, 62, 72, 85, 94];
+const testsPlayed = [12, 14, 14, 13, 0, 13, 13, 13, 13, 16];
+const triesFor  = [36, 28, 35, 58, 0, 38, 52, 55, 57, 102];
+const ptsFor    = [284,220,270,430, 0, 310,380,420,490,764];
+const ptsAgainst= [290,380,270,185, 0, 250,280,290,230,195];
+
+const players = [
+  { name:"Eben Etzebeth", pos:"Lock", initials:"EE", color:"#16324f",
+    capsByYear:[4,10,8,10,0,10,13,14,15,13],
+    totalCareer:131,
+    moments:[
+      {l:"Debut 2012",t:"debut"},{l:"Record 131 caps",t:"trophy"},
+      {l:"Lions 2021",t:"trophy"},{l:"RWC 2023 try vs France",t:"peak"},
+      {l:"WR Player of Year nom. 2024",t:"peak"}
+    ],
+    note:"Most capped Springbok ever. Near ever-present across the entire decade, and the only player active in every era." },
+  { name:"Siya Kolisi", pos:"Flanker / Captain", initials:"SK", color:"#00A651",
+    capsByYear:[7,8,9,12,0,9,11,12,12,11],
+    totalCareer:100,
+    moments:[
+      {l:"First Black captain 2018",t:"debut"},{l:"RWC 2019 captain",t:"trophy"},
+      {l:"Lions 2021 captain",t:"trophy"},{l:"RWC 2023 captain",t:"trophy"},
+      {l:"Injury 2022-23",t:"injury"},{l:"4x All Black wins as captain",t:"peak"}
+    ],
+    note:"The most decorated South African captain of the era. Fringe involvement in 2016-2017 gave way to a title-winning leadership run from 2018 onward." },
+  { name:"Cheslin Kolbe", pos:"Wing / Fullback", initials:"CK", color:"#d4af37",
+    capsByYear:[0,0,4,7,0,6,7,9,7,9],
+    totalCareer:49,
+    moments:[
+      {l:"Test debut 2018",t:"debut"},{l:"RWC 2019 hero",t:"trophy"},
+      {l:"Injury 2022",t:"injury"},{l:"RWC 2023 QF MOTM",t:"peak"},
+      {l:"Top strike rate in squad",t:"peak"}
+    ],
+    note:"He entered the Test setup in 2018 and quickly became one of the defining attacking players of the period." },
+  { name:"Makazole Mapimpi", pos:"Wing", initials:"MM", color:"#dc2626",
+    capsByYear:[0,0,2,8,0,7,8,9,9,8],
+    totalCareer:51,
+    moments:[
+      {l:"Test debut 2018",t:"debut"},{l:"RWC 2019 Final try",t:"trophy"},
+      {l:"Lions 2021 series",t:"peak"},{l:"RWC 2023 Final + hat-trick",t:"trophy"},
+      {l:"Top try scorer 2024 (6)",t:"peak"},{l:"Injury mid-RWC 2023",t:"injury"}
+    ],
+    note:"With 34 career tries and a 0.67 strike rate in this era, he was the most prolific Springbok finisher of the decade." },
+  { name:"Handre Pollard", pos:"Fly-half", initials:"HP", color:"#335b84",
+    capsByYear:[6,8,8,8,0,0,10,12,10,8],
+    totalCareer:85,
+    moments:[
+      {l:"RWC 2019 starter",t:"trophy"},{l:"Knee injury - missed Lions 2021",t:"injury"},
+      {l:"49 pts RWC 2023",t:"peak"},{l:"Match-winning kick vs France QF",t:"trophy"},
+      {l:"Generational change 2025",t:"new"}
+    ],
+    note:"His 2023 World Cup run was decisive, while the 2025 season also opened the clearest challenge yet to his long-term control of the fly-half role." },
+  { name:"Malcolm Marx", pos:"Hooker", initials:"MX", color:"#00A651",
+    capsByYear:[5,8,8,9,0,8,9,12,12,9],
+    totalCareer:80,
+    moments:[
+      {l:"Test debut 2016",t:"debut"},{l:"First forward to 20 SA tries",t:"peak"},
+      {l:"Bomb Squad pioneer",t:"peak"},{l:"WR Player of Year 2024",t:"trophy"},
+      {l:"SA Rugby Player of Year 2025",t:"trophy"}
+    ],
+    note:"Two major individual awards and unmatched try-scoring output for a forward made him one of the defining Springboks of the period." },
+  { name:"Pieter-Steph du Toit", pos:"Flanker", initials:"PSdT", color:"#16324f",
+    capsByYear:[3,9,9,11,0,8,10,11,11,9],
+    totalCareer:91,
+    moments:[
+      {l:"WR Player of Year 2019",t:"trophy"},{l:"RWC 2019 winner",t:"trophy"},
+      {l:"MOTM vs Scotland RWC 2023",t:"peak"},{l:"WR Player of Year 2024",t:"trophy"},
+      {l:"Near ever-present 2016-2025",t:"peak"}
+    ],
+    note:"A two-time World Rugby Player of the Year and one of the most consistent forwards anywhere in international rugby across this decade." },
+  { name:"Kurt-Lee Arendse", pos:"Wing", initials:"KLA", color:"#d4af37",
+    capsByYear:[0,0,0,0,0,0,1,8,9,9],
+    totalCareer:27,
+    moments:[
+      {l:"Test debut 2022",t:"debut"},{l:"76.7% try-per-game rate",t:"peak"},
+      {l:"Top 10 all-time SA try scorers",t:"peak"},{l:"New generation leader",t:"new"},
+      {l:"WR Breakthrough nom. 2025 (Hooker)",t:"new"}
+    ],
+    note:"His rise from 2022 onward represents the next attacking wave and a clear marker of the squad's generational transition." },
+  { name:"Sacha Feinberg-Mngomezulu", pos:"Fly-half / Utility", initials:"SFM", color:"#335b84",
+    capsByYear:[0,0,0,0,0,0,0,4,9,10],
+    totalCareer:23,
+    moments:[
+      {l:"Test debut 2023",t:"debut"},{l:"Most tries by Bok fly-half",t:"peak"},
+      {l:"2025 starting 10 challenger",t:"new"},{l:"World Rugby nom. 2025",t:"new"}
+    ],
+    note:"By 2025 he had become the clearest signal that the next phase of Springbok game management was already taking shape." },
+  { name:"Evan Roos", pos:"No.8", initials:"ER", color:"#00A651",
+    capsByYear:[0,0,0,0,0,0,1,7,9,9],
+    totalCareer:26,
+    moments:[
+      {l:"Test debut 2022 vs NZ",t:"debut"},{l:"Became starting No.8 2023",t:"peak"},
+      {l:"Key 2024-25 performer",t:"peak"},{l:"Future captain candidate",t:"new"}
+    ],
+    note:"His emergence added a new long-term anchor in the back row and strengthened the succession picture in the final years of the period." },
+];
+
+const debuts = [
+  { year:2016, players:[{n:"Malcolm Marx",star:true},{n:"Pieter-Steph du Toit",star:true},{n:"Damian de Allende",star:true},{n:"Kwagga Smith",star:false}] },
+  { year:2017, players:[{n:"Aphiwe Dyantyi",star:false},{n:"Andre Esterhuizen",star:true},{n:"Reinach (limited)",star:false}] },
+  { year:2018, players:[{n:"Cheslin Kolbe",star:true},{n:"Mapimpi",star:true},{n:"Lukhanyo Am",star:true},{n:"Siya Kolisi (captain)",star:true},{n:"Rassie era begins",star:false}] },
+  { year:2019, players:[{n:"RWC winning squad - 23 players",star:true},{n:"Kurt-Lee Arendse (U20)",star:false}] },
+  { year:2020, players:[{n:"No Tests (COVID)",star:false}] },
+  { year:2021, players:[{n:"Evan Roos (later)",star:true},{n:"Salmaan Moerat",star:true},{n:"Elrigh Louw",star:true}] },
+  { year:2022, players:[{n:"Kurt-Lee Arendse",star:true},{n:"Manie Libbok",star:true},{n:"Evan Roos",star:true},{n:"Canan Moodie",star:true}] },
+  { year:2023, players:[{n:"Sacha Feinberg-Mngomezulu",star:true},{n:"Aphelele Fassi",star:true},{n:"Ethan Hooker (later)",star:false}] },
+  { year:2024, players:[{n:"Aphelele Fassi (established)",star:true},{n:"Canan Moodie (established)",star:true}] },
+  { year:2025, players:[{n:"Ethan Hooker",star:true},{n:"Asenathi Ntlabakanye",star:false},{n:"Boan Venter",star:false},{n:"Vincent Tshituka",star:true},{n:"Marnus van der Merwe",star:false},{n:"5 new caps July alone",star:false}] },
+];
+
+const tryData = [
+  { name:"B. Habana",      careerTotal:67, eraTotal:2,  color:"#888" },
+  { name:"M. Mapimpi",     careerTotal:34, eraTotal:33, color:"#dc2626" },
+  { name:"M. Marx",        careerTotal:22, eraTotal:20, color:"#00A651" },
+  { name:"C. Kolbe",       careerTotal:19, eraTotal:19, color:"#d4af37" },
+  { name:"KL Arendse",     careerTotal:23, eraTotal:23, color:"#16324f" },
+  { name:"J. Kriel",       careerTotal:19, eraTotal:16, color:"#335b84" },
+  { name:"S. Kolisi",      careerTotal:11, eraTotal:10, color:"#00A651" },
+  { name:"P-S du Toit",    careerTotal:9,  eraTotal:9,  color:"#16324f" },
+];
+
+function getWinColor(pct) {
+  if (pct === null) return 'var(--text3)';
+  if (pct >= 85) return 'var(--navy)';
+  if (pct >= 70) return 'var(--win)';
+  if (pct >= 55) return 'var(--draw)';
+  return 'var(--loss)';
+}
+
+function buildWRStrip() {
+  const c = document.getElementById('wrStrip');
+  years.forEach((yr,i) => {
+    const pct = winPct[i];
+    const isCovid = pct === null;
+    const col = getWinColor(pct);
+    c.innerHTML += `<div class="wr-cell ${isCovid?'covid':''}" style="--wc:${col}">
+      <div class="wr-year">${yr}</div>
+      <div class="wr-pct" style="color:${col}">${isCovid ? '-' : pct+'%'}</div>
+      <div class="wr-sub">${isCovid ? 'COVID' : testsPlayed[i]+' Tests'}</div>
+    </div>`;
+  });
+}
+
+const axisLabelColor = '#52616f';
+const axisGridColor = 'rgba(22,50,79,0.10)';
+const tooltipBg = '#ffffff';
+const tooltipBorder = 'rgba(22,50,79,0.14)';
+
+function buildArcChart() {
+  const labels = years.map(y => y === 2020 ? '2020*' : String(y));
+  new Chart(document.getElementById('arcChart'), {
+    data: {
+      labels,
+      datasets: [
+        { type:'bar', label:'Win %', data: winPct,
+          backgroundColor: winPct.map(p => p===null?'rgba(122,136,150,.20)': p>=85?'rgba(22,50,79,.72)':p>=70?'rgba(0,166,81,.72)':p>=55?'rgba(212,175,55,.72)':'rgba(220,38,38,.72)'),
+          yAxisID:'y', borderRadius:8, borderWidth:0 },
+        { type:'line', label:'Tries scored', data: triesFor,
+          borderColor:'rgba(212,175,55,.95)', backgroundColor:'transparent',
+          pointBackgroundColor:'#d4af37', borderWidth:2.4, pointRadius:4, yAxisID:'y2', tension:.28 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      scales: {
+        y: { min:0, max:100, ticks:{callback:v=>v+'%',font:{size:11,family:'Barlow Condensed'},color:axisLabelColor}, grid:{color:axisGridColor}, border:{color:axisGridColor} },
+        y2: { position:'right', min:0, max:120, ticks:{font:{size:10,family:'Barlow Condensed'},color:axisLabelColor}, grid:{display:false}, border:{color:axisGridColor} },
+        x: { ticks:{font:{size:11,family:'Barlow Condensed'},color:axisLabelColor}, grid:{display:false}, border:{color:axisGridColor} }
+      },
+      plugins:{ legend:{display:false},
+        tooltip:{backgroundColor:tooltipBg,borderColor:tooltipBorder,borderWidth:1,titleColor:'#1f2937',bodyColor:'#52616f'} }
+    }
+  });
+}
+
+function buildPtsChart() {
+  new Chart(document.getElementById('ptsChart'), {
+    type:'bar',
+    data: { labels: years.map(String),
+      datasets: [
+        { label:'Points for', data:ptsFor, backgroundColor:'rgba(0,166,81,.72)', borderRadius:8, borderWidth:0 },
+        { label:'Points against', data:ptsAgainst, backgroundColor:'rgba(22,50,79,.42)', borderRadius:8, borderWidth:0 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      scales: {
+        x: { ticks:{font:{size:11,family:'Barlow Condensed'},color:axisLabelColor}, grid:{display:false}, border:{color:axisGridColor} },
+        y: { ticks:{font:{size:10,family:'Barlow Condensed'},color:axisLabelColor}, grid:{color:axisGridColor}, border:{color:axisGridColor} }
+      },
+      plugins:{ legend:{display:false},
+        tooltip:{backgroundColor:tooltipBg,borderColor:tooltipBorder,borderWidth:1,titleColor:'#1f2937',bodyColor:'#52616f',
+          callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y}`}} }
+    }
+  });
+}
+
+function buildTryChart() {
+  const sorted = [...tryData].sort((a,b)=>b.eraTotal-a.eraTotal);
+  new Chart(document.getElementById('tryChart'), {
+    type:'bar',
+    data: { labels: sorted.map(d=>d.name),
+      datasets: [
+        { label:'Era tries (2016-2025)', data:sorted.map(d=>d.eraTotal),
+          backgroundColor:sorted.map(d=>d.color+'cc'), borderWidth:0 },
+        { label:'Career tries outside era', data:sorted.map(d=>d.careerTotal-d.eraTotal),
+          backgroundColor:'rgba(22,50,79,0.12)', borderWidth:0 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false, indexAxis:'y',
+      scales: {
+        x: { stacked:true, ticks:{font:{size:10,family:'Barlow Condensed'},color:axisLabelColor}, grid:{color:axisGridColor}, border:{color:axisGridColor} },
+        y: { stacked:true, ticks:{font:{size:12,family:'Barlow Condensed'},color:axisLabelColor}, grid:{display:false}, border:{color:axisGridColor} }
+      },
+      plugins:{ legend:{display:false},
+        tooltip:{backgroundColor:tooltipBg,borderColor:tooltipBorder,borderWidth:1,titleColor:'#1f2937',bodyColor:'#52616f',
+          callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.x}`}} }
+    }
+  });
+}
+
+function buildPlayerCards() {
+  const g = document.getElementById('pgrid');
+  const maxCap = Math.max(...players.flatMap(p=>p.capsByYear));
+  players.forEach(p => {
+    const bars = p.capsByYear.map((v,i) => {
+      const yr = years[i];
+      const h = Math.round((v/maxCap)*36);
+      const isCovid = yr===2020;
+      const col = isCovid ? 'rgba(122,136,150,.18)' : v===0 ? 'rgba(22,50,79,.08)' : p.color+'bb';
+      return `<div class="ctl-wrap">
+        <div class="ctl-n">${isCovid?'':v||''}</div>
+        <div class="ctl-bar" style="height:${Math.max(h,2)}px;background:${col}"></div>
+        <div class="ctl-yr">${String(yr).slice(2)}</div>
+      </div>`;
+    }).join('');
+    const tags = p.moments.map(m=>`<span class="mtag ${m.t}">${m.l}</span>`).join('');
+    const card = document.createElement('div');
+    card.className = 'pcard';
+    card.innerHTML = `
+      <div class="phead">
+        <div class="av" style="background:${p.color}18;color:${p.color};border:1px solid ${p.color}33">${p.initials}</div>
+        <div><div class="pname">${p.name}</div><div class="ppos">${p.pos}</div></div>
+        <div class="pcaps-wrap"><div class="pcaps-n">${p.totalCareer}</div><div class="pcaps-l">career caps</div></div>
+      </div>
+      <div class="cap-timeline">
+        <div class="ctl-label">Caps per year 2016-2025 <span class="stag">EST</span></div>
+        <div class="ctl-bars">${bars}</div>
+      </div>
+      <div class="moments">
+        <div class="mom-label">Key moments</div>
+        <div class="mom-tags">${tags}</div>
+      </div>
+      <div class="pnote">${p.note}</div>`;
+    g.appendChild(card);
+  });
+}
+
+function buildDebutGrid() {
+  const g = document.getElementById('debutGrid');
+  debuts.forEach(d => {
+    const names = d.players.map(p=>`<span class="dname ${p.star?'star':''}">${p.n}</span>`).join('');
+    g.innerHTML += `<div class="debut-yr">
+      <div class="dy-head"><div class="dy-year">${d.year}</div><div class="dy-count">${d.players.length} player${d.players.length!==1?'s':''}</div></div>
+      <div class="dy-names">${names}</div>
+    </div>`;
+  });
+}
+
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+
+buildWRStrip();
+buildArcChart();
+buildPtsChart();
+buildPlayerCards();
+buildDebutGrid();
+buildTryChart();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% assign current_url = page.url %}
+{% assign home_active = current_url == '/' %}
+{% assign projects_active = page.collection == 'projects' or current_url == '/projects/' or current_url contains '/artifacts/' %}
+{% assign about_active = current_url == '/about/' %}
+<header class="site-nav-wrap">
+  <nav class="site-nav" aria-label="Primary">
+    <a class="site-nav__logo" href="{{ '/' | relative_url }}">KM<span>.</span>III<span>.</span>IV</a>
+    <div class="site-nav__cluster">
+      <a class="site-nav__link{% if home_active %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      <a class="site-nav__link{% if projects_active %} active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a class="site-nav__link{% if about_active %} active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
+      <button class="mode-btn" type="button" data-mode-toggle>[ MODE ]</button>
+    </div>
+  </nav>
+</header>

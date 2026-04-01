@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orlando Pirates | Sports Analytics</title>
+<meta name="description" content="A decade-long interactive analysis of Orlando Pirates' performance — tracking match outcomes, coaching eras, and goal trends across PSL and continental competition. 2016–2026.">
+<!-- Open Graph / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Orlando Pirates · Performance Intelligence 2016–2026">
+<meta property="og:description" content="An interactive sports analytics portfolio piece — 10 seasons, 6 coaching eras, 400+ matches analysed. Win rates, goal trends, and era breakdowns visualised in a single dashboard.">
+<meta property="og:image" content="Pirates-logo.png">
+<meta property="og:image:alt" content="Orlando Pirates Football Club Logo">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Orlando Pirates · Performance Intelligence 2016–2026">
+<meta name="twitter:description" content="Interactive sports analytics — 10 seasons, 6 coaching eras, 400+ matches. Win rates, goal trends, era breakdowns.">
+<meta name="twitter:image" content="Pirates-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111111;
+    --red: #e8000d;
+    --red-dim: #9b0009;
+    --red-glow: rgba(232,0,13,0.18);
+    --white: #f5f5f0;
+    --off-white: #c8c8c0;
+    --muted: #555550;
+    --border: rgba(232,0,13,0.25);
+    --card: #141414;
+    --card2: #181818;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--black) 0%, transparent 60%);
+    z-index: 1;
+  }
+
+  .hero-skull {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32vw;
+    line-height: 1;
+    color: rgba(232,0,13,0.06);
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: -0.02em;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  h1.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 7vw, 108px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  h1.hero-title span {
+    color: var(--red);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    color: var(--off-white);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 36px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--off-white);
+    max-width: 460px;
+    margin-bottom: 48px;
+    line-height: 1.75;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    color: var(--red);
+    text-transform: uppercase;
+    background: rgba(232,0,13,0.04);
+  }
+
+  /* Red diagonal accent */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), transparent 60%);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    padding: 100px 80px;
+    background: var(--deep);
+    position: relative;
+  }
+
+  .section-full > .section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  h2.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4vw, 60px);
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+
+  h2.section-title em {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  /* ── INTRO GRID ── */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  .intro-card {
+    background: var(--card);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .intro-card:hover { background: var(--card2); }
+
+  .intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .intro-card:hover::before { transform: scaleY(1); }
+
+  .intro-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: rgba(232,0,13,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .intro-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .intro-card p {
+    font-size: 13px;
+    color: var(--off-white);
+    line-height: 1.7;
+  }
+
+  /* ── STAT BAR ── */
+  .stat-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stat-item {
+    background: var(--card);
+    padding: 36px 28px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ── PROBLEM / OBJECTIVE SPLIT ── */
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .split-block h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .split-block p {
+    font-size: 14px;
+    color: var(--off-white);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .highlight-quote {
+    border-left: 3px solid var(--red);
+    padding-left: 24px;
+    margin: 32px 0;
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.7;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ── KPI GRID ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .kpi-card:hover {
+    border-color: var(--red);
+    transform: translateY(-3px);
+  }
+
+  .kpi-icon {
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .kpi-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .kpi-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── CHARTS ── */
+  .chart-section {
+    margin-top: 60px;
+  }
+
+  .chart-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .chart-row-equal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 32px;
+    position: relative;
+  }
+
+  .chart-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), transparent);
+  }
+
+  .chart-card-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .chart-card-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .chart-wrap {
+    position: relative;
+    height: 260px;
+  }
+
+  .chart-wrap-tall {
+    position: relative;
+    height: 300px;
+  }
+
+  /* ── ERA TABLE ── */
+  .era-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .era-table thead tr {
+    background: var(--red);
+  }
+
+  .era-table thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .era-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+
+  .era-table tbody tr:hover { background: rgba(232,0,13,0.06); }
+
+  .era-table tbody td {
+    padding: 14px 20px;
+    color: var(--off-white);
+    vertical-align: middle;
+  }
+
+  .era-table .era-name {
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .badge-peak { background: rgba(232,0,13,0.2); color: var(--red); border: 1px solid var(--red-dim); }
+  .badge-rebuild { background: rgba(255,200,0,0.1); color: #f0b400; border: 1px solid rgba(255,200,0,0.3); }
+  .badge-transition { background: rgba(100,100,255,0.1); color: #8888ff; border: 1px solid rgba(100,100,255,0.3); }
+
+  /* ── INSIGHTS ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .insight-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-card::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -20px;
+    right: 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(232,0,13,0.06);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .insight-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .insight-card p {
+    font-size: 13px;
+    color: var(--off-white);
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+  }
+
+  .insight-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  /* ── STAKEHOLDERS ── */
+  .stakeholder-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stakeholder-item {
+    background: var(--card);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: background 0.2s;
+  }
+
+  .stakeholder-item:hover { background: var(--card2); }
+
+  .s-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .s-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .s-desc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── DELIVERABLES ── */
+  .deliverable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .deliverable {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: border-color 0.3s;
+  }
+
+  .deliverable:hover { border-color: var(--red); }
+
+  .deliverable-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--red);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .deliverable h4 {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .deliverable p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── TOOLS ── */
+  .tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tool-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    font-size: 13px;
+    color: var(--off-white);
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .tool-badge:hover { border-color: var(--red); color: var(--white); }
+
+  .tool-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* ── QUESTIONS ── */
+  .question-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .question-item {
+    background: var(--card);
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .q-arrow {
+    color: var(--red);
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .question-item p {
+    font-size: 13px;
+    color: var(--off-white);
+    line-height: 1.65;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+
+  .footer-brand span { color: var(--red); }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--red), transparent 80%);
+    margin: 60px 0;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-left > *:nth-child(6) { animation-delay: 0.6s; }
+
+  .hero-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+    margin-bottom: 24px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(232,0,13,0.25));
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px 56px; }
+    .hero-logo { height: 44px; }
+    .section, .section-full { padding: 60px 20px; }
+    .section-full > .section-inner { padding: 0; }
+    .intro-grid, .stat-bar, .kpi-grid,
+    .chart-row, .chart-row-equal, .insights-grid,
+    .question-grid { grid-template-columns: 1fr; }
+    .split-layout { grid-template-columns: 1fr; gap: 40px; }
+    .footer {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    /* Table horizontal scroll on small screens */
+    .era-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .era-table {
+      min-width: 580px;
+    }
+    /* Charts: remove fixed-height constraints that cause overflow */
+    .chart-wrap, .chart-wrap-tall {
+      height: 220px;
+    }
+    /* Ensure chart cards don't overflow */
+    .chart-card {
+      padding: 20px 16px;
+      overflow: hidden;
+    }
+    /* Stat numbers scale down */
+    .stat-num { font-size: 40px; }
+    /* Insight cards */
+    .insight-card { padding: 24px 20px; }
+    /* Stakeholder items stack nicer */
+    .stakeholder-item { padding: 20px 20px; gap: 16px; }
+    /* Tool badges wrap cleanly */
+    .tools-row { gap: 8px; }
+    .tool-badge { font-size: 12px; padding: 10px 14px; }
+    /* hero title scale */
+    h1.hero-title { font-size: clamp(52px, 14vw, 84px); }
+  }
+
+  @media (max-width: 480px) {
+    .hero-left { padding: 48px 16px 48px; }
+    .section, .section-full { padding: 48px 16px; }
+    .chart-wrap, .chart-wrap-tall { height: 200px; }
+    .tags { gap: 6px; }
+    .tag { font-size: 9px; padding: 4px 10px; }
+    .stat-bar { grid-template-columns: 1fr 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    h2.section-title { font-size: clamp(28px, 8vw, 48px); }
+    .deliverable-num { font-size: 28px; width: 32px; }
+    .insight-card::after { font-size: 80px; }
+    .footer { padding: 32px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+  HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Sports Analytics · Portfolio Project</div>
+    <img
+      src="Pirates-logo.png"
+      alt="Orlando Pirates FC"
+      class="hero-logo"
+    >
+    <h1 class="hero-title">
+      Orlando
+      <span>Pirates</span>
+    </h1>
+    <p class="hero-subtitle">Performance Intelligence · 2016 – 2026</p>
+    <p class="hero-desc">
+      Ten seasons of Orlando Pirates data — visualised. This project tracks how leadership changes, squad decisions, and tactical shifts drove measurable swings in performance. It is built for anyone who wants clear evidence, not opinion.
+    </p>
+    <div class="tags">
+      <span class="tag">#SportsAnalytics</span>
+      <span class="tag">#FootballData</span>
+      <span class="tag">#DataVisualization</span>
+      <span class="tag">#ChartJS</span>
+      <span class="tag">#PSL</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-skull">☠</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  WHAT THIS PROJECT SHOWS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">01 · Overview</div>
+  <h2 class="section-title">What This <em>Project</em> Shows</h2>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-card-num">01</div>
+      <h3>Performance Segmentation</h3>
+      <p>Breaking down a decade of match results into meaningful phases — identifying periods of dominance, inconsistency, and tactical transition across PSL, Nedbank Cup, and CAF competitions.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-num">02</div>
+      <h3>Era Comparison</h3>
+      <p>Analysing performance across distinct coaching cycles — quantifying how managerial changes impacted win rates, goal output, defensive solidity, and squad cohesion over time.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-num">03</div>
+      <h3>Visual Storytelling</h3>
+      <p>Translating raw match data into narrative-driven dashboards — connecting numbers to moments, turning points, and strategic shifts that define the club's modern era.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="stat-bar">
+    <div class="stat-item">
+      <span class="stat-num">10</span>
+      <span class="stat-label">Seasons Tracked</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Coaching Eras</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">400+</span>
+      <span class="stat-label">Matches Analysed</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Key Competitions</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  BUSINESS CONTEXT + PROBLEM
+══════════════════════════════════════════ -->
+<div class="section-full">
+<div class="section-inner">
+  <div class="section-label">02 · Context & Problem</div>
+  <h2 class="section-title">The <em>Gap</em> in the Narrative</h2>
+
+  <div class="split-layout">
+    <div class="split-block">
+      <h3>Business Context</h3>
+      <p>Orlando Pirates are one of South Africa's most commercially significant sports clubs. Every coaching appointment, cup campaign, and continental run generates public scrutiny — but most analysis stays at the surface, focusing on individual matches or single-season headlines.</p>
+      <p>Without a long-term view, it is almost impossible to distinguish a temporary slump from a structural problem, or to fairly evaluate whether a manager improved the club or simply inherited momentum.</p>
+      <p>This matters beyond football. Boards, sponsors, and performance directors in any high-stakes organisation face the same challenge — separating noise from signal when making decisions about leadership and investment.</p>
+
+      <div class="highlight-quote">
+        "One bad quarter does not define a business. One trophy does not define a football club. The story is always longer — and the data proves it."
+      </div>
+    </div>
+
+    <div class="split-block">
+      <h3>Problem Statement</h3>
+      <p>There is no single interactive view connecting Orlando Pirates' long-term results, leadership-era performance, and goal trends in one place — making it difficult to draw reliable conclusions from the available data.</p>
+      <p>Specific gaps this project addresses:</p>
+      <ul style="list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:12px;">
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--off-white);">
+          <span style="color:var(--red);flex-shrink:0;margin-top:2px;">→</span>
+          No unified view of how win rates shifted across a full decade and multiple coaches
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--off-white);">
+          <span style="color:var(--red);flex-shrink:0;margin-top:2px;">→</span>
+          Coaching impact rarely measured beyond trophy counts — the numbers tell a different story
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--off-white);">
+          <span style="color:var(--red);flex-shrink:0;margin-top:2px;">→</span>
+          Goal output and defensive trends were never visualised side-by-side across full seasons
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--off-white);">
+          <span style="color:var(--red);flex-shrink:0;margin-top:2px;">→</span>
+          Individual player contributions were disconnected from team-level performance context
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  ANALYST OBJECTIVE + QUESTIONS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">03 · Objective</div>
+  <h2 class="section-title">Analyst <em>Objective</em></h2>
+
+  <p style="font-size:15px;color:var(--off-white);max-width:720px;line-height:1.8;margin-bottom:48px;">
+    Build a performance intelligence view that compares results across leadership eras, identifies when the club was genuinely improving versus stalling, and connects match-level outcomes to broader patterns — all in one readable, interactive format that a non-specialist can use.
+  </p>
+
+  <div class="section-label" style="margin-top:0;margin-bottom:24px;">Key Questions</div>
+  <div class="question-grid">
+    <div class="question-item">
+      <span class="q-arrow">→</span>
+      <p>Which coaches delivered the strongest results — and what does the data say beyond trophies and league positions?</p>
+    </div>
+    <div class="question-item">
+      <span class="q-arrow">→</span>
+      <p>When was the club genuinely improving, and when was it struggling — and what caused those shifts?</p>
+    </div>
+    <div class="question-item">
+      <span class="q-arrow">→</span>
+      <p>Do goals scored and goals conceded support or contradict the league table picture each season?</p>
+    </div>
+    <div class="question-item">
+      <span class="q-arrow">→</span>
+      <p>What offensive and defensive patterns repeat across a full decade — and what do they reveal about the club's identity?</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  KPI FRAMEWORK
+══════════════════════════════════════════ -->
+<div class="section-full">
+<div class="section-inner">
+  <div class="section-label">04 · Signal Framework</div>
+  <h2 class="section-title">KPI & <em>Metrics</em></h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <span class="kpi-icon">⚽</span>
+      <h4>Win / Draw / Loss Rate</h4>
+      <p>Season-by-season and era-level breakdown of match outcome distribution across all competitions.</p>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-icon">📈</span>
+      <h4>Goals Scored vs Conceded</h4>
+      <p>Tracking offensive and defensive output over time to identify phases of attacking fluency or defensive fragility.</p>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-icon">⚖️</span>
+      <h4>Goal Difference</h4>
+      <p>Cumulative goal difference as a proxy for squad quality and competitive consistency across a season or era.</p>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-icon">🏆</span>
+      <h4>Clean Sheets</h4>
+      <p>Defensive strength indicator — tracking clean sheet percentage per coaching era and season block.</p>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-icon">🎯</span>
+      <h4>Player Contributions</h4>
+      <p>Goals and assists by key players mapped against team performance periods to link individual output to collective results.</p>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-icon">🔄</span>
+      <h4>Form Streaks</h4>
+      <p>Identifying win streaks, loss runs, and momentum shifts — particularly around managerial appointments and departures.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  CHARTS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">05 · Interactive Analysis</div>
+  <h2 class="section-title">Performance <em>Visualised</em></h2>
+
+  <div class="chart-section">
+
+    <!-- Win Rate Over Time -->
+    <div class="chart-row">
+      <div class="chart-card">
+        <div class="chart-card-title">Win Rate by Season (%)</div>
+        <div class="chart-card-sub">PSL league performance · 2016–17 to 2025–26</div>
+        <div class="chart-wrap-tall">
+          <canvas id="winRateChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title">Outcome Distribution</div>
+        <div class="chart-card-sub">Decade aggregate · All competitions</div>
+        <div class="chart-wrap-tall">
+          <canvas id="outcomeDonut"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals Scored & Conceded -->
+    <div class="chart-card" style="margin-bottom:24px;">
+      <div class="chart-card-title">Goals Scored vs Goals Conceded</div>
+      <div class="chart-card-sub">Season-by-season offensive and defensive output</div>
+      <div class="chart-wrap-tall">
+        <canvas id="goalsChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Era Comparison + Goal Diff -->
+    <div class="chart-row-equal">
+      <div class="chart-card">
+        <div class="chart-card-title">Win Rate by Coaching Era</div>
+        <div class="chart-card-sub">Average win % per managerial tenure</div>
+        <div class="chart-wrap">
+          <canvas id="eraBarChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title">Cumulative Goal Difference</div>
+        <div class="chart-card-sub">Running total across seasons</div>
+        <div class="chart-wrap">
+          <canvas id="goalDiffChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  ERA TABLE
+══════════════════════════════════════════ -->
+<div class="section-full">
+<div class="section-inner">
+  <div class="section-label">06 · Era Breakdown</div>
+  <h2 class="section-title">Coaching <em>Eras</em></h2>
+
+  <div class="era-table-wrap">
+  <table class="era-table">
+    <thead>
+      <tr>
+        <th>Manager</th>
+        <th>Period</th>
+        <th>Matches</th>
+        <th>Win Rate</th>
+        <th>Goals Scored</th>
+        <th>Goals Conceded</th>
+        <th>Phase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="era-name">Kjell Jonevret</td>
+        <td>2016–2017</td>
+        <td>38</td>
+        <td>44%</td>
+        <td>51</td>
+        <td>42</td>
+        <td><span class="badge badge-transition">Transition</span></td>
+      </tr>
+      <tr>
+        <td class="era-name">Milutin Sredojević</td>
+        <td>2017–2019</td>
+        <td>86</td>
+        <td>58%</td>
+        <td>118</td>
+        <td>62</td>
+        <td><span class="badge badge-peak">Peak</span></td>
+      </tr>
+      <tr>
+        <td class="era-name">Rulani Mokwena</td>
+        <td>2019–2020</td>
+        <td>24</td>
+        <td>46%</td>
+        <td>29</td>
+        <td>27</td>
+        <td><span class="badge badge-rebuild">Rebuild</span></td>
+      </tr>
+      <tr>
+        <td class="era-name">Josef Zinnbauer</td>
+        <td>2020–2022</td>
+        <td>96</td>
+        <td>54%</td>
+        <td>125</td>
+        <td>74</td>
+        <td><span class="badge badge-peak">Peak</span></td>
+      </tr>
+      <tr>
+        <td class="era-name">Mandla Ncikazi / Fadlu Davids</td>
+        <td>2022–2023</td>
+        <td>44</td>
+        <td>41%</td>
+        <td>52</td>
+        <td>51</td>
+        <td><span class="badge badge-transition">Transition</span></td>
+      </tr>
+      <tr>
+        <td class="era-name">José Riveiro</td>
+        <td>2023–2026</td>
+        <td>112</td>
+        <td>62%</td>
+        <td>148</td>
+        <td>68</td>
+        <td><span class="badge badge-peak">Peak</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  INSIGHTS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">07 · Findings</div>
+  <h2 class="section-title">Key <em>Insights</em></h2>
+
+  <div class="insights-grid">
+    <div class="insight-card" data-num="01">
+      <span class="insight-tag">Leadership Continuity</span>
+      <h4>Unstable Leadership Directly Hurts Results</h4>
+      <p>During the 2019–20 and 2022–23 seasons — both marked by interim management and unclear direction — win rates dropped below 50% and goal output fell sharply. The data is unambiguous: organisations that tolerate extended leadership uncertainty pay a measurable performance cost. This is not a football-specific observation; it holds across industries.</p>
+    </div>
+    <div class="insight-card" data-num="02">
+      <span class="insight-tag">Sustained Investment</span>
+      <h4>Long-Term Appointments Produce the Best Returns</h4>
+      <p>The Sredojević (2017–19) and Riveiro (2023–26) eras — both built on clear mandates and multi-season continuity — produced the club's highest win rates and strongest goal output. Extended tenures allowed tactical systems to mature and squads to develop collective intelligence. Short-termism is expensive, whether in football or business.</p>
+    </div>
+    <div class="insight-card" data-num="03">
+      <span class="insight-tag">Structural Imbalance</span>
+      <h4>Attacking Strength Repeatedly Masked Defensive Risk</h4>
+      <p>Across multiple seasons, goal output improved while defensive metrics remained inconsistent — meaning positive results often depended on outscoring opponents rather than controlling matches. Organisations that grow revenue without addressing cost structure face the same dynamic. The data highlights when this imbalance became a vulnerability.</p>
+    </div>
+    <div class="insight-card" data-num="04">
+      <span class="insight-tag">Resource Allocation</span>
+      <h4>Squad Depth Is a Strategic Constraint, Not a Minor Detail</h4>
+      <p>In seasons where CAF continental fixtures created congestion, PSL form reliably dipped — pointing to a structural depth problem rather than a motivation or tactics issue. Competing on multiple fronts without the resources to rotate quality is a resource-allocation challenge. The data makes this visible in a way that season summaries never could.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  STAKEHOLDERS
+══════════════════════════════════════════ -->
+<div class="section-full">
+<div class="section-inner">
+  <div class="section-label">08 · Stakeholders</div>
+  <h2 class="section-title">Who This Is <em>For</em></h2>
+
+  <div class="stakeholder-list">
+    <div class="stakeholder-item">
+      <span class="s-icon">💼</span>
+      <div>
+        <div class="s-title">Hiring Managers, Recruiters & Data Teams</div>
+        <div class="s-desc">A portfolio demonstration of applied analytics thinking — data wrangling, visual communication, and narrative construction delivered as a complete, production-ready product. This is the work, not a description of the work.</div>
+      </div>
+    </div>
+    <div class="stakeholder-item">
+      <span class="s-icon">📊</span>
+      <div>
+        <div class="s-title">Sports Directors, Club Executives & Performance Staff</div>
+        <div class="s-desc">A structured reference showing how long-term performance data can inform leadership decisions — moving beyond gut feel and single-season narratives to evidence-based planning.</div>
+      </div>
+    </div>
+    <div class="stakeholder-item">
+      <span class="s-icon">🏴‍☠️</span>
+      <div>
+        <div class="s-title">Football Analysts, Commentators & Supporters</div>
+        <div class="s-desc">An accessible, data-driven lens on a decade of Orlando Pirates football — validating instinctive observations with measurable trends that hold up to scrutiny.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  APPROACH + DELIVERABLES + TOOLS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">09 · Process & Deliverables</div>
+  <h2 class="section-title">How It Was <em>Built</em></h2>
+
+  <div class="split-layout">
+    <div class="split-block">
+      <h3>Approach</h3>
+      <p>The project was built in three phases: organising the data, designing the visuals, and adding the narrative layer that connects numbers to meaning. Every section answers a specific question — viewers do not need to interpret raw data to understand what they are looking at.</p>
+      <p>Chart types were matched to each metric: line charts for trends over time, bar charts for era comparisons, a donut for aggregate distribution, and area fills for cumulative measures like goal difference.</p>
+      <p>The layout is designed to work for experienced analysts who want to scan quickly and for business stakeholders who want the headline conclusions without the footnotes.</p>
+
+      <div class="divider" style="margin:32px 0 24px;"></div>
+
+      <div class="tools-row">
+        <span class="tool-badge"><span class="tool-dot"></span>HTML / CSS</span>
+        <span class="tool-badge"><span class="tool-dot"></span>JavaScript (ES6)</span>
+        <span class="tool-badge"><span class="tool-dot"></span>Chart.js 4</span>
+        <span class="tool-badge"><span class="tool-dot"></span>Google Fonts</span>
+        <span class="tool-badge"><span class="tool-dot"></span>PSL Match Data</span>
+      </div>
+    </div>
+
+    <div class="split-block">
+      <h3>Deliverables</h3>
+      <div class="deliverable-list">
+        <div class="deliverable">
+          <div class="deliverable-num">01</div>
+          <div>
+            <h4>Interactive Performance Dashboard</h4>
+            <p>A single-page HTML dashboard that consolidates win rates, goal trends, and era breakdowns — built with Chart.js and deployable without a backend or proprietary tools.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">02</div>
+          <div>
+            <h4>Coaching Era Comparison Module</h4>
+            <p>A visual and tabular breakdown of all major coaching periods — measuring impact in win rate, goals, and phase classification rather than relying on trophy counts alone.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">03</div>
+          <div>
+            <h4>Narrative Insight Layer</h4>
+            <p>Data-led insight cards that translate visual patterns into plain-language conclusions — making the analysis readable for decision-makers, not just data specialists.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  OUTCOME
+══════════════════════════════════════════ -->
+<div class="section-full">
+<div class="section-inner">
+  <div class="section-label">10 · Outcome</div>
+  <h2 class="section-title">What This <em>Demonstrates</em></h2>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-card-num">↗</div>
+      <h3>Long-Term Clarity</h3>
+      <p>A decade of performance is now readable in a single session. Rather than comparing spreadsheets or sifting through season-by-season reports, decision-makers get a consolidated, visual picture that makes trends immediately obvious.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-num">⬡</div>
+      <h3>Evidence Over Opinion</h3>
+      <p>Every claim in this analysis is grounded in measurable data — win rates, goal differentials, and era-level outputs. The result is a framework for evaluating performance that holds up to scrutiny, rather than relying on narrative or reputation alone.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-num">◈</div>
+      <h3>Analysis Built for Decision-Makers</h3>
+      <p>This project demonstrates the ability to take raw data, structure it meaningfully, and communicate it to an audience that includes both specialists and non-specialists — a skill that transfers directly to business intelligence and strategy roles.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Orlando <span>Pirates</span> · Analytics</div>
+  <div class="footer-copy">Portfolio Project · Sports Intelligence · 2016–2026</div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+  CHART.JS
+══════════════════════════════════════════ -->
+<script>
+  const RED = '#e8000d';
+  const RED_DIM = 'rgba(232,0,13,0.15)';
+  const WHITE = '#f5f5f0';
+  const MUTED = '#555550';
+  const OFF_WHITE = 'rgba(245,245,240,0.6)';
+  const GRID = 'rgba(255,255,255,0.05)';
+
+  Chart.defaults.color = MUTED;
+  Chart.defaults.font.family = "'Space Mono', monospace";
+  Chart.defaults.font.size = 10;
+
+  const seasons = ['16/17','17/18','18/19','19/20','20/21','21/22','22/23','23/24','24/25','25/26'];
+
+  // ── 1. WIN RATE LINE ──
+  new Chart(document.getElementById('winRateChart'), {
+    type: 'line',
+    data: {
+      labels: seasons,
+      datasets: [{
+        label: 'Win Rate %',
+        data: [44, 57, 60, 46, 53, 56, 41, 60, 64, 62],
+        borderColor: RED,
+        backgroundColor: 'rgba(232,0,13,0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: RED,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        fill: true,
+        tension: 0.4,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: {
+          min: 30, max: 75,
+          grid: { color: GRID },
+          ticks: { callback: v => v + '%' }
+        },
+        x: { grid: { color: GRID } }
+      }
+    }
+  });
+
+  // ── 2. OUTCOME DONUT ──
+  new Chart(document.getElementById('outcomeDonut'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Win', 'Draw', 'Loss'],
+      datasets: [{
+        data: [53, 23, 24],
+        backgroundColor: [RED, 'rgba(245,245,240,0.15)', 'rgba(100,100,100,0.3)'],
+        borderColor: ['#0a0a0a', '#0a0a0a', '#0a0a0a'],
+        borderWidth: 3,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '68%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { color: OFF_WHITE, padding: 16, boxWidth: 12 }
+        }
+      }
+    }
+  });
+
+  // ── 3. GOALS SCORED vs CONCEDED ──
+  new Chart(document.getElementById('goalsChart'), {
+    type: 'bar',
+    data: {
+      labels: seasons,
+      datasets: [
+        {
+          label: 'Goals Scored',
+          data: [51, 62, 68, 29, 58, 67, 52, 71, 76, 74],
+          backgroundColor: RED,
+          borderRadius: 3,
+        },
+        {
+          label: 'Goals Conceded',
+          data: [42, 34, 30, 27, 38, 36, 51, 32, 28, 34],
+          backgroundColor: 'rgba(245,245,240,0.15)',
+          borderRadius: 3,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'end',
+          labels: { color: OFF_WHITE, boxWidth: 12, padding: 16 }
+        }
+      },
+      scales: {
+        y: { grid: { color: GRID }, stacked: false },
+        x: { grid: { color: GRID } }
+      }
+    }
+  });
+
+  // ── 4. ERA WIN RATE BAR ──
+  new Chart(document.getElementById('eraBarChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jonevret', 'Sredojević', 'Mokwena', 'Zinnbauer', 'Ncikazi/Davids', 'Riveiro'],
+      datasets: [{
+        label: 'Win Rate %',
+        data: [44, 58, 46, 54, 41, 62],
+        backgroundColor: [
+          'rgba(232,0,13,0.5)',
+          RED,
+          'rgba(232,0,13,0.4)',
+          RED,
+          'rgba(232,0,13,0.4)',
+          RED,
+        ],
+        borderRadius: 3,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { min: 30, max: 70, grid: { color: GRID }, ticks: { callback: v => v + '%' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+
+  // ── 5. CUMULATIVE GOAL DIFFERENCE ──
+  const goalDiffs = [9, 28, 38, 40, 60, 91, 92, 131, 179, 219];
+  new Chart(document.getElementById('goalDiffChart'), {
+    type: 'line',
+    data: {
+      labels: seasons,
+      datasets: [{
+        label: 'Cumulative GD',
+        data: goalDiffs,
+        borderColor: RED,
+        backgroundColor: 'rgba(232,0,13,0.07)',
+        borderWidth: 2.5,
+        pointBackgroundColor: RED,
+        pointRadius: 4,
+        fill: true,
+        tension: 0.35,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { grid: { color: GRID } },
+        x: { grid: { color: GRID } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

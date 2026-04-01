@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KM.III.IV — Athlete-Led Viral Marketing</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #3d9970;
+    --green-bright: #52d68a;
+    --green-dim: #1e5c3e;
+    --cream: #f5f0e8;
+    --cream-dim: #c8c0ac;
+    --ink: #0d1a12;
+    --ink-mid: #162318;
+    --ink-surface: #1a2d1f;
+    --ink-card: #111d16;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background 0.4s, color 0.4s;
+    padding-bottom: 4rem;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  body.light {
+    --ink: #eeeae0;
+    --ink-mid: #e2ddd0;
+    --ink-surface: #d8d2c4;
+    --ink-card: #e8e3d8;
+    --cream: #142018;
+    --cream-dim: #3a5244;
+    --green: #1a6641;
+    --green-bright: #0f4a2e;
+    --green-dim: #5a9e7a;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid var(--green-dim);
+    position: sticky;
+    top: 0;
+    background: var(--ink);
+    z-index: 100;
+    transition: background 0.4s;
+  }
+  .nav-logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--green);
+    letter-spacing: 0.18em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--green-bright); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-bright); }
+  .mode-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.9rem;
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--green-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mode-btn:hover { background: var(--green-dim); color: var(--cream); }
+
+  /* ─── DOSSIER HEADER ─── */
+  .dossier-header {
+    padding: 3rem 3rem 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--green-dim);
+  }
+
+  .dossier-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(61,153,112,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,153,112,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .breadcrumb {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green-dim);
+    letter-spacing: 0.14em;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .breadcrumb a { color: var(--green-dim); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--green); }
+  .breadcrumb span { color: var(--green); margin: 0 0.4rem; }
+
+  .dossier-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+  }
+
+  .dossier-type {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .dossier-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .dossier-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-dim);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+  }
+
+  .dossier-title {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .dossier-lede {
+    font-size: 0.95rem;
+    color: var(--cream-dim);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Tags row */
+  .dossier-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.6rem;
+    position: relative;
+    z-index: 1;
+  }
+  .dtag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    letter-spacing: 0.08em;
+  }
+
+  /* CTA strip */
+  .dossier-cta {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    padding: 1rem 0 1.4rem;
+    border-top: 1px solid var(--green-dim);
+    position: relative;
+    z-index: 1;
+  }
+  .cta-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.45rem 1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+  }
+  .cta-btn.primary {
+    background: var(--green);
+    color: var(--ink);
+    border: 1px solid var(--green);
+    font-weight: 700;
+  }
+  .cta-btn.primary:hover { background: var(--green-bright); border-color: var(--green-bright); }
+  .cta-btn.ghost {
+    background: transparent;
+    color: var(--cream-dim);
+    border: 1px solid var(--green-dim);
+  }
+  .cta-btn.ghost:hover { border-color: var(--green); color: var(--cream); }
+  .cta-btn::before { content: '↗'; }
+
+  /* ─── LAYOUT ─── */
+  .case-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    border-right: 1px solid var(--green-dim);
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .sidebar-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.6rem;
+    margin-top: 0.6rem;
+    opacity: 0.7;
+  }
+  .sidebar-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--cream-dim);
+    line-height: 2.1;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+  .sidebar-link::before { content: '→'; color: var(--green-dim); transition: color 0.2s; flex-shrink: 0; }
+  .sidebar-link:hover { color: var(--cream); }
+  .sidebar-link:hover::before { color: var(--green); }
+  .sidebar-divider { border: none; border-top: 1px solid var(--green-dim); opacity: 0.3; margin: 0.8rem 0; }
+
+  .deliverable-list {
+    margin-top: auto;
+    border-top: 1px solid var(--green-dim);
+    padding-top: 1rem;
+  }
+  .deliverable-item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green-dim);
+    line-height: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .deliverable-item::before { content: '✓'; color: var(--green); flex-shrink: 0; }
+
+  /* ─── CASE BODY ─── */
+  .case-body {
+    padding: 2.5rem 3rem 4rem;
+    max-width: 740px;
+  }
+
+  /* ─── SNAPSHOT STRIP ─── */
+  .snapshot-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--green-dim);
+    margin-bottom: 3rem;
+  }
+
+  .snap-cell {
+    background: var(--ink-card);
+    padding: 1rem 1rem 0.9rem;
+    text-align: center;
+  }
+
+  .snap-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--green-bright);
+    display: block;
+    margin-bottom: 0.2rem;
+    line-height: 1;
+  }
+
+  .snap-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem;
+    color: var(--green-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ─── SECTION BLOCKS ─── */
+  .block {
+    margin-bottom: 2.8rem;
+  }
+
+  .block-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--green);
+    letter-spacing: 0.22em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .block-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--green-dim);
+    opacity: 0.35;
+    max-width: 180px;
+  }
+
+  .block-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .block-text {
+    font-size: 0.9rem;
+    color: var(--cream-dim);
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ─── KPI GRID ─── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--green-dim);
+    margin-top: 1rem;
+  }
+
+  .kpi-cell {
+    background: var(--ink-card);
+    padding: 1rem 1.1rem;
+  }
+
+  .kpi-category {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green);
+    letter-spacing: 0.16em;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .kpi-items {
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    line-height: 1.8;
+  }
+
+  .kpi-items li {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .kpi-items li::before { content: '·'; color: var(--green); flex-shrink: 0; font-size: 1rem; line-height: 1.7; }
+
+  /* ─── INSIGHT CARDS ─── */
+  .insight-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+    background: var(--green-dim);
+    margin-top: 1rem;
+  }
+
+  .insight-card {
+    background: var(--ink-card);
+    padding: 1.1rem 1.4rem 1.1rem 1.6rem;
+    position: relative;
+    border-left: 3px solid var(--green-dim);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .insight-card:hover { border-left-color: var(--green); background: var(--ink-surface); }
+
+  .insight-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--green-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.3rem;
+  }
+
+  .insight-text {
+    font-size: 0.87rem;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+
+  .insight-text strong { color: var(--cream); font-weight: 500; }
+
+  /* ─── IMPLICATION CARDS ─── */
+  .impl-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+    background: var(--green-dim);
+    margin-top: 1rem;
+  }
+
+  .impl-card {
+    background: var(--ink-surface);
+    padding: 1rem 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+  .impl-card:hover { background: var(--ink-mid); }
+
+  .impl-arrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--green);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .impl-text {
+    font-size: 0.87rem;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+  .impl-text strong { color: var(--cream); font-weight: 500; }
+
+  /* ─── DELIVERABLES STRIP ─── */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--green-dim);
+    margin-top: 1rem;
+  }
+
+  .deliv-cell {
+    background: var(--ink-card);
+    padding: 1rem 1.2rem;
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .deliv-icon {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--green);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .deliv-text {
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+  }
+
+  /* ─── CLOSING TERMINAL ─── */
+  .closing-terminal {
+    background: var(--ink-card);
+    border: 1px solid var(--green-dim);
+    margin-top: 3rem;
+  }
+
+  .term-bar {
+    background: var(--green-dim);
+    padding: 0.45rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); opacity: 0.4; }
+  .term-title { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: var(--green-bright); letter-spacing: 0.14em; margin-left: 6px; }
+
+  .term-body {
+    padding: 1.2rem 1.4rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.73rem;
+    line-height: 2;
+    color: var(--cream-dim);
+  }
+  .t-row { display: flex; gap: 0.6rem; }
+  .t-arrow { color: var(--green); }
+  .t-cmd { color: var(--cream); }
+  .t-out { padding-left: 1.2rem; }
+  .t-hi { color: var(--green-bright); }
+  .t-dim { color: var(--green-dim); }
+  .t-div { border: none; border-top: 1px solid var(--green-dim); margin: 0.5rem 0; opacity: 0.3; }
+
+  /* ─── PAGINATION ─── */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--green-dim);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .page-nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+  .page-nav:hover { color: var(--green-bright); }
+  .page-nav .arr { color: var(--green); }
+
+  /* ─── STATUS BAR ─── */
+  .status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--green-dim);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.28rem 3rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--green-bright);
+    letter-spacing: 0.1em;
+    z-index: 200;
+  }
+  .pulse {
+    display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-bright);
+    animation: blink 1.8s ease-in-out infinite;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">KM<span>.</span>III.IV</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="mode-btn" onclick="document.body.classList.toggle('light')">[ MODE ]</button>
+</nav>
+
+<!-- DOSSIER HEADER -->
+<div class="dossier-header">
+  <div class="breadcrumb">
+    <a href="#">HOME</a><span>//</span>
+    <a href="#">PROJECTS</a><span>//</span>
+    ATHLETE CAMPAIGN
+  </div>
+
+  <div class="dossier-meta">
+    <span class="dossier-type">Campaign Analytics &nbsp;|&nbsp; Product Analytics</span>
+    <span class="dossier-date">2026-03-28</span>
+    <span class="dossier-id">CASE STUDY // LOG-01</span>
+  </div>
+
+  <h1 class="dossier-title">Athlete-Led Viral Marketing<br>— Impact Analysis</h1>
+
+  <p class="dossier-lede">
+    Analytics case study examining whether an athlete-led viral campaign converted reach into gym memberships — across channels, funnel stages, brand lift signals, and offline behaviour.
+  </p>
+
+  <div class="dossier-tags">
+    <span class="dtag">#CampaignAnalytics</span>
+    <span class="dtag">#Python</span>
+    <span class="dtag">#PowerBI</span>
+    <span class="dtag">#FunnelAnalysis</span>
+    <span class="dtag">#AttributionModelling</span>
+  </div>
+
+  <div class="dossier-cta">
+    <a href="https://kabelo-analytics.github.io/athlete-viral-marketing-impact-analysis/" class="cta-btn primary" target="_blank">Live Dashboard</a>
+    <a href="https://github.com/kabelo-analytics/athlete-viral-marketing-impact-analysis" class="cta-btn ghost" target="_blank">GitHub Repo</a>
+    <a href="#" class="cta-btn ghost">← Back to Projects</a>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="case-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">// SECTIONS</div>
+    <a class="sidebar-link" href="#snapshot">Snapshot</a>
+    <a class="sidebar-link" href="#problem">Problem</a>
+    <a class="sidebar-link" href="#focus">My Focus</a>
+    <a class="sidebar-link" href="#kpi">KPI Framework</a>
+    <a class="sidebar-link" href="#insights">Insights</a>
+    <a class="sidebar-link" href="#implications">Implications</a>
+    <a class="sidebar-link" href="#deliverables">Deliverables</a>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-label">// STAKEHOLDERS</div>
+    <div class="sidebar-link" style="cursor:default;">Marketing leads</div>
+    <div class="sidebar-link" style="cursor:default;">Product teams</div>
+    <div class="sidebar-link" style="cursor:default;">Finance &amp; partnerships</div>
+    <hr class="sidebar-divider"/>
+    <div class="deliverable-list">
+      <div class="sidebar-label">// DELIVERABLES</div>
+      <div class="deliverable-item">Python pipeline</div>
+      <div class="deliverable-item">Star-schema model</div>
+      <div class="deliverable-item">Interactive dashboard</div>
+      <div class="deliverable-item">KPI framework</div>
+    </div>
+  </aside>
+
+  <!-- CASE BODY -->
+  <main class="case-body">
+
+    <!-- SNAPSHOT STRIP -->
+    <div class="snapshot-strip reveal" id="snapshot">
+      <div class="snap-cell">
+        <span class="snap-val">4</span>
+        <span class="snap-label">Channels tracked</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-val">5</span>
+        <span class="snap-label">KPI categories</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-val">~2wk</span>
+        <span class="snap-label">Offline lag signal</span>
+      </div>
+      <div class="snap-cell">
+        <span class="snap-val">BI</span>
+        <span class="snap-label">Star-schema ready</span>
+      </div>
+    </div>
+
+    <!-- PROBLEM -->
+    <div class="block reveal" id="problem">
+      <div class="block-tag">// problem.define</div>
+      <div class="block-title">The Measurement Gap</div>
+      <p class="block-text">
+        Wellness brands investing in athlete-led viral campaigns face a persistent measurement challenge: reach metrics spike, but it is rarely clear how much of that reach converts into actual product adoption. Without a structured analytics layer, spend decisions default to gut feel and last-click attribution — both of which distort the true channel contribution picture.
+      </p>
+    </div>
+
+    <!-- MY FOCUS -->
+    <div class="block reveal" id="focus">
+      <div class="block-tag">// analyst.focus</div>
+      <div class="block-title">What I Built and Why</div>
+      <p class="block-text">
+        The project structures a synthetic but realistic campaign dataset into a full analytics pipeline — from raw channel data through to funnel conversion rates, cost-per-acquisition by channel, brand lift tracking, and offline gym activity signals. The data model is built for Power BI consumption and designed to answer real marketing accountability questions.
+      </p>
+      <p class="block-text">
+        Brands routinely over-index on reach when evaluating influencer and athlete campaigns. Impressions are visible and immediate — conversion and brand lift are delayed and harder to attribute. This project builds the measurement framework that sits between campaign activity and acquisition outcomes.
+      </p>
+    </div>
+
+    <!-- KEY QUESTIONS -->
+    <div class="block reveal">
+      <div class="block-tag">// key.questions[]</div>
+      <div class="impl-stack">
+        <div class="impl-card">
+          <span class="impl-arrow">?</span>
+          <span class="impl-text">Did TikTok's reach volume translate into <strong>proportional acquisition volume</strong>?</span>
+        </div>
+        <div class="impl-card">
+          <span class="impl-arrow">?</span>
+          <span class="impl-text">Which channel had the <strong>lowest cost per gym membership</strong>?</span>
+        </div>
+        <div class="impl-card">
+          <span class="impl-arrow">?</span>
+          <span class="impl-text">How long was the <strong>consideration-to-action lag</strong> between campaign exposure and offline behaviour?</span>
+        </div>
+        <div class="impl-card">
+          <span class="impl-arrow">?</span>
+          <span class="impl-text">What does the <strong>brand search index</strong> tell us about awareness that conversion metrics miss?</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI FRAMEWORK -->
+    <div class="block reveal" id="kpi">
+      <div class="block-tag">// kpi.framework</div>
+      <div class="block-title">Measurement Architecture</div>
+      <div class="kpi-grid">
+        <div class="kpi-cell">
+          <div class="kpi-category">REACH</div>
+          <ul class="kpi-items">
+            <li>Impressions by channel</li>
+            <li>CTR by channel &amp; date</li>
+          </ul>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-category">CONVERSION</div>
+          <ul class="kpi-items">
+            <li>Signup rate</li>
+            <li>Trial → membership rate</li>
+            <li>Funnel stage drop-off</li>
+          </ul>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-category">EFFICIENCY</div>
+          <ul class="kpi-items">
+            <li>CPA by channel</li>
+            <li>Spend / memberships</li>
+          </ul>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-category">BRAND</div>
+          <ul class="kpi-items">
+            <li>Search index trend</li>
+            <li>Pre / during / post windows</li>
+          </ul>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-category">OFFLINE</div>
+          <ul class="kpi-items">
+            <li>Gym visit trend</li>
+            <li>New membership vs campaign</li>
+          </ul>
+        </div>
+        <div class="kpi-cell" style="background:var(--ink-surface);">
+          <div class="kpi-category">STAKEHOLDER FIT</div>
+          <ul class="kpi-items">
+            <li>Marketing: channel ROI</li>
+            <li>Product: funnel health</li>
+            <li>Finance: CPA evidence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSIGHTS -->
+    <div class="block reveal" id="insights">
+      <div class="block-tag">// insight.log</div>
+      <div class="block-title">What the Data Showed</div>
+      <div class="insight-stack">
+        <div class="insight-card">
+          <div class="insight-num">INSIGHT 01 // TIKTOK</div>
+          <div class="insight-text">TikTok delivered the <strong>highest reach volume</strong> but the weakest direct conversion efficiency — consistent with its role as an upper-funnel awareness channel, not a direct acquisition driver.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">INSIGHT 02 // EFFICIENCY</div>
+          <div class="insight-text">Paid search and email produced the <strong>lowest cost-per-membership</strong> despite significantly lower impression volumes. Volume and efficiency are not the same signal.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">INSIGHT 03 // BRAND LIFT</div>
+          <div class="insight-text"><strong>Brand search index showed measurable uplift</strong> during the campaign window — suggesting awareness was building even where immediate conversion was not occurring.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">INSIGHT 04 // OFFLINE LAG</div>
+          <div class="insight-text">Offline gym activity <strong>spiked approximately two weeks post-campaign</strong>, consistent with a consideration-to-action lag typical of wellness product adoption behaviour.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPLICATIONS -->
+    <div class="block reveal" id="implications">
+      <div class="block-tag">// implication.output</div>
+      <div class="block-title">What This Means for Decisions</div>
+      <div class="impl-stack">
+        <div class="impl-card">
+          <span class="impl-arrow">→</span>
+          <span class="impl-text"><strong>Last-click attribution significantly undervalues TikTok's contribution</strong> to the overall acquisition picture. Upper-funnel channels need a different evaluation lens.</span>
+        </div>
+        <div class="impl-card">
+          <span class="impl-arrow">→</span>
+          <span class="impl-text">Budget optimisation should evaluate upper-funnel channels on <strong>brand lift and assisted conversion</strong>, not direct CPA alone.</span>
+        </div>
+        <div class="impl-card">
+          <span class="impl-arrow">→</span>
+          <span class="impl-text">The two-week offline lag is a <strong>predictable signal</strong> — one that could be modelled forward to improve campaign timing and crew readiness for membership intake surges.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERABLES -->
+    <div class="block reveal" id="deliverables">
+      <div class="block-tag">// deliverables[]</div>
+      <div class="block-title">What Was Built</div>
+      <div class="deliverables-grid">
+        <div class="deliv-cell">
+          <span class="deliv-icon">[py]</span>
+          <span class="deliv-text">Python data pipeline — synthetic data generation, cleaning, and feature engineering</span>
+        </div>
+        <div class="deliv-cell">
+          <span class="deliv-icon">[db]</span>
+          <span class="deliv-text">Star-schema data model ready for Power BI consumption</span>
+        </div>
+        <div class="deliv-cell">
+          <span class="deliv-icon">[ui]</span>
+          <span class="deliv-text">Interactive HTML dashboard for stakeholder review</span>
+        </div>
+        <div class="deliv-cell">
+          <span class="deliv-icon">[kpi]</span>
+          <span class="deliv-text">KPI framework covering reach, conversion, efficiency, brand lift, and offline signals</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSING TERMINAL -->
+    <div class="closing-terminal reveal">
+      <div class="term-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <span class="term-title">case_study_01.sh — outcome</span>
+      </div>
+      <div class="term-body">
+        <div class="t-row"><span class="t-arrow">→</span><span class="t-cmd">outcome.print</span></div>
+        <div class="t-out t-hi">Structured campaign analytics beyond vanity metrics.</div>
+        <div class="t-out">Reach, conversion, brand lift, and offline behaviour</div>
+        <div class="t-out">connected into a single coherent measurement framework.</div>
+        <hr class="t-div"/>
+        <div class="t-row"><span class="t-arrow">→</span><span class="t-cmd">links --open</span></div>
+        <div class="t-out"><a href="https://kabelo-analytics.github.io/athlete-viral-marketing-impact-analysis/" style="color:var(--green-bright);text-decoration:none;" target="_blank">↗ live dashboard</a></div>
+        <div class="t-out"><a href="https://github.com/kabelo-analytics/athlete-viral-marketing-impact-analysis" style="color:var(--green);text-decoration:none;" target="_blank">↗ github repo</a></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination">
+  <a href="#" class="page-nav"><span class="arr">←</span> All Projects</a>
+  <a href="#" class="page-nav">Next Case Study <span class="arr">→</span></a>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <span><span class="pulse"></span>SYSTEM ONLINE // KM.III.IV</span>
+  <span id="clock">00:00:00 SAST</span>
+  <span>CASE STUDY // LOG-01</span>
+</div>
+
+<script>
+  function tick() {
+    const t = new Date();
+    document.getElementById('clock').textContent =
+      t.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' SAST';
+  }
+  tick(); setInterval(tick, 1000);
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 90);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

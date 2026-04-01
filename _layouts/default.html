@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="{{ page.body_class }}">
+    {% assign status_context = page.status_context %}
+    {% if status_context == nil %}
+      {% if page.layout == 'project' or page.layout == 'artifact' %}
+        {% assign status_context = 'CASE FILE // ACTIVE' %}
+      {% elsif page.url == '/projects/' %}
+        {% assign status_context = 'PROJECTS INDEX // 14 ENTRIES' %}
+      {% elsif page.url == '/about/' %}
+        {% assign status_context = 'ABOUT // KABELO MAKUA' %}
+      {% else %}
+        {% assign status_context = 'JHB, ZA // AVAILABLE' %}
+      {% endif %}
+    {% endif %}
+    {% include nav.html %}
+    {{ content }}
+    {% include status-bar.html context=status_context %}
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  </body>
+</html>

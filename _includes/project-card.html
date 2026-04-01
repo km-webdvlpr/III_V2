@@ -1,0 +1,66 @@
+{% assign project = include.project %}
+{% assign meta = include.meta %}
+{% assign variant = include.variant | default: 'featured' %}
+{% assign data_filters = meta.filters | join: ' ' %}
+{% if variant == 'featured' %}
+<article class="project-card project-card--featured reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ meta.group }}">
+  <div class="project-card__main">
+    <div class="project-card__meta">
+      {% if project.roleFocus %}<span class="project-card__type">{{ project.roleFocus }}</span>{% endif %}
+      <span class="project-card__date">{{ project.date | date: "%Y-%m-%d" }}</span>
+    </div>
+    <h3 class="project-card__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+    {% if project.summary %}<p class="project-card__desc">{{ project.summary }}</p>{% endif %}
+    {% if project.tags %}
+    <div class="project-card__tags">
+      {% for tag in project.tags limit: 4 %}
+      <span class="tag">#{{ tag | replace: " ", "" }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="project-card__links">
+      {% if project.repo %}<a href="{{ project.repo }}" class="card-link" target="_blank" rel="noreferrer">{{ project.repoLabel | default: "GitHub" }}</a>{% endif %}
+      {% if project.demo %}<a href="{{ project.demo }}" class="card-link" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live Project" }}</a>{% endif %}
+      <a href="{{ project.url | relative_url }}" class="card-link">Case File</a>
+    </div>
+  </div>
+  <div class="project-card__index">
+    <div class="card-num">{{ meta.log | default: forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+    <div class="card-num-label">LOG</div>
+  </div>
+</article>
+{% elsif variant == 'compact' %}
+<article class="compact-card reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ meta.group }}">
+  <h3 class="compact-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+  {% if project.summary %}<p class="compact-desc">{{ project.summary }}</p>{% endif %}
+  {% if project.tags %}
+  <div class="compact-tags">
+    {% for tag in project.tags limit: 3 %}
+    <span class="compact-tag">#{{ tag | replace: " ", "" }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="project-card__links project-card__links--compact">
+    <a href="{{ project.url | relative_url }}" class="compact-gh">Case File</a>
+    {% if project.repo %}<a href="{{ project.repo }}" class="compact-gh" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
+    {% if project.demo %}<a href="{{ project.demo }}" class="compact-gh" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live" }}</a>{% endif %}
+  </div>
+</article>
+{% elsif variant == 'creative' %}
+<article class="creative-card reveal" data-filterable data-filters="{{ data_filters }}" data-project-group="{{ meta.group }}">
+  <div class="creative-label">PERSONAL PROJECT</div>
+  <h3 class="creative-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+  {% if project.summary %}<p class="creative-desc">{{ project.summary }}</p>{% endif %}
+  {% if project.tags %}
+  <div class="creative-tags">
+    {% for tag in project.tags limit: 3 %}
+    <span class="creative-tag">#{{ tag | replace: " ", "" }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="project-card__links project-card__links--creative">
+    <a href="{{ project.url | relative_url }}" class="creative-link">Project Walkthrough</a>
+    {% if project.demo %}<a href="{{ project.demo }}" class="creative-link" target="_blank" rel="noreferrer">{{ project.demoLabel | default: "Live Project" }}</a>{% endif %}
+  </div>
+</article>
+{% endif %}
