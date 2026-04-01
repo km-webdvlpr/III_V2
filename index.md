@@ -1,7 +1,7 @@
 ---
 layout: home
-title: Analytics Portfolio
-description: Data analysis built around business questions, KPI logic, and practical decisions.
+title: Product Data Analyst Portfolio
+description: I'm Kabelo. I work as a Product Data Analyst, using data to support clearer product and business decisions.
 status_context: JHB, ZA // AVAILABLE
 body_class: page-home
 ---
@@ -31,12 +31,12 @@ body_class: page-home
     <div class="version-tag">v {{ site.mark_name }} &nbsp;//&nbsp; {{ site.location_label }}</div>
 
     <div class="typewriter-box">
-      <p data-typewriter="Data analysis built around business questions, KPI logic, and practical decisions.||Connecting metrics, workflow, and stakeholder context to clearer product and commercial direction.||Analytical work that goes beyond reporting: framing the problem, defining the measure, and supporting the decision."></p>
+      <p data-typewriter="I'm Kabelo. I work as a Product Data Analyst, building analysis around business questions and practical decisions.||My work sits between analytics, product thinking, and decision support, helping teams see what matters and what to do next.||I'm especially aligned with EdTech, FinTech, and digital product teams, but the work travels well across industries."></p>
     </div>
 
     <p class="tagline">
       Based in {{ site.location_label }} &nbsp;//&nbsp; Open to work<br>
-      Data Analyst &nbsp;//&nbsp; Product Thinking &nbsp;//&nbsp; EdTech / FinTech
+      Product Data Analyst &nbsp;//&nbsp; Product Thinking &nbsp;//&nbsp; Especially aligned with EdTech / FinTech
     </p>
 
     <div class="cta-row">
@@ -51,25 +51,25 @@ body_class: page-home
         <div class="hero-terminal__dot"></div>
         <div class="hero-terminal__dot"></div>
         <div class="hero-terminal__dot"></div>
-        <span class="hero-terminal__title">profile.sh — bash</span>
+        <span class="hero-terminal__title">profile.sh - bash</span>
       </div>
       <div class="hero-terminal__body">
         <div class="hero-terminal__section">// CURRENT FOCUS</div>
-        <div class="hero-terminal__row"><span class="hero-terminal__arrow">→</span><span class="hero-terminal__cmd">analyst.exe --mode deep</span></div>
-        <div class="hero-terminal__out hero-terminal__out--hi">Business context. KPI logic.</div>
-        <div class="hero-terminal__out">Decision support &amp; product thinking.</div>
+        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">analyst.exe --role product-data</span></div>
+        <div class="hero-terminal__out hero-terminal__out--hi">Product context. KPI logic.</div>
+        <div class="hero-terminal__out">Decision support &amp; business thinking.</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// TOOLKIT</div>
-        <div class="hero-terminal__row"><span class="hero-terminal__arrow">→</span><span class="hero-terminal__cmd">skills --list</span></div>
-        <div class="hero-terminal__out">SQL · Python · Power BI · dbt</div>
+        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">skills --list</span></div>
+        <div class="hero-terminal__out">SQL &middot; Python &middot; Power BI &middot; dbt</div>
         <div class="hero-terminal__out hero-terminal__out--hi">Analytics Eng. // KPI Design</div>
         <div class="hero-terminal__out">Business Analysis // Process Thinking</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// BEST FIT NOW</div>
-        <div class="hero-terminal__row"><span class="hero-terminal__arrow">→</span><span class="hero-terminal__cmd">match --sector edtech fintech</span></div>
-        <div class="hero-terminal__out">Product Analyst</div>
-        <div class="hero-terminal__out">Consumer Insights // Commercial</div>
-        <div class="hero-terminal__out hero-terminal__out--hi">EdTech // FinTech // {{ site.location_label }}</div>
+        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">match --sector edtech fintech</span></div>
+        <div class="hero-terminal__out">Product Data Analyst</div>
+        <div class="hero-terminal__out">Digital product // Commercial insights</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">EdTech // FinTech // Adjacent sectors</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__status">status: <span class="hero-terminal__out--hi">AVAILABLE</span> <span class="cursor" style="width:7px;height:12px;"></span></div>
       </div>
@@ -83,8 +83,8 @@ body_class: page-home
   <div class="fit-grid">
     <div class="fit-card reveal">
       <div class="fit-card-label">STRONGEST MATCH</div>
-      <div class="fit-card-title">Data Analyst<br>Product Analyst</div>
-      <div class="fit-card-body">Commercial or market analysis. Consumer and customer insights. Product or category performance.</div>
+      <div class="fit-card-title">Product Data<br>Analyst</div>
+      <div class="fit-card-body">Product, commercial, and customer analysis shaped around business questions, KPI logic, and usable decision support.</div>
     </div>
     <div class="fit-card reveal">
       <div class="fit-card-label">NATURAL PROGRESSION</div>
@@ -94,7 +94,7 @@ body_class: page-home
     <div class="fit-card reveal">
       <div class="fit-card-label">BEST ENVIRONMENT</div>
       <div class="fit-card-title">Teams That Need<br>Signal into Decision</div>
-      <div class="fit-card-body">Translating customer, product, and market signals into clearer decisions and stronger reporting.</div>
+      <div class="fit-card-body">Teams using product, customer, and commercial evidence to make clearer next-step decisions.</div>
     </div>
   </div>
 </section>
@@ -115,7 +115,7 @@ body_class: page-home
           {% break %}
           {% endif %}
         {% endfor %}
-        {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
 </section>

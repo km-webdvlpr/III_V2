@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: Portfolio-led analytics work with business and product context.
+description: Portfolio-led Product Data Analyst work with business and product context.
 status_context: ABOUT // KABELO MAKUA
 body_class: page-about
 page_class: page-about
@@ -10,7 +10,7 @@ page_class: page-about
 <section class="page-header">
   <div class="breadcrumb">HOME <span>//</span> ABOUT</div>
   <h1 class="page-title">About <span style="color:var(--green-bright);">{{ site.mark_name }}</span></h1>
-  <p class="page-subtitle">This portfolio is built to show how I approach analytical work: define the question, understand the context, structure the metrics, and produce decision-ready output.</p>
+  <p class="page-subtitle">This portfolio shows how I work as a Product Data Analyst: starting with the question, understanding the context, and turning data into something a team can actually use.</p>
 </section>
 
 <section class="about-layout">
@@ -29,7 +29,7 @@ page_class: page-about
     <div class="sidebar-meta">
       LOCATION: <span class="hi">{{ site.location_label }}</span><br>
       STATUS: <span class="hi">AVAILABLE</span><br>
-      FOCUS: <span class="hi">ANALYTICS / PRODUCT / DECISION SUPPORT</span>
+      FOCUS: <span class="hi">PRODUCT DATA / DECISION SUPPORT</span>
     </div>
   </aside>
 
@@ -42,16 +42,16 @@ page_class: page-about
           <span>whoami</span>
         </div>
         <div class="profile-name">Kabelo Makua</div>
-        <div class="profile-title">DATA ANALYST &nbsp;//&nbsp; PRODUCT THINKING &nbsp;//&nbsp; {{ site.location_label }}</div>
+        <div class="profile-title">PRODUCT DATA ANALYST &nbsp;//&nbsp; PRODUCT THINKING &nbsp;//&nbsp; {{ site.location_label }}</div>
         <hr class="profile-divider">
         <p class="profile-text">
-          I work primarily as a data analyst, with stronger projects that also show business analysis and product thinking. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
+          I'm Kabelo. I work as a Product Data Analyst, using data to help teams make clearer product and business decisions. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
         </p>
         <p class="profile-text">
-          My best work sits where analysis needs to do more than describe performance. It needs to clarify the problem, define the measure, and help a team decide what to do next. That is the thread running through this portfolio across commercial, operational, market, and product-shaped case work.
+          My work often sits between analytics, product thinking, and business analysis. I do my best work when analysis helps a team understand what is happening, why it matters, and what to do next.
         </p>
         <p class="profile-text">
-          This site is designed to be read through the projects first. The portfolio carries the main argument. The CV provides the formal background.
+          I'm especially aligned with EdTech, FinTech, and digital product teams, but the underlying work travels well across industries. This site is meant to be read through the projects first. The portfolio carries the main argument; the CV holds the formal chronology.
         </p>
         <div class="profile-stats">
           <div class="stat-cell">
@@ -72,7 +72,7 @@ page_class: page-about
 
     <section class="section" id="case-files">
       <div class="section-tag reveal">// casefiles.map --about</div>
-      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">Selected case files that best show how I approach problem framing, workflow thinking, KPI design, and decision support.</p>
+      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">Selected case files showing how I approach product questions, KPI design, workflow thinking, and decision support.</p>
       <div class="compact-grid">
         {% for entry in site.data.project_registry %}
           {% if entry.about %}
