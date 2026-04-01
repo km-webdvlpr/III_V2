@@ -56,20 +56,20 @@ body_class: page-home
       <div class="hero-terminal__body">
         <div class="hero-terminal__section">// CURRENT FOCUS</div>
         <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">analyst.exe --role product-data</span></div>
-        <div class="hero-terminal__out hero-terminal__out--hi">Product context. KPI logic.</div>
-        <div class="hero-terminal__out">Decision support &amp; business thinking.</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">Product questions. KPI logic.</div>
+        <div class="hero-terminal__out">Decision support teams can use.</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// TOOLKIT</div>
         <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">skills --list</span></div>
         <div class="hero-terminal__out">SQL &middot; Python &middot; Power BI &middot; dbt</div>
-        <div class="hero-terminal__out hero-terminal__out--hi">Analytics Eng. // KPI Design</div>
-        <div class="hero-terminal__out">Business Analysis // Process Thinking</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">Product analytics // KPI design</div>
+        <div class="hero-terminal__out">Workflow thinking // stakeholder context</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// BEST FIT NOW</div>
         <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">match --sector edtech fintech</span></div>
         <div class="hero-terminal__out">Product Data Analyst</div>
-        <div class="hero-terminal__out">Digital product // Commercial insights</div>
-        <div class="hero-terminal__out hero-terminal__out--hi">EdTech // FinTech // Adjacent sectors</div>
+        <div class="hero-terminal__out">Product analytics // Commercial insights</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">EdTech // FinTech // Digital product teams</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__status">status: <span class="hero-terminal__out--hi">AVAILABLE</span> <span class="cursor" style="width:7px;height:12px;"></span></div>
       </div>
