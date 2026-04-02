@@ -1303,15 +1303,23 @@ iframe {
   vertical-align: middle;
 }
 
+@keyframes reveal-up {
+  from {
+    transform: translateY(16px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 .reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+  animation: reveal-up 0.55s ease both;
 }
 
 [data-filterable].is-hidden,
@@ -1336,6 +1344,14 @@ iframe {
     max-height: none;
     border-right: 0;
     border-bottom: 1px solid var(--green-dim);
+  }
+
+  .case-body {
+    order: 1;
+  }
+
+  .sidebar--project {
+    order: 2;
   }
 
   .featured-grid,
