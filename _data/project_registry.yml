@@ -3,7 +3,7 @@
   log: "01"
   tier: flagship
   group: featured
-  homepage: true
+  homepage: false
   about: false
   filters: [analytics, product]
   related:
