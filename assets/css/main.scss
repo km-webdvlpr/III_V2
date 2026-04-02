@@ -1084,6 +1084,129 @@ iframe {
   border: 1px solid var(--green-dim);
 }
 
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5px;
+  margin: 1rem 0 1.6rem;
+  background: var(--green-dim);
+}
+
+.report-card,
+.report-table-wrap,
+.report-figure {
+  border: 1px solid var(--green-dim);
+  background: var(--ink-card);
+}
+
+.report-card {
+  padding: 1rem 1rem 0.95rem;
+}
+
+.report-card__label,
+.report-table th,
+.report-caption,
+.report-badge {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.report-card__label {
+  color: var(--green);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.report-card__value {
+  margin: 0.35rem 0 0.45rem;
+  font-family: 'Space Mono', monospace;
+  color: var(--cream);
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.report-card__copy {
+  margin: 0;
+  color: var(--cream-dim);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.report-figure {
+  margin: 1rem 0 1.1rem;
+  padding: 0.85rem;
+}
+
+.report-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.report-caption {
+  margin: 0.65rem 0 0;
+  color: var(--green-dim);
+  font-size: 0.63rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+.report-table-wrap {
+  margin: 1rem 0 0.4rem;
+  overflow-x: auto;
+}
+
+.report-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  color: var(--cream-dim);
+  font-size: 0.8rem;
+}
+
+.report-table th {
+  padding: 0.8rem 0.9rem;
+  color: var(--green);
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+  text-align: left;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--green-dim);
+}
+
+.report-table td {
+  padding: 0.8rem 0.9rem;
+  border-top: 1px solid rgba(61, 153, 112, 0.18);
+  vertical-align: top;
+}
+
+.report-table tbody tr:hover {
+  background: var(--ink-surface);
+}
+
+.report-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--green-dim);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.report-badge--fix {
+  color: var(--green-bright);
+}
+
+.report-badge--risk {
+  color: #d8b15c;
+}
+
+.report-badge--deprioritise {
+  color: var(--cream-dim);
+}
+
 .block {
   margin-bottom: 2.7rem;
 }
@@ -1359,7 +1482,8 @@ iframe {
   .creative-grid,
   .fit-grid,
   .process-grid,
-  .snapshot-strip {
+  .snapshot-strip,
+  .report-grid {
     grid-template-columns: 1fr;
   }
 }

@@ -76,9 +76,22 @@
     - vitality-spotify-rewards-analytics-case-study
     - digitising-estate-planning-for-emerging-households
 
-- slug: alcohol-retail-cltv-intelligence
+- slug: digital-commerce-product-intelligence
   order: 7
   log: "07"
+  tier: flagship
+  group: featured
+  homepage: true
+  about: true
+  filters: [analytics, product]
+  related:
+    - alcohol-retail-cltv-intelligence
+    - beverage-commercial-performance-mvp
+    - athlete-viral-marketing-impact-analysis
+
+- slug: alcohol-retail-cltv-intelligence
+  order: 8
+  log: "08"
   tier: supporting
   group: skill-build
   homepage: false
@@ -90,8 +103,8 @@
     - athlete-viral-marketing-impact-analysis
 
 - slug: beverage-commercial-performance-mvp
-  order: 8
-  log: "08"
+  order: 9
+  log: "09"
   tier: supporting
   group: skill-build
   homepage: false
@@ -103,8 +116,8 @@
     - health-data-bi-powerbi
 
 - slug: telco-rsa-africa-market-insights-2025
-  order: 9
-  log: "09"
+  order: 10
+  log: "10"
   tier: supporting
   group: skill-build
   homepage: false
@@ -116,8 +129,8 @@
     - beverage-commercial-performance-mvp
 
 - slug: vitality-spotify-rewards-analytics-case-study
-  order: 10
-  log: "10"
+  order: 11
+  log: "11"
   tier: supporting
   group: skill-build
   homepage: false
@@ -129,8 +142,8 @@
     - jozication-lms-insights
 
 - slug: rsa-music-evolution-case-study
-  order: 11
-  log: "11"
+  order: 12
+  log: "12"
   tier: exploratory
   group: creative
   homepage: false
@@ -142,8 +155,8 @@
     - orlando-pirates-club-experience
 
 - slug: springboks-case-study
-  order: 12
-  log: "12"
+  order: 13
+  log: "13"
   tier: exploratory
   group: creative
   homepage: false
@@ -155,8 +168,8 @@
     - athlete-viral-marketing-impact-analysis
 
 - slug: orlando-pirates-club-experience
-  order: 13
-  log: "13"
+  order: 14
+  log: "14"
   tier: exploratory
   group: creative
   homepage: false
@@ -168,8 +181,8 @@
     - rsa-music-evolution-case-study
 
 - slug: rsa-music-culture-insights
-  order: 14
-  log: "14"
+  order: 15
+  log: "15"
   tier: exploratory
   group: creative
   homepage: false
