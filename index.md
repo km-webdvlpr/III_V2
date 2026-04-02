@@ -1,7 +1,7 @@
 ---
 layout: home
-title: Product Data Analyst Portfolio
-description: I'm Kabelo. I work as a Product Data Analyst, using data to support clearer product and business decisions.
+title: Product Data Analyst // Systems Builder
+description: I'm Kabelo. I work as a Product Data Analyst and Systems Builder, using data and workflow thinking to support clearer business decisions.
 status_context: JHB, ZA // AVAILABLE
 body_class: page-home
 ---
@@ -31,12 +31,12 @@ body_class: page-home
     <div class="version-tag">v {{ site.mark_name }} &nbsp;//&nbsp; {{ site.location_label }}</div>
 
     <div class="typewriter-box">
-      <p data-typewriter="I'm Kabelo. I work as a Product Data Analyst, building analysis around business questions and practical decisions.||My work sits between analytics, product thinking, and decision support, helping teams see what matters and what to do next.||I'm especially aligned with EdTech, FinTech, and digital product teams, but the work travels well across industries."></p>
+      <p data-typewriter="I'm Kabelo. I work as a Product Data Analyst and Systems Builder, building analysis around business questions and practical decisions.||My work sits between analytics, workflow thinking, and decision support, helping teams see what matters and what to do next.||I'm especially aligned with EdTech, FinTech, and digital product teams, but the work travels well across industries."></p>
     </div>
 
     <p class="tagline">
       Based in {{ site.location_label }} &nbsp;//&nbsp; Open to work<br>
-      Product Data Analyst &nbsp;//&nbsp; Product Thinking &nbsp;//&nbsp; Especially aligned with EdTech / FinTech
+      Product Data Analyst &nbsp;//&nbsp; Systems Builder &nbsp;//&nbsp; Especially aligned with EdTech / FinTech
     </p>
 
     <div class="cta-row">
@@ -67,7 +67,7 @@ body_class: page-home
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// BEST FIT NOW</div>
         <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">match --sector edtech fintech</span></div>
-        <div class="hero-terminal__out">Product Data Analyst</div>
+        <div class="hero-terminal__out">Product Data Analyst // Systems Builder</div>
         <div class="hero-terminal__out">Product analytics // Commercial insights</div>
         <div class="hero-terminal__out hero-terminal__out--hi">EdTech // FinTech // Digital product teams</div>
         <hr class="hero-terminal__divider">

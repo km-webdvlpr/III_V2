@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: Portfolio-led Product Data Analyst work with business and product context.
+description: Portfolio-led Product Data Analyst and Systems Builder work with business and product context.
 status_context: ABOUT // KABELO MAKUA
 body_class: page-about
 page_class: page-about
@@ -10,7 +10,7 @@ page_class: page-about
 <section class="page-header">
   <div class="breadcrumb">HOME <span>//</span> ABOUT</div>
   <h1 class="page-title">About <span style="color:var(--green-bright);">{{ site.mark_name }}</span></h1>
-  <p class="page-subtitle">This portfolio shows how I work as a Product Data Analyst: starting with the question, understanding the context, and turning data into something a team can actually use.</p>
+  <p class="page-subtitle">This portfolio shows how I work as a Product Data Analyst and Systems Builder: starting with the question, understanding the context, and turning data into something a team can actually use.</p>
 </section>
 
 <section class="about-layout">
@@ -42,10 +42,10 @@ page_class: page-about
           <span>whoami</span>
         </div>
         <div class="profile-name">Kabelo Makua</div>
-        <div class="profile-title">PRODUCT DATA ANALYST &nbsp;//&nbsp; PRODUCT THINKING &nbsp;//&nbsp; {{ site.location_label }}</div>
+        <div class="profile-title">PRODUCT DATA ANALYST &nbsp;//&nbsp; SYSTEMS BUILDER &nbsp;//&nbsp; {{ site.location_label }}</div>
         <hr class="profile-divider">
         <p class="profile-text">
-          I'm Kabelo. I work as a Product Data Analyst, using data to help teams make clearer product and business decisions. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
+          I'm Kabelo. I work as a Product Data Analyst and Systems Builder, using data to help teams make clearer product and business decisions. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
         </p>
         <p class="profile-text">
           My work often sits between analytics, product thinking, and business analysis. I do my best work when analysis helps a team understand what is happening, why it matters, and what to do next.
