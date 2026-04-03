@@ -1,7 +1,7 @@
 title: KM.III.IV
 description: Data analysis built around business questions and practical decisions.
 url: "https://km-webdvlpr.github.io"
-baseurl: "/III_V2"
+baseurl: "/III.IV"
 timezone: Africa/Johannesburg
 markdown: kramdown
 highlighter: rouge
