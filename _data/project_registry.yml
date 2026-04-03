@@ -115,6 +115,19 @@
     - digital-commerce-product-intelligence
     - bontle-operational-intelligence-for-service-teams
 
+- slug: alx-product-intelligence
+  order: 18
+  log: "18"
+  tier: flagship
+  group: featured
+  homepage: false
+  about: true
+  filters: [analytics, product, edtech]
+  related:
+    - jozication-lms-insights
+    - capitec-product-intelligence
+    - bash-product-intelligence
+
 - slug: alcohol-retail-cltv-intelligence
   order: 9
   log: "09"
