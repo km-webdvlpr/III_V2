@@ -16,7 +16,7 @@
   log: "02"
   tier: flagship
   group: featured
-  homepage: true
+  homepage: false
   about: true
   filters: [analytics]
   related:
@@ -101,6 +101,19 @@
     - digital-commerce-product-intelligence
     - bontle-operational-intelligence-for-service-teams
     - jozication-lms-insights
+
+- slug: capitec-product-intelligence
+  order: 17
+  log: "17"
+  tier: flagship
+  group: featured
+  homepage: true
+  about: true
+  filters: [analytics, product, fintech]
+  related:
+    - bash-product-intelligence
+    - digital-commerce-product-intelligence
+    - bontle-operational-intelligence-for-service-teams
 
 - slug: alcohol-retail-cltv-intelligence
   order: 9
