@@ -65,11 +65,11 @@ body_class: page-home
         <div class="hero-terminal__out hero-terminal__out--hi">Product analytics // commercial insight</div>
         <div class="hero-terminal__out">Consumer behaviour // stakeholder context</div>
         <hr class="hero-terminal__divider">
-        <div class="hero-terminal__section">// BEST FIT NOW</div>
-        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">match --focus product consumer commercial</span></div>
+        <div class="hero-terminal__section">// CURRENT INTERESTS</div>
+        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">interests --across product consumer commercial</span></div>
         <div class="hero-terminal__out">Product Intelligence Analyst</div>
-        <div class="hero-terminal__out">Consumer insight // Commercial growth</div>
-        <div class="hero-terminal__out hero-terminal__out--hi">Digital products // FMCG // Retail environments</div>
+        <div class="hero-terminal__out">Consumer insight // Commercial growth // Decision support</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">FMCG // Retail // Financial services // Education</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__status">status: <span class="hero-terminal__out--hi">AVAILABLE</span> <span class="cursor" style="width:7px;height:12px;"></span></div>
       </div>
@@ -78,23 +78,23 @@ body_class: page-home
 </section>
 
 <section class="section-shell">
-  <div class="section-label reveal">// BEST FIT</div>
-  <h2 class="section-title reveal">Where I Fit Now</h2>
+  <div class="section-label reveal">// CURRENT INTERESTS</div>
+  <h2 class="section-title reveal">What Interests Me Now</h2>
   <div class="fit-grid">
     <div class="fit-card reveal">
-      <div class="fit-card-label">STRONGEST MATCH</div>
-      <div class="fit-card-title">Product Data<br>Analyst</div>
-      <div class="fit-card-body">Product, commercial, and customer analysis shaped around business questions, KPI logic, and usable decision support.</div>
+      <div class="fit-card-label">WORK I ENJOY MOST</div>
+      <div class="fit-card-title">Product, Customer<br>&amp; Commercial Analysis</div>
+      <div class="fit-card-body">Analysis shaped around business questions, KPI logic, and outputs that help teams make clearer next-step decisions.</div>
     </div>
     <div class="fit-card reveal">
-      <div class="fit-card-label">NATURAL PROGRESSION</div>
-      <div class="fit-card-title">Senior Analytics<br>Strategy Lead</div>
-      <div class="fit-card-body">Insights manager. Product or commercial strategy roles where analysis shapes direction.</div>
+      <div class="fit-card-label">TEAMS I ADD VALUE TO</div>
+      <div class="fit-card-title">Product, Insights<br>&amp; Commercial Teams</div>
+      <div class="fit-card-body">Teams that need signal turned into direction, especially where product, customer, and business questions overlap.</div>
     </div>
     <div class="fit-card reveal">
-      <div class="fit-card-label">BEST ENVIRONMENT</div>
-      <div class="fit-card-title">Teams That Need<br>Signal into Decision</div>
-      <div class="fit-card-body">Teams using product, customer, and commercial evidence to make clearer next-step decisions.</div>
+      <div class="fit-card-label">INDUSTRIES I'M INTERESTED IN</div>
+      <div class="fit-card-title">FMCG, Retail,<br>Financial Services &amp; Education</div>
+      <div class="fit-card-body">I am especially interested in digital product and analytics work inside industries where evidence, customer understanding, and commercial thinking all matter.</div>
     </div>
   </div>
 </section>
