@@ -1508,6 +1508,7 @@ iframe {
 
   .site-nav__cluster {
     justify-content: flex-end;
+    gap: 0.6rem;
   }
 
   .hero-left,
@@ -1529,6 +1530,22 @@ iframe {
     margin-left: 0;
   }
 
+  .dossier-cta,
+  .artifact-actions {
+    width: 100%;
+  }
+
+  .dossier-cta .cta-btn,
+  .artifact-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-content {
+    font-size: 0.89rem;
+    line-height: 1.72;
+  }
+
   .profile-stats {
     grid-template-columns: 1fr;
   }
@@ -1542,5 +1559,59 @@ iframe {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.1rem;
+  }
+
+  .project-content iframe {
+    height: 58vh !important;
+    min-height: 340px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-nav {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .site-nav__cluster {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .dossier-header,
+  .page-header {
+    padding-top: 2.2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .dossier-title {
+    font-size: 1.35rem;
+    line-height: 1.18;
+  }
+
+  .dossier-meta,
+  .snapshot-strip {
+    gap: 0.7rem;
+  }
+
+  .snap-cell {
+    padding: 0.9rem 0.9rem 0.8rem;
+  }
+
+  .project-content h2 {
+    font-size: 0.98rem;
+  }
+
+  .project-content h3 {
+    font-size: 0.84rem;
+  }
+
+  .compact-card,
+  .project-card__main,
+  .creative-card,
+  .case-body,
+  .about-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
