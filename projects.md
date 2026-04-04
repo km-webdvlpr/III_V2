@@ -27,9 +27,10 @@ body_class: page-projects
 <section class="filter-bar">
   <span class="filter-label">FILTER //</span>
   <button class="filter-btn active" type="button" data-filter="all">All</button>
-  <button class="filter-btn" type="button" data-filter="analytics">Analytics</button>
+  <button class="filter-btn" type="button" data-filter="commercial">Commercial</button>
+  <button class="filter-btn" type="button" data-filter="consumer">Consumer</button>
   <button class="filter-btn" type="button" data-filter="product">Product</button>
-  <button class="filter-btn" type="button" data-filter="edtech">EdTech</button>
+  <button class="filter-btn" type="button" data-filter="operations">Operations</button>
   <button class="filter-btn" type="button" data-filter="culture">Culture</button>
 </section>
 

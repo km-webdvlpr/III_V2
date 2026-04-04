@@ -5,7 +5,7 @@
   group: featured
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [commercial, consumer]
   related:
     - vitality-spotify-rewards-analytics-case-study
     - alcohol-retail-cltv-intelligence
@@ -18,7 +18,7 @@
   group: featured
   homepage: false
   about: true
-  filters: [analytics]
+  filters: [operations, commercial]
   related:
     - athlete-viral-marketing-impact-analysis
     - bontle-operational-intelligence-for-service-teams
@@ -31,7 +31,7 @@
   group: featured
   homepage: true
   about: true
-  filters: [product]
+  filters: [product, consumer]
   related:
     - bontle-operational-intelligence-for-service-teams
     - telco-rsa-africa-market-insights-2025
@@ -44,7 +44,7 @@
   group: featured
   homepage: true
   about: true
-  filters: [analytics, product]
+  filters: [operations, product]
   related:
     - digitising-estate-planning-for-emerging-households
     - jozication-lms-insights
@@ -57,7 +57,7 @@
   group: featured
   homepage: false
   about: false
-  filters: [analytics]
+  filters: [operations]
   related:
     - beverage-commercial-performance-mvp
     - vitality-spotify-rewards-analytics-case-study
@@ -70,7 +70,7 @@
   group: featured
   homepage: false
   about: true
-  filters: [analytics, edtech]
+  filters: [product, consumer]
   related:
     - bontle-operational-intelligence-for-service-teams
     - vitality-spotify-rewards-analytics-case-study
@@ -83,7 +83,7 @@
   group: featured
   homepage: true
   about: true
-  filters: [analytics, product]
+  filters: [product, commercial, consumer]
   related:
     - alcohol-retail-cltv-intelligence
     - beverage-commercial-performance-mvp
@@ -96,7 +96,7 @@
   group: featured
   homepage: false
   about: true
-  filters: [analytics, product]
+  filters: [product, consumer]
   related:
     - digital-commerce-product-intelligence
     - bontle-operational-intelligence-for-service-teams
@@ -109,7 +109,7 @@
   group: featured
   homepage: true
   about: true
-  filters: [analytics, product, fintech]
+  filters: [product, consumer, commercial]
   related:
     - bash-product-intelligence
     - digital-commerce-product-intelligence
@@ -122,7 +122,7 @@
   group: featured
   homepage: false
   about: true
-  filters: [analytics, product, edtech]
+  filters: [product, consumer]
   related:
     - jozication-lms-insights
     - capitec-product-intelligence
@@ -135,7 +135,7 @@
   group: featured
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [commercial, consumer]
   related:
     - beverage-commercial-performance-mvp
     - alcohol-retail-cltv-intelligence
@@ -148,7 +148,7 @@
   group: featured
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [commercial, consumer]
   related:
     - bash-product-intelligence
     - alcohol-retail-cltv-intelligence
@@ -161,7 +161,7 @@
   group: featured
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [commercial, consumer]
   related:
     - massmart-gauteng-basket-store-format-intelligence
     - heineken-premium-beer-channel-pack-performance-intelligence
@@ -174,7 +174,7 @@
   group: skill-build
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [commercial, consumer]
   related:
     - beverage-commercial-performance-mvp
     - vitality-spotify-rewards-analytics-case-study
@@ -187,7 +187,7 @@
   group: skill-build
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [commercial, consumer]
   related:
     - alcohol-retail-cltv-intelligence
     - telco-rsa-africa-market-insights-2025
@@ -200,7 +200,7 @@
   group: skill-build
   homepage: false
   about: false
-  filters: [analytics]
+  filters: [commercial]
   related:
     - jhb-infrastructure-intelligence
     - digitising-estate-planning-for-emerging-households
@@ -213,7 +213,7 @@
   group: skill-build
   homepage: false
   about: false
-  filters: [analytics, product]
+  filters: [product, consumer, commercial]
   related:
     - athlete-viral-marketing-impact-analysis
     - alcohol-retail-cltv-intelligence
@@ -226,7 +226,7 @@
   group: creative
   homepage: false
   about: false
-  filters: [analytics, culture]
+  filters: [culture, consumer]
   related:
     - springboks-case-study
     - rsa-music-culture-insights
@@ -239,7 +239,7 @@
   group: creative
   homepage: false
   about: false
-  filters: [analytics, culture]
+  filters: [culture, consumer]
   related:
     - rsa-music-evolution-case-study
     - orlando-pirates-club-experience
