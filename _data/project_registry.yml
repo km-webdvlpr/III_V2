@@ -128,6 +128,19 @@
     - capitec-product-intelligence
     - bash-product-intelligence
 
+- slug: heineken-premium-beer-channel-pack-performance-intelligence
+  order: 19
+  log: "19"
+  tier: flagship
+  group: featured
+  homepage: false
+  about: false
+  filters: [analytics, product]
+  related:
+    - beverage-commercial-performance-mvp
+    - alcohol-retail-cltv-intelligence
+    - digital-commerce-product-intelligence
+
 - slug: alcohol-retail-cltv-intelligence
   order: 9
   log: "09"
