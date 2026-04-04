@@ -35,6 +35,9 @@
 
   function applyTheme(theme) {
     body.classList.toggle('light', theme === 'light');
+    forEachNode(document.querySelectorAll('[data-mode-toggle]'), function (button) {
+      button.textContent = theme === 'light' ? '[ THEME: LIGHT ]' : '[ THEME: DARK ]';
+    });
   }
 
   function syncTheme() {
