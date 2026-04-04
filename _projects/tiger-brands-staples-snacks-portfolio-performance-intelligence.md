@@ -44,7 +44,7 @@ Build a decision-oriented FMCG portfolio case study that identifies where staple
 - Where are promotions helping demand, and where are they creating weaker trade-offs?
 - Which Gauteng opportunities look strongest once repeat strength and commercial quality are read together?
 
-## Workflow Thinking
+## Analysis Logic
 - Staples should lead repeat purchase, but not every staple line should behave identically.
 - Snacks should show stronger promo sensitivity and broader basket participation.
 - Larger households should lean more heavily into family and value packs.
@@ -74,7 +74,7 @@ These metrics mattered because the project is meant to support portfolio decisio
 - Synthetic FMCG transaction dataset and supporting source tables
 - Summary outputs across category, product line, repeat purchase, cross-category lift, promotions, and Gauteng growth
 - Exported visuals and Jupyter notebook
-- Published standalone walkthrough plus embedded portfolio case file
+- Published standalone project plus embedded portfolio case file
 
 ## Results
 - Overall repeat purchase rate landed at 59.6%.
@@ -89,7 +89,7 @@ These metrics mattered because the project is meant to support portfolio decisio
 - Treat promotion support carefully in categories where uplift comes with weaker margin quality.
 
 ## Embedded Project
-<div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
+<div style="position:relative;height:78vh;min-height:460px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
   <iframe
     src="https://km-webdvlpr.github.io/tiger-brands-portfolio-performance/"
     title="Tiger Brands: Staples & Snacks Portfolio Performance and Household Growth Intelligence"

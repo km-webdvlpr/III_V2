@@ -44,7 +44,7 @@ Build a decision-oriented retail intelligence case study that identifies the bas
 - Which promotion combinations create the strongest uplift, and where is the margin risk highest?
 - Which shopper signals are most useful when identifying higher-value customers?
 
-## Workflow Thinking
+## Analysis Logic
 - Basket value must be derived from category mix rather than assigned independently.
 - Store format matters because Makro and Game are built for different basket missions.
 - Repeat behaviour should correlate with basket quality, but still include noise so it behaves like retail rather than a scoring formula.
@@ -75,7 +75,7 @@ These metrics mattered because the project is meant to support commercial decisi
 - Synthetic basket-level retail dataset across Makro and Game
 - Ranked basket-type, category-combination, store-format, and promotion outputs
 - Notebook and exported visuals for stakeholder storytelling
-- Published standalone walkthrough plus embedded portfolio case file
+- Published standalone project plus embedded portfolio case file
 
 ## Results
 - Overall repeat-shopping rate landed at 49.3%.
@@ -91,7 +91,7 @@ These metrics mattered because the project is meant to support commercial decisi
 - Treat the highest-uplift promotions carefully when margin compression is visible.
 
 ## Embedded Project
-<div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
+<div style="position:relative;height:78vh;min-height:460px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
   <iframe
     src="https://km-webdvlpr.github.io/massmart-gauteng-basket-intelligence/"
     title="Massmart Gauteng Basket & Store Format Intelligence"

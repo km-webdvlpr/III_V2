@@ -85,7 +85,7 @@ These metrics mattered because the purpose was to compare growth quality, not ju
 - Build a second FMCG case study to compare alcohol with another repeat-purchase category.
 
 ## Embedded Project
-<div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
+<div style="position:relative;height:78vh;min-height:460px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
   <iframe
     src="https://km-webdvlpr.github.io/heineken-premium-beer-performance/"
     title="Heineken South Africa: Premium Beer Channel & Pack Performance Intelligence"
