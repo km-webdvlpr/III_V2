@@ -51,7 +51,7 @@ page_class: page-about
           My work often sits between analytics, product thinking, and commercial analysis. I do my best work when analysis helps a team understand what is happening, why it matters, and what to do next.
         </p>
         <p class="profile-text">
-          My work travels across digital and tangible product environments, including FMCG, retail, and platform contexts. This site is meant to be read through the projects first. The portfolio carries the main argument; the CV holds the formal chronology.
+          My CV covers the formal timeline, but this portfolio shows more than that. I built it to reflect growth, range, and the way my thinking has developed across different kinds of work. My career has not followed one simple straight line, and this body of work is a better reflection of how I learn, adapt, and build toward the kind of analyst I&apos;m becoming.
         </p>
         <div class="profile-stats">
           <div class="stat-cell">
