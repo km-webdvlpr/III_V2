@@ -1,7 +1,7 @@
 ---
 layout: home
-title: Product Data Analyst // Systems Builder
-description: I'm Kabelo. I work as a Product Data Analyst and Systems Builder, using data and workflow thinking to support clearer business decisions.
+title: Product Intelligence Analyst // Consumer, Commercial & Growth Insights
+description: I'm Kabelo. I use data to understand product performance, consumer behaviour, and growth opportunities across digital and tangible products.
 status_context: JHB, ZA // AVAILABLE
 body_class: page-home
 ---
@@ -31,12 +31,12 @@ body_class: page-home
     <div class="version-tag">v {{ site.mark_name }} &nbsp;//&nbsp; {{ site.location_label }}</div>
 
     <div class="typewriter-box">
-      <p data-typewriter="I'm Kabelo. I work as a Product Data Analyst and Systems Builder, building analysis around business questions and practical decisions.||My work sits between analytics, workflow thinking, and decision support, helping teams see what matters and what to do next.||I'm especially aligned with EdTech, FinTech, and digital product teams, but the work travels well across industries."></p>
+      <p data-typewriter="I'm Kabelo. I work as a Product Intelligence Analyst, building analysis around business questions and practical decisions.||My work sits across product performance, consumer behaviour, and growth insight, helping teams see what matters and what to do next.||The work travels across digital and tangible products, from platform environments to FMCG, retail, and commercial contexts."></p>
     </div>
 
     <p class="tagline">
       Based in {{ site.location_label }} &nbsp;//&nbsp; Open to work<br>
-      Product Data Analyst &nbsp;//&nbsp; Systems Builder &nbsp;//&nbsp; Especially aligned with EdTech / FinTech
+      Product Intelligence Analyst &nbsp;//&nbsp; Consumer, Commercial &amp; Growth Insights &nbsp;//&nbsp; Across digital and tangible products
     </p>
 
     <div class="cta-row">
@@ -55,21 +55,21 @@ body_class: page-home
       </div>
       <div class="hero-terminal__body">
         <div class="hero-terminal__section">// CURRENT FOCUS</div>
-        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">analyst.exe --role product-data</span></div>
-        <div class="hero-terminal__out hero-terminal__out--hi">Product questions. KPI logic.</div>
+        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">analyst.exe --role product-intelligence</span></div>
+        <div class="hero-terminal__out hero-terminal__out--hi">Product performance. Consumer behaviour.</div>
         <div class="hero-terminal__out">Decision support teams can use.</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// TOOLKIT</div>
         <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">skills --list</span></div>
         <div class="hero-terminal__out">SQL &middot; Python &middot; Power BI &middot; dbt</div>
-        <div class="hero-terminal__out hero-terminal__out--hi">Product analytics // KPI design</div>
-        <div class="hero-terminal__out">Workflow thinking // stakeholder context</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">Product analytics // commercial insight</div>
+        <div class="hero-terminal__out">Consumer behaviour // stakeholder context</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__section">// BEST FIT NOW</div>
-        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">match --sector edtech fintech</span></div>
-        <div class="hero-terminal__out">Product Data Analyst // Systems Builder</div>
-        <div class="hero-terminal__out">Product analytics // Commercial insights</div>
-        <div class="hero-terminal__out hero-terminal__out--hi">EdTech // FinTech // Digital product teams</div>
+        <div class="hero-terminal__row"><span class="hero-terminal__arrow">&rarr;</span><span class="hero-terminal__cmd">match --focus product consumer commercial</span></div>
+        <div class="hero-terminal__out">Product Intelligence Analyst</div>
+        <div class="hero-terminal__out">Consumer insight // Commercial growth</div>
+        <div class="hero-terminal__out hero-terminal__out--hi">Digital products // FMCG // Retail environments</div>
         <hr class="hero-terminal__divider">
         <div class="hero-terminal__status">status: <span class="hero-terminal__out--hi">AVAILABLE</span> <span class="cursor" style="width:7px;height:12px;"></span></div>
       </div>

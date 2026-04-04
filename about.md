@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: Portfolio-led Product Data Analyst and Systems Builder work with business and product context.
+description: Portfolio-led product intelligence work across consumer behaviour, commercial performance, and growth opportunities.
 status_context: ABOUT // KABELO MAKUA
 body_class: page-about
 page_class: page-about
@@ -10,7 +10,7 @@ page_class: page-about
 <section class="page-header">
   <div class="breadcrumb">HOME <span>//</span> ABOUT</div>
   <h1 class="page-title">About <span style="color:var(--green-bright);">{{ site.mark_name }}</span></h1>
-  <p class="page-subtitle">This portfolio shows how I work as a Product Data Analyst and Systems Builder: starting with the question, understanding the context, and turning data into something a team can actually use.</p>
+  <p class="page-subtitle">This portfolio shows how I work as a Product Intelligence Analyst: starting with the question, understanding the context, and turning data into something a team can actually use.</p>
 </section>
 
 <section class="about-layout">
@@ -29,7 +29,7 @@ page_class: page-about
     <div class="sidebar-meta">
       LOCATION: <span class="hi">{{ site.location_label }}</span><br>
       STATUS: <span class="hi">AVAILABLE</span><br>
-      FOCUS: <span class="hi">PRODUCT DATA / DECISION SUPPORT</span>
+      FOCUS: <span class="hi">PRODUCT INTELLIGENCE / DECISION SUPPORT</span>
     </div>
   </aside>
 
@@ -42,16 +42,16 @@ page_class: page-about
           <span>whoami</span>
         </div>
         <div class="profile-name">Kabelo Makua</div>
-        <div class="profile-title">PRODUCT DATA ANALYST &nbsp;//&nbsp; SYSTEMS BUILDER &nbsp;//&nbsp; {{ site.location_label }}</div>
+        <div class="profile-title">PRODUCT INTELLIGENCE ANALYST &nbsp;//&nbsp; CONSUMER, COMMERCIAL &amp; GROWTH INSIGHTS &nbsp;//&nbsp; {{ site.location_label }}</div>
         <hr class="profile-divider">
         <p class="profile-text">
-          I'm Kabelo. I work as a Product Data Analyst and Systems Builder, using data to help teams make clearer product and business decisions. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
+          I'm Kabelo. I work as a Product Intelligence Analyst, using data to help teams make clearer product and business decisions. The work here is built around real questions, stakeholder context, and usable outputs rather than reporting for its own sake.
         </p>
         <p class="profile-text">
-          My work often sits between analytics, product thinking, and business analysis. I do my best work when analysis helps a team understand what is happening, why it matters, and what to do next.
+          My work often sits between analytics, product thinking, and commercial analysis. I do my best work when analysis helps a team understand what is happening, why it matters, and what to do next.
         </p>
         <p class="profile-text">
-          I'm especially aligned with EdTech, FinTech, and digital product teams, but the underlying work travels well across industries. This site is meant to be read through the projects first. The portfolio carries the main argument; the CV holds the formal chronology.
+          My work travels across digital and tangible product environments, including FMCG, retail, and platform contexts. This site is meant to be read through the projects first. The portfolio carries the main argument; the CV holds the formal chronology.
         </p>
         <div class="profile-stats">
           <div class="stat-cell">
@@ -72,7 +72,7 @@ page_class: page-about
 
     <section class="section" id="case-files">
       <div class="section-tag reveal">// casefiles.map --about</div>
-      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">Selected case files showing how I approach product questions, KPI design, workflow thinking, and decision support.</p>
+      <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">Selected case files showing how I approach product questions, commercial trade-offs, KPI design, and decision support.</p>
       <div class="compact-grid">
         {% for entry in site.data.project_registry %}
           {% if entry.about %}
