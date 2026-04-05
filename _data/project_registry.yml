@@ -167,6 +167,19 @@
     - heineken-premium-beer-channel-pack-performance-intelligence
     - beverage-commercial-performance-mvp
 
+- slug: scotch-whisky-consumer-progression-intelligence
+  order: 22
+  log: "22"
+  tier: flagship
+  group: featured
+  homepage: false
+  about: false
+  filters: [product, commercial, consumer]
+  related:
+    - heineken-premium-beer-channel-pack-performance-intelligence
+    - massmart-gauteng-basket-store-format-intelligence
+    - digital-commerce-product-intelligence
+
 - slug: alcohol-retail-cltv-intelligence
   order: 9
   log: "09"
