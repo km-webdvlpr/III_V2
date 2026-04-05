@@ -13,7 +13,9 @@ snapshot:
   problem: "Retail teams can see price and velocity, but they do not always have a clean read on where Scotch shoppers are progressing, hesitating, or settling into preference."
   focus: "I built a synthetic Scotch retail dataset to read gateway products, destination products, pricing friction, and the shelf conditions shaping premiumization."
   outcome: "The case isolates where progression starts, where it stalls, and which bottles behave more like recruitment tools versus preference-led destinations."
-demoPath: /scotch-whisky-consumer-progression-intelligence/docs/
+repo: "https://github.com/km-webdvlpr/scotch-whisky-consumer-progression-intelligence"
+repoLabel: "Open GitHub project"
+demo: "https://km-webdvlpr.github.io/scotch-whisky-consumer-progression-intelligence/"
 demoLabel: "Open live project"
 ---
 
@@ -85,7 +87,7 @@ Build a product intelligence case study that reads progression through product r
 ## Embedded Project
 <div style="position:relative;height:78vh;min-height:460px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
   <iframe
-    src="{{ page.demoPath | relative_url }}"
+    src="{{ page.demo }}"
     title="Scotch Whisky: Consumer Progression & Premiumization Intelligence"
     loading="lazy"
     style="width:100%;height:100%;border:0;"
@@ -93,4 +95,5 @@ Build a product intelligence case study that reads progression through product r
 </div>
 
 ## Links
-- Live project: [Scotch Whisky Consumer Progression Intelligence]({{ page.demoPath | relative_url }})
+- Live project: [Scotch Whisky Consumer Progression Intelligence]({{ page.demo }})
+- GitHub repo: [scotch-whisky-consumer-progression-intelligence]({{ page.repo }})
