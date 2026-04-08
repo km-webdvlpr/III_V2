@@ -1,76 +1,74 @@
 ---
 title: "Jozication LMS Insights"
 date: 2026-03-22
-summary: "Education analytics case study focused on learner engagement, performance trends, and actionable LMS insights."
-tags: ["Education Analytics", "LMS", "Insights", "Dashboard Storytelling"]
+summary: "Learning analytics case study focused on funnel reporting, completion, retention, and course-level performance in a synthetic LMS dataset."
+tags: ["Education Analytics", "LMS", "Product Analytics", "Reporting"]
 featured: true
-roleFocus: "Learning Analytics | Insight Reporting"
+roleFocus: "Learning Analytics | Product Reporting"
 projectShows:
-  - "KPI interpretation"
-  - "Dashboard storytelling"
-  - "Education insights"
+  - "KPI definition"
+  - "Funnel analysis"
+  - "Reporting clarity"
 snapshot:
-  problem: "Learning performance insights were difficult to consume without a focused analytics view."
-  focus: "I structured LMS signals into a practical narrative across engagement, performance, and intervention priorities."
-  outcome: "Stakeholders can review patterns faster and act on clearer learner-risk and performance signals."
+  problem: "LMS reporting was spread across engagement, completion, and retention metrics without a clear view of where learner loss was actually happening."
+  focus: "I used a synthetic LMS dataset and reporting exports to build a single walkthrough covering activation, completion, retention, course performance, and learner segments."
+  outcome: "The case study makes the main bottlenecks easier to see, especially early drop-off between enrollment and course start."
+repo: "https://github.com/kabelo-analytics/Jozication-LMS-insights"
+repoLabel: "Open GitHub project"
 demo: "https://kabelo-analytics.github.io/Jozication-LMS-insights/"
 demoLabel: "View project walkthrough"
 ---
 
 ## Overview
-Jozication LMS Insights is an education analytics case study that translates LMS activity into practical performance and engagement insight.
-
-## Hero
-Education analytics case study focused on learner engagement, performance trends, and actionable LMS insights.
-
-## Intelligence Layer
-Education stakeholders often receive fragmented reporting across attendance, assignment outcomes, and platform activity. Without a unified interpretation layer, intervention decisions are slow and reactive.
+Jozication LMS Insights is a reporting-focused learning analytics case study. It uses a synthetic LMS dataset to show how an analyst might turn enrollment, engagement, completion, and retention data into a more usable view for academic and programme teams.
 
 ## Problem
-The reporting view needed to move from static output toward decision-ready insights that highlight where learner risk is emerging and where support actions should be prioritized.
+The core issue was not lack of data. It was lack of a clear reporting layer. Teams could see enrollment counts, course outcomes, and activity signals, but not in a way that made the main bottlenecks obvious.
 
 ## Data / Signals
 ### Analyst Objective
-Design a readable analytics narrative that helps teams:
-- track learner engagement and performance in one view,
-- surface risk signals earlier,
-- and prioritize interventions with clearer evidence.
+Build a clear reporting structure that helps teams:
+- compare activation, engagement, completion, and retention in one place,
+- spot where learners are falling out of the journey,
+- and review course and segment patterns without needing SQL or raw exports.
 
 ### Stakeholders
-- Academic leads needing cohort and module-level visibility.
-- Facilitators tracking learner participation and completion behavior.
-- Program managers needing concise KPI signals for action planning.
+- Academic leads reviewing cohort and course performance.
+- Facilitators tracking learner follow-through.
+- Programme managers deciding where intervention effort should go first.
 
 ### Key Questions
-- Which engagement indicators best predict performance decline?
-- Where are completion and participation patterns breaking down?
-- Which cohorts or modules require intervention first?
-- How can insight reporting remain usable for non-technical stakeholders?
+- Where is the largest loss in the learner journey?
+- Which courses underperform on completion and satisfaction?
+- How do device, region, and age group relate to outcomes?
+- Which metrics are reliable enough for regular reporting?
 
 ### KPI Framework
-- Engagement: activity frequency, session participation, content interaction consistency.
-- Performance: assessment outcomes, progression signals, pass-risk patterns.
-- Delivery: module completion movement and intervention response indicators.
+- Funnel: enrollments, starts, active learners, completions.
+- Retention: checkpoint-based return rates, especially Day 30.
+- Course performance: completion, engagement, satisfaction.
+- Segmentation: broad differences by device, region, and age group.
 
 ## Insight
-- Structured LMS metrics into an interpretable insight flow.
-- Connected engagement and outcome indicators for better context.
-- Prioritized clarity in visual storytelling so insights are actionable, not only descriptive.
-- Built the case output as a hosted, shareable report for stakeholder review.
+- The largest funnel loss happens before course start, not later in the learning journey.
+- Completion is much stronger among learners who move into active learning.
+- Advanced courses underperform beginner courses in the current synthetic model.
+- Mobile learners trail desktop learners on completion and engagement.
 
 ## Implication
-- Engagement drop-offs appeared before performance decline in key learner segments.
-- Cohort-level variance required targeted intervention rather than broad support actions.
-- Consolidated reporting improved decision speed for educator follow-up.
+- Activation is the clearest operational pressure point in this version of the model.
+- Course design and support should be reviewed more closely for advanced content than for beginner content.
+- Segment views are useful for broad patterns, but very small segment cells should not drive strong decisions.
 
 ## Closing
 ### Deliverables
-- LMS insights case study with focused KPI narrative.
-- Engagement and performance interpretation structure.
-- Stakeholder-ready reporting flow for intervention planning.
+- Synthetic LMS dataset in SQLite and CSV form.
+- SQL analysis outputs covering funnel, retention, segmentation, and drop-off.
+- Static walkthrough page for stakeholder-style review.
+- Repo documentation explaining the metric logic and reporting limits.
 
 ### Outcome
-The project improved interpretation of learning signals and made it easier to decide where support should be applied first.
+The project is strongest as a clear reporting case study. It shows how to define metrics carefully, surface the biggest learner-loss points, and present the results in a format that is easier to review than raw query output.
 
 ### Embedded Project
 <div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
@@ -84,4 +82,4 @@ The project improved interpretation of learning signals and made it easier to de
 
 ### Link
 - Case project: [Jozication LMS Insights](https://kabelo-analytics.github.io/Jozication-LMS-insights/)
-
+- GitHub repo: [Open GitHub project](https://github.com/kabelo-analytics/Jozication-LMS-insights)
