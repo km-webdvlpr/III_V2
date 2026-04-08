@@ -1,7 +1,7 @@
 ---
 title: "Digital Commerce Product Intelligence"
 date: 2026-01-29
-summary: "Commerce analytics case study turning synthetic e-commerce events, orders, and returns into practical product, conversion, and returns-risk intelligence."
+summary: "Commerce analytics case study turning synthetic e-commerce events, orders, and returns into a clearer view of conversion, launch health, and returns risk."
 tags: ["Commerce Analytics", "Product Analytics", "Retail Intelligence", "Conversion", "Returns Risk"]
 featured: true
 roleFocus: "Commerce Analytics | Product Intelligence"
@@ -12,7 +12,7 @@ projectShows:
 snapshot:
   problem: "Product and trading teams can mistake traffic or revenue for healthy product performance when conversion friction and returns risk are hidden."
   focus: "I structured synthetic e-commerce events, orders, and returns into a practical intelligence pack across funnel performance, post-launch product health, and false-winner detection."
-  outcome: "Stakeholders can quickly see what to promote, what PDPs to fix, what launches to deprioritise, and which apparent winners are commercially risky."
+  outcome: "Stakeholders can review conversion, launch health, and returns risk in one place and use that view to prioritise follow-up."
 repo: "https://github.com/kabelo-analytics/digital-commerce-product-intelligence"
 repoLabel: "View code"
 ---
@@ -35,7 +35,7 @@ Commerce analytics case study focused on product performance, conversion frictio
 Trading and merchandising teams can see traffic, orders, and revenue every day, but those signals do not automatically reveal where product-page friction is building, which launches need fixing, or which strong sellers are eroding value through returns. This project structures those signals into a sharper operating view.
 
 ## Problem
-High visibility and high revenue can both be misleading. Teams need a way to distinguish PDP friction from checkout friction, weak launches from fixable launches, and strong sellers from false winners that create returns or margin risk.
+High visibility and high revenue can both be misleading. Teams need a way to separate weak conversion from weak demand, and topline revenue from products that carry too much returns or margin risk.
 
 ## Data / Signals
 ### Analyst Objective
@@ -45,7 +45,7 @@ Build a concise commerce intelligence pack that helps teams:
 - and flag revenue-leading products that may still be commercially risky.
 
 ### Stakeholders
-- Digital commerce or trading teams deciding what to promote, fix, or deprioritise.
+- Digital commerce or trading teams deciding what to review, fix, or deprioritise.
 - Merchandising and product owners reviewing launch health and PDP effectiveness.
 - Category or operations leads needing clearer visibility into returns-driven risk.
 
@@ -68,7 +68,7 @@ Build a concise commerce intelligence pack that helps teams:
 
 ## Implication
 - Traffic concentration alone is not enough: mobile drives most sessions but converts less efficiently through later funnel stages.
-- The slow-starter queue is mostly fix-oriented rather than promo-first, which changes what teams should do next.
+- The slow-starter queue is mostly fix-oriented rather than promo-first, which changes the first action teams should consider.
 - Revenue leaders in Women Shoes still need scrutiny because returns risk can distort what looks like strong trading performance.
 
 <div id="insights-report"></div>
@@ -79,12 +79,12 @@ Build a concise commerce intelligence pack that helps teams:
   <div class="report-card">
     <div class="report-card__label">Journey Conversion</div>
     <div class="report-card__value">145,609 -> 2,431</div>
-    <p class="report-card__copy">The generated funnel moves from 145,609 sessions to 2,431 purchases, for a 1.67% session-to-purchase rate.</p>
+    <p class="report-card__copy">The frozen synthetic run moves from 145,609 sessions to 2,440 purchases, for a 1.68% session-to-purchase rate.</p>
   </div>
   <div class="report-card">
     <div class="report-card__label">Device Gap</div>
-    <div class="report-card__value">2.10% vs 1.50%</div>
-    <p class="report-card__copy">Desktop converts 2.10% of sessions into purchase, while mobile converts 1.50% despite driving 71.9% of all sessions.</p>
+    <div class="report-card__value">2.11% vs 1.51%</div>
+    <p class="report-card__copy">Desktop converts 2.11% of sessions into purchase, while mobile converts 1.51% despite driving 71.9% of all sessions.</p>
   </div>
   <div class="report-card">
     <div class="report-card__label">Slow-Starter Queue</div>
@@ -93,28 +93,28 @@ Build a concise commerce intelligence pack that helps teams:
   </div>
   <div class="report-card">
     <div class="report-card__label">Revenue vs Margin</div>
-    <div class="report-card__value">ZAR 1.63m / 617k</div>
-    <p class="report-card__copy">Across 18 trading weeks, synthetic revenue totals ZAR 1.63m and estimated margin totals ZAR 617k, with average margin share at 37.9%.</p>
+    <div class="report-card__value">ZAR 1.63m / 619k</div>
+    <p class="report-card__copy">Across 18 trading weeks, synthetic revenue totals ZAR 1.63m and estimated margin totals ZAR 619k, with average margin share just under 38%.</p>
   </div>
   <div class="report-card">
     <div class="report-card__label">False Winners</div>
     <div class="report-card__value">{{ false_winners | size }} flagged</div>
-    <p class="report-card__copy">The false-winner logic surfaces {{ false_winners | size }} products, all in Women Shoes, with size and quality issues dominating the return narrative.</p>
+    <p class="report-card__copy">The false-winner logic surfaces {{ false_winners | size }} products, all in Women Shoes, with size and quality issues appearing most often in the flagged set.</p>
   </div>
 </div>
 
 ### Funnel Insight
-The funnel in `funnel_metrics.csv` tracks the journey as Sessions -> PDP -> Add-to-cart -> Checkout -> Purchase. Overall, 54.5% of sessions reach a PDP, only 11.4% of PDP sessions reach cart, 66.5% of carts reach checkout, and 40.5% of checkouts end in purchase.
+The funnel in `funnel_metrics.csv` tracks the journey as Sessions -> PDP -> Add-to-cart -> Checkout -> Purchase. Overall, 54.5% of sessions reach a PDP, 11.4% of PDP sessions reach cart, 66.6% of carts reach checkout, and 40.6% of checkouts end in purchase.
 
-The device split matters. Mobile generates 71.9% of all sessions but only 64.6% of purchases, while desktop has the stronger end-to-end conversion path. That points to two different decisions: improve mobile checkout flow and reduce PDP friction before expecting more traffic to lift sales.
+The device split matters. Mobile generates 71.9% of all sessions but only 64.6% of purchases, while desktop has the stronger end-to-end conversion path. That supports a closer look at the mobile journey and the early product-page steps before assuming more traffic will solve the problem.
 
 <div class="report-figure">
   <img src="../../projects/digital-commerce-product-intelligence/funnel-by-device.png" alt="Journey funnel by device for digital commerce product intelligence" />
-  <p class="report-caption">Desktop turns 2.10% of sessions into purchase versus 1.50% on mobile, even though mobile carries most traffic volume.</p>
+  <p class="report-caption">Desktop turns 2.11% of sessions into purchase versus 1.51% on mobile, even though mobile carries most traffic volume.</p>
 </div>
 
 ### Revenue vs Margin Context
-This project also keeps revenue and estimated margin together at weekly level, because topline growth can look healthy while commercial quality deteriorates underneath. The generated series peaks in the week of 2026-02-09 at roughly ZAR 120.8k revenue and ZAR 46.0k estimated margin.
+This project keeps revenue and estimated margin together at weekly level, because topline growth can look healthy while commercial quality deteriorates underneath. In the frozen run, the generated series peaks in the week of 2026-02-09 at roughly ZAR 117.9k revenue and ZAR 44.5k estimated margin.
 
 <div class="report-figure">
   <img src="../../projects/digital-commerce-product-intelligence/weekly-revenue-margin.png" alt="Weekly revenue and estimated margin trend for digital commerce product intelligence" />
@@ -122,9 +122,9 @@ This project also keeps revenue and estimated margin together at weekly level, b
 </div>
 
 ### Slow Starters Analysis
-The `slow_starters_top20.csv` output uses the repo's 14-day post-launch rule: above-category-median visibility combined with below-category-median ATC and/or purchase performance. The resulting queue is mostly operational rather than promotional. Twelve of the twenty prioritised products point to PDP improvement, six point to quality risk, and only two land in pure deprioritisation.
+The `slow_starters_top20.csv` output uses the repo's 14-day post-launch rule: above-category-median visibility combined with below-category-median ATC and/or purchase performance. The resulting queue is mostly operational rather than promotional. Twelve of the twenty prioritised products point to PDP improvement, six point to quality risk, and two land in deprioritisation.
 
-Home contributes 6 of the 20 slow starters, while Women Shoes contributes 5. That suggests launch underperformance is clustered in specific categories rather than evenly distributed across the catalogue.
+Home contributes 6 of the 20 slow starters, while Women Shoes contributes 5. That is enough to suggest concentration in a few categories, but not enough to overstate category-level certainty.
 
 <div class="report-table-wrap">
   <table class="report-table">
@@ -163,9 +163,9 @@ Home contributes 6 of the 20 slow starters, while Women Shoes contributes 5. Tha
 <p class="report-caption">Top 8 entries shown from the prioritised `slow_starters_top20.csv` export.</p>
 
 ### Returns Risk / False Winner Analysis
-The `returns_risk_products.csv` export applies the project's false-winner rule: top-revenue-quartile products that also have return rate at or above 18% or estimated margin in the bottom quartile. In this run, the rule flags {{ false_winners | size }} products, and every flagged product sits in Women Shoes.
+The `returns_risk_products.csv` export applies the project's false-winner rule: top-revenue-quartile products that also have return rate at or above 18% or estimated margin in the bottom quartile. In the frozen run, the rule flags {{ false_winners | size }} products, and every flagged product sits in Women Shoes.
 
-That concentration is the real point of the logic. High revenue alone would push these products toward promotion, but the return story changes the decision. Four of the seven false winners are dominated by size-related returns, with the rest driven by quality and damage signals. The flagged set still contributes almost 8.9% of catalogue revenue, which is enough to matter in weekly trading review.
+That concentration is the real point of the logic. High revenue alone would push these products toward promotion, but the return story changes the read. Four of the flagged products are dominated by size-related returns, with the rest driven by quality, damage, and expectation issues. The flagged set contributes about 10.6% of catalogue revenue, which is large enough to matter in weekly review.
 
 <div class="report-figure">
   <img src="../../projects/digital-commerce-product-intelligence/returns-risk-matrix.png" alt="Returns risk matrix highlighting false winners for digital commerce product intelligence" />
@@ -203,8 +203,8 @@ That concentration is the real point of the logic. High revenue alone would push
 <div id="trading-actions"></div>
 
 ### Trading Actions / Recommended Decisions
-- Fix PDP content first on high-visibility, low-conversion launches rather than treating all slow starters as demand problems.
-- Separate mobile conversion work from desktop because later-stage mobile performance is materially weaker despite heavier traffic share.
+- Review PDP content first on high-visibility, low-conversion launches rather than treating all slow starters as demand problems.
+- Separate mobile conversion analysis from desktop because later-stage mobile performance is materially weaker despite heavier traffic share.
 - Escalate sizing, quality, and expectation-setting issues on Women Shoes before increasing promotion on high-revenue items.
 - Keep weekly trade review anchored on revenue plus estimated margin, not revenue alone.
 - Deprioritise launches that remain weak after the first 14-day visibility window and do not show compensating commercial upside.
@@ -218,7 +218,7 @@ That concentration is the real point of the logic. High revenue alone would push
 - Native portfolio report visuals built from the project outputs.
 
 ### Outcome
-The project demonstrates how product and trading analytics can move beyond traffic and revenue reporting into sharper decision support. The result is a more operational view of what to fix, what to watch, and what not to over-celebrate.
+The project demonstrates how product and trading analytics can move beyond traffic and revenue reporting into a more useful operating view. The result is a clearer way to see what needs investigation, what looks fixable, and what should not be judged on revenue alone.
 
 ### Link
 - Case project: [Digital Commerce Product Intelligence](https://github.com/kabelo-analytics/digital-commerce-product-intelligence)
