@@ -13,7 +13,7 @@ snapshot:
   problem: "Mining teams can see late orders and urgent buying, but that does not automatically show where supply issues are turning into stock pressure, downtime, or avoidable cost."
   focus: "I built a mining-shaped synthetic dataset across suppliers, purchase orders, deliveries, inventory, and incidents to surface the most important operational pressure points."
   outcome: "The case turns procurement activity into a practical operating view of supplier risk, site pressure, and where intervention would improve reliability first."
-demo: "https://kabelo-analytics.github.io/mining-supplier-performance-intelligence/"
+demo: "https://km-webdvlpr.github.io/III.IV/projects/mining-supplier-performance-intelligence/walkthrough.html"
 demoLabel: "View project walkthrough"
 repo: "https://github.com/kabelo-analytics/mining-supplier-performance-intelligence"
 repoLabel: "Open GitHub project"
@@ -106,7 +106,7 @@ The case demonstrates how mining procurement analytics can move beyond supplier 
 ### Embedded Project
 <div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
   <iframe
-    src="https://kabelo-analytics.github.io/mining-supplier-performance-intelligence/"
+    src="https://km-webdvlpr.github.io/III.IV/projects/mining-supplier-performance-intelligence/walkthrough.html"
     title="Mining Supplier Performance & Procurement Efficiency Intelligence"
     loading="lazy"
     style="width:100%;height:100%;border:0;"
@@ -114,5 +114,5 @@ The case demonstrates how mining procurement analytics can move beyond supplier 
 </div>
 
 ### Link
-- Hosted walkthrough: [Mining Supplier Performance & Procurement Efficiency Intelligence](https://kabelo-analytics.github.io/mining-supplier-performance-intelligence/)
+- Hosted walkthrough: [Mining Supplier Performance & Procurement Efficiency Intelligence](https://km-webdvlpr.github.io/III.IV/projects/mining-supplier-performance-intelligence/walkthrough.html)
 - GitHub repo: [mining-supplier-performance-intelligence](https://github.com/kabelo-analytics/mining-supplier-performance-intelligence)
