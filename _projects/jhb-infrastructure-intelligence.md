@@ -1,18 +1,18 @@
 ---
 title: "JHB Municipal Infrastructure Intelligence"
 date: 2026-03-28
-summary: "Municipal analytics case study tracking pothole and water leak incidents across Johannesburg wards — built around SLA compliance, hotspot detection, and operational KPI reporting."
+summary: "Municipal analytics case study using synthetic pothole and water leak incidents to demonstrate operational KPI design, SLA monitoring, and ward-level infrastructure reporting."
 tags: ["Infrastructure Analytics", "Civic Data", "Python", "Data Visualization"]
 featured: true
 roleFocus: "Infrastructure Analytics | Civic Data"
 projectShows:
   - "SLA and operational KPI design"
-  - "Hotspot and ward-level analysis"
+  - "Ward-level incident monitoring"
   - "Civic data storytelling"
 snapshot:
-  problem: "Municipal infrastructure data — potholes, burst pipes, water leaks — is fragmented across departments, making it difficult to prioritize repairs, monitor contractor SLA compliance, or identify repeat-incident zones before they become systemic failures."
-  focus: "The project builds a Python-first analytics pipeline on synthetic, JHB-shaped incident data. The analytical focus is operational KPI design: response time, repair time, SLA breach rates, backlog trends, and geographic hotspot detection at ward and suburb level."
-  outcome: "Infrastructure teams and civic decision-makers can review where backlogs are forming, which wards are underperforming on SLAs, and where repeat incidents signal systemic failure — with a dashboard that makes these signals immediately readable."
+  problem: "Municipal infrastructure incidents such as potholes and water leaks are hard to prioritise when service teams lack a shared view of response times, repair cycles, and open-case backlog."
+  focus: "The project packages a synthetic Johannesburg-shaped incident model into generation, cleaning, feature engineering, and notebook-based KPI reporting. The analytical focus is on response time, repair time, SLA breach rates, backlog visibility, and ward-level incident monitoring."
+  outcome: "Infrastructure teams and civic decision-makers can review service performance metrics from a reproducible synthetic dataset and use them as a starting point for operational reporting."
 repo: "https://github.com/kabelo-analytics/jhb-infrastructure-intelligence"
 repoLabel: "Open GitHub project"
 demo: "https://kabelo-analytics.github.io/jhb-infrastructure-intelligence/"
@@ -20,60 +20,60 @@ demoLabel: "View live dashboard"
 ---
 
 ## Overview
-JHB Municipal Infrastructure Intelligence is a portfolio-grade civic analytics project simulating how a City of Johannesburg infrastructure team could track and prioritize service delivery using evidence-based KPIs and a Python-driven analysis pipeline.
+JHB Municipal Infrastructure Intelligence is a civic analytics portfolio project that simulates how a Johannesburg infrastructure team could monitor pothole and water leak service delivery through operational KPIs and Python-based reporting.
 
 ## Intelligence Layer
-Johannesburg faces recurring infrastructure pressure: aging road surfaces, burst water mains, and reactive-only maintenance cycles. Without an analytics layer, ward managers and operations leads cannot distinguish systemic failure zones from isolated incidents — and cannot hold contractors accountable to SLA expectations.
+Municipal incident operations are difficult to manage without a shared view of response speed, repair duration, breach rates, and backlog movement. This project focuses on the reporting layer needed to move from raw incident logs to usable operational metrics.
 
 ## Problem
-Municipal infrastructure data — potholes, burst pipes, water leaks — is fragmented across departments, making it difficult to prioritize repairs, monitor contractor SLA compliance, or identify repeat-incident zones before they become systemic failures.
+Municipal infrastructure data such as potholes, burst pipes, and water leaks is often fragmented across teams, making it harder to monitor SLA compliance, compare service performance, and maintain a consistent operational scorecard.
 
 ## Data / Signals
 
 ### Analyst Objective
-Design a Python analytics pipeline that enables infrastructure teams to:
+Design a Python reporting workflow that enables infrastructure teams to:
 - monitor SLA compliance by incident type, ward, and contractor,
-- detect repeat-incident hotspots before they become systemic,
-- and track backlog trends over time for prioritization.
+- compare response and repair timelines across issue types,
+- and track backlog trends over time for prioritisation.
 
 ### Stakeholders
 - Ward managers needing operational visibility by area.
-- Infrastructure operations leads monitoring contractor performance.
-- Civic oversight teams requiring SLA compliance evidence.
+- Infrastructure operations leads monitoring service performance.
+- Civic oversight teams requiring service-delivery KPI evidence.
 
 ### Key Questions
-- Which wards have the highest SLA breach rates and why?
-- Where are pothole and water leak incidents clustering into repeat-problem zones?
-- What is the relationship between response time and resolution quality?
-- How does backlog trend over time — and which contractor is contributing most to it?
+- What are the baseline response and repair times across pothole and water leak incidents?
+- How often do incidents breach the defined SLA logic in the synthetic dataset?
+- How does backlog move across the reporting period?
+- How evenly or unevenly are incidents distributed across wards?
 
 ### KPI Framework
-- Response: median time-to-first-response (hours) by incident type and ward.
-- Resolution: mean time-to-repair (days), SLA compliance rate, breach rate by contractor.
-- Backlog: open incident count trend, repeat-incident rate per street and pipe zone.
-- Hotspots: top 10 wards, suburbs, and streets by incident density and SLA breach frequency.
+- Response: median time-to-first-response (hours) by incident type.
+- Resolution: median time-to-repair (days), SLA breach rate, contractor compliance range.
+- Backlog: open incident trend over time.
+- Coverage: incident volume by ward and issue type.
 
 ## Insight
-- A relational synthetic dataset (200,000 rows) was structured to mirror real JHB operational patterns — messy, realistic, and BI-ready.
-- A modular Python pipeline covers data generation, cleaning, EDA, KPI calculation, and hotspot detection across all pipeline stages.
-- Analysis output is structured as an interactive HTML dashboard for immediate stakeholder readability.
-- Every KPI output is framed around a specific operational decision — not just a description.
+- The synthetic dataset produces 200,000 incident records across 135 wards and 6 contractors, giving enough scale for KPI demonstration.
+- The current implementation supports data generation, cleaning, incident-level feature building, and notebook-based KPI outputs.
+- Generated summary metrics show a 24.0 hour median first response, 3.55 day median repair time, and a 16.4% SLA breach rate.
+- The strongest value of the project is operational KPI design and reporting structure, not advanced hotspot or causal inference.
 
 ## Implication
-- SLA breach rates varied significantly by contractor and ward, pointing to both resourcing gaps and accountability failures.
-- Repeat-incident patterns in high-density wards indicated infrastructure asset deterioration, not random failure.
-- Backlog trend analysis revealed that reactive-only maintenance creates compounding service debt over time.
+- The project is useful as a municipal KPI reporting example, especially for SLA and backlog monitoring.
+- Ward-level incident volume is distributed broadly in the generated data, so the current evidence supports monitoring rather than strong hotspot concentration claims.
+- Contractor variation exists in the output, but the current implementation does not support strong procurement or contractor-removal recommendations.
 
 ## Closing
 
 ### Deliverables
-- Python pipeline covering data generation, cleaning, EDA, and KPI output.
-- Interactive HTML dashboard for operational and stakeholder review.
-- Ward and suburb-level hotspot detection layer.
-- KPI framework aligned to real municipal service delivery standards.
+- Python modules for synthetic data generation, cleaning, validation, and feature building.
+- Notebook-based KPI analysis with exported figures and summary report.
+- Interactive HTML dashboard for portfolio presentation.
+- KPI framework centred on response, repair, backlog, and SLA reporting.
 
 ### Outcome
-The project demonstrates how analyst-grade Python work translates into decision-ready civic intelligence — moving from raw incident logs to prioritized, SLA-aware, ward-level operational insight.
+The project demonstrates how Python-based analyst workflows can structure municipal incident data into a defensible operational reporting layer using synthetic data.
 
 <div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
   <iframe
