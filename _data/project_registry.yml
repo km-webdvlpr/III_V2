@@ -180,6 +180,19 @@
     - massmart-gauteng-basket-store-format-intelligence
     - digital-commerce-product-intelligence
 
+- slug: mining-supplier-performance-intelligence
+  order: 23
+  log: "23"
+  tier: flagship
+  group: featured
+  homepage: false
+  about: false
+  filters: [operations, commercial]
+  related:
+    - jhb-infrastructure-intelligence
+    - bontle-operational-intelligence-for-service-teams
+    - health-data-bi-powerbi
+
 - slug: alcohol-retail-cltv-intelligence
   order: 9
   log: "09"
