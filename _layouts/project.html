@@ -22,11 +22,43 @@ layout: default
 {% if page.repo and demo_href == page.repo %}
   {% assign show_demo = false %}
 {% endif %}
+{% assign prev_url = nil %}
+{% assign prev_title = nil %}
+{% assign prev_log = nil %}
+{% assign next_url = nil %}
+{% assign next_title = nil %}
+{% assign next_log = nil %}
+{% assign found_current = false %}
+{% for entry in site.data.project_registry %}
+  {% assign matched_project = nil %}
+  {% for candidate in site.projects %}
+    {% if candidate.slug == entry.slug %}
+      {% assign matched_project = candidate %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if matched_project %}
+    {% if found_current and next_url == nil %}
+      {% assign next_url = matched_project.url | relative_url %}
+      {% assign next_title = matched_project.title %}
+      {% assign next_log = entry.log %}
+    {% endif %}
+    {% if matched_project.slug == page.slug %}
+      {% assign found_current = true %}
+    {% else %}
+      {% unless found_current %}
+        {% assign prev_url = matched_project.url | relative_url %}
+        {% assign prev_title = matched_project.title %}
+        {% assign prev_log = entry.log %}
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
 <main class="site-main site-main--project">
   <section class="dossier-header">
     <div class="breadcrumb">
       <a href="{{ '/' | relative_url }}">HOME</a><span>//</span>
-      <a href="{{ '/projects/' | relative_url }}">PROJECTS</a><span>//</span>
+      <a href="{{ '/projects/' | relative_url }}" data-project-index-link>PROJECTS</a><span>//</span>
       {{ page.title | upcase }}
     </div>
 
@@ -53,7 +85,7 @@ layout: default
     <div class="dossier-cta">
       {% if show_demo %}<a href="{{ demo_href }}" class="cta-btn primary" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "View live project" }}</a>{% endif %}
       {% if page.repo %}<a href="{{ page.repo }}" class="cta-btn ghost" target="_blank" rel="noreferrer">{{ page.repoLabel | default: "Open GitHub project" }}</a>{% endif %}
-      <a href="{{ '/projects/' | relative_url }}" class="cta-btn ghost">Back to Projects</a>
+      <a href="{{ '/projects/' | relative_url }}" class="cta-btn ghost" data-project-index-link>Back to Projects</a>
     </div>
   </section>
 
@@ -81,7 +113,7 @@ layout: default
       {% endif %}
       <div class="deliverable-list">
         <div class="sidebar-label">// LINKS</div>
-        <a class="sidebar-link" href="{{ '/projects/' | relative_url }}">Projects Index</a>
+        <a class="sidebar-link" href="{{ '/projects/' | relative_url }}" data-project-index-link>Projects Index</a>
         {% if page.repo %}<a class="sidebar-link" href="{{ page.repo }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
         {% if show_demo %}<a class="sidebar-link" href="{{ demo_href }}" target="_blank" rel="noreferrer">{{ page.demoLabel | default: "Live project" }}</a>{% endif %}
       </div>
@@ -156,5 +188,48 @@ layout: default
       </section>
       {% endif %}
     </article>
+  </section>
+
+  <section
+    class="project-nav-shell"
+    data-project-nav
+    data-current-slug="{{ page.slug }}"
+    data-projects-url="{{ '/projects/' | relative_url }}">
+    <div class="project-nav-shell__meta">
+      <span class="project-nav-shell__label">// NAV SET</span>
+      <span class="project-nav-shell__value" data-project-nav-label>All projects</span>
+    </div>
+    <div class="project-nav-strip">
+      <a class="project-nav-cell" href="{{ prev_url | default: '/projects/' | relative_url }}" data-project-nav-prev>
+        <span class="project-nav-dir">Prev</span>
+        <span class="project-nav-log" data-project-nav-prev-log>{% if prev_log %}LOG-{{ prev_log }}{% endif %}</span>
+        <span class="project-nav-title" data-project-nav-prev-title>{{ prev_title | default: "Start of index" }}</span>
+      </a>
+      <a class="project-nav-center" href="{{ '/projects/' | relative_url }}" data-project-index-link>INDEX</a>
+      <a class="project-nav-cell project-nav-cell--right" href="{{ next_url | default: '/projects/' | relative_url }}" data-project-nav-next>
+        <span class="project-nav-dir">Next</span>
+        <span class="project-nav-log" data-project-nav-next-log>{% if next_log %}LOG-{{ next_log }}{% endif %}</span>
+        <span class="project-nav-title" data-project-nav-next-title>{{ next_title | default: "End of index" }}</span>
+      </a>
+    </div>
+    <div class="project-nav-progress" data-project-nav-progress></div>
+
+    <div hidden>
+      {% for entry in site.data.project_registry %}
+        {% for nav_project in site.projects %}
+          {% if nav_project.slug == entry.slug %}
+          <span
+            data-project-nav-item
+            data-slug="{{ nav_project.slug }}"
+            data-title="{{ nav_project.title | escape }}"
+            data-url="{{ nav_project.url | relative_url }}"
+            data-log="{{ entry.log }}"
+            data-group="{{ entry.group }}"
+            data-filters="{{ entry.filters | join: ' ' }}"></span>
+          {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
   </section>
 </main>

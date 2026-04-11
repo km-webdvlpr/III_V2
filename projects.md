@@ -34,88 +34,68 @@ body_class: page-projects
   <button class="filter-btn" type="button" data-filter="culture">Culture</button>
 </section>
 
-<section class="projects-layout">
-  <aside class="sidebar">
-    <div class="sidebar-label">// FEATURED</div>
-    {% for entry in site.data.project_registry %}
-      {% if entry.group == 'featured' %}
-        {% for project in site.projects %}
-          {% if project.slug == entry.slug %}
-        <a class="sidebar-link" href="{{ project.url | relative_url }}">{{ project.title }}</a>
-        {% break %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
+<section class="projects-layout projects-layout--table">
+  <aside class="sidebar sidebar--projects-index">
+    <div class="sidebar-label">// INDEX GUIDE</div>
+    <p class="sidebar-note">Scan by section, narrow by filter, then open a case file. The filter selection carries into project-to-project navigation.</p>
+    <a class="sidebar-link" href="#featured-casefiles">Featured case files</a>
+    <a class="sidebar-link" href="#skill-build-casefiles">Skill-build projects</a>
+    <a class="sidebar-link" href="#creative-casefiles">Creative space</a>
 
     <hr class="sidebar-divider">
-    <div class="sidebar-label">// SKILL-BUILD</div>
-    {% for entry in site.data.project_registry %}
-      {% if entry.group == 'skill-build' %}
-        {% for project in site.projects %}
-          {% if project.slug == entry.slug %}
-      <a class="sidebar-link" href="{{ project.url | relative_url }}">{{ project.title }}</a>
-      {% break %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-
-    <hr class="sidebar-divider">
-    <div class="sidebar-label">// CREATIVE</div>
-    {% for entry in site.data.project_registry %}
-      {% if entry.group == 'creative' %}
-        {% for project in site.projects %}
-          {% if project.slug == entry.slug %}
-      <a class="sidebar-link" href="{{ project.url | relative_url }}">{{ project.title }}</a>
-      {% break %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-
-    <hr class="sidebar-divider">
+    <div class="sidebar-label">// TOTALS</div>
     <div class="sidebar-meta">
       TOTAL PROJECTS: <span class="hi">{{ site.projects | size }}</span><br>
       FEATURED: <span class="hi">{{ featured_count }}</span><br>
       SKILL-BUILD: <span class="hi">{{ skill_build_count }}</span><br>
       CREATIVE: <span class="hi">{{ creative_count }}</span>
     </div>
+
+    <hr class="sidebar-divider">
+    <div class="sidebar-label">// FILTERS</div>
+    <div class="sidebar-link sidebar-link--static">Commercial, consumer, product, operations, and culture filters update the visible list.</div>
+    <div class="sidebar-link sidebar-link--static">Case-file navigation keeps the same active filter when possible.</div>
   </aside>
 
-  <main class="project-feed">
-    <section data-filter-section>
+  <main class="project-feed project-feed--table">
+    <section data-filter-section id="featured-casefiles">
       <div class="feed-section-header reveal">
         <span class="feed-section-label">// FEATURED ANALYST CASE STUDIES</span>
         <div class="feed-section-line"></div>
         <span class="feed-section-count">{{ featured_count }}</span>
       </div>
 
-      {% for entry in site.data.project_registry %}
-        {% if entry.group == 'featured' %}
-          {% for project in site.projects %}
-            {% if project.slug == entry.slug %}
-              {% include project-card.html project=project meta=entry variant='featured' %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-    </section>
-
-    <section data-filter-section>
-      <div class="feed-section-header reveal">
-        <span class="feed-section-label">// SKILL-BUILDING PROJECTS</span>
-        <div class="feed-section-line"></div>
-        <span class="feed-section-count">{{ skill_build_count }}</span>
-      </div>
-      <div class="compact-grid">
+      <div class="project-table reveal">
         {% for entry in site.data.project_registry %}
-          {% if entry.group == 'skill-build' %}
+          {% if entry.group == 'featured' %}
             {% for project in site.projects %}
               {% if project.slug == entry.slug %}
-            {% include project-card.html project=project meta=entry variant='compact' %}
-            {% break %}
+              <a
+                class="project-row"
+                id="{{ project.slug }}"
+                href="{{ project.url | relative_url }}"
+                data-project-link
+                data-base-href="{{ project.url | relative_url }}"
+                data-filterable
+                data-filters="{{ entry.filters | join: ' ' }}"
+                data-project-group="{{ entry.group }}">
+                <span class="project-row__num">{{ entry.log }}</span>
+                <span class="project-row__main">
+                  <span class="project-row__eyebrow">{{ project.roleFocus | default: "Case file" }}</span>
+                  <span class="project-row__title">{{ project.title }}</span>
+                  {% if project.summary %}<span class="project-row__desc">{{ project.summary }}</span>{% endif %}
+                </span>
+                <span class="project-row__meta">
+                  <span class="project-row__group">Featured</span>
+                  <span class="project-row__filters">
+                    {% for filter in entry.filters limit: 3 %}
+                    <span class="project-row__chip">{{ filter }}</span>
+                    {% endfor %}
+                  </span>
+                </span>
+                <span class="project-row__arrow">OPEN</span>
+              </a>
+              {% break %}
               {% endif %}
             {% endfor %}
           {% endif %}
@@ -123,25 +103,102 @@ body_class: page-projects
       </div>
     </section>
 
-    <section data-filter-section>
+    <section data-filter-section id="skill-build-casefiles">
+      <div class="feed-section-header reveal">
+        <span class="feed-section-label">// SKILL-BUILDING PROJECTS</span>
+        <div class="feed-section-line"></div>
+        <span class="feed-section-count">{{ skill_build_count }}</span>
+      </div>
+
+      <div class="project-table reveal">
+        {% for entry in site.data.project_registry %}
+          {% if entry.group == 'skill-build' %}
+            {% for project in site.projects %}
+              {% if project.slug == entry.slug %}
+              <a
+                class="project-row project-row--supporting"
+                id="{{ project.slug }}"
+                href="{{ project.url | relative_url }}"
+                data-project-link
+                data-base-href="{{ project.url | relative_url }}"
+                data-filterable
+                data-filters="{{ entry.filters | join: ' ' }}"
+                data-project-group="{{ entry.group }}">
+                <span class="project-row__num">{{ entry.log }}</span>
+                <span class="project-row__main">
+                  <span class="project-row__eyebrow">{{ project.roleFocus | default: "Skill-build project" }}</span>
+                  <span class="project-row__title">{{ project.title }}</span>
+                  {% if project.summary %}<span class="project-row__desc">{{ project.summary }}</span>{% endif %}
+                </span>
+                <span class="project-row__meta">
+                  <span class="project-row__group">Skill-build</span>
+                  <span class="project-row__filters">
+                    {% for filter in entry.filters limit: 3 %}
+                    <span class="project-row__chip">{{ filter }}</span>
+                    {% endfor %}
+                  </span>
+                </span>
+                <span class="project-row__arrow">OPEN</span>
+              </a>
+              {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section data-filter-section id="creative-casefiles">
       <div class="feed-section-header reveal">
         <span class="feed-section-label">// CREATIVE SPACE</span>
         <div class="feed-section-line"></div>
         <span class="feed-section-count">{{ creative_count }}</span>
       </div>
       <p class="page-desc reveal" style="margin-bottom:1.2rem;max-width:none;">Storytelling and design projects outside the core analytics portfolio.</p>
-      <div class="creative-grid">
+
+      <div class="project-table reveal">
         {% for entry in site.data.project_registry %}
           {% if entry.group == 'creative' %}
             {% for project in site.projects %}
               {% if project.slug == entry.slug %}
-            {% include project-card.html project=project meta=entry variant='creative' %}
-            {% break %}
+              <a
+                class="project-row project-row--creative"
+                id="{{ project.slug }}"
+                href="{{ project.url | relative_url }}"
+                data-project-link
+                data-base-href="{{ project.url | relative_url }}"
+                data-filterable
+                data-filters="{{ entry.filters | join: ' ' }}"
+                data-project-group="{{ entry.group }}">
+                <span class="project-row__num">{{ entry.log }}</span>
+                <span class="project-row__main">
+                  <span class="project-row__eyebrow">{{ project.roleFocus | default: "Creative case file" }}</span>
+                  <span class="project-row__title">{{ project.title }}</span>
+                  {% if project.summary %}<span class="project-row__desc">{{ project.summary }}</span>{% endif %}
+                </span>
+                <span class="project-row__meta">
+                  <span class="project-row__group">Creative</span>
+                  <span class="project-row__filters">
+                    {% for filter in entry.filters limit: 3 %}
+                    <span class="project-row__chip">{{ filter }}</span>
+                    {% endfor %}
+                  </span>
+                </span>
+                <span class="project-row__arrow">OPEN</span>
+              </a>
+              {% break %}
               {% endif %}
             {% endfor %}
           {% endif %}
         {% endfor %}
       </div>
     </section>
+
+    <div class="project-index-stats reveal">
+      <div class="project-index-stats__cell">Visible index rows <span class="hi" data-project-visible-count>{{ site.projects | size }}</span></div>
+      <div class="project-index-stats__cell">Featured <span class="hi">{{ featured_count }}</span></div>
+      <div class="project-index-stats__cell">Skill-build <span class="hi">{{ skill_build_count }}</span></div>
+      <div class="project-index-stats__cell">Creative <span class="hi">{{ creative_count }}</span></div>
+    </div>
   </main>
 </section>
