@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 <title>SA Music Influence Model</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-/* â”€â”€ TOKENS â”€â”€ */
+/* ── TOKENS ── */
 :root{
   --gold:       #C9920A;
   --gold-bright:#E8A80E;
@@ -35,14 +35,14 @@
   --era5: #8040A8;
 }
 
-/* â”€â”€ RESET â”€â”€ */
+/* ── RESET ── */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
 body{background:var(--off);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    HERO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 #hero{
   position:relative;
   min-height:100vh;
@@ -65,7 +65,7 @@ body{background:var(--off);color:var(--ink);font-family:'DM Sans',sans-serif;fon
 }
 @keyframes gridFade{to{opacity:1;}}
 
-/* Beadwork dot overlay â€” SVG pattern via CSS */
+/* Beadwork dot overlay — SVG pattern via CSS */
 #hero-beads{
   position:absolute;inset:0;
   opacity:0;
@@ -78,7 +78,7 @@ body{background:var(--off);color:var(--ink);font-family:'DM Sans',sans-serif;fon
 }
 @keyframes beadsFade{to{opacity:1;}}
 
-/* Diagonal accent lines â€” Ndebele-inspired */
+/* Diagonal accent lines — Ndebele-inspired */
 #hero-diag{
   position:absolute;inset:0;pointer-events:none;
   opacity:0;
@@ -86,7 +86,7 @@ body{background:var(--off);color:var(--ink);font-family:'DM Sans',sans-serif;fon
 }
 @keyframes diagFade{to{opacity:1;}}
 
-/* Corner marks â€” Virgil tag aesthetic */
+/* Corner marks — Virgil tag aesthetic */
 .corner{position:absolute;width:32px;height:32px;border-color:rgba(201,146,10,.4);border-style:solid;}
 .corner-tl{top:32px;left:32px;border-width:2px 0 0 2px;}
 .corner-tr{top:32px;right:32px;border-width:2px 2px 0 0;}
@@ -181,9 +181,9 @@ body{background:var(--off);color:var(--ink);font-family:'DM Sans',sans-serif;fon
   width:32px;height:1px;background:rgba(255,255,255,.15);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    NAV
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 nav{
   position:sticky;top:0;z-index:400;
   background:rgba(246,244,238,.97);
@@ -204,9 +204,9 @@ nav a{
 }
 nav a:hover,nav a.active{color:var(--ink);border-bottom-color:var(--lime2);}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    LAYOUT SHELL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .wrap{max-width:1280px;margin:0 auto;padding:0 64px;}
 section{padding:96px 0;}
 section+section{border-top:1px solid var(--rule);}
@@ -241,9 +241,9 @@ h2{
   vertical-align:middle;margin-left:6px;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    ERA CARDS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .era-strip{
   display:grid;grid-template-columns:repeat(5,1fr);
   gap:2px;margin-bottom:2px;
@@ -307,13 +307,13 @@ h2{
   line-height:1.8;padding-left:16px;position:relative;
 }
 .era-panel li::before{
-  content:'â†’';position:absolute;left:0;
+  content:'→';position:absolute;left:0;
   color:var(--gold-bright);font-size:11px;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    RANKINGS BAR CHART
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .rank-box{
   background:var(--white);
   border:1px solid var(--rule);
@@ -376,9 +376,9 @@ h2{
 }
 .leg-sw{width:20px;height:3px;border-radius:2px;}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    RADAR / PENTAGON
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .radar-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:16px;margin-top:40px;
@@ -397,9 +397,9 @@ h2{
   margin-bottom:14px;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    TRANSITIONS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .flow-outer{
   background:var(--white);border:1px solid var(--rule);
   padding:40px;overflow-x:auto;
@@ -445,9 +445,9 @@ h2{
   padding:36px;margin-top:2px;overflow-x:auto;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    AFROTECH ROSTER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .roster-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:2px;margin-top:8px;
@@ -492,9 +492,9 @@ h2{
   letter-spacing:.08em;padding:3px 9px;border-radius:1px;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    ARCHETYPES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .arch-grid{
   display:grid;grid-template-columns:repeat(2,1fr);
   gap:2px;
@@ -539,9 +539,9 @@ h2{
   letter-spacing:.06em;padding:4px 10px;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    SCORE TABLE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .score-tbl{width:100%;border-collapse:collapse;font-size:13px;}
 .score-tbl th{
   font-family:'DM Mono',monospace;font-size:8px;
@@ -578,9 +578,9 @@ h2{
   font-size:24px;color:var(--ink);letter-spacing:.02em;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    CALLOUTS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .callout{
   background:var(--lime);
   padding:36px 44px;
@@ -598,9 +598,9 @@ h2{
   max-width:780px;font-weight:300;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    PORTFOLIO CLOSE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 #portfolio{background:var(--ink2);}
 #portfolio .wrap{padding-top:96px;padding-bottom:96px;}
 .port-grid{
@@ -643,9 +643,9 @@ h2{
 }
 .port-quote strong{font-weight:500;font-style:normal;}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    FOOTER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 footer{
   background:var(--black);
   padding:52px 64px;
@@ -664,16 +664,16 @@ footer p{
   letter-spacing:.12em;color:rgba(255,255,255,.25);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    REVEAL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
 .reveal.vis{opacity:1;transform:none;}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    RESPONSIVE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 @media(max-width:960px){
   #hero-content,.wrap,footer{padding-left:24px;padding-right:24px;}
   nav{padding:0 24px;}
@@ -693,7 +693,7 @@ footer p{
 </head>
 <body>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ HERO ══════════════ -->
 <section id="hero">
   <div id="hero-grid"></div>
   <div id="hero-beads"></div>
@@ -723,7 +723,7 @@ footer p{
   <div id="hero-content">
     <div id="genre-trail"><span id="trail-text"></span><span class="trail-cursor" id="cursor"></span></div>
     <h1 id="hero-title">South African<span>Music Influence</span></h1>
-    <p id="hero-tag">A network-based cultural analytics model tracing how influence travels across five South African genres and eight decades â€” from township jazz to global Afrotech.</p>
+    <p id="hero-tag">A network-based cultural analytics model tracing how influence travels across five South African genres and eight decades — from township jazz to global Afrotech.</p>
     <div id="hero-kpis">
       <div><div class="kpi-n">22</div><div class="kpi-l">Artists Modelled</div></div>
       <div><div class="kpi-n">5</div><div class="kpi-l">Genre Eras</div></div>
@@ -734,7 +734,7 @@ footer p{
   <div id="scroll-cue">Scroll to explore</div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAV â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ NAV ══════════════ -->
 <nav id="mainnav">
   <a href="#eras">Era Story</a>
   <a href="#rankings">Rankings</a>
@@ -745,62 +745,62 @@ footer p{
   <a href="#portfolio">Portfolio</a>
 </nav>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• ERA STORY â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ ERA STORY ══════════════ -->
 <section id="eras">
 <div class="wrap">
-  <div class="eyebrow reveal">01 Â· Era Story</div>
+  <div class="eyebrow reveal">01 · Era Story</div>
   <h2 class="reveal d1">Five Eras.<br>One Continuous Thread.</h2>
-  <p class="sec-intro reveal d2">South African music didn't evolve in a straight line â€” each era absorbed and mutated what came before. The influence didn't disappear. It compounded. Click any era to go deeper.</p>
+  <p class="sec-intro reveal d2">South African music didn't evolve in a straight line — each era absorbed and mutated what came before. The influence didn't disappear. It compounded. Click any era to go deeper.</p>
 
   <div class="era-strip reveal d3" id="era-strip">
     <div class="ec active" onclick="openEra(0,this)">
-      <div class="ec-yr">1940 â€“ 1980</div>
+      <div class="ec-yr">1940 – 1980</div>
       <div class="ec-name">Afro-Jazz</div>
-      <div class="ec-meta">6 artists Â· the root</div>
+      <div class="ec-meta">6 artists · the root</div>
     </div>
     <div class="ec" onclick="openEra(1,this)">
-      <div class="ec-yr">1990 â€“ 2002</div>
+      <div class="ec-yr">1990 – 2002</div>
       <div class="ec-name">Kwaito</div>
-      <div class="ec-meta">5 artists Â· post-apartheid voice</div>
+      <div class="ec-meta">5 artists · post-apartheid voice</div>
     </div>
     <div class="ec" onclick="openEra(2,this)">
-      <div class="ec-yr">1998 â€“ 2014</div>
+      <div class="ec-yr">1998 – 2014</div>
       <div class="ec-name">SA House</div>
-      <div class="ec-meta">6 artists Â· the export era</div>
+      <div class="ec-meta">6 artists · the export era</div>
     </div>
     <div class="ec" onclick="openEra(3,this)">
-      <div class="ec-yr">2012 â€“ 2019</div>
+      <div class="ec-yr">2012 – 2019</div>
       <div class="ec-name">Amapiano</div>
-      <div class="ec-meta">6 artists Â· born on WhatsApp</div>
+      <div class="ec-meta">6 artists · born on WhatsApp</div>
     </div>
     <div class="ec" onclick="openEra(4,this)">
-      <div class="ec-yr">2016 â€“ present</div>
+      <div class="ec-yr">2016 – present</div>
       <div class="ec-name">Afrotech</div>
-      <div class="ec-meta">7 artists Â· still forming</div>
+      <div class="ec-meta">7 artists · still forming</div>
     </div>
   </div>
   <div id="era-panel" class="era-panel"></div>
 
   <div class="callout reveal" style="margin-top:48px;">
-    <div class="callout-icon">â†º</div>
+    <div class="callout-icon">↺</div>
     <div>
       <h4>The Collision Zone Theory</h4>
-      <p>The model's most fertile periods aren't the middle of each era â€” they're the overlaps. When Kwaito and House coexisted (1998â€“2002), when House and Amapiano collided (2012â€“2016), that's when the network density spikes and the most interesting cross-genre edges form. Transitions aren't endings. They're the most creative moments in the entire graph.</p>
+      <p>The model's most fertile periods aren't the middle of each era — they're the overlaps. When Kwaito and House coexisted (1998–2002), when House and Amapiano collided (2012–2016), that's when the network density spikes and the most interesting cross-genre edges form. Transitions aren't endings. They're the most creative moments in the entire graph.</p>
     </div>
   </div>
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• RANKINGS â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ RANKINGS ══════════════ -->
 <section id="rankings">
 <div class="wrap">
-  <div class="eyebrow reveal">02 Â· Influence Rankings</div>
+  <div class="eyebrow reveal">02 · Influence Rankings</div>
   <h2 class="reveal d1">Who Shaped<br>the Music</h2>
-  <p class="sec-intro reveal d2">These scores don't measure streams or awards. They measure structural importance â€” how central an artist was to how the music actually evolved. <span class="data-pill">Illustrative data</span></p>
+  <p class="sec-intro reveal d2">These scores don't measure streams or awards. They measure structural importance — how central an artist was to how the music actually evolved. <span class="data-pill">Illustrative data</span></p>
 
   <div class="rank-box reveal">
-    <div class="rank-title">Top 12 Â· Composite Influence Score</div>
-    <div class="rank-sub">IS 0â€“100 Â· All eras Â· Weighted across 5 dimensions</div>
+    <div class="rank-title">Top 12 · Composite Influence Score</div>
+    <div class="rank-sub">IS 0–100 · All eras · Weighted across 5 dimensions</div>
     <div id="bar-chart"></div>
     <div class="legend">
       <div class="leg"><div class="leg-sw" style="background:var(--connector)"></div>Connector</div>
@@ -810,18 +810,18 @@ footer p{
     </div>
   </div>
 
-  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,3vw,40px);color:var(--ink);letter-spacing:.02em;margin:56px 0 6px;">Dimension Profile Â· Top 6</h3>
-  <p style="font-size:14px;color:var(--muted);font-weight:300;margin-bottom:0;">Each shape shows how an artist scores across the five influence dimensions. No single artist dominates every axis â€” and that's the point.</p>
+  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,3vw,40px);color:var(--ink);letter-spacing:.02em;margin:56px 0 6px;">Dimension Profile · Top 6</h3>
+  <p style="font-size:14px;color:var(--muted);font-weight:300;margin-bottom:0;">Each shape shows how an artist scores across the five influence dimensions. No single artist dominates every axis — and that's the point.</p>
   <div class="radar-grid reveal" id="radar-grid"></div>
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• TRANSITIONS â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ TRANSITIONS ══════════════ -->
 <section id="transitions">
 <div class="wrap">
-  <div class="eyebrow reveal">03 Â· Genre Transitions</div>
+  <div class="eyebrow reveal">03 · Genre Transitions</div>
   <h2 class="reveal d1">How Influence<br>Actually Travels</h2>
-  <p class="sec-intro reveal d2">Every transition had a specific artist acting as a sonic translator â€” someone whose creative language was legible to two different musical communities at once. That's the rarest ability this model can measure.</p>
+  <p class="sec-intro reveal d2">Every transition had a specific artist acting as a sonic translator — someone whose creative language was legible to two different musical communities at once. That's the rarest ability this model can measure.</p>
 
   <div class="flow-outer reveal">
     <div class="flow-row" id="flow-row"></div>
@@ -829,48 +829,48 @@ footer p{
 
   <div class="sankey-outer reveal">
     <div class="rank-title">Influence Flow Between Eras</div>
-    <div class="rank-sub">Edge count by relationship type Â· Direct flows labelled <span class="data-pill">Illustrative</span></div>
+    <div class="rank-sub">Edge count by relationship type · Direct flows labelled <span class="data-pill">Illustrative</span></div>
     <svg id="sankey" viewBox="0 0 960 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;margin-top:20px;"></svg>
   </div>
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• AFROTECH â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ AFROTECH ══════════════ -->
 <section id="afrotech">
 <div class="wrap">
-  <div class="eyebrow reveal">04 Â· Afrotech Corrected</div>
+  <div class="eyebrow reveal">04 · Afrotech Corrected</div>
   <h2 class="reveal d1">Who Actually<br>Built Afrotech</h2>
-  <p class="sec-intro reveal d2">Afrotech is a producer's genre â€” Afro House fused with techno's darker energy, African percussion, and predominantly Xhosa and Zulu vocals. It's built in studios, runs 6â€“9 minutes for club versions, and travels through DJ sets before streaming ever catches up. Focalistic and Uncle Waffles are Amapiano artists â€” important, correctly placed in that era. The artists below are the ones who actually authored this sound.</p>
+  <p class="sec-intro reveal d2">Afrotech is a producer's genre — Afro House fused with techno's darker energy, African percussion, and predominantly Xhosa and Zulu vocals. It's built in studios, runs 6–9 minutes for club versions, and travels through DJ sets before streaming ever catches up. Focalistic and Uncle Waffles are Amapiano artists — important, correctly placed in that era. The artists below are the ones who actually authored this sound.</p>
 
   <div class="roster-grid reveal" id="roster-grid"></div>
 
   <div class="callout reveal" style="margin-top:32px;">
-    <div class="callout-icon">ðŸŽ›</div>
+    <div class="callout-icon">🎛</div>
     <div>
       <h4>The Intelligence Layer</h4>
-      <p>Global streaming data built on Johannesburg. It missed Durban's gqom entirely until Dlala Thukzin's numbers made it impossible to ignore. It missed Thakzin creating 3-Step in Ivory Park during lockdown before a single Spotify play existed. The intelligence layer â€” manual annotation from interviews, festival lineups, club sets, local blog archives â€” is what separates a data project from a cultural argument.</p>
+      <p>Global streaming data built on Johannesburg. It missed Durban's gqom entirely until Dlala Thukzin's numbers made it impossible to ignore. It missed Thakzin creating 3-Step in Ivory Park during lockdown before a single Spotify play existed. The intelligence layer — manual annotation from interviews, festival lineups, club sets, local blog archives — is what separates a data project from a cultural argument.</p>
     </div>
   </div>
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• ARCHETYPES â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ ARCHETYPES ══════════════ -->
 <section id="archetypes">
 <div class="wrap">
-  <div class="eyebrow reveal">05 Â· Archetypes</div>
+  <div class="eyebrow reveal">05 · Archetypes</div>
   <h2 class="reveal d1">Four Ways to<br>Shape a Genre</h2>
-  <p class="sec-intro reveal d2">Every significant artist in the model maps to one of four structural roles. The role tells you how they shaped the music â€” not just whether they did.</p>
+  <p class="sec-intro reveal d2">Every significant artist in the model maps to one of four structural roles. The role tells you how they shaped the music — not just whether they did.</p>
 
   <div class="arch-grid reveal" id="arch-grid"></div>
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• SCORE BREAKDOWN â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ SCORE BREAKDOWN ══════════════ -->
 <section id="breakdown">
 <div class="wrap">
-  <div class="eyebrow reveal">06 Â· Score Breakdown</div>
+  <div class="eyebrow reveal">06 · Score Breakdown</div>
   <h2 class="reveal d1">The Numbers<br>Behind the Story</h2>
-  <p class="sec-intro reveal d2">Each artist's Influence Score decomposed across five weighted dimensions. The breakdown explains why an artist scores where they do. In Amapiano, the producers outscore the vocalists â€” and the model is correct to show that. <span class="data-pill">Illustrative data</span></p>
+  <p class="sec-intro reveal d2">Each artist's Influence Score decomposed across five weighted dimensions. The breakdown explains why an artist scores where they do. In Amapiano, the producers outscore the vocalists — and the model is correct to show that. <span class="data-pill">Illustrative data</span></p>
 
   <div class="reveal" style="overflow-x:auto;">
     <table class="score-tbl">
@@ -887,20 +887,20 @@ footer p{
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• PORTFOLIO â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ PORTFOLIO ══════════════ -->
 <section id="portfolio">
 <div class="wrap">
   <div class="eyebrow" style="color:rgba(232,168,14,.6);">
     <span style="background:rgba(232,168,14,.3);width:24px;height:2px;display:inline-block;"></span>
-    07 Â· How I Think
+    07 · How I Think
   </div>
   <h2 style="color:var(--white);">Not a Ranking.<br>A Cultural Argument.</h2>
-  <p class="sec-intro" style="color:rgba(255,255,255,.45);">This project exists to demonstrate a specific way of thinking â€” that cultural phenomena can be modelled rigorously without reducing them to popularity metrics, and that the most interesting data often lives outside the API.</p>
+  <p class="sec-intro" style="color:rgba(255,255,255,.45);">This project exists to demonstrate a specific way of thinking — that cultural phenomena can be modelled rigorously without reducing them to popularity metrics, and that the most interesting data often lives outside the API.</p>
 
   <div class="port-grid">
     <div class="port-card">
       <h4>Graph Theory</h4>
-      <p>NetworkX, directed weighted graphs, centrality algorithms â€” degree, betweenness, eigenvector, PageRank. Temporal subgraph analysis across six overlapping era windows.</p>
+      <p>NetworkX, directed weighted graphs, centrality algorithms — degree, betweenness, eigenvector, PageRank. Temporal subgraph analysis across six overlapping era windows.</p>
     </div>
     <div class="port-card">
       <h4>Data Engineering</h4>
@@ -921,87 +921,87 @@ footer p{
 </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div>
     <div class="footer-brand">SA Music Influence Model</div>
-    <p>Cultural Network Analytics Â· Illustrative Seed Data Â· Portfolio Project</p>
-    <p style="margin-top:4px;">Python Â· NetworkX Â· Pandas Â· Gephi Â· Plotly</p>
+    <p>Cultural Network Analytics · Illustrative Seed Data · Portfolio Project</p>
+    <p style="margin-top:4px;">Python · NetworkX · Pandas · Gephi · Plotly</p>
   </div>
   <div style="text-align:right;">
-    <p>Afro-Jazz â†’ Kwaito â†’ SA House â†’ Amapiano â†’ Afrotech</p>
+    <p>Afro-Jazz → Kwaito → SA House → Amapiano → Afrotech</p>
     <p style="margin-top:4px;">The model gives cultural patterns a clearer structure.</p>
   </div>
 </footer>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• DATA + LOGIC â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ DATA + LOGIC ══════════════ -->
 <script>
-/* â”€â”€ COLOUR MAP â”€â”€ */
+/* ── COLOUR MAP ── */
 const AC={Connector:"#00B2CC",Originator:"#E87B2C",Amplifier:"#D93848",Transitioner:"#8040A8"};
 const EC=["#6EC8C8","#E87B2C","#D93848","#C2EF00","#8040A8"];
 
-/* â”€â”€ ERA DATA â”€â”€ */
+/* ── ERA DATA ── */
 const ERAS=[
   {
-    name:"Afro-Jazz",yr:"1940â€“1980",
-    sound:"Big-band jazz fused with township rhythms, mbaqanga, migrant labour songs. Politically defiant under apartheid. The exile circuit â€” London, New York, Lagos â€” created the first infrastructure for exporting South African sound.",
+    name:"Afro-Jazz",yr:"1940–1980",
+    sound:"Big-band jazz fused with township rhythms, mbaqanga, migrant labour songs. Politically defiant under apartheid. The exile circuit — London, New York, Lagos — created the first infrastructure for exporting South African sound.",
     artists:["Hugh Masekela","Miriam Makeba","Abdullah Ibrahim","Letta Mbulu","Jonas Gwangwa","Sathima Bea Benjamin"],
-    intel:"The Sophiatown jazz scene embedded a specific sonic vocabulary â€” call-and-response, polyrhythm, Xhosa and Zulu phrasing â€” that every subsequent genre would draw from, whether consciously or not. This is where the thread begins.",
+    intel:"The Sophiatown jazz scene embedded a specific sonic vocabulary — call-and-response, polyrhythm, Xhosa and Zulu phrasing — that every subsequent genre would draw from, whether consciously or not. This is where the thread begins.",
     transition:"Post-1994 liberation opened township culture to a generation who inherited the jazz sensibility but needed their own language. The slowed-down house beat became that vessel."
   },
   {
-    name:"Kwaito",yr:"1990â€“2002",
+    name:"Kwaito",yr:"1990–2002",
     sound:"Slowed-down Chicago and UK house beats, township vernacular, post-apartheid swagger. The first genre that was explicitly, unapologetically, defiantly South African.",
     artists:["Arthur Mafokate","Brenda Fassie","Mzekezeke","Boom Shaka","TKZee","Mandoza"],
-    intel:"Kwaito was a political act dressed as a party. The slowed tempo was intentional â€” it rejected the urgency of protest music and said: we won, now we move. Its use of vernacular slang created a generational language that hip-hop had done for America.",
-    transition:"Kwaito producers absorbed international house production techniques but deepened and localised them. DJ culture â€” particularly in Johannesburg â€” began elevating the producer as the primary creative force. Amapiano's architecture was being rehearsed here."
+    intel:"Kwaito was a political act dressed as a party. The slowed tempo was intentional — it rejected the urgency of protest music and said: we won, now we move. Its use of vernacular slang created a generational language that hip-hop had done for America.",
+    transition:"Kwaito producers absorbed international house production techniques but deepened and localised them. DJ culture — particularly in Johannesburg — began elevating the producer as the primary creative force. Amapiano's architecture was being rehearsed here."
   },
   {
-    name:"SA House",yr:"1998â€“2014",
+    name:"SA House",yr:"1998–2014",
     sound:"Afro House, deep house with percussion-led arrangements. Xhosa and Zulu vocals over minimalist electronic structures. The era that proved SA music could hold its own on a global dancefloor.",
     artists:["Black Coffee","Sun-EL Musician","Culoe De Song","Themba","Oskido","Da Capo"],
-    intel:"Black Coffee is the critical amplifier of this era. His international circuit â€” Ibiza, Berlin, New York â€” created a two-way channel that no previous SA artist had built. He exported the Afro aesthetic and returned with production vocabulary that fed back into the scene.",
-    transition:"SA House producers began pushing toward techno-inflected territory. Longer tracks, harder percussion, darker dancefloor energy. That mutation was Afrotech beginning to crystallise â€” and it was happening in the same studios where Amapiano was being born."
+    intel:"Black Coffee is the critical amplifier of this era. His international circuit — Ibiza, Berlin, New York — created a two-way channel that no previous SA artist had built. He exported the Afro aesthetic and returned with production vocabulary that fed back into the scene.",
+    transition:"SA House producers began pushing toward techno-inflected territory. Longer tracks, harder percussion, darker dancefloor energy. That mutation was Afrotech beginning to crystallise — and it was happening in the same studios where Amapiano was being born."
   },
   {
-    name:"Amapiano",yr:"2012â€“2019",
+    name:"Amapiano",yr:"2012–2019",
     sound:"Log drum bass, jazzy piano chords layered over deep house foundations. Born in Mamelodi and Pretoria East. Distributed via WhatsApp voice notes before a single streaming platform took notice.",
     artists:["Kabza De Small","DJ Maphorisa","Kelvin Momo","Focalistic","Sha Sha","Daliwonga"],
-    intel:"This is where the intelligence layer becomes essential. Amapiano wasn't launched on Spotify â€” it spread through WhatsApp groups, kasi car boot parties, and bootleg USB drives. Streaming data picked it up two years after it was already the dominant genre in Pretoria. The model without manual annotation would have missed the origin entirely.",
-    transition:"Amapiano's log drum and piano vocabulary became so globally legible that producers worldwide started sampling it directly. That absorption â€” plus the darkening Afrotech influence running parallel â€” produced the current hybrid era."
+    intel:"This is where the intelligence layer becomes essential. Amapiano wasn't launched on Spotify — it spread through WhatsApp groups, kasi car boot parties, and bootleg USB drives. Streaming data picked it up two years after it was already the dominant genre in Pretoria. The model without manual annotation would have missed the origin entirely.",
+    transition:"Amapiano's log drum and piano vocabulary became so globally legible that producers worldwide started sampling it directly. That absorption — plus the darkening Afrotech influence running parallel — produced the current hybrid era."
   },
   {
-    name:"Afrotech / 3-Step",yr:"2016â€“present",
-    sound:"Afro House fused with techno's machine-driven energy. African percussion, predominantly Xhosa and Zulu vocals. Extended club versions (6â€“9 minutes). In parallel, 3-Step emerged â€” a Johannesburg sub-genre combining Afro House, deep house, and Amapiano with a hypnotic broken beat that Thakzin built from scratch in Ivory Park during lockdown.",
+    name:"Afrotech / 3-Step",yr:"2016–present",
+    sound:"Afro House fused with techno's machine-driven energy. African percussion, predominantly Xhosa and Zulu vocals. Extended club versions (6–9 minutes). In parallel, 3-Step emerged — a Johannesburg sub-genre combining Afro House, deep house, and Amapiano with a hypnotic broken beat that Thakzin built from scratch in Ivory Park during lockdown.",
     artists:["Sun-EL Musician","Dlala Thukzin","Thakzin","Culoe De Song","Shimza","Atmos Blaq","Da Capo"],
-    intel:"This era is producer-authored. Sun-EL explicitly named his sound 'African Electronic Dance Music' and built a label (El World Music) that became its own influence distribution network â€” Simmy, Msaki, and Ami Faku all extend from that node. Thakzin's co-signs came from Black Coffee and Laurent Garnier. The underground was already building the architecture before the mainstream found the address.",
-    transition:"Ongoing. Afrotech is actively absorbing Afro-drill, UK garage revival, and Latin percussion. This is the most interesting era to model in real time â€” the network is still forming, and the most consequential edges haven't been drawn yet."
+    intel:"This era is producer-authored. Sun-EL explicitly named his sound 'African Electronic Dance Music' and built a label (El World Music) that became its own influence distribution network — Simmy, Msaki, and Ami Faku all extend from that node. Thakzin's co-signs came from Black Coffee and Laurent Garnier. The underground was already building the architecture before the mainstream found the address.",
+    transition:"Ongoing. Afrotech is actively absorbing Afro-drill, UK garage revival, and Latin percussion. This is the most interesting era to model in real time — the network is still forming, and the most consequential edges haven't been drawn yet."
   }
 ];
 
-/* â”€â”€ AFROTECH ROSTER â”€â”€ */
+/* ── AFROTECH ROSTER ── */
 const ROSTER=[
   {name:"Sun-EL Musician",city:"Mooi River, KZN",role:"Originator",col:"#E87B2C",
-   why:"He named it. His 'African Electronic Dance Music' framing wasn't marketing â€” it was a deliberate act of genre definition. His El World Music label then became an influence node in its own right, with Simmy, Msaki, and Ami Faku all extending from it.",
+   why:"He named it. His 'African Electronic Dance Music' framing wasn't marketing — it was a deliberate act of genre definition. His El World Music label then became an influence node in its own right, with Simmy, Msaki, and Ami Faku all extending from it.",
    genres:["Afro House","Afrotech","African EDM"]},
   {name:"Dlala Thukzin",city:"Lamontville, Durban",role:"Connector",col:"#00B2CC",
    why:"The critical Durban-to-Afrotech bridge. He fuses gqom's raw bassweight with Amapiano's groove and Afrotech's atmospheric layers. His 'iPlan' debuted at number one on Billboard South Africa. Without him, the Durban thread stays invisible to the model.",
    genres:["Gqom","Amapiano","Afrotech","3-Step"]},
   {name:"Thakzin",city:"Ivory Park, Johannesburg",role:"Originator",col:"#E87B2C",
-   why:"Created 3-Step during lockdown. Not a variation â€” a new sub-genre, built from Afro House, Amapiano, and broken beat. Co-signs from Black Coffee and Laurent Garnier. He has the highest Innovation-to-IS ratio in the entire model. The definition of an underrated originator.",
+   why:"Created 3-Step during lockdown. Not a variation — a new sub-genre, built from Afro House, Amapiano, and broken beat. Co-signs from Black Coffee and Laurent Garnier. He has the highest Innovation-to-IS ratio in the entire model. The definition of an underrated originator.",
    genres:["Afro House","3-Step","Amapiano"]},
   {name:"Culoe De Song",city:"Durban",role:"Connector",col:"#00B2CC",
    why:"An OG Afrotech node whose album 'Black' was curated for a New York techno event alongside DJ Dixon. His career arc from SA House into Afrotech's darker territory is one of the cleaner transition paths the model surfaces.",
    genres:["Afro House","Afrotech"]},
   {name:"Shimza",city:"Tembisa, Gauteng",role:"Amplifier",col:"#D93848",
-   why:"First DJ to play a set on Robben Island. Collaborated with Aloe Blacc. Global festival circuit presence across three continents. High cultural impact score â€” he carries the sound into rooms that wouldn't otherwise find it.",
+   why:"First DJ to play a set on Robben Island. Collaborated with Aloe Blacc. Global festival circuit presence across three continents. High cultural impact score — he carries the sound into rooms that wouldn't otherwise find it.",
    genres:["Afrotech","Afro House"]},
   {name:"Atmos Blaq",city:"Johannesburg",role:"Originator",col:"#E87B2C",
    why:"Deep, atmospheric Afrotech with hypnotic percussive patterns. Featured on Karyendasoul's critically acclaimed 2023 album. The underground originator building the sound before the mainstream has found the address.",
    genres:["Afrotech","Deep House"]},
 ];
 
-/* â”€â”€ ARTISTS â”€â”€ */
+/* ── ARTISTS ── */
 const ARTISTS=[
   {name:"Black Coffee",     city:"Durban",          era:"SA House",    arch:"Amplifier",    s:{net:94,cross:88,innov:80,long:92,cult:90},is:95},
   {name:"Hugh Masekela",    city:"Witbank",          era:"Afro-Jazz",   arch:"Originator",   s:{net:80,cross:72,innov:98,long:96,cult:94},is:91},
@@ -1019,15 +1019,15 @@ const ARTISTS=[
 
 const BRIDGES=[
   {from:"Afro-Jazz",  to:"Kwaito",    artist:"Brenda Fassie",  note:"Jazz vocal lineage translated into township pop aesthetic"},
-  {from:"Kwaito",     to:"SA House",  artist:"DJ Maphorisa",   note:"Kwaito producer rhythm architecture â†’ Afro House"},
-  {from:"SA House",   to:"Amapiano",  artist:"Kabza De Small", note:"Deep house template â†’ log drum + jazzy piano chords"},
-  {from:"Amapiano",   to:"Afrotech",  artist:"Dlala Thukzin",  note:"Gqom percussion + Amapiano groove â†’ Afrotech hybrid"},
+  {from:"Kwaito",     to:"SA House",  artist:"DJ Maphorisa",   note:"Kwaito producer rhythm architecture → Afro House"},
+  {from:"SA House",   to:"Amapiano",  artist:"Kabza De Small", note:"Deep house template → log drum + jazzy piano chords"},
+  {from:"Amapiano",   to:"Afrotech",  artist:"Dlala Thukzin",  note:"Gqom percussion + Amapiano groove → Afrotech hybrid"},
 ];
 
 const FLOW=[[0,8,4,2,1],[0,0,18,6,3],[0,0,0,14,8],[0,0,0,0,16],[0,0,0,0,0]];
 
-/* â”€â”€ TYPING ANIMATION â”€â”€ */
-const trail="AFRO-JAZZ  â†’  KWAITO  â†’  SA HOUSE  â†’  AMAPIANO  â†’  AFROTECH";
+/* ── TYPING ANIMATION ── */
+const trail="AFRO-JAZZ  →  KWAITO  →  SA HOUSE  →  AMAPIANO  →  AFROTECH";
 let ti=0,typed=false;
 function typeTrail(){
   if(typed)return;
@@ -1046,7 +1046,7 @@ function typeTrail(){
 }
 typeTrail();
 
-/* â”€â”€ ERA PANEL â”€â”€ */
+/* ── ERA PANEL ── */
 function openEra(i,el){
   document.querySelectorAll('.ec').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
@@ -1076,20 +1076,20 @@ function openEra(i,el){
 }
 openEra(0,document.querySelector('.ec'));
 
-/* â”€â”€ BAR CHART â”€â”€ */
+/* ── BAR CHART ── */
 const sorted=[...ARTISTS].sort((a,b)=>b.is-a.is).slice(0,12);
 document.getElementById('bar-chart').innerHTML=sorted.map(a=>{
   const c=AC[a.arch];
   return`<div class="bar-row">
     <div class="bl"><strong>${a.name}</strong><span>${a.era}</span></div>
     <div class="bt"><div class="bf" data-w="${a.is}%" style="background:${c}20;border-left:3px solid ${c};">
-      <span class="bf-lbl" style="color:${c};">â— ${a.arch}</span>
+      <span class="bf-lbl" style="color:${c};">● ${a.arch}</span>
     </div></div>
     <div class="bs">${a.is}</div>
   </div>`;
 }).join('');
 
-/* â”€â”€ RADAR â”€â”€ */
+/* ── RADAR ── */
 function mkRadar(s,col){
   const sz=136,cx=68,cy=68,r=46;
   const keys=['net','cross','innov','long','cult'];
@@ -1114,7 +1114,7 @@ document.getElementById('radar-grid').innerHTML=top6.map(a=>{
   const c=AC[a.arch];
   return`<div class="radar-card reveal">
     <div class="rc-name">${a.name}</div>
-    <div class="rc-role" style="color:${c};">${a.arch} Â· IS ${a.is}</div>
+    <div class="rc-role" style="color:${c};">${a.arch} · IS ${a.is}</div>
     ${mkRadar(a.s,c)}
     <div style="display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin-top:6px;">
       ${Object.entries(a.s).map(([k,v])=>`<span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--muted2);">${k.toUpperCase()} ${v}</span>`).join('')}
@@ -1122,7 +1122,7 @@ document.getElementById('radar-grid').innerHTML=top6.map(a=>{
   </div>`;
 }).join('');
 
-/* â”€â”€ FLOW TIMELINE â”€â”€ */
+/* ── FLOW TIMELINE ── */
 document.getElementById('flow-row').innerHTML=ERAS.map((e,i)=>{
   const b=i<BRIDGES.length?BRIDGES[i]:null;
   return`<div class="fn">
@@ -1130,13 +1130,13 @@ document.getElementById('flow-row').innerHTML=ERAS.map((e,i)=>{
     <div class="fn-name">${e.name}</div>
     <div class="fn-yr">${e.yr}</div>
     ${b
-      ?`<div class="fn-box"><strong>â†’ ${b.artist}</strong>${b.note}</div>`
-      :`<div class="fn-box" style="background:${EC[i]}18;border-color:${EC[i]}40;"><strong style="color:${EC[i]};">â— Forming Now</strong></div>`
+      ?`<div class="fn-box"><strong>→ ${b.artist}</strong>${b.note}</div>`
+      :`<div class="fn-box" style="background:${EC[i]}18;border-color:${EC[i]}40;"><strong style="color:${EC[i]};">● Forming Now</strong></div>`
     }
   </div>`;
 }).join('');
 
-/* â”€â”€ SANKEY â”€â”€ */
+/* ── SANKEY ── */
 (function(){
   const svg=document.getElementById('sankey');
   const W=960,H=280,nw=60,nh=140;
@@ -1161,7 +1161,7 @@ document.getElementById('flow-row').innerHTML=ERAS.map((e,i)=>{
   svg.innerHTML=c;
 })();
 
-/* â”€â”€ AFROTECH ROSTER â”€â”€ */
+/* ── AFROTECH ROSTER ── */
 document.getElementById('roster-grid').innerHTML=ROSTER.map(a=>`
   <div class="roster-card reveal">
     <div class="rc-role-tag" style="color:${a.col};">${a.role}</div>
@@ -1171,21 +1171,21 @@ document.getElementById('roster-grid').innerHTML=ROSTER.map(a=>`
     <div class="chips">${a.genres.map(g=>`<span class="chip" style="background:${a.col}15;color:${a.col};border:1px solid ${a.col}38;">${g}</span>`).join('')}</div>
   </div>`).join('');
 
-/* â”€â”€ ARCHETYPES â”€â”€ */
+/* ── ARCHETYPES ── */
 const ARCHS=[
   {type:"Connector",cls:"connector",metric:"High Betweenness Centrality",
-   desc:"They sit on the shortest paths between genre communities. Without them the graph splinters. They don't always invent â€” but nothing travels without them. The translator is as important as the author.",
+   desc:"They sit on the shortest paths between genre communities. Without them the graph splinters. They don't always invent — but nothing travels without them. The translator is as important as the author.",
    signal:"High betweenness centrality. Multi-genre edge presence. Active across at least two eras.",
    artists:["DJ Maphorisa","Brenda Fassie","Dlala Thukzin","Culoe De Song"]},
-  {type:"Originator",cls:"originator",metric:"High Innovation Score Â· First Mover",
-   desc:"Genre pioneers. Low connectivity early â€” few peers exist in the space they're creating. Their score understates their importance in year-one snapshots. Visibility comes later, through everyone who follows.",
+  {type:"Originator",cls:"originator",metric:"High Innovation Score · First Mover",
+   desc:"Genre pioneers. Low connectivity early — few peers exist in the space they're creating. Their score understates their importance in year-one snapshots. Visibility comes later, through everyone who follows.",
    signal:"High innovation flag. Strong PageRank despite low early degree. Often invisible to streaming data at the moment of creation.",
    artists:["Hugh Masekela","Arthur Mafokate","Kabza De Small","Sun-EL Musician","Thakzin","Atmos Blaq"]},
-  {type:"Amplifier",cls:"amplifier",metric:"High Eigenvector Centrality Â· Broadcast Node",
-   desc:"Connected to other high-influence nodes. They don't invent â€” they broadcast. Festival headliners, global collaborators. They take local sound into rooms it wouldn't otherwise reach, and return with new vocabulary.",
+  {type:"Amplifier",cls:"amplifier",metric:"High Eigenvector Centrality · Broadcast Node",
+   desc:"Connected to other high-influence nodes. They don't invent — they broadcast. Festival headliners, global collaborators. They take local sound into rooms it wouldn't otherwise reach, and return with new vocabulary.",
    signal:"High eigenvector centrality. International collaboration edges. Strong longevity and cultural impact scores.",
    artists:["Black Coffee","Uncle Waffles","Shimza","Focalistic"]},
-  {type:"Transitioner",cls:"transitioner",metric:"High Cross-Genre Bridge Score Â· Era-Spanning",
+  {type:"Transitioner",cls:"transitioner",metric:"High Cross-Genre Bridge Score · Era-Spanning",
    desc:"Artists whose career arc spans two or more distinct eras. Their late-period work carries the DNA of the next genre before that genre has a name. The model finds them by comparing genre tags across temporal subgraphs.",
    signal:"Present in two or more temporal subgraphs. Genre tags evolve across time windows. Often doubles as a Connector.",
    artists:["Black Coffee","Brenda Fassie","DJ Maphorisa","Dlala Thukzin"]},
@@ -1197,12 +1197,12 @@ document.getElementById('arch-grid').innerHTML=ARCHS.map(a=>{
     <h3>${a.type}s</h3>
     <div class="arch-metric">${a.metric}</div>
     <p>${a.desc}</p>
-    <p style="font-size:12px;margin-bottom:14px;"><strong style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;">Network signal â€” </strong>${a.signal}</p>
+    <p style="font-size:12px;margin-bottom:14px;"><strong style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;">Network signal — </strong>${a.signal}</p>
     <div class="pills">${a.artists.map(n=>`<span class="pill" style="background:${c}12;color:${c};border:1px solid ${c}35;">${n}</span>`).join('')}</div>
   </div>`;
 }).join('');
 
-/* â”€â”€ SCORE TABLE â”€â”€ */
+/* ── SCORE TABLE ── */
 document.getElementById('score-tbody').innerHTML=[...ARTISTS].sort((a,b)=>b.is-a.is).map(a=>{
   const c=AC[a.arch];
   const dims=[a.s.net,a.s.cross,a.s.innov,a.s.long,a.s.cult];
@@ -1215,7 +1215,7 @@ document.getElementById('score-tbody').innerHTML=[...ARTISTS].sort((a,b)=>b.is-a
   </tr>`;
 }).join('');
 
-/* â”€â”€ ANIMATE BARS ON SCROLL â”€â”€ */
+/* ── ANIMATE BARS ON SCROLL ── */
 const bObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
@@ -1226,13 +1226,13 @@ const bObs=new IntersectionObserver(entries=>{
 },{threshold:.08});
 document.querySelectorAll('.rank-box,.reveal').forEach(el=>bObs.observe(el));
 
-/* â”€â”€ SCROLL REVEAL â”€â”€ */
+/* ── SCROLL REVEAL ── */
 const rObs=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rObs.unobserve(e.target);}});
 },{threshold:.05});
 document.querySelectorAll('.reveal').forEach(el=>rObs.observe(el));
 
-/* â”€â”€ NAV ACTIVE â”€â”€ */
+/* ── NAV ACTIVE ── */
 const secs=document.querySelectorAll('section[id]');
 window.addEventListener('scroll',()=>{
   let cur='';
