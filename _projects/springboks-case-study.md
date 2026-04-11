@@ -1,7 +1,7 @@
 ---
 title: "Springboks"
 date: 2026-03-19
-summary: "Interactive visual analysis of Springbok performance trends from 2016 to 2026."
+summary: "Public-record sports storytelling piece tracing Springbok performance trends from 2016 to 2025, with estimates clearly flagged where official splits are not published."
 tags: ["Sports Analytics", "Data Visualization", "HTML", "Chart.js"]
 featured: true
 roleFocus: "Sports Analytics | Performance Trends"
@@ -10,36 +10,36 @@ projectShows:
   - "Era comparison"
   - "Visual storytelling"
 snapshot:
-  problem: "Performance context across different Springbok eras was difficult to compare in one narrative."
-  focus: "I built an interactive decade view combining win-rate arc, era breakdown, and player profile context."
-  outcome: "The result provides a clearer, faster way to read team evolution over time."
+  problem: "Public discussion of the Springboks often isolates single seasons or major tournaments, which makes the longer arc harder to read."
+  focus: "I built a 2016-2025 public-record view that combines win-rate arc, era interpretation, and player context in one narrative."
+  outcome: "The result gives a more readable decade view while staying explicit about where the work uses estimates rather than official splits."
 demoPath: "/projects/springboks/"
 demoLabel: "Open live project"
 ---
 
 ## Overview
-Springboks is an interactive analytics piece covering team trajectory from 2016 to 2026, with a focus on performance arc, era transitions, and player-level context.
+Springboks is an interactive sports storytelling piece covering team trajectory from 2016 to 2025, with a focus on performance arc, era transitions, and player-level context drawn from public records.
 
 ## Hero
-Interactive visual analysis of Springbok performance trends from 2016 to 2026.
+Interactive public-record analysis of Springbok performance trends from 2016 to 2025.
 
 ## Intelligence Layer
-Sports performance discussions often focus on isolated seasons or headline results. That limits deeper understanding of how team progression happens across coaching cycles and squad evolution.
+Springbok discussion often jumps between headline wins, World Cup moments, and isolated seasons. That leaves the longer performance arc harder to read, especially when coaching eras and player turnover overlap.
 
 ## Problem
-There was no concise interactive view that combined decade-level trajectory, era segmentation, and player context in a single analyst-friendly narrative.
+There was no concise interactive view that combined long-range results, an explicit era interpretation, and player context in one readable narrative while also being honest about where estimates were required.
 
 ## Data / Signals
 ### Analyst Objective
-Create a decade analysis that helps viewers:
+Create a 2016-2025 decade view that helps viewers:
 - compare major eras consistently,
-- understand performance inflection points,
+- understand where results improved or stalled,
 - and connect aggregate outcomes with player and debut context.
 
 ### Stakeholders
-- Sports strategy and commentary audiences needing clearer trend context.
+- Rugby media and commentary audiences needing clearer trend context.
 - Fans and analysts looking for a structured decade view instead of isolated metrics.
-- Recruiters reviewing analytical storytelling and dashboard communication quality.
+- Portfolio reviewers assessing analytical storytelling and evidence discipline.
 
 ### Key Questions
 - How did win performance shift across the four key eras?
@@ -53,29 +53,36 @@ Create a decade analysis that helps viewers:
 - Debut and player-context indicators.
 - Try-scoring and output pattern signals.
 
+### Method Note
+- This project uses public rugby records and reporting rather than a packaged dataset.
+- Official or widely published results are used for team-level performance views.
+- Some player-era allocations, cap distributions, and try-era splits are estimated where official year-by-year splits are not published.
+- Estimated sections are labeled in the live project and should be read as directional context, not official record tables.
+
 ## Insight
-- Structured the experience into anchored sections (arc, era breakdown, players, debuts, try scorers).
-- Used Chart.js to layer trend and comparison visuals.
-- Built a clear narrative flow from team-level performance to player-level context.
-- Optimized layout for quick scanning and visual continuity.
+- The 2016-2017 period stands apart as the weakest stretch in the window, which gives the later rebuild clearer contrast.
+- Viewing the period in four phases makes the shift from contraction to sustained strength easier to follow than a flat year-by-year reading.
+- The later years show stronger attacking output alongside stronger results, which helps explain why 2024-2025 feels different from the earlier rebuild phase.
+- Player and debut context adds useful texture, but some of those views rely on flagged estimates rather than fully published official splits.
 
 ## Implication
-- The decade includes distinct phases of contraction, rebuild, peak execution, and sustained strength.
-- Era segmentation makes progress clearer than season-by-season reading alone.
-- Combining contextual sections improved the explanatory value of core performance metrics.
+- The decade is easier to understand when it is treated as an interpreted performance arc rather than a list of separate seasons.
+- The strongest value in the piece is comparative storytelling across eras, not fully reproducible statistical reporting.
+- Credibility depends on keeping the difference between verified records and estimated context visible.
 
 ## Closing
 ### Deliverables
 - Interactive Springbok decade report hosted in portfolio projects.
-- Era and player context views with consistent narrative structure.
-- Reusable format for future sports-intelligence storytelling.
+- Team-performance, era, player, debut, and try-context views in one narrative layout.
+- A sports storytelling format that can be reused for future public-record analysis pieces.
 
 ### Outcome
-The project improved readability of long-range team evolution and made decade-scale performance interpretation more intuitive.
+The project improved readability of long-range team evolution and turned a scattered public-record story into one more coherent 2016-2025 view.
 
 ### Tools
 - HTML/CSS for narrative layout and interaction.
 - Chart.js for visual performance analysis.
+- Public rugby records and reporting for source validation.
 
 ### Embedded Project
 <div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
@@ -89,3 +96,8 @@ The project improved readability of long-range team evolution and made decade-sc
 
 ### Link
 - Live project: [Springboks]({{ '/projects/springboks/' | relative_url }})
+
+### Reproducibility
+- No downloadable dataset is attached to this project.
+- The piece is based on public records plus clearly flagged estimates where official splits are unavailable.
+- It should be read as a transparent storytelling analysis, not as an official statistical database.

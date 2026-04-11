@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Springbok Era 2016-2026 | Growth Story</title>
+<title>Springbok Era 2016-2025 | Growth Story</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -131,11 +131,11 @@ footer{border-top:1px solid var(--border);padding:2rem;}
   </svg>
   <div class="hinner">
     <div>
-      <div class="eyebrow">Springbok Growth Story | Not a GOAT ranking | 2016-2026</div>
+      <div class="eyebrow">Springbok Growth Story | Not a GOAT ranking | 2016-2025</div>
       <h1>Springbok<em>10-Year Arc</em></h1>
     </div>
     <div class="hdesc">
-      I built this data storytelling project to visualise the Springboks' decade-long growth, from the difficult 2016 period through the Erasmus rebuild, back-to-back World Cups, and the 2025 high point. Verified data is used where available, and estimates are clearly flagged.
+      This piece follows the Springboks from 2016 through 2025 using public records, match results, and a small number of clearly flagged estimates where official year-by-year splits are not published. The goal is to make the arc easier to read, not to pretend every number here is an official source table.
     </div>
   </div>
 </header>
@@ -153,12 +153,12 @@ footer{border-top:1px solid var(--border);padding:2rem;}
   <section id="arc">
     <div class="sec-head">
       <div class="sec-title">Win Rate Arc 2016-2025</div>
-      <div class="sec-sub">A single view of the decade's performance curve. 2020 records no Tests because of COVID. Source: SA Rugby, Grokipedia, sarugbystats.co.za <span class="stag">SAR</span></div>
+      <div class="sec-sub">A single view of the performance curve from 2016 to 2025. 2020 records no Tests because of COVID. Team-level results are drawn from public match records. <span class="stag">PUBLIC RECORD</span></div>
     </div>
     <div class="wr-strip" id="wrStrip"></div>
     <div class="cbox">
       <div class="ctitle">Win % per year + tries scored trend</div>
-      <div class="csub">Win rate sits on the left axis and tries scored per year on the right. The 2025 try total is the third highest since 1992. <span class="stag">SAR</span></div>
+      <div class="csub">Win rate sits on the left axis and tries scored per year on the right. The 2025 try total stands well above the rest of this 2016-2025 window. <span class="stag">PUBLIC RECORD</span></div>
       <div class="cwrap" style="height:280px;"><canvas id="arcChart"></canvas></div>
     </div>
   </section>
@@ -166,7 +166,7 @@ footer{border-top:1px solid var(--border);padding:2rem;}
   <section id="eras">
     <div class="sec-head">
       <div class="sec-title">Era Breakdown</div>
-      <div class="sec-sub">Four phases explain the decade more clearly than a flat season-by-season reading.</div>
+      <div class="sec-sub">I split the decade into four phases because that reads more clearly than a flat season-by-season summary. This is an interpretation layer, not an official rugby taxonomy.</div>
     </div>
     <div class="timeline">
       <div class="era-card danger" style="--ec:var(--era1)">
@@ -176,7 +176,7 @@ footer{border-top:1px solid var(--border);padding:2rem;}
           <div class="estat"><div class="estat-n" style="color:var(--era1)">~42%</div><div class="estat-l">Win rate</div></div>
           <div class="estat"><div class="estat-n">24</div><div class="estat-l">Tests</div></div>
         </div>
-        <div class="era-note">The 57-0 loss to New Zealand in 2017 marked the lowest point of the period. Allister Coetzee left after 24 Tests and 10 wins. <span class="stag">SAR</span></div>
+        <div class="era-note">The 57-0 loss to New Zealand in 2017 marked the lowest point of the period. Allister Coetzee left after 24 Tests and 10 wins. <span class="stag">PUBLIC RECORD</span></div>
       </div>
       <div class="era-card rebuild" style="--ec:var(--era2)">
         <div class="era-label">Phase 2 | Erasmus arrives</div>
@@ -185,7 +185,7 @@ footer{border-top:1px solid var(--border);padding:2rem;}
           <div class="estat"><div class="estat-n" style="color:var(--era2)">50%</div><div class="estat-l">Win rate '18</div></div>
           <div class="estat"><div class="estat-n">RWC</div><div class="estat-l">Won 2019</div></div>
         </div>
-        <div class="era-note">Erasmus took over in mid-2018, finished year one with seven wins from 14 Tests, and then led the side to the 2019 World Cup title against England. <span class="stag">SAR/WIKI</span></div>
+        <div class="era-note">Erasmus took over in mid-2018, finished year one with seven wins from 14 Tests, and then led the side to the 2019 World Cup title against England. <span class="stag">PUBLIC RECORD</span></div>
       </div>
       <div class="era-card peak" style="--ec:var(--era3)">
         <div class="era-label">Phase 3 | Post-COVID peak</div>
@@ -194,7 +194,7 @@ footer{border-top:1px solid var(--border);padding:2rem;}
           <div class="estat"><div class="estat-n" style="color:var(--era3)">72%</div><div class="estat-l">Win rate '23</div></div>
           <div class="estat"><div class="estat-n">2x</div><div class="estat-l">World Cups</div></div>
         </div>
-        <div class="era-note">South Africa won the 2021 Lions series, retained elite-level consistency, and secured a second straight World Cup in 2023. <span class="stag">WIKI</span></div>
+        <div class="era-note">South Africa won the 2021 Lions series, retained elite-level consistency, and secured a second straight World Cup in 2023. <span class="stag">PUBLIC RECORD</span></div>
       </div>
       <div class="era-card dynasty" style="--ec:var(--era4)">
         <div class="era-label">Phase 4 | 2024-2025</div>
@@ -203,12 +203,12 @@ footer{border-top:1px solid var(--border);padding:2rem;}
           <div class="estat"><div class="estat-n" style="color:var(--era4)">89%</div><div class="estat-l">Avg '24-'25</div></div>
           <div class="estat"><div class="estat-n">43-10</div><div class="estat-l">vs NZ 2025</div></div>
         </div>
-        <div class="era-note">The side posted 84.6% in 2024 and 94% in 2025, delivered its biggest win over New Zealand, and rotated 50 players in 2025 alone. <span class="stag">SAR/Planet Rugby</span></div>
+        <div class="era-note">The side posted 84.6% in 2024 and 94% in 2025, recorded a decisive 43-10 win over New Zealand, and rotated 50 players in 2025 according to public reporting. <span class="stag">PUBLIC RECORD + REPORTING</span></div>
       </div>
     </div>
     <div class="cbox">
       <div class="ctitle">Points for vs points against per year</div>
-      <div class="csub">The 2025 scoring surge, with 764 points across 16 Tests, shows how the attack expanded beyond win rate alone. <span class="stag">SAR</span></div>
+      <div class="csub">The 2025 scoring surge, with 764 points across 16 Tests, shows how the attack expanded beyond win rate alone. <span class="stag">PUBLIC RECORD</span></div>
       <div class="cwrap" style="height:260px;"><canvas id="ptsChart"></canvas></div>
     </div>
   </section>
@@ -216,7 +216,7 @@ footer{border-top:1px solid var(--border);padding:2rem;}
   <section id="players">
     <div class="sec-head">
       <div class="sec-title">Player Profiles | 10-Year Arc</div>
-      <div class="sec-sub">Caps per year, key moments, and role in the decade. Each player is read within position context rather than ranked against the whole squad.</div>
+      <div class="sec-sub">Caps per year, key moments, and role in the decade. Each player is read within position context rather than ranked against the whole squad. Some year-by-year cap splits are estimated and should be read as directional.</div>
     </div>
     <div class="pgrid" id="pgrid"></div>
   </section>
@@ -224,26 +224,26 @@ footer{border-top:1px solid var(--border);padding:2rem;}
   <section id="debuts">
     <div class="sec-head">
       <div class="sec-title">Debut Tracker 2016-2025</div>
-      <div class="sec-sub">A view of when the next generation arrived. Gold marks players who became regular starters, while grey marks players who were tried but not retained. <span class="stag">SAR/WIKI</span></div>
+      <div class="sec-sub">A view of when the next generation arrived. Gold marks players who became regular starters, while grey marks players who were tried but not retained. This section blends public debut records with editorial context. <span class="stag">PUBLIC RECORD + CONTEXT</span></div>
     </div>
     <div class="debut-grid" id="debutGrid"></div>
     <div class="note" style="margin-top:1rem;">
-      <strong>2025 cohort note:</strong> Erasmus used 50 players in 2025, matching the highest figure since 1997. Five new caps arrived in the July series alone, and Ethan Hooker was nominated for World Rugby Breakthrough Player of the Year. <span class="stag">SAR/Planet Rugby</span>
+      <strong>2025 cohort note:</strong> Erasmus used 50 players in 2025, which points to an unusually broad rotation cycle. Five new caps arrived in the July series alone, and Ethan Hooker was nominated for World Rugby Breakthrough Player of the Year. <span class="stag">PUBLIC RECORD + REPORTING</span>
     </div>
   </section>
 
   <section id="tries">
     <div class="sec-head">
       <div class="sec-title">Top Try Scorers | Era Contribution</div>
-      <div class="sec-sub">Career tries accumulated inside the 2016-2025 window. Tries scored before 2016 or after 2025 are excluded from the era portion. <span class="stag">WIKI/ESPN EST</span></div>
+      <div class="sec-sub">Career tries accumulated inside the 2016-2025 window. Tries scored before 2016 or after 2025 are excluded from the era portion. The era split is estimated where official year-by-year totals are not published in one place. <span class="stag">MIXED: RECORD + ESTIMATE</span></div>
     </div>
     <div class="cbox">
       <div class="ctitle">Era tries + career total for context</div>
-      <div class="csub">Grey shows career tries scored outside the era window. Green shows tries scored in the 2016-2025 period. <span class="stag">WIKI/ESPN - era portion estimated</span></div>
+      <div class="csub">Grey shows career tries scored outside the era window. Green shows tries scored in the 2016-2025 period. The era portion is estimated from public career totals, debut timing, and tournament-era context. <span class="stag">ESTIMATED ERA SPLIT</span></div>
       <div class="cwrap" style="height:380px;"><canvas id="tryChart"></canvas></div>
     </div>
     <div class="note">
-      <strong>Reading this chart:</strong> Mapimpi debuted in 2018, so almost all his tries fall inside this era. Habana played his last Test in 2016, so only a very small portion of his 67 career tries belongs to this window. The chart is designed to show who scored in this era, not who leads on career totals.
+      <strong>Reading this chart:</strong> Mapimpi debuted in 2018, so almost all his tries fall inside this era. Habana played his last Test in 2016, so only a very small portion of his 67 career tries belongs to this window. This chart is meant to show era contribution, not settle all-time rankings.
     </div>
   </section>
 
@@ -252,11 +252,11 @@ footer{border-top:1px solid var(--border);padding:2rem;}
 <footer>
   <div class="fi">
     <div class="src-grid">
-      <div><strong>Verified sources</strong><span class="stag">SAR</span> sarugby.co.za / sarugbystats.co.za<br><span class="stag">WR</span> world.rugby official records<br><span class="stag">WIKI</span> Wikipedia (cross-checked to primary)<br><span class="stag">ESPN</span> espn.com/rugby statsguru</div>
-      <div><strong>Estimated <span class="stag">EST</span></strong>Year-by-year cap distributions are estimated from career totals plus known debut years. Era try splits are estimated from career totals, debut years, and known tournament data. Win-rate-when-starting is derived from public squad and result data rather than an official published source.</div>
-      <div><strong>What this is not</strong>This is not a GOAT ranking. There are no composite scores or weighted rankings, and players in different positions are not compared directly. The goal is to show individual growth arcs inside the wider team story.</div>
+      <div><strong>Verified sources</strong><span class="stag">SA RUGBY</span> sarugby.co.za / sarugbystats.co.za<br><span class="stag">WORLD RUGBY</span> official records where relevant<br><span class="stag">ESPN</span> public rugby stats pages<br><span class="stag">REPORTING</span> public rugby reporting used only where official records do not package the same context cleanly</div>
+      <div><strong>Estimated sections <span class="stag">EST</span></strong>Year-by-year cap distributions are estimated from career totals plus known debut years. Era try splits are estimated from career totals, debut timing, and public tournament context. These sections are included to help read the era, not to replace official record books.</div>
+      <div><strong>What this is not</strong>This is not a GOAT ranking, an official statistical database, or a claim that every player-context split shown here is directly published by SA Rugby. It is a transparent storytelling analysis built from public information.</div>
     </div>
-    <div class="disc">Several figures, especially year-by-year cap splits and era try portions, are estimates derived from career totals and debut-year data. They are directionally reliable but not officially published by SA Rugby, and each estimate is flagged for that reason.</div>
+    <div class="disc">Team-level results and broad era outcomes are based on public records. Some player-level and era-allocation views are estimated because those exact splits are not always published in one official source. Those estimates are kept visible so the reader can judge them appropriately.</div>
   </div>
 </footer>
 
@@ -506,7 +506,7 @@ function buildPlayerCards() {
         <div class="pcaps-wrap"><div class="pcaps-n">${p.totalCareer}</div><div class="pcaps-l">career caps</div></div>
       </div>
       <div class="cap-timeline">
-        <div class="ctl-label">Caps per year 2016-2025 <span class="stag">EST</span></div>
+        <div class="ctl-label">Caps per year 2016-2025 <span class="stag">ESTIMATED SPLIT</span></div>
         <div class="ctl-bars">${bars}</div>
       </div>
       <div class="moments">
