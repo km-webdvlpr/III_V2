@@ -1,7 +1,7 @@
 ---
 title: "RSA Music Evolution"
 date: 2026-03-20
-summary: "Interactive story of South African listening trends and genre evolution from 2021 to 2026."
+summary: "Interactive story of South African listening trends and genre evolution from 2021 to 2025, with 2026 treated as outlook rather than measured history."
 tags: ["Music Analytics", "Data Storytelling", "HTML", "Chart.js"]
 featured: true
 roleFocus: "Cultural Analytics | Data Storytelling"
@@ -10,24 +10,24 @@ projectShows:
   - "Interactive reporting"
   - "Narrative analytics"
 snapshot:
-  problem: "Music trend signals were fragmented across genres and periods, making it hard to see evolution clearly."
-  focus: "I structured a single interactive report to compare eras, transitions, and ranking patterns."
-  outcome: "The report made major shifts in listening behavior easier to explore and communicate."
+  problem: "Music trend signals were fragmented across genres and periods, making the broader movement harder to read."
+  focus: "I structured a single interactive report to compare eras, transitions, and ranking patterns using proxy data and modeled views."
+  outcome: "The report made major shifts in listening behavior easier to explore while staying clearer about what is illustrative versus observed."
 demoPath: "/projects/rsa-music-evolution/"
 demoLabel: "Open live project"
 ---
 
 ## Overview
-RSA Music Evolution is an interactive analytics narrative that tracks shifts in South African listening behavior from 2021 to 2026.
+RSA Music Evolution is an interactive cultural-analysis narrative that tracks shifts in South African listening behavior from 2021 to 2025, with 2026 used as forward-looking context.
 
 ## Hero
-Interactive story of South African listening trends and genre evolution from 2021 to 2026.
+Interactive story of South African listening trends and genre evolution from 2021 to 2025, with 2026 used only as outlook.
 
 ## Intelligence Layer
 Music trend conversations are often driven by isolated charts or platform snapshots. That makes it hard to see how audience behavior actually evolves over time, especially across genres.
 
 ## Problem
-There was no single view that connected era-level movement, ranking volatility, and genre transition patterns into one coherent story.
+There was no single view that connected era-level movement, ranking volatility, and genre transition patterns into one coherent story while being explicit about where the work relies on proxy data.
 
 ## Data / Signals
 ### Analyst Objective
@@ -55,16 +55,21 @@ Build a readable, interactive analysis that helps users:
 
 These were chosen to balance interpretability with narrative value.
 
+### Method Note
+- This project combines public chart proxies, estimated trend series, and modeled sections built for interpretability.
+- Some ranking, transition, and concentration views are illustrative rather than official market totals.
+- The strongest value of the project is comparative storytelling, not audited market measurement.
+
 ## Insight
-- Consolidated the analysis into a single-page interactive report.
-- Structured sections by analytical intent (era story, rankings, transitions, archetypes, score breakdown).
-- Used Chart.js visual layers to support comparison and trend legibility.
-- Applied a consistent storytelling sequence from context to evidence to interpretation.
+- The multi-year view makes the major shifts easier to follow than a stack of isolated snapshots.
+- Transition periods matter more than flat annual summaries because several genres move through short bursts rather than steady climbs.
+- The modeled sections are most useful as interpretive scaffolding, not as literal market reporting.
+- The page works best when it keeps observed proxies and illustrative sections clearly separated.
 
 ## Implication
-- Genre movement was not linear; transition periods created clear inflection points.
-- Some headline trends were driven by concentrated bursts rather than sustained growth.
-- Structured narrative ordering improved interpretation speed versus standalone charts.
+- Genre movement was not linear; transition periods created the clearest inflection points.
+- Some headline trends were driven by concentrated bursts rather than sustained long-run growth.
+- The narrative structure helps non-technical readers move from context to pattern without needing to inspect every chart in isolation.
 
 ## Closing
 ### Deliverables
@@ -73,11 +78,12 @@ These were chosen to balance interpretability with narrative value.
 - Reusable structure for future music-intelligence updates.
 
 ### Outcome
-The project made a complex multi-year trend story easier to read and compare, improving the clarity of insight communication for non-technical audiences.
+The project made a complex multi-year trend story easier to read and compare, improving clarity for non-technical audiences without pretending every section is hard market reporting.
 
 ### Tools
 - HTML/CSS for single-page experience design.
 - Chart.js for interactive visual analytics.
+- Public chart proxies plus illustrative modeled sections.
 
 ### Embedded Project
 <div style="position:relative;height:78vh;min-height:620px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">

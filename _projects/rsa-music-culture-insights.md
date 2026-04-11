@@ -1,7 +1,7 @@
 ---
 title: "RSA Music Culture Insights"
 date: 2026-03-19
-summary: "Personal cultural analytics piece exploring South African music patterns through an interactive narrative experience."
+summary: "Creative cultural-intelligence piece exploring South African music patterns through an interactive narrative experience, with proxy data and modeled signals used transparently."
 tags: ["Personal Project", "Data Storytelling", "Music Culture", "HTML"]
 featured: false
 roleFocus: "Creative / Personal Work"
@@ -10,18 +10,23 @@ projectShows:
   - "Narrative visualization"
   - "Interactive design"
 snapshot:
-  problem: "Cultural music insights are often shared as disconnected trends rather than one coherent narrative."
-  focus: "I built an interactive personal project to explore South African music culture through a story-led analytics lens."
-  outcome: "The output is an immersive narrative that blends analytical structure with creative expression."
+  problem: "Cultural music commentary is often scattered across trends, scenes, and platforms, which makes the broader pattern harder to follow."
+  focus: "I built an interactive personal project to explore South African music culture through a story-led cultural-intelligence lens."
+  outcome: "The output blends proxy-based analysis, interpretation, and design into one more coherent narrative."
 demoPath: "/projects/rsa-music-culture-insights/sa_music_final.html"
 demoLabel: "Open interactive project"
 ---
 
 ## Overview
-RSA Music Culture Insights is a personal creative analytics piece that explores South African music behavior through interactive storytelling.
+RSA Music Culture Insights is a personal creative cultural-intelligence piece that explores South African music behavior through interactive storytelling.
 
 ## Context
-This project was intentionally built as personal/creative work to demonstrate narrative craft and visual communication, separate from core recruiter-focused business case studies.
+This project was intentionally built as personal creative work to demonstrate narrative craft, visual communication, and cultural interpretation, separate from the more decision-oriented business case studies in the portfolio.
+
+## Method / Limits
+- This page uses public proxies, modeled estimates, and interpretive framing rather than a clean downloadable dataset.
+- Several figures are directional by design and should be read as cultural signals, not official platform reporting.
+- Where categories overlap, the live project now labels them as overlapping signals rather than mutually exclusive distributions.
 
 ## Embedded Project
 <iframe 
