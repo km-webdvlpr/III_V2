@@ -1,7 +1,7 @@
 ---
 title: "Digitising Estate Planning for Emerging Households"
 date: 2026-03-01
-summary: "Turned estate planning into a WhatsApp-based product concept, combining discovery, market analysis, revenue thinking, and end-to-end solution design."
+summary: "Explored how estate planning could be made more accessible through a WhatsApp-based product concept grounded in workflow design, trust, and practical delivery."
 tags: ["Product Owner", "Business Analysis", "InsurTech", "WhatsApp", "Process Design"]
 featured: true
 roleFocus: "Business Analysis | Product Design"
@@ -12,7 +12,7 @@ projectShows:
 snapshot:
   problem: "Traditional estate planning was expensive, unclear, and difficult to complete for the target market."
   focus: "I mapped the user journey, defined the workflow, and shaped the business and product logic."
-  outcome: "The concept turned a difficult legal process into a guided service flow with a clearer operating model."
+  outcome: "The concept reframed a difficult legal process as a guided service flow with a clearer operating model."
 demo: "https://www.youtube.com/watch?v=-K-K1YlgGSU"
 demoLabel: "Watch concept demo"
 ---
@@ -24,7 +24,7 @@ The work combined business analysis, product definition, and system design to re
 ### Impact Highlights
 - Reframed estate planning from a legal task into a guided workflow.
 - Connected user process design to realistic commercial options.
-- Delivered a working prototype flow from intake to PDF output via email.
+- Built and demonstrated a prototype flow from intake to PDF output via email.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);border-radius:.45rem;background:var(--panel);margin-top:.75rem;">
   <iframe
@@ -40,6 +40,8 @@ The work combined business analysis, product definition, and system design to re
 
 ## Business Context
 Estate planning remains under-served for many emerging households in South Africa. The process is often seen as expensive, legal-heavy, and difficult to complete, which creates risk for families and leaves a clear gap in access.
+
+This is not only a process-efficiency problem. It is also a trust problem. People are being asked to complete something important, unfamiliar, and emotionally loaded, often without the language, confidence, or support structure to do it comfortably.
 
 ## Problem Statement
 Potential users needed a simpler and more accessible way to create a will, while the business needed a delivery model that reduced friction, supported trust, and could connect to viable commercial pathways.
@@ -98,8 +100,8 @@ The team designed a WhatsApp-based will generation flow that captures user infor
 These measures matter because the solution only works if users can complete it, operators can support it, and the model can work commercially.
 
 ## Commercial & Market Thinking
-- Market framing suggested a viable estate-cover segment within life insurance.
-- Bottom-up estimates suggested meaningful monthly will demand in formal housing.
+- Market framing suggested a plausible estate-cover segment within life insurance.
+- Early bottom-up sizing pointed to meaningful demand potential in formal housing, but this would still need validation with real distribution and completion data.
 - Monetisation pathways considered: policy commission, executor subscriptions, white-label insurer partnerships, and B2B2C voucher models.
 - Main tradeoff: consumer-only pricing improved access but limited standalone unit economics without ecosystem partners.
 
@@ -107,6 +109,11 @@ These measures matter because the solution only works if users can complete it, 
 - The main barrier was not only awareness; it was process friction, cost sensitivity, and low confidence in completing a legal task correctly.
 - WhatsApp was a strong fit because it reduced channel friction and matched familiar user behaviour.
 - A guided workflow improved the chances of completion, but the commercial model likely depended on partnerships rather than direct consumer pricing alone.
+
+## Method / Limits
+- This project is strongest as a concept and workflow-design case study rather than a live scaled product with measured adoption.
+- The prototype demonstrates the intended flow and operating logic, but not full legal, operational, or commercial rollout.
+- Market and commercial assumptions are framed as working hypotheses, not validated production metrics.
 
 ## Deliverables
 - Business problem framing for digital estate planning access

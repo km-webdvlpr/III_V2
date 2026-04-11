@@ -1,7 +1,7 @@
 ---
 title: "Bontle: Operational Intelligence for Service Teams"
 date: 2026-03-01
-summary: "Designed a state-based workflow for multi-location service teams, with KPI logic and reporting built around day-to-day operations."
+summary: "Designed a state-based workflow for multi-location service teams, with KPI logic and reporting structured around real day-to-day operating flow."
 tags: ["Product Analytics", "Product Ownership", "Systems Design"]
 featured: true
 roleFocus: "Operational Analysis | Product Analytics"
@@ -12,7 +12,7 @@ projectShows:
 snapshot:
   problem: "Service teams lacked a clear way to track work across branches, handoffs, and delays."
   focus: "I designed the state-based workflow, KPI logic, and reporting structure."
-  outcome: "The result was a more measurable operating flow that managers could review in real time."
+  outcome: "The result was a more measurable operating flow that managers could review more consistently."
 demo: "https://bontle-web-app.onrender.com/book"
 demoLabel: "View live workflow"
 ---
@@ -47,7 +47,7 @@ Design an operational workflow model that supports day-to-day execution, gives t
 - Shifted service delivery from booking administration to something teams could measure and manage.
 - Created a shared view of execution health across frontline and leadership teams.
 - Defined KPI groups around flow, quality, capacity, and commercial performance.
-- Improved decision speed by linking state changes to clear management questions.
+- Made review conversations more concrete by linking state changes to clear management questions.
 
 ## Workflow and Control Design
 **State model:** Today -> In Progress -> Completed
@@ -58,6 +58,8 @@ Design an operational workflow model that supports day-to-day execution, gives t
 - State history becomes direct input for cycle-time, backlog, and exception KPIs.
 
 This workflow design made the operating process measurable. Instead of treating service delivery as isolated tasks, it created a flow that could be reviewed, managed, and improved.
+
+The strongest value here is not technical complexity on its own. It is that messy operational work became easier to see, govern, and discuss across teams.
 
 ## Execution Views
 - Consultant Board: daily ownership clarity, handoff visibility, and queue-priority focus.
@@ -90,7 +92,7 @@ This workflow design made the operating process measurable. Instead of treating 
 
 Exports are available in CSV and JSON for BI ingestion.
 
-KPI trust is supported through record versioning, event-level audit trails, reconciliation checks, masked PII handling, and stable SQL pagination.
+KPI trust is supported through record versioning, event-level audit trails, reconciliation checks, masked PII handling, and stable SQL pagination. In practice, that matters because teams are more likely to trust operational reporting when they can see where numbers came from and how state changes were recorded.
 
 ## Deliverables
 - Operational problem framing
@@ -103,6 +105,11 @@ KPI trust is supported through record versioning, event-level audit trails, reco
 - Workflow visibility improved when ownership and transitions were explicit.
 - State-based measurement gave a better basis for root-cause analysis than static booking counts.
 - Reporting became more useful when KPI definitions were tied to specific management questions.
+
+## Method / Limits
+- This case study is strongest as an operational design and control framework, not as a published before-versus-after performance study.
+- The page demonstrates workflow logic, KPI modeling, and reporting structure more clearly than it demonstrates measured adoption outcomes.
+- Where the write-up refers to management usefulness, that should be read as the intended operating benefit of the design.
 
 ## Architecture & Delivery
 - Frontend: React + TypeScript + Vite
@@ -122,7 +129,7 @@ KPI trust is supported through record versioning, event-level audit trails, reco
 - Executive framing for decision review.
 - Iterative system design with clear human control.
 
-**Business Analysis -> Product Ownership -> Product Analytics -> Systems Engineering**
+**Business Analysis -> Product Ownership -> Product Analytics -> Systems Design**
 
 ## Next Steps
 - Add branch-level exception alerts so issues can be picked up earlier.
