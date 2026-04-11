@@ -22,6 +22,7 @@ layout: default
 {% if page.repo and demo_href == page.repo %}
   {% assign show_demo = false %}
 {% endif %}
+{% assign ordered_registry = site.data.project_registry | sort: 'order' %}
 {% assign prev_url = nil %}
 {% assign prev_title = nil %}
 {% assign prev_log = nil %}
@@ -29,7 +30,7 @@ layout: default
 {% assign next_title = nil %}
 {% assign next_log = nil %}
 {% assign found_current = false %}
-{% for entry in site.data.project_registry %}
+{% for entry in ordered_registry %}
   {% assign matched_project = nil %}
   {% for candidate in site.projects %}
     {% if candidate.slug == entry.slug %}
@@ -215,7 +216,7 @@ layout: default
     <div class="project-nav-progress" data-project-nav-progress></div>
 
     <div hidden>
-      {% for entry in site.data.project_registry %}
+      {% for entry in ordered_registry %}
         {% for nav_project in site.projects %}
           {% if nav_project.slug == entry.slug %}
           <span
