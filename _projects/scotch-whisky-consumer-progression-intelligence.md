@@ -1,7 +1,7 @@
 ---
 title: "Scotch Whisky: Consumer Progression & Premiumization Intelligence"
 date: 2026-04-05
-summary: "Beverage retail case study showing how shoppers move from accessible Scotch into more distinctive premium bottles, and where price, packaging, and shelf context interrupt that climb."
+summary: "Beverage retail case study using synthetic Scotch retail data to examine how shoppers move from accessible bottles into more distinctive premium expressions, and where price, packaging, and shelf context interrupt that climb."
 tags: ["Python", "Product Intelligence", "Retail Analytics", "Consumer Behaviour", "Synthetic Data"]
 featured: true
 roleFocus: "Product Intelligence | Beverage Retail"
@@ -12,7 +12,7 @@ projectShows:
 snapshot:
   problem: "Retail teams can see price and velocity, but they do not always have a clean read on where Scotch shoppers are progressing, hesitating, or settling into preference."
   focus: "I built a synthetic Scotch retail dataset to read gateway products, destination products, pricing friction, and the shelf conditions shaping premiumization."
-  outcome: "The case isolates where progression starts, where it stalls, and which bottles behave more like recruitment tools versus preference-led destinations."
+  outcome: "The result is a progression model that shows where movement seems to start, where it tightens, and which bottles behave more like recruitment tools versus preference-led destinations."
 repo: "https://github.com/km-webdvlpr/scotch-whisky-consumer-progression-intelligence"
 repoLabel: "Open GitHub project"
 demo: "https://km-webdvlpr.github.io/scotch-whisky-consumer-progression-intelligence/"
@@ -29,7 +29,7 @@ Premiumization in Scotch is rarely a clean straight line. A shopper might browse
 The commercial problem is not simply whether premium Scotch is selling. It is whether the shelf is creating believable movement upward, where price jumps start to feel uncomfortable, and which products are acting as gateways versus long-term preference bottles.
 
 ## Analyst Objective
-Build a product intelligence case study that reads progression through product role, shelf conditions, gifting cues, and sparse repeat behaviour, then turn those patterns into commercial decisions a retail or category team could actually use.
+Build a product intelligence case study that reads progression through product role, shelf conditions, gifting cues, and sparse repeat behaviour, then turns those patterns into a commercial framework a retail or category team could review.
 
 ## Stakeholders
 - Category and commercial teams deciding how to structure the Scotch ladder.
@@ -54,13 +54,13 @@ Build a product intelligence case study that reads progression through product r
 ## Approach
 - Designed a synthetic Scotch retail dataset with 3,200 observations across eight fixed expressions.
 - Modeled product, shelf, display, promo, gifting, and buyer-stage signals with imperfect correlations.
-- Exported a compact set of visuals focused on progression, friction, loyalty, and stalling points.
+- Exported a compact set of visuals and summary tables focused on progression, friction, loyalty, and stalling points.
 - Built a notebook and a portfolio-ready walkthrough that keeps the tone commercial and human.
 
 ## Insights
-- Johnnie Walker Black Label emerges as the strongest gateway bottle in the final build.
-- Lagavulin 16 behaves most like a destination product: smaller in frequency, stronger in commitment.
-- The biggest modeled price friction appears in the R320-R420 step-up zone.
+- Johnnie Walker Black Label ranks highest on the gateway score in the final build.
+- Lagavulin 16 ranks highest on the destination score: smaller in frequency, stronger in commitment.
+- The first clear progression tension appears in the R320-R420 step-up zone.
 - Gift packaging helps reach and occasion buying more than it helps repeat.
 - Standard shelf execution still matters if the real goal is loyalty rather than spectacle.
 
@@ -68,21 +68,27 @@ Build a product intelligence case study that reads progression through product r
 - Synthetic Scotch retail dataset
 - Notebook for progression and premiumization analysis
 - Exported visuals for tier mix, product role, pricing friction, gifting, display impact, and stalling points
+- Supporting summary tables for product role, price friction, gifting, display effects, and stage stalls
 - Written insight file for commercial takeaways
 - Embedded case walkthrough inside III.IV
 
 ## Results
 - The build lands at 3,200 retail observations.
 - Entry and core bottles still carry most of the category traffic.
-- The strongest gateway product is Johnnie Walker Black Label.
-- The strongest destination product is Lagavulin 16.
-- The clearest progression friction sits in the R320-R420 jump.
+- The gateway score ranks Johnnie Walker Black Label first.
+- The destination score ranks Lagavulin 16 first.
+- The first clear progression tension sits in the R320-R420 jump.
 
 ## Recommendations
 - Use familiar step-up bottles as the visible bridge into premium Scotch rather than relying on abrupt jumps.
 - Treat gift packaging as a recruitment tool, not proof of loyalty.
 - Protect the standard shelf for repeat-friendly bottles even when feature displays are doing discovery work.
 - Make the first premium price stretch easier to understand with clearer comparison and flavour cues.
+
+## Interpretation Notes
+- This is a synthetic case study built to test progression logic, not a claim about live Scotch retail data.
+- The gateway and destination labels come from weighted scores, so they should be read as structured heuristics rather than fixed truths.
+- The friction read is a repeat-rate heuristic by price band, not a full pricing model.
 
 ## Embedded Project
 <div style="position:relative;height:78vh;min-height:460px;border:1px solid var(--border);border-radius:.45rem;overflow:hidden;background:var(--panel);margin-top:.75rem;">
