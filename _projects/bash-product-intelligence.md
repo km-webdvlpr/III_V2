@@ -12,7 +12,7 @@ projectShows:
 snapshot:
   problem: "Traffic, orders, and promotions alone do not show where Bash is losing conversion or where post-order friction is eroding margin."
   focus: "I structured a Bash-shaped synthetic commerce dataset across sessions, events, orders, fulfillment, and returns to isolate the most important operating signals."
-  outcome: "The case turns omnichannel retail activity into a practical product intelligence view for conversion, delivery reliability, and category risk."
+  outcome: "The case turns omnichannel retail activity into a clearer operating view of conversion, delivery reliability, and category risk."
 demo: "https://km-webdvlpr.github.io/bash-product-intelligence/"
 demoLabel: "View project walkthrough"
 repo: "https://github.com/km-webdvlpr/bash-product-intelligence"
@@ -33,7 +33,7 @@ The core problem is not traffic volume. It is the lack of a joined-up operating 
 
 ## Data / Signals
 ### Analyst Objective
-Build a decision-ready product intelligence layer that helps teams:
+Build a product intelligence layer that helps teams:
 - read the funnel from session to purchase,
 - isolate where mobile and channel friction is breaking checkout,
 - measure the commercial effect of late fulfillment,
@@ -59,14 +59,14 @@ Build a decision-ready product intelligence layer that helps teams:
 
 ## Insight
 - The modeled funnel converts 62,959 sessions into 4,186 purchases, a 6.65% session-to-purchase rate.
-- Mobile app converts at 8.78% versus 3.30% on mobile web, which points to downstream checkout friction rather than weak demand.
+- Mobile app converts at 8.78% versus 3.30% on mobile web, which is enough to justify a checkout review before more traffic is pushed into mobile web.
 - Late orders represent 12.1% of orders, but lift support-contact rate to 31.1% versus 9.8% for on-time delivery.
 - Footwear carries the highest modeled return rate at 22.9%, with `size_issue` emerging as the most common return reason overall.
 
 ## Implication
-- Bash should prioritize mobile web checkout fixes before buying more top-of-funnel traffic.
-- Delivery reliability belongs in product review, because late fulfillment lifts both customer effort and return risk.
-- Mixed-inventory and split-delivery exposure should be treated as conversion-protection work, not only back-office ops work.
+- Bash should prioritize mobile web checkout fixes before adding more traffic to that surface.
+- Delivery reliability should be reviewed in the weekly trading and operations cadence because late fulfillment lifts both customer effort and return risk.
+- Mixed-inventory and split-delivery exposure deserve attention because they raise support demand and returns at the same time.
 - Footwear needs sharper sizing, fit guidance, and expectation-setting before heavier promotional pressure is justified.
 
 ## Closing
@@ -77,12 +77,12 @@ Build a decision-ready product intelligence layer that helps teams:
 - Hosted walkthrough report plus readable project documentation in GitHub.
 
 ### Outcome
-The case demonstrates how omnichannel retail analytics can move beyond traffic and revenue reporting into product intelligence that is more useful for weekly operating decisions.
+The case demonstrates how omnichannel retail analytics can move beyond traffic and revenue reporting into a more practical weekly operating view.
 
 ### Key Visuals
 <div class="report-figure">
   <img src="../../projects/bash-product-intelligence/funnel-by-device.png" alt="Bash funnel by device" />
-  <p class="report-caption">Mobile app converts far better than mobile web in the modeled funnel, which points to later-stage experience friction rather than weak demand.</p>
+  <p class="report-caption">Mobile app converts far better than mobile web in the modeled funnel, which is enough to justify a checkout review before more traffic is sent into mobile web.</p>
 </div>
 
 <div class="report-figure">
@@ -92,7 +92,7 @@ The case demonstrates how omnichannel retail analytics can move beyond traffic a
 
 <div class="report-figure">
   <img src="../../projects/bash-product-intelligence/late-fulfillment-impact.png" alt="Late fulfillment impact on support and returns" />
-  <p class="report-caption">Late delivery increases both support demand and return risk, making fulfillment reliability a commercial KPI rather than a pure logistics KPI.</p>
+  <p class="report-caption">Late delivery increases both support demand and return risk, so fulfillment reliability needs regular attention outside the logistics queue.</p>
 </div>
 
 <div class="report-figure">
@@ -101,7 +101,7 @@ The case demonstrates how omnichannel retail analytics can move beyond traffic a
 </div>
 
 ### Recommendations
-- Fix mobile web checkout and payment friction before increasing acquisition spend.
+- Fix mobile web checkout and payment friction before increasing acquisition spend on mobile web.
 - Reduce split-delivery exposure on mixed-inventory orders.
 - Add tighter delivery-promise communication when order complexity is high.
 - Focus category-level content improvements first on Footwear, especially fit and sizing clarity.
