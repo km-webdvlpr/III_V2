@@ -26,7 +26,7 @@ The work combined business analysis, product definition, and system design to re
 - Connected user process design to realistic commercial options.
 - Built and demonstrated a prototype flow from intake to PDF output via email.
 
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);border-radius:.45rem;background:var(--panel);margin-top:.75rem;">
+<div class="video-embed">
   <iframe
     src="https://www.youtube.com/embed/-K-K1YlgGSU"
     title="Digitising Estate Planning Demo Video 1"
@@ -34,7 +34,6 @@ The work combined business analysis, product definition, and system design to re
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     referrerpolicy="strict-origin-when-cross-origin"
     allowfullscreen
-    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
   ></iframe>
 </div>
 
@@ -80,7 +79,7 @@ This turned an opaque legal task into a guided service flow with clearer stages,
 ## What We Designed
 The team designed a WhatsApp-based will generation flow that captures user information through structured conversational prompts, validates inputs in backend services, and produces a printable PDF delivered via email. My focus was workflow definition, requirements structure, and end-to-end process logic.
 
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);border-radius:.45rem;background:var(--panel);margin-top:.75rem;">
+<div class="video-embed">
   <iframe
     src="https://www.youtube.com/embed/-AtRgk3v4bo"
     title="Digitising Estate Planning Demo Video 2"
@@ -88,7 +87,6 @@ The team designed a WhatsApp-based will generation flow that captures user infor
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     referrerpolicy="strict-origin-when-cross-origin"
     allowfullscreen
-    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
   ></iframe>
 </div>
 
